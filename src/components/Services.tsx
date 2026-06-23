@@ -31,18 +31,44 @@ export default function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-white/80 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl p-8 hover:-translate-y-1 transition-all duration-300"
-            >
+          {/* Large Card: Span 2 columns */}
+          <div className="md:col-span-2 bg-white/80 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+            <div>
               <div className="w-12 h-12 rounded-2xl bg-blue-50/50 border border-blue-100 flex items-center justify-center mb-6 text-blue-600">
-                {service.icon}
+                {services[0].icon}
               </div>
-              <h3 className="text-xl font-heading font-bold text-slate-900 mb-3">{service.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{service.description}</p>
+              <h3 className="text-2xl font-heading font-bold text-slate-900 mb-4">Agentic AI & LLM Integration</h3>
+              <p className="text-slate-600 leading-relaxed text-lg max-w-xl">
+                Custom RAG pipelines, automated workflows, and advanced LLM integrations to give your business an unfair advantage. We build measurable AI systems that reduce overhead.
+              </p>
             </div>
-          ))}
+          </div>
+
+          {/* Medium Card 1 */}
+          <div className="bg-white/80 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-blue-50/50 border border-blue-100 flex items-center justify-center mb-6 text-blue-600">
+                {services[1].icon}
+              </div>
+              <h3 className="text-xl font-heading font-bold text-slate-900 mb-3">Full-Stack Engineering</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Fractional CTO services and dedicated product squads building robust, scalable applications from the ground up.
+              </p>
+            </div>
+          </div>
+
+          {/* Medium Card 2 */}
+          <div className="bg-white/80 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-blue-50/50 border border-blue-100 flex items-center justify-center mb-6 text-blue-600">
+                {services[2].icon}
+              </div>
+              <h3 className="text-xl font-heading font-bold text-slate-900 mb-3">Enterprise BPO</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Operational scaling through offshore talent and automated data warehousing to unlock insights from your messy data.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

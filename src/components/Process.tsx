@@ -21,8 +21,11 @@ export default function Process() {
     <section id="process" className="py-20 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-2 block">Our Process</span>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 tracking-tight">How We Work</h2>
+          <span className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-2 block">Our Methodology</span>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 tracking-tight mb-4">The Avora A.I.M. Framework</h2>
+          <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+            A repeatable, enterprise-grade system for moving from ambition to live deployment.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
