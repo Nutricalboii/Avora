@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const footerLinks = {
   Services: [
@@ -58,8 +59,14 @@ export default function Footer() {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="font-heading font-bold text-xl text-slate-900 dark:text-white block mb-4">
-              Avora Ventures
+            <Link href="/" className="inline-block mb-4 hover:opacity-80 transition-opacity">
+              <Image
+                src="/logo.png"
+                alt="Avora Ventures"
+                width={130}
+                height={44}
+                className="h-9 w-auto dark:brightness-0 dark:invert"
+              />
             </Link>
             <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 max-w-xs">
               Outsourcing, specialized skill hiring, AI solutions, and data annotations — built to scale your operations.

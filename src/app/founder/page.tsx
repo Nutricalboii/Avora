@@ -4,6 +4,7 @@ import { useInView } from '@/hooks/useInView';
 import { cn } from '@/lib/cn';
 import { Briefcase, GraduationCap, Trophy, FileText, Globe2 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function FounderPage() {
   const { ref: heroRef, isInView: heroInView } = useInView({ once: true, threshold: 0.1 });
@@ -25,8 +26,15 @@ export default function FounderPage() {
         {/* Hero Section */}
         <section ref={heroRef} className={cn("mb-20 transition-all duration-700", heroInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
           <div className="flex flex-col md:flex-row gap-8 items-start">
-            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-slate-100 dark:bg-slate-900 border-4 border-white dark:border-slate-950 shadow-xl flex items-center justify-center text-4xl md:text-6xl font-heading font-bold text-slate-900 dark:text-white flex-shrink-0">
-              AJ
+            <div className="w-32 h-32 md:w-44 md:h-44 rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-slate-800 shadow-lg flex-shrink-0 group-hover:scale-[1.02] transition-transform duration-500">
+              <Image
+                src="/abhay-jain.jpg"
+                alt="Abhay Jain"
+                width={176}
+                height={176}
+                className="w-full h-full object-cover object-center"
+                priority
+              />
             </div>
             <div className="pt-4">
               <h1 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 dark:text-white tracking-tight mb-4">
