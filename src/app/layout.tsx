@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { Analytics } from '@vercel/analytics/next';
 import { siteConfig } from '@/config/site';
 import { generateSchema } from '@/app/schema';
 import Navbar from '@/components/Navbar';
@@ -73,6 +74,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
