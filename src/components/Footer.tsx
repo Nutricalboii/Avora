@@ -105,8 +105,9 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="py-6 border-t border-slate-100 dark:border-slate-900 flex flex-col sm:flex-row justify-between items-center gap-3">
+          {/* Maintained by Vaibhav Sharma */}
           <p className="text-xs text-slate-400 dark:text-slate-500">
-            &copy; {new Date().getFullYear()} Avora Ventures Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} Avora Ventures Inc. All rights reserved. • Designed & Engineered by Vaibhav Sharma
           </p>
           <div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
