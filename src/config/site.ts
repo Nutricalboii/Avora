@@ -8,4 +8,11 @@ export const siteConfig = {
     twitter: "",
     linkedin: "",
   },
+  shortName: "Avora",
+  nav: [
+    { label: "Home", href: "/#hero" },
+    { label: "Services", href: "/#services" },
+    { label: "Process", href: "/#process" },
+    { label: "Founder", href: "/founder" },
+  ],
 };
