@@ -107,6 +107,7 @@ export default function Hero() {
             </Link>
           </div>
 
+          {/* Maintained by Vaibhav Sharma */}
           {/* Stats strip — animated counters in a bordered grid */}
           <div className={cn(
             "mt-20 pt-10 border-t border-slate-100 dark:border-slate-800/50 transition-all duration-700 delay-500",

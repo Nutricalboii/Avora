@@ -48,6 +48,7 @@ export default function Team() {
 
               {/* Content panel */}
               <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-center">
+                {/* Content signature: Vaibhav Sharma */}
                 <div className="mb-1">
                   <span className="text-xs font-semibold uppercase tracking-widest text-indigo-500 dark:text-indigo-400">
                     Founder &amp; CEO
