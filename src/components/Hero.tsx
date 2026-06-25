@@ -3,6 +3,7 @@
 import { ArrowRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { PatternDot, HeroGlow } from './BackgroundPatterns';
+import { Logo } from './Logo';
 import { cn } from '@/lib/cn';
 import { useInView } from '@/hooks/useInView';
 import Link from 'next/link';
@@ -58,6 +59,22 @@ export default function Hero() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div ref={ref} className="text-center">
+
+          {/* Premium Logo Showcase Container */}
+          <div className={cn(
+            "flex justify-center mb-8 transition-all duration-1000 ease-out",
+            isInView ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 -translate-y-4"
+          )}>
+            <div className="relative group">
+              {/* Outer soft breathing ambient gradient ring */}
+              <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-indigo-500/10 via-amber-500/10 to-indigo-500/10 blur-xl opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-300" />
+              
+              {/* Main premium logo badge */}
+              <div className="relative flex items-center justify-center bg-slate-50/50 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/40 dark:border-slate-800/40 px-8 py-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] hover:border-indigo-500/30 dark:hover:border-indigo-400/30 transition-colors duration-300">
+                <Logo size="lg" className="h-10 w-auto text-slate-900 dark:text-white" />
+              </div>
+            </div>
+          </div>
 
           {/* Eyebrow badge — single indigo accent */}
           <div className={cn(

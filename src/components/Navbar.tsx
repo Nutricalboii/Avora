@@ -6,7 +6,7 @@ import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/cn';
 import { ThemeToggle } from './ThemeToggle';
 import Link from 'next/link';
-import Image from 'next/image';
+import { Logo } from './Logo';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -48,14 +48,7 @@ export default function Navbar() {
               className="flex items-center hover:opacity-80 transition-opacity"
               aria-label="Avora Ventures home"
             >
-              <Image
-                src="/logo.png"
-                alt="Avora Ventures"
-                width={120}
-                height={40}
-                className="h-8 w-auto dark:brightness-0 dark:invert"
-                priority
-              />
+              <Logo size="sm" className="h-10 w-auto text-slate-900 dark:text-white" />
             </button>
 
             {/* Desktop Nav */}
@@ -119,13 +112,7 @@ export default function Navbar() {
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}>
           <div className="flex justify-between items-center p-4 border-b border-slate-100 dark:border-slate-800">
-            <Image
-              src="/logo.png"
-              alt="Avora Ventures"
-              width={100}
-              height={32}
-              className="h-7 w-auto dark:brightness-0 dark:invert"
-            />
+            <Logo size="sm" className="h-10 w-auto text-slate-900 dark:text-white" />
             <button
               onClick={() => setMobileMenuOpen(false)}
               className="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors"

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { Logo } from './Logo';
 
 const footerLinks = {
   Services: [
@@ -60,13 +60,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-4 hover:opacity-80 transition-opacity">
-              <Image
-                src="/logo.png"
-                alt="Avora Ventures"
-                width={130}
-                height={44}
-                className="h-9 w-auto dark:brightness-0 dark:invert"
-              />
+              <Logo size="md" className="h-9 w-auto text-slate-900 dark:text-white" />
             </Link>
             <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 max-w-xs">
               Outsourcing, specialized skill hiring, AI solutions, and data annotations — built to scale your operations.
