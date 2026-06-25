@@ -29,6 +29,36 @@ const testimonials = [
     author: "David Jenkins",
     role: "Founder, ScaleTech (USA)",
     avatar: "DJ",
+  },
+  {
+    quote: "The custom AI predictive analytics dashboard designed by Avora gave our team absolute clarity on resource allocation. Their work is highly professional and delivered on budget.",
+    author: "Rohan Mehta",
+    role: "VP of Product, ZetaLogistics (India)",
+    avatar: "RM",
+  },
+  {
+    quote: "Avora's specialized skill hiring platform matched us with top-tier ML engineers within days. Their screening process is incredibly thorough and saved us weeks of interview cycles.",
+    author: "Aditi Rao",
+    role: "Co-Founder, HealthMatrix (India)",
+    avatar: "AR",
+  },
+  {
+    quote: "Their consulting experience shone through in how they structured our transition to modern cloud workflows. A team of exceptional caliber.",
+    author: "Lukas Weber",
+    role: "Head of Infrastructure, NexaAuto (Germany)",
+    avatar: "LW",
+  },
+  {
+    quote: "Outstanding execution from start to finish. They built a custom data annotation engine that reduced our training latency by over 40%.",
+    author: "Sarah Hamilton",
+    role: "Chief Data Officer, Quantum Finance (UK)",
+    avatar: "SH",
+  },
+  {
+    quote: "Avora acted as an extension of our core team. Their commitment to building clean, maintainable architecture was exactly what we needed to secure our Series A.",
+    author: "Oliver Campbell",
+    role: "VP of Engineering, CloudVentures (Australia)",
+    avatar: "OC",
   }
 ];
 
