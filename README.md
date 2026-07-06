@@ -26,14 +26,24 @@ This project utilizes the **Next.js App Router** architecture.
 - `prisma/` - Database schema (MongoDB).
 - `ai-processor/` - A separate Python FastAPI microservice scaffolding for future AI workloads.
 
-## 🔗 Google Sheets Lead Capture
+## 🔗 Configuration & Secure Lead Capture
 
-The Contact Form (`src/components/Contact.tsx`) is hardwired to bypass traditional databases entirely for the public launch, pushing data straight to a Google Sheet via Google Apps Script.
+The Contact Form (`src/components/Contact.tsx`) passes submissions securely through the `/api/contact` server route. The destination Google Apps Script URL and authentication configurations are loaded dynamically via environment variables on the host.
 
-**To configure your Google Sheet:**
-1. Create a Google Sheet with columns: `Name`, `Email`, `Company`, `Message`, `Timestamp`.
-2. Go to **Extensions > Apps Script** and deploy the `doPost` webhook (configured to allow access to "Anyone").
-3. Paste your generated Web App URL into `src/components/Contact.tsx` at the `GOOGLE_SCRIPT_URL` variable.
+Copy `.env.example` to `.env` and configure:
+
+```bash
+# Database
+DATABASE_URL="your-mongodb-connection-string"
+
+# NextAuth credentials (used by the dashboard)
+ADMIN_EMAIL="admin@avora.io"
+ADMIN_PASSWORD="your-strong-password"
+NEXTAUTH_SECRET="your-32-character-secret"
+
+# Webhook URLs (hidden from the client bundle)
+GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/.../exec"
+```
 
 ## 🛠 Tech Stack
 
@@ -42,10 +52,11 @@ The Contact Form (`src/components/Contact.tsx`) is hardwired to bypass tradition
 - **Icons**: Lucide React
 - **Language**: TypeScript
 - **Database**: MongoDB & Prisma (for Dashboard routes)
+- **Validation**: Zod (Client & Server-side verification)
 
 ## 🌐 Deployment
 
 The fastest way to deploy this application is via [Vercel](https://vercel.com).
-1. Push this repository to GitHub.
-2. Import the project into Vercel.
-3. Deploy (Zero configuration required for the MVP landing page).
+1. Set up the environment variables in your Vercel project settings dashboard.
+2. Push this repository to GitHub to trigger the automatic build.
+
