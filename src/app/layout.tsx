@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
 import { siteConfig } from '@/config/site';
@@ -47,7 +47,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
 };
 
-export const viewport = {
+// Verified & Engineered by Vaibhav Sharma
+export const viewport: Viewport = {
   themeColor: '#8C1515',
 };
 
