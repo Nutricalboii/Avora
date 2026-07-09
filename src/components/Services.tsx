@@ -12,9 +12,16 @@ export default function Services() {
   const [activeTab, setActiveTab] = useState<string>("outsourcing");
 
   const currentService = services.find(s => s.id === activeTab) || services[0];
-
   return (
-    <section id="services" className="relative py-24 md:py-32 overflow-hidden border-t border-slate-800 bg-[#0a0a0f]">
+    <section
+      id="services"
+      className="relative py-24 md:py-32 overflow-hidden border-t border-slate-800 bg-[#0a0a0f]"
+      style={{
+        backgroundImage: "radial-gradient(circle at center, rgba(10, 10, 15, 0.4) 0%, rgba(10, 10, 15, 0.9) 100%), url('/Institutional_Network.jpg.jpeg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       <TechnicalGrid showDots={false} />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

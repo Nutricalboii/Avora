@@ -41,7 +41,15 @@ export default function Ventures() {
   const { ref, isInView } = useInView({ once: true, threshold: 0.1 });
 
   return (
-    <section id="ventures" className="py-24 md:py-32 relative overflow-hidden border-t border-slate-800 bg-[#0a0a0f]">
+    <section 
+      id="ventures" 
+      className="py-24 md:py-32 relative overflow-hidden border-t border-slate-800 bg-[#0a0a0f]"
+      style={{
+        backgroundImage: "radial-gradient(circle at center, rgba(10, 10, 15, 0.4) 0%, rgba(10, 10, 15, 0.9) 100%), url('/Silicone_Gold.jpg.jpeg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section header */}
