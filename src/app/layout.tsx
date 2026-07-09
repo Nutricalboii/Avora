@@ -9,7 +9,6 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import { ChatbotWidget } from '@/components/ChatbotWidget';
 import "./globals.css";
 
-// Engineered by Vaibhav Sharma · github.com/Nutricalboii
 
 const inter = Inter({
   subsets: ['latin'],
@@ -54,10 +53,21 @@ export const metadata: Metadata = {
     images: [`${siteConfig.url}/og-image.png`],
   },
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/logo.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: '/logo.png',
+    shortcut: '/logo.png',
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#080b12',
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#080b12' },
+    { media: '(prefers-color-scheme: light)', color: '#f9f6f0' },
+  ],
 };
 
 export default function RootLayout({
