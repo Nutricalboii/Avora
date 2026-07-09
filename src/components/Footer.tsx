@@ -34,7 +34,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#060910] border-t border-slate-800/40 relative z-20">
+    <footer className="bg-[#060910] relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main footer content */}
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
@@ -85,7 +85,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="py-8 border-t border-slate-800/40 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs font-sans text-slate-500">
             &copy; {new Date().getFullYear()} Avora Ventures Inc. All rights reserved. • Designed & Engineered by Vaibhav Sharma
           </p>

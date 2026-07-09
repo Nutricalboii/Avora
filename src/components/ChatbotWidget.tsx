@@ -138,12 +138,14 @@ export function ChatbotWidget() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 font-sans">
-      {/* Chat Trigger Button: Styled with 3D isometric shift and layered depth shadow on hover */}
+      {/* Chat Trigger Button: Styled with 3D isometric shift and gold-layered depth shadow on hover */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "w-14 h-14 rounded-full flex items-center justify-center text-white shadow-[0_4px_12px_rgba(79,70,229,0.3)] transition-all duration-300 transform hover:-translate-y-1 hover:rotate-2 hover:shadow-[0_12px_24px_rgba(79,70,229,0.4),_inset_0_-4px_8px_rgba(0,0,0,0.4)] active:scale-95",
-          isOpen ? "bg-slate-800 rotate-90" : "bg-indigo-600 hover:bg-indigo-500"
+          "w-14 h-14 rounded-full flex items-center justify-center text-white border transition-all duration-300 transform hover:-translate-y-1 hover:rotate-2 active:scale-95",
+          isOpen 
+            ? "bg-slate-800 border-slate-750 rotate-90 shadow-lg" 
+            : "bg-slate-950/90 border-[#B08D57]/45 shadow-[0_4px_15px_rgba(176,141,87,0.15)] hover:bg-[#B08D57]/15 hover:shadow-[0_12px_28px_rgba(176,141,87,0.3),_inset_0_-4px_8px_rgba(0,0,0,0.4)] hover:border-[#B08D57]/70"
         )}
       >
         {isOpen ? (
