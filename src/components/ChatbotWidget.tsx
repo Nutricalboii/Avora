@@ -138,15 +138,37 @@ export function ChatbotWidget() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 font-sans">
-      {/* Chat Trigger Button */}
+      {/* Chat Trigger Button: Styled with 3D isometric shift and layered depth shadow on hover */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "w-14 h-14 rounded-full flex items-center justify-center text-white shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95",
+          "w-14 h-14 rounded-full flex items-center justify-center text-white shadow-[0_4px_12px_rgba(79,70,229,0.3)] transition-all duration-300 transform hover:-translate-y-1 hover:rotate-2 hover:shadow-[0_12px_24px_rgba(79,70,229,0.4),_inset_0_-4px_8px_rgba(0,0,0,0.4)] active:scale-95",
           isOpen ? "bg-slate-800 rotate-90" : "bg-indigo-600 hover:bg-indigo-500"
         )}
       >
-        {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
+        {isOpen ? (
+          <X className="w-6 h-6" />
+        ) : (
+          <svg className="w-7 h-7" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* 3D Extrusion Side Shadow */}
+            <rect x="14" y="24" width="72" height="56" rx="20" fill="#a07d35" />
+            {/* Main Robot Face Shield */}
+            <rect x="14" y="22" width="72" height="56" rx="20" fill="#dfb257" />
+            {/* Robot Ear/Side Accents */}
+            <rect x="6" y="38" width="8" height="24" rx="4" fill="#dfb257" />
+            <rect x="86" y="38" width="8" height="24" rx="4" fill="#dfb257" />
+            {/* Top Antenna Node */}
+            <rect x="47" y="10" width="6" height="12" rx="2" fill="#dfb257" />
+            <circle cx="50" cy="8" r="4" fill="#dfb257" />
+            {/* Visor Display */}
+            <rect x="22" y="30" width="56" height="40" rx="14" fill="#0f172a" />
+            {/* Circular AI Eyes */}
+            <circle cx="38" cy="46" r="5" fill="#dfb257" />
+            <circle cx="62" cy="46" r="5" fill="#dfb257" />
+            {/* Friendly Indicator Arc */}
+            <path d="M 44,58 Q 50,63 56,58" fill="none" stroke="#dfb257" strokeWidth="3" strokeLinecap="round" />
+          </svg>
+        )}
       </button>
 
       {/* Main Panel */}
