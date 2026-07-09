@@ -38,7 +38,7 @@ export default function FAQ() {
   const { ref, isInView } = useInView({ once: true, threshold: 0.1 });
 
   return (
-    <section id="faq" className="py-24 relative overflow-hidden bg-[#080b12] contact-bg">
+    <section id="faq" className="py-24 relative overflow-hidden contact-bg">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section header */}
@@ -71,14 +71,14 @@ export default function FAQ() {
                 >
                   <span className={cn(
                     'font-sans font-semibold text-sm md:text-base transition-colors',
-                    isOpen ? 'text-white' : 'text-slate-300 hover:text-white'
+                    isOpen ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300 hover:text-[#B08D57] dark:hover:text-white'
                   )}>
                     {faq.question}
                   </span>
                   <ChevronDown
                     className={cn(
                       'w-4 h-4 flex-shrink-0 transition-transform duration-300 text-slate-500',
-                      isOpen && 'rotate-180 text-teal-405'
+                      isOpen && 'rotate-180'
                     )}
                   />
                 </button>
@@ -91,8 +91,8 @@ export default function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ type: 'tween', ease: 'easeInOut', duration: 0.25 }}
                     >
-                      <div className="px-6 pb-6 pt-0 font-sans text-xs md:text-sm text-slate-400 leading-relaxed">
-                        <div className="h-px bg-slate-800/40 mb-4" />
+                      <div className="px-6 pb-6 pt-0 font-sans text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <div className="h-px bg-slate-200 dark:bg-slate-800/40 mb-4" />
                         {faq.answer}
                       </div>
                     </motion.div>

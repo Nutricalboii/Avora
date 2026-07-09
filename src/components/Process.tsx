@@ -35,7 +35,7 @@ export default function Process() {
   const { ref, isInView } = useInView({ once: true, threshold: 0.1 });
 
   return (
-    <section id="process" className="relative py-24 md:py-32 overflow-hidden bg-[#0a0a0f]">
+    <section id="process" className="relative py-24 md:py-32 overflow-hidden bg-transparent">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section header */}
@@ -62,7 +62,7 @@ export default function Process() {
             return (
               <div 
                 key={index}
-                className="border border-slate-800 bg-[#121218]/90 rounded-xl p-6 flex flex-col justify-between hover:border-slate-700/60 transition-all duration-150 backdrop-blur-sm"
+                className="glass-panel p-6 flex flex-col justify-between hover:border-[#B08D57]/40 transition-all duration-150"
               >
                 {/* Header */}
                 <div className="space-y-4">
@@ -73,24 +73,24 @@ export default function Process() {
                     <Icon className="w-5 h-5 text-slate-500" />
                   </div>
                   
-                  <h3 className="font-heading font-bold text-lg text-white">
+                  <h3 className="font-heading font-bold text-lg text-slate-900 dark:text-white">
                     {step.title}
                   </h3>
                   
-                  <p className="text-sm text-slate-400 leading-relaxed font-sans">
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-sans">
                     {step.description}
                   </p>
                 </div>
 
                 {/* Technical Deliverables */}
-                <div className="border-t border-slate-800/80 pt-4 mt-6 space-y-2.5 font-sans text-xs">
+                <div className="border-t border-slate-200 dark:border-slate-800/80 pt-4 mt-6 space-y-2.5 font-sans text-xs">
                   <div>
                     <span className="text-slate-500 uppercase block tracking-wider font-semibold font-mono text-[9px]">Key Deliverable:</span>
-                    <span className="text-slate-300 block mt-0.5">{step.deliverable}</span>
+                    <span className="text-slate-700 dark:text-slate-300 block mt-0.5">{step.deliverable}</span>
                   </div>
                   <div>
                     <span className="text-slate-500 uppercase block tracking-wider font-semibold font-mono text-[9px]">Target Artifact:</span>
-                    <span className="text-slate-300 block mt-0.5">{step.artifact}</span>
+                    <span className="text-slate-700 dark:text-slate-300 block mt-0.5">{step.artifact}</span>
                   </div>
                 </div>
 
@@ -98,7 +98,6 @@ export default function Process() {
             );
           })}
         </div>
-
       </div>
     </section>
   );

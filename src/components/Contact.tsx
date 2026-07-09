@@ -1,19 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import { CheckCircle, AlertCircle } from 'lucide-react';
-import { cn } from '@/lib/cn';
 import { useInView } from '@/hooks/useInView';
+import { cn } from '@/lib/cn';
 import { TechnicalGrid } from './ui/TechnicalGrid';
+import { CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
   const { ref, isInView } = useInView({ once: true, threshold: 0.1 });
-
-  // Form state
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [focusedField, setFocusedField] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,17 +17,21 @@ export default function Contact() {
     message: '',
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const inputCls = (field: string) =>
     cn(
-      'w-full px-4 py-3 text-sm font-sans rounded border transition-all duration-150 outline-none bg-white/[0.02]',
+      'w-full px-4 py-3 text-sm font-sans rounded border transition-all duration-150 outline-none bg-black/[0.01] dark:bg-white/[0.02]',
       focusedField === field
-        ? 'border-[#B08D57]/50 ring-1 ring-[#B08D57]/30 bg-white/[0.04] text-white'
-        : 'border-slate-800 hover:border-slate-700 text-slate-205 placeholder:text-slate-500'
+        ? 'border-[#B08D57]/50 ring-1 ring-[#B08D57]/30 bg-black/[0.02] dark:bg-white/[0.04] text-slate-900 dark:text-white'
+        : 'border-slate-300 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-700 text-slate-750 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500'
     );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -96,13 +94,13 @@ export default function Contact() {
                   <CheckCircle className="w-8 h-8 text-teal-400" />
                 </div>
               </div>
-              <h3 className="text-xl font-heading font-bold text-white mb-3">Inquiry Sent</h3>
-              <p className="text-slate-400 mb-8 max-w-sm mx-auto font-sans text-sm">
+              <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white mb-3">Inquiry Sent</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-sm mx-auto font-sans text-sm">
                 Thank you. Our team will reach out within 24 hours to discuss your specifications.
               </p>
               <button
                 onClick={() => setSuccess(false)}
-                className="px-5 py-2.5 border border-slate-800 bg-transparent text-white font-sans text-xs font-semibold rounded hover:bg-white/[0.04] transition-colors"
+                className="px-5 py-2.5 border border-slate-300 dark:border-slate-800 bg-transparent text-slate-700 dark:text-white font-sans text-xs font-semibold rounded hover:bg-black/[0.02] dark:hover:bg-white/[0.04] transition-colors"
               >
                 Send another inquiry
               </button>
@@ -112,13 +110,13 @@ export default function Contact() {
               {error && (
                 <div className="p-3 bg-red-500/10 border border-red-500/20 rounded flex gap-2">
                   <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
-                  <p className="text-xs font-sans text-red-300">{error}</p>
+                  <p className="text-xs font-sans text-red-600 dark:text-red-300">{error}</p>
                 </div>
               )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-sans font-semibold text-slate-400 mb-1.5">
+                  <label htmlFor="name" className="block text-xs font-sans font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
                     Name <span className="text-red-500 text-[10px] align-super ml-0.5">*</span>
                   </label>
                   <input
@@ -130,7 +128,7 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-xs font-sans font-semibold text-slate-400 mb-1.5">
+                  <label htmlFor="email" className="block text-xs font-sans font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
                     Email <span className="text-red-500 text-[10px] align-super ml-0.5">*</span>
                   </label>
                   <input
@@ -144,7 +142,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="company" className="block text-xs font-sans font-semibold text-slate-400 mb-1.5">
+                <label htmlFor="company" className="block text-xs font-sans font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
                   Company <span className="text-slate-500 font-normal">(Optional)</span>
                 </label>
                 <input
@@ -158,45 +156,45 @@ export default function Contact() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="serviceType" className="block text-xs font-sans font-semibold text-slate-400 mb-1.5">
+                  <label htmlFor="serviceType" className="block text-xs font-sans font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
                     Service Type <span className="text-slate-500 font-normal">(Optional)</span>
                   </label>
                   <select
                     id="serviceType" name="serviceType"
                     value={formData.serviceType} onChange={handleChange}
                     onFocus={() => setFocusedField('serviceType')} onBlur={() => setFocusedField(null)}
-                    className={cn(inputCls('serviceType'), 'appearance-none bg-no-repeat')}
+                    className={cn(inputCls('serviceType'), 'appearance-none bg-no-repeat dark:text-white')}
                     style={selectStyle}
                   >
-                    <option value="" className="bg-[#0a0a0f] text-slate-350">Select a service</option>
-                    <option value="outsourcing" className="bg-[#0a0a0f] text-slate-350">Specialized Outsourcing</option>
-                    <option value="skill-hiring" className="bg-[#0a0a0f] text-slate-350">Specialized Skill Hiring</option>
-                    <option value="ai-solutions" className="bg-[#0a0a0f] text-slate-350">AI Solutions &amp; Automation</option>
-                    <option value="data-annotations" className="bg-[#0a0a0f] text-slate-350">Data Annotation &amp; Labeling</option>
+                    <option value="" className="bg-[#F8F5EE] dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-300">Select a service</option>
+                    <option value="outsourcing" className="bg-[#F8F5EE] dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-300">Specialized Outsourcing</option>
+                    <option value="skill-hiring" className="bg-[#F8F5EE] dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-300">Specialized Skill Hiring</option>
+                    <option value="ai-solutions" className="bg-[#F8F5EE] dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-300">AI Solutions &amp; Automation</option>
+                    <option value="data-annotations" className="bg-[#F8F5EE] dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-300">Data Annotation &amp; Labeling</option>
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="budgetRange" className="block text-xs font-sans font-semibold text-slate-400 mb-1.5">
+                  <label htmlFor="budgetRange" className="block text-xs font-sans font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
                     Budget Range <span className="text-slate-500 font-normal">(Optional)</span>
                   </label>
                   <select
                     id="budgetRange" name="budgetRange"
                     value={formData.budgetRange} onChange={handleChange}
                     onFocus={() => setFocusedField('budgetRange')} onBlur={() => setFocusedField(null)}
-                    className={cn(inputCls('budgetRange'), 'appearance-none bg-no-repeat')}
+                    className={cn(inputCls('budgetRange'), 'appearance-none bg-no-repeat dark:text-white')}
                     style={selectStyle}
                   >
-                    <option value="" className="bg-[#0a0a0f] text-slate-350">Select a range</option>
-                    <option value="under-5k" className="bg-[#0a0a0f] text-slate-350">&lt;$5k</option>
-                    <option value="5k-25k" className="bg-[#0a0a0f] text-slate-350">$5k–$25k</option>
-                    <option value="25k-100k" className="bg-[#0a0a0f] text-slate-350">$25k–$100k</option>
-                    <option value="over-100k" className="bg-[#0a0a0f] text-slate-350">&gt;$100k</option>
+                    <option value="" className="bg-[#F8F5EE] dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-300">Select a range</option>
+                    <option value="under-5k" className="bg-[#F8F5EE] dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-300">&lt;$5k</option>
+                    <option value="5k-25k" className="bg-[#F8F5EE] dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-300">$5k–$25k</option>
+                    <option value="25k-100k" className="bg-[#F8F5EE] dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-300">$25k–$100k</option>
+                    <option value="over-100k" className="bg-[#F8F5EE] dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-300">&gt;$100k</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs font-sans font-semibold text-slate-400 mb-1.5">
+                <label htmlFor="message" className="block text-xs font-sans font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
                   Project Details <span className="text-red-500 text-[10px] align-super ml-0.5">*</span>
                 </label>
                 <textarea

@@ -11,8 +11,7 @@ export default function Team() {
 
   return (
     <section id="team" className="py-24 md:py-32 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 -z-10 bg-[#080b12]" />
+      {/* Dynamic Overlay Ambient Grid */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(148,163,184,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.02)_1px,transparent_1px)] bg-[size:5rem_5rem]" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -35,11 +34,11 @@ export default function Team() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         >
-          <div className="border border-slate-700/40 rounded-2xl overflow-hidden bg-white/[0.03] backdrop-blur-sm hover:border-slate-600/60 transition-all duration-500 group">
+          <div className="glass-panel rounded-2xl overflow-hidden hover:border-[#B08D57]/40 transition-all duration-500 group">
             <div className="flex flex-col md:flex-row">
 
               {/* Photo panel */}
-              <div className="relative md:w-64 lg:w-72 flex-shrink-0 bg-[#0c1018] overflow-hidden">
+              <div className="relative md:w-64 lg:w-72 flex-shrink-0 bg-black/10 dark:bg-[#0c1018] overflow-hidden">
                 <div className="aspect-square md:aspect-auto md:h-full min-h-[240px]">
                   <Image
                     src="/abhay-jain.jpg"
@@ -55,18 +54,18 @@ export default function Team() {
               {/* Content panel */}
               <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-center">
                 <div className="mb-1">
-                  <span className="text-xs font-mono font-semibold uppercase tracking-widest text-teal-400/70">
+                  <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#B08D57]">
                     Founder &amp; CEO
                   </span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-heading font-bold text-white mb-1">
+                <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-900 dark:text-white mb-1">
                   Abhay Jain
                 </h3>
-                <p className="text-sm font-medium text-slate-400 mb-5">
+                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-5">
                   Avora Ventures
                 </p>
 
-                <p className="text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
+                <p className="text-slate-650 dark:text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
                   A global professional with extensive experience in management consulting (McKinsey &amp; Co.), energy &amp; sustainability, and tech. Educated at Stanford University (MBA, MS) and IIT Kanpur. Previously with Mitsubishi Heavy Industries, NextEra Energy, and Autogrid.
                 </p>
 
@@ -75,7 +74,7 @@ export default function Team() {
                   {['McKinsey & Co.', 'Stanford MBA', 'IIT Kanpur', 'NextEra Energy'].map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 rounded-full text-xs font-medium bg-white/[0.04] text-slate-300 border border-slate-700/40"
+                      className="px-3 py-1 rounded-full text-xs font-medium bg-black/[0.02] dark:bg-white/[0.04] text-slate-700 dark:text-slate-350 border border-slate-205 dark:border-slate-700/40"
                     >
                       {tag}
                     </span>
@@ -84,7 +83,7 @@ export default function Team() {
 
                 <Link
                   href="/founder"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-teal-400 hover:text-teal-300 transition-colors group/link"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#B08D57] hover:text-[#937343] transition-colors group/link"
                 >
                   Read Full Profile
                   <svg
@@ -98,6 +97,7 @@ export default function Team() {
             </div>
           </div>
         </motion.div>
+
       </div>
     </section>
   );
