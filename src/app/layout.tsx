@@ -3,9 +3,8 @@ import { Inter, Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
 import { siteConfig } from '@/config/site';
 import { generateSchema } from '@/app/schema';
-import Navbar from '@/components/Navbar';
+import { SpotlightNav } from '@/components/ui/SpotlightNav';
 import Footer from '@/components/Footer';
-import PageTransition from '@/components/PageTransition';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ChatbotWidget } from '@/components/ChatbotWidget';
 import "./globals.css";
@@ -83,11 +82,10 @@ export default function RootLayout({
           Skip to content
         </a>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <Navbar />
-          <main id="main-content" className="flex-grow flex flex-col relative z-0">
-            <PageTransition>
-              {children}
-            </PageTransition>
+          <SpotlightNav />
+          {/* ponytail: inlined PageTransition — opacity/translate on mount via CSS */}
+          <main id="main-content" className="flex-grow flex flex-col relative z-0 animate-in fade-in slide-in-from-bottom-2 duration-700">
+            {children}
           </main>
           <Footer />
           <ChatbotWidget />

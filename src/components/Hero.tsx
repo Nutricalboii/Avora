@@ -27,9 +27,9 @@ export default function Hero() {
           {/* Left Column: Headline and Enterprise Value Prop */}
           <div className="lg:col-span-7 text-left space-y-8">
             
-            {/* Logo: Hidden on mobile/tablet to avoid duplicate logos in viewport */}
+            {/* Logo — hidden on mobile (navbar shows it), visible md+ */}
             <div className="hidden md:flex items-center">
-              <Logo size="lg" className="h-12 w-auto text-slate-900 dark:text-white" />
+              <Logo size="lg" className="h-14 w-auto text-slate-900 dark:text-white" />
             </div>
 
             <div className="space-y-4">

@@ -38,90 +38,183 @@
 }
 
 @layer utilities {
-  /* Dynamic Blended Backgrounds (Seamless transitions between sections) - scroll attachment is used for buttery smooth scrolling performance */
+  /* ─────────────────────────────────────────────────────────────────────────
+     Section backgrounds — responsive & pixel-perfect on all screen sizes.
+     
+     Key rules for cross-device perfection:
+       • background-size: cover   → always fills the container, no gaps
+       • background-position: center top on mobile (keeps main subject visible)
+       • background-position: center on desktop
+       • background-attachment: scroll (fixed is broken on iOS Safari)
+       • Gradients fade top+bottom so sections blend seamlessly
+  ───────────────────────────────────────────────────────────────────────── */
+
+  /* ── Hero ── */
   .hero-bg {
-    background-image: 
-      linear-gradient(to bottom, var(--background) 0%, transparent 15%, transparent 85%, var(--background) 100%),
-      radial-gradient(circle at center, rgba(248, 245, 238, 0.35) 0%, rgba(248, 245, 238, 0.75) 100%), 
+    background-color: var(--background);
+    background-image:
+      linear-gradient(to bottom,
+        var(--background) 0%,
+        transparent 18%,
+        transparent 80%,
+        var(--background) 100%
+      ),
+      radial-gradient(ellipse at center,
+        rgba(248, 245, 238, 0.25) 0%,
+        rgba(248, 245, 238, 0.72) 100%
+      ),
       url('/Gold_Flow_Light.jpg.jpeg');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
+    background-repeat: no-repeat;
     background-attachment: scroll;
   }
   .dark .hero-bg {
-    background-image: 
-      linear-gradient(to bottom, var(--background) 0%, transparent 15%, transparent 85%, var(--background) 100%),
-      radial-gradient(circle at center, rgba(10, 10, 15, 0.35) 0%, rgba(10, 10, 15, 0.85) 100%), 
+    background-image:
+      linear-gradient(to bottom,
+        var(--background) 0%,
+        transparent 18%,
+        transparent 80%,
+        var(--background) 100%
+      ),
+      radial-gradient(ellipse at center,
+        rgba(10, 10, 15, 0.30) 0%,
+        rgba(10, 10, 15, 0.82) 100%
+      ),
       url('/Gold_Flow.jpg.jpeg');
   }
 
+  /* ── Services ── */
   .services-bg {
-    background-image: 
-      linear-gradient(to bottom, var(--background) 0%, transparent 15%, transparent 85%, var(--background) 100%),
-      radial-gradient(circle at center, rgba(248, 245, 238, 0.5) 0%, rgba(248, 245, 238, 0.85) 100%), 
+    background-color: var(--background);
+    background-image:
+      linear-gradient(to bottom,
+        var(--background) 0%,
+        transparent 14%,
+        transparent 84%,
+        var(--background) 100%
+      ),
+      radial-gradient(ellipse at center,
+        rgba(248, 245, 238, 0.40) 0%,
+        rgba(248, 245, 238, 0.82) 100%
+      ),
       url('/Institutional_Network_Light.jpg.jpeg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     background-attachment: scroll;
   }
   .dark .services-bg {
-    background-image: 
-      linear-gradient(to bottom, var(--background) 0%, transparent 15%, transparent 85%, var(--background) 100%),
-      radial-gradient(circle at center, rgba(10, 10, 15, 0.4) 0%, rgba(10, 10, 15, 0.9) 100%), 
+    background-image:
+      linear-gradient(to bottom,
+        var(--background) 0%,
+        transparent 14%,
+        transparent 84%,
+        var(--background) 100%
+      ),
+      radial-gradient(ellipse at center,
+        rgba(10, 10, 15, 0.35) 0%,
+        rgba(10, 10, 15, 0.88) 100%
+      ),
       url('/Institutional_Network.jpg.jpeg');
   }
 
+  /* ── Ventures ── */
   .ventures-bg {
-    background-image: 
-      linear-gradient(to bottom, var(--background) 0%, transparent 15%, transparent 85%, var(--background) 100%),
-      radial-gradient(circle at center, rgba(248, 245, 238, 0.5) 0%, rgba(248, 245, 238, 0.85) 100%), 
+    background-color: var(--background);
+    background-image:
+      linear-gradient(to bottom,
+        var(--background) 0%,
+        transparent 14%,
+        transparent 84%,
+        var(--background) 100%
+      ),
+      radial-gradient(ellipse at center,
+        rgba(248, 245, 238, 0.40) 0%,
+        rgba(248, 245, 238, 0.82) 100%
+      ),
       url('/Silicone_Gold_Light.jpg.jpeg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     background-attachment: scroll;
   }
   .dark .ventures-bg {
-    background-image: 
-      linear-gradient(to bottom, var(--background) 0%, transparent 15%, transparent 85%, var(--background) 100%),
-      radial-gradient(circle at center, rgba(10, 10, 15, 0.4) 0%, rgba(10, 10, 15, 0.9) 100%), 
+    background-image:
+      linear-gradient(to bottom,
+        var(--background) 0%,
+        transparent 14%,
+        transparent 84%,
+        var(--background) 100%
+      ),
+      radial-gradient(ellipse at center,
+        rgba(10, 10, 15, 0.35) 0%,
+        rgba(10, 10, 15, 0.88) 100%
+      ),
       url('/Silicone_Gold.jpg.jpeg');
   }
 
+  /* ── Contact ── */
   .contact-bg {
-    background-image: 
-      linear-gradient(to bottom, var(--background) 0%, transparent 15%, transparent 85%, var(--background) 100%),
-      radial-gradient(circle at center, rgba(248, 245, 238, 0.5) 0%, rgba(248, 245, 238, 0.85) 100%), 
+    background-color: var(--background);
+    background-image:
+      linear-gradient(to bottom,
+        var(--background) 0%,
+        transparent 14%,
+        transparent 84%,
+        var(--background) 100%
+      ),
+      radial-gradient(ellipse at center,
+        rgba(248, 245, 238, 0.40) 0%,
+        rgba(248, 245, 238, 0.82) 100%
+      ),
       url('/Structural_Precision_Light.jpg.jpeg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     background-attachment: scroll;
   }
   .dark .contact-bg {
-    background-image: 
-      linear-gradient(to bottom, var(--background) 0%, transparent 15%, transparent 85%, var(--background) 100%),
-      radial-gradient(circle at center, rgba(8, 11, 18, 0.45) 0%, rgba(8, 11, 18, 0.95) 100%), 
+    background-image:
+      linear-gradient(to bottom,
+        var(--background) 0%,
+        transparent 14%,
+        transparent 84%,
+        var(--background) 100%
+      ),
+      radial-gradient(ellipse at center,
+        rgba(8, 11, 18, 0.40) 0%,
+        rgba(8, 11, 18, 0.94) 100%
+      ),
       url('/Structural_Precision.jpg.jpeg');
+  }
+
+  /* ─── On small phones (<480px) nudge hero image slightly higher so the
+         gold subject stays centred instead of being cropped at bottom ─── */
+  @media (max-width: 480px) {
+    .hero-bg {
+      background-position: 60% top;
+    }
   }
 }
 
 @layer components {
-  /* Apple iOS 26 High-Fidelity Frosted Glassmorphism with GPU Hardware Acceleration */
+  /* ── Apple iOS 26 Frosted Glass — GPU-accelerated ── */
   .glass-panel {
     background: rgba(248, 245, 238, 0.88);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 10px 40px 0 rgba(31, 38, 135, 0.06);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.62);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
     transform: translate3d(0, 0, 0);
     will-change: transform;
   }
-  
   .dark .glass-panel {
-    background: rgba(8, 8, 12, 0.9);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(10, 10, 18, 0.88);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.48);
   }
 
   .btn-primary {

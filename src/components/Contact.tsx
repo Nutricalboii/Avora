@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { useInView } from '@/hooks/useInView';
 import { cn } from '@/lib/cn';
-import { TechnicalGrid } from './ui/TechnicalGrid';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
@@ -72,7 +71,12 @@ export default function Contact() {
       id="contact" 
       className="py-24 md:py-32 relative overflow-hidden contact-bg"
     >
-      <TechnicalGrid showDots={true} />
+      {/* ponytail: inlined TechnicalGrid — was its only callsite */}
+      <div className="absolute inset-0 -z-20 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(to right, #94a3b8 1px, transparent 1px), linear-gradient(to bottom, #94a3b8 1px, transparent 1px)', backgroundSize: '4rem 4rem' }} />
+        <div className="absolute inset-0 opacity-[0.1]" style={{ backgroundImage: 'radial-gradient(#94a3b8 1px, transparent 1.5px)', backgroundSize: '4rem 4rem' }} />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,var(--background)_90%)]" />
+      </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
