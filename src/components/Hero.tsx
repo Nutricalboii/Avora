@@ -34,8 +34,8 @@ export default function Hero() {
 
             <div className="space-y-4">
               {/* Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-300 dark:border-slate-800 bg-black/[0.01] dark:bg-white/[0.02] backdrop-blur-sm text-xs font-mono font-bold tracking-wider text-[#B08D57]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B08D57]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-300 dark:border-slate-800 bg-black/[0.01] dark:bg-white/[0.02] backdrop-blur-sm text-xs font-mono font-bold tracking-wider text-[#D4AF37]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
                 Institutional AI Infrastructure
               </div>
 
@@ -55,7 +55,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#B08D57] hover:bg-[#937343] text-white text-sm font-semibold transition-all duration-150"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#D4AF37] hover:bg-[#B8962D] text-white text-sm font-semibold transition-all duration-150"
               >
                 Start a Conversation
                 <ArrowRight className="w-4 h-4" />
@@ -86,7 +86,7 @@ export default function Hero() {
               
               <div className="flex items-center justify-between border-b border-slate-200/50 dark:border-slate-800/50 pb-3">
                 <span className="text-xs font-mono font-bold text-slate-600 dark:text-slate-400">DATA_ENGINE_SCHEMATIC</span>
-                <span className="text-[10px] font-mono text-[#B08D57] uppercase font-bold">
+                <span className="text-[10px] font-mono text-[#D4AF37] uppercase font-bold">
                   ACTIVE
                 </span>
               </div>
@@ -97,7 +97,7 @@ export default function Hero() {
                 {/* Node 1 */}
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-lg bg-black/[0.01] dark:bg-white/[0.02] border border-slate-200 dark:border-slate-800 flex items-center justify-center flex-shrink-0">
-                    <Database className="w-5 h-5 text-[#B08D57]" />
+                    <Database className="w-5 h-5 text-[#D4AF37]" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <span className="text-[10px] font-mono text-slate-500 uppercase block">Source Layer</span>
@@ -111,8 +111,8 @@ export default function Hero() {
 
                 {/* Node 2 */}
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#B08D57]/10 border border-[#B08D57]/20 flex items-center justify-center flex-shrink-0">
-                    <Layers className="w-5 h-5 text-[#B08D57]" />
+                  <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center flex-shrink-0">
+                    <Layers className="w-5 h-5 text-[#D4AF37]" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <span className="text-[10px] font-mono text-slate-500 uppercase block">Processing Layer</span>
@@ -127,7 +127,7 @@ export default function Hero() {
                 {/* Node 3 */}
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-lg bg-black/[0.01] dark:bg-white/[0.02] border border-slate-200 dark:border-slate-800 flex items-center justify-center flex-shrink-0">
-                    <ShieldCheck className="w-5 h-5 text-[#B08D57]" />
+                    <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <span className="text-[10px] font-mono text-slate-500 uppercase block">Delivery Layer</span>

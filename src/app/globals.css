@@ -5,17 +5,17 @@
   :root {
     --background: #F8F5EE; /* Rich Cream/Alabaster */
     --foreground: #3D2616; /* Warm chestnut brown */
-    --surface: rgba(255, 255, 255, 0.65);
+    --surface: rgba(255, 255, 255, 0.75);
     --surface-raised: #ffffff;
-    --accent: #B88A44;
+    --accent: #C5A059; /* Richer gold */
   }
 
   .dark {
-    --background: #0a0a0f; /* Tinted graphite dark mode */
-    --foreground: #f8fafc; /* High contrast off-white */
-    --surface: #121218;
-    --surface-raised: #181822;
-    --accent: #B08D57;
+    --background: #140F0A; /* Dark warm cocoa/brown instead of slate/black */
+    --foreground: #F5EFEB; /* Soft warm off-white */
+    --surface: #1E1712;    /* Dark brown card background */
+    --surface-raised: #281F18;
+    --accent: #D4AF37;     /* Highly saturated classic gold */
   }
 
   html {
@@ -204,26 +204,26 @@
     background: rgba(252, 249, 243, 0.92);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(176, 141, 87, 0.18);
+    border: 1px solid rgba(212, 175, 55, 0.18);
     box-shadow: 0 8px 32px 0 rgba(100, 70, 20, 0.08);
     transform: translate3d(0, 0, 0);
     will-change: transform;
   }
   .dark .glass-panel {
-    background: rgba(10, 10, 18, 0.88);
+    background: rgba(30, 23, 18, 0.88);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.12);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.48);
   }
 
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-7 py-3 rounded-lg
-      bg-[#B08D57] hover:bg-[#937343]
+      bg-[#D4AF37] hover:bg-[#B8962D]
       text-white
       text-sm font-semibold
       transition-all duration-200
-      shadow-sm focus:outline-none focus:ring-2 focus:ring-[#B08D57] focus:ring-offset-2;
+      shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2;
   }
 
   .btn-secondary {
@@ -240,7 +240,7 @@
   }
 
   .section-eyebrow {
-    @apply text-xs font-mono font-semibold uppercase tracking-widest text-[#B08D57] mb-3 block;
+    @apply text-xs font-mono font-bold uppercase tracking-widest text-[#D4AF37] mb-3 block;
   }
 
   .section-heading {
@@ -248,14 +248,14 @@
   }
 
   .section-subtext {
-    @apply text-base md:text-lg text-slate-500 dark:text-slate-400 leading-relaxed;
+    @apply text-base md:text-lg text-slate-550 dark:text-slate-350 leading-relaxed;
   }
 
   .card {
-    @apply bg-white dark:bg-[#121218] border border-slate-200 dark:border-slate-800/80 rounded-2xl;
+    @apply bg-white dark:bg-[#1E1712] border border-slate-200 dark:border-slate-800/80 rounded-2xl;
   }
 
   .card-hover {
-    @apply hover:border-[#B08D57]/60 hover:shadow-md transition-all duration-250;
+    @apply hover:border-[#D4AF37]/60 hover:shadow-md transition-all duration-250;
   }
 }

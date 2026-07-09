@@ -88,7 +88,7 @@ export default function Services() {
                   onClick={() => setActiveTab(service.id)}
                   className={cn(
                     "w-full text-left p-6 transition-all duration-150 flex flex-col gap-2 hover:bg-black/[0.02] dark:hover:bg-white/[0.01]",
-                    isActive ? "bg-black/[0.02] dark:bg-white/[0.02] border-l-2 border-[#B08D57]" : "border-l-2 border-transparent"
+                    isActive ? "bg-black/[0.02] dark:bg-white/[0.02] border-l-2 border-[#D4AF37]" : "border-l-2 border-transparent"
                   )}
                 >
                   <span className={cn(
@@ -109,7 +109,7 @@ export default function Services() {
             {/* Spec details */}
             <div className="flex-1 space-y-6">
               <div>
-                <span className="text-xs font-mono font-semibold text-[#B08D57] uppercase tracking-widest block mb-1">
+                <span className="text-xs font-mono font-semibold text-[#D4AF37] uppercase tracking-widest block mb-1">
                   Capability Parameters
                 </span>
                 <h3 className="text-2xl font-heading font-bold text-slate-900 dark:text-white tracking-tight">
@@ -130,7 +130,7 @@ export default function Services() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                     {currentService.features.map((feature, i) => (
                       <div key={i} className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#B08D57]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
                         <span>{feature}</span>
                       </div>
                     ))}
@@ -140,7 +140,7 @@ export default function Services() {
 
               <div className="pt-4 border-t border-slate-200 dark:border-slate-850">
                 <span className="text-xs font-mono text-slate-500 dark:text-slate-500 uppercase block mb-1">Target SLA Objective:</span>
-                <span className="text-sm font-mono font-bold text-[#B08D57] uppercase tracking-wider">
+                <span className="text-sm font-mono font-bold text-[#D4AF37] uppercase tracking-wider">
                   {currentService.metrics}
                 </span>
               </div>
@@ -153,7 +153,7 @@ export default function Services() {
               {(activeTab === 'outsourcing' || activeTab === 'skill-hiring') && (
                 <div className="space-y-6 font-sans text-center">
                   <div className="flex justify-center">
-                    <Award className="w-8 h-8 text-[#B08D57]/60" />
+                    <Award className="w-8 h-8 text-[#D4AF37]/60" />
                   </div>
                   <div className="space-y-2">
                     <span className="text-[10px] font-mono text-slate-550 dark:text-slate-500 uppercase tracking-wider block">Placement Quality Guarantee</span>
@@ -172,7 +172,7 @@ export default function Services() {
                 <div className="space-y-6">
                   <div className="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
                     <span className="text-[10px] font-mono text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">Pipeline Flow</span>
-                    <span className="text-[9px] font-mono text-[#B08D57] uppercase font-bold">Active</span>
+                    <span className="text-[9px] font-mono text-[#D4AF37] uppercase font-bold">Active</span>
                   </div>
                   
                   {/* Micro-flow graphic */}
@@ -205,7 +205,7 @@ export default function Services() {
                   <div className="flex flex-col items-center justify-center py-2 space-y-4">
                     <div className="relative w-24 h-24 flex items-center justify-center">
                       {/* Intersecting rings */}
-                      <div className="absolute top-0 left-2 w-14 h-14 rounded-full border border-[#B08D57]/60 bg-[#B08D57]/5 flex items-center justify-center text-[8px] text-slate-550 dark:text-slate-400 font-mono">Annotator_A</div>
+                      <div className="absolute top-0 left-2 w-14 h-14 rounded-full border border-[#D4AF37]/60 bg-[#D4AF37]/5 flex items-center justify-center text-[8px] text-slate-550 dark:text-slate-400 font-mono">Annotator_A</div>
                       <div className="absolute bottom-0 right-2 w-14 h-14 rounded-full border border-teal-500/60 bg-teal-500/5 flex items-center justify-center text-[8px] text-slate-550 dark:text-slate-400 font-mono">Annotator_B</div>
                     </div>
                     <p className="text-[10px] font-mono text-slate-500 dark:text-slate-400 text-center">Double-Blind Overlap consensus (99.98% Confidence Threshold)</p>

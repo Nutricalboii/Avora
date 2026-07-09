@@ -67,12 +67,12 @@ export default function Ventures() {
           {/* Dashboard Header Bar */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 py-4 border-b border-slate-205 dark:border-slate-850 bg-slate-900/5 dark:bg-slate-900/30 gap-4">
             <div className="flex items-center gap-2">
-              <Server className="w-4 h-4 text-[#B08D57]" />
+              <Server className="w-4 h-4 text-[#D4AF37]" />
               <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300">SYSTEM ARCHITECTURE METRIC REPORT</span>
             </div>
             <div className="flex items-center gap-6 text-[10px] font-mono text-slate-550 dark:text-slate-500">
               <span className="flex items-center gap-1.5"><Activity className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> Live Clusters: 3/3</span>
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#B08D57]" /> Encryption: TLS_1.3</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#D4AF37]" /> Encryption: TLS_1.3</span>
             </div>
           </div>
 
@@ -113,9 +113,9 @@ export default function Ventures() {
                     <span className="text-sm font-mono font-bold text-slate-900 dark:text-white mt-1">{proj.throughput}</span>
                   </div>
                   
-                  <div className="border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-[#0a0e16] p-4 rounded-lg min-w-[160px] text-center flex flex-col justify-center border-[#B08D57]/25 shadow-[0_0_15px_rgba(176,141,87,0.05)]">
-                    <span className="block text-[9px] font-mono font-bold text-[#B08D57] uppercase tracking-wider">Performance Metric</span>
-                    <span className="text-sm font-mono font-extrabold text-[#B08D57] mt-1">{proj.metric}</span>
+                  <div className="border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-[#0a0e16] p-4 rounded-lg min-w-[160px] text-center flex flex-col justify-center border-[#D4AF37]/25 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <span className="block text-[9px] font-mono font-bold text-[#D4AF37] uppercase tracking-wider">Performance Metric</span>
+                    <span className="text-sm font-mono font-extrabold text-[#D4AF37] mt-1">{proj.metric}</span>
                   </div>
                 </div>
 

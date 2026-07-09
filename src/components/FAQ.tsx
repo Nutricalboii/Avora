@@ -61,7 +61,7 @@ export default function FAQ() {
                 key={index}
                 className={cn(
                   'glass-panel rounded-xl overflow-hidden transition-all duration-300',
-                  isOpen ? 'border-[#B08D57]/40 shadow-lg' : 'hover:border-[#B08D57]/20'
+                  isOpen ? 'border-[#D4AF37]/40 shadow-lg' : 'hover:border-[#D4AF37]/20'
                 )}
               >
                 <button
@@ -71,7 +71,7 @@ export default function FAQ() {
                 >
                   <span className={cn(
                     'font-sans font-semibold text-sm md:text-base transition-colors',
-                    isOpen ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300 hover:text-[#B08D57] dark:hover:text-white'
+                    isOpen ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300 hover:text-[#D4AF37] dark:hover:text-white'
                   )}>
                     {faq.question}
                   </span>

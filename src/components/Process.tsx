@@ -62,12 +62,12 @@ export default function Process() {
             return (
               <div 
                 key={index}
-                className="glass-panel p-6 flex flex-col justify-between hover:border-[#B08D57]/40 transition-all duration-150"
+                className="glass-panel p-6 flex flex-col justify-between hover:border-[#D4AF37]/40 transition-all duration-150"
               >
                 {/* Header */}
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="font-mono text-xs font-bold text-[#B08D57] px-2.5 py-1 border border-[#B08D57]/20 bg-[#B08D57]/5 rounded">
+                    <span className="font-mono text-xs font-bold text-[#D4AF37] px-2.5 py-1 border border-[#D4AF37]/20 bg-[#D4AF37]/5 rounded">
                       PHASE {step.phase}
                     </span>
                     <Icon className="w-5 h-5 text-slate-500" />

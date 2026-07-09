@@ -87,10 +87,10 @@ export default function Testimonials() {
               <div className="text-xs text-slate-500 dark:text-slate-400">{t.role}</div>
             </div>
             <div className="flex gap-2">
-              <button onClick={prevTestimonial} className="p-2 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:text-[#B08D57] dark:hover:text-white transition-colors">
+              <button onClick={prevTestimonial} className="p-2 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-white transition-colors">
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <button onClick={nextTestimonial} className="p-2 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:text-[#B08D57] dark:hover:text-white transition-colors">
+              <button onClick={nextTestimonial} className="p-2 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-white transition-colors">
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>

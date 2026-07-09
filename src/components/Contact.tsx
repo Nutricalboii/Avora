@@ -29,7 +29,7 @@ export default function Contact() {
     cn(
       'w-full px-4 py-3 text-sm font-sans rounded border transition-all duration-150 outline-none bg-black/[0.01] dark:bg-white/[0.02]',
       focusedField === field
-        ? 'border-[#B08D57]/50 ring-1 ring-[#B08D57]/30 bg-black/[0.02] dark:bg-white/[0.04] text-slate-900 dark:text-white'
+        ? 'border-[#D4AF37]/50 ring-1 ring-[#D4AF37]/30 bg-black/[0.02] dark:bg-white/[0.04] text-slate-900 dark:text-white'
         : 'border-slate-300 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-700 text-slate-750 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500'
     );
 
@@ -214,7 +214,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 rounded bg-[#B08D57] hover:bg-[#937343] text-white text-xs font-semibold tracking-wider uppercase transition-colors duration-150 disabled:opacity-50"
+                className="w-full py-3.5 rounded bg-[#D4AF37] hover:bg-[#B8962D] text-white text-xs font-semibold tracking-wider uppercase transition-colors duration-150 disabled:opacity-50"
               >
                 {isSubmitting ? 'Sending...' : 'Send Inquiry'}
               </button>

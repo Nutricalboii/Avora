@@ -95,7 +95,7 @@ export function SpotlightNav() {
 
             <Link
               href="#contact"
-              className="inline-flex items-center justify-center px-5 py-2 text-sm font-sans font-semibold text-white bg-[#B08D57] hover:bg-[#937343] transition-colors rounded-lg"
+              className="inline-flex items-center justify-center px-5 py-2 text-sm font-sans font-semibold text-white bg-[#D4AF37] hover:bg-[#B8962D] transition-colors rounded-lg"
             >
               Partner With Us
             </Link>
@@ -149,7 +149,7 @@ export function SpotlightNav() {
               <Link
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center px-5 py-3 text-sm font-sans font-semibold text-white bg-[#B08D57] hover:bg-[#937343] transition-colors rounded-lg mt-2"
+                className="w-full text-center px-5 py-3 text-sm font-sans font-semibold text-white bg-[#D4AF37] hover:bg-[#B8962D] transition-colors rounded-lg mt-2"
               >
                 Partner With Us
               </Link>

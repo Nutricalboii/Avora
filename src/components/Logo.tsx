@@ -53,9 +53,9 @@ export function Logo({ className, size = 'md' }: LogoProps) {
 
       <defs>
         <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#C9A84C" />
-          <stop offset="50%" stopColor="#F0C040" />
-          <stop offset="100%" stopColor="#B8860B" />
+          <stop offset="0%" stopColor="#E5C158" />
+          <stop offset="50%" stopColor="#FCD14D" />
+          <stop offset="100%" stopColor="#D4AF37" />
         </linearGradient>
       </defs>
 

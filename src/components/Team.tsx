@@ -34,7 +34,7 @@ export default function Team() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         >
-          <div className="glass-panel rounded-2xl overflow-hidden hover:border-[#B08D57]/40 transition-all duration-500 group">
+          <div className="glass-panel rounded-2xl overflow-hidden hover:border-[#D4AF37]/40 transition-all duration-500 group">
             <div className="flex flex-col md:flex-row">
 
               {/* Photo panel */}
@@ -54,7 +54,7 @@ export default function Team() {
               {/* Content panel */}
               <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-center">
                 <div className="mb-1">
-                  <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#B08D57]">
+                  <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#D4AF37]">
                     Founder &amp; CEO
                   </span>
                 </div>
@@ -83,7 +83,7 @@ export default function Team() {
 
                 <Link
                   href="/founder"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#B08D57] hover:text-[#937343] transition-colors group/link"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#D4AF37] hover:text-[#B8962D] transition-colors group/link"
                 >
                   Read Full Profile
                   <svg

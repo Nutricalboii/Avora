@@ -81,7 +81,7 @@ export function ChatbotWidget() {
           "w-14 h-14 rounded-full flex items-center justify-center text-white border transition-all duration-300 transform hover:-translate-y-1 hover:rotate-2 active:scale-95",
           isOpen 
             ? "bg-slate-800 border-slate-750 rotate-90 shadow-lg" 
-            : "bg-slate-950/90 border-[#B08D57]/45 shadow-[0_4px_15px_rgba(176,141,87,0.15)] hover:bg-[#B08D57]/15 hover:shadow-[0_12px_28px_rgba(176,141,87,0.3),_inset_0_-4px_8px_rgba(0,0,0,0.4)] hover:border-[#B08D57]/70"
+            : "bg-slate-950/90 border-[#D4AF37]/45 shadow-[0_4px_15px_rgba(212,175,55,0.15)] hover:bg-[#D4AF37]/15 hover:shadow-[0_12px_28px_rgba(212,175,55,0.3),_inset_0_-4px_8px_rgba(0,0,0,0.4)] hover:border-[#D4AF37]/70"
         )}
       >
         {isOpen ? (
@@ -117,7 +117,7 @@ export function ChatbotWidget() {
           {/* Header */}
           <div className="p-4 bg-slate-900 border-b border-slate-850 flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <Terminal className="w-5 h-5 text-[#B08D57]" />
+              <Terminal className="w-5 h-5 text-[#D4AF37]" />
               <div>
                 <h3 className="text-xs font-mono font-bold text-white tracking-wide">AVORA COGNITIVE ENGINE</h3>
                 <p className="text-[9px] text-slate-500 font-mono">v1.2.0-secure_node</p>
@@ -134,7 +134,7 @@ export function ChatbotWidget() {
                     "p-3.5 rounded-2xl text-sm leading-relaxed",
                     msg.role === 'user'
                       ? "bg-slate-800 text-white rounded-br-none border border-slate-700/50"
-                      : "bg-[#B08D57]/10 text-slate-205 border border-[#B08D57]/20 rounded-bl-none"
+                      : "bg-[#D4AF37]/10 text-slate-205 border border-[#D4AF37]/20 rounded-bl-none"
                   )}
                 >
                   {msg.text.split('\n').map((line, i) => (
@@ -146,11 +146,11 @@ export function ChatbotWidget() {
 
             {isTyping && (
               <div className="flex flex-col mr-auto max-w-[85%]">
-                <div className="p-3.5 bg-[#B08D57]/10 border border-[#B08D57]/20 rounded-2xl rounded-bl-none">
+                <div className="p-3.5 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-2xl rounded-bl-none">
                   <div className="flex gap-1.5 items-center py-1">
-                    <div className="w-1.5 h-1.5 bg-[#B08D57] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <div className="w-1.5 h-1.5 bg-[#B08D57] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <div className="w-1.5 h-1.5 bg-[#B08D57] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               </div>
@@ -168,12 +168,12 @@ export function ChatbotWidget() {
               onChange={e => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               disabled={isTyping}
-              className="flex-1 px-4 py-2.5 bg-slate-950 border border-slate-800 focus:border-[#B08D57]/60 focus:ring-1 focus:ring-[#B08D57]/30 rounded-xl text-sm text-white placeholder-slate-500 outline-none transition-all"
+              className="flex-1 px-4 py-2.5 bg-slate-950 border border-slate-800 focus:border-[#D4AF37]/60 focus:ring-1 focus:ring-[#D4AF37]/30 rounded-xl text-sm text-white placeholder-slate-500 outline-none transition-all"
             />
             <button
               type="submit"
               disabled={!input.trim() || isTyping}
-              className="px-4 bg-[#B08D57] hover:bg-[#937343] disabled:opacity-50 text-white rounded-xl flex items-center justify-center transition-colors"
+              className="px-4 bg-[#D4AF37] hover:bg-[#B8962D] disabled:opacity-50 text-white rounded-xl flex items-center justify-center transition-colors"
             >
               <Send className="w-4 h-4" />
             </button>
