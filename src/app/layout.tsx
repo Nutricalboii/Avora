@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
@@ -95,7 +96,9 @@ export default function RootLayout({
           <SpotlightNav />
           {/* ponytail: inlined PageTransition — opacity/translate on mount via CSS */}
           <main id="main-content" className="flex-grow flex flex-col relative z-0 animate-in fade-in slide-in-from-bottom-2 duration-700">
-            {children}
+            <Suspense fallback={<div className="min-h-screen bg-[#080b12]" />}>
+              {children}
+            </Suspense>
           </main>
           <Footer />
           <ChatbotWidget />

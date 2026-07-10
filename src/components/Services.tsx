@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/cn';
 import { Award, Code2, Database, BrainCircuit, UserCheck } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
+import { useSearchParams } from 'next/navigation';
 
 interface Service {
   id: string;
@@ -56,7 +57,15 @@ const services: Service[] = [
 
 export default function Services() {
   const [activeTab, setActiveTab] = useState<string>('outsourcing');
+  const searchParams = useSearchParams();
   const { ref, isInView } = useInView({ once: true, threshold: 0.1 });
+
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam && services.some((s) => s.id === tabParam)) {
+      setActiveTab(tabParam);
+    }
+  }, [searchParams]);
 
   const currentService = services.find((s) => s.id === activeTab) || services[0];
 

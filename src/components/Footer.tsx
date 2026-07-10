@@ -3,16 +3,16 @@ import { Logo } from './Logo';
 
 const footerLinks = {
   Services: [
-    { label: 'Specialized Outsourcing', href: '#services' },
-    { label: 'Skill Hiring', href: '#services' },
-    { label: 'AI Solutions', href: '#services' },
-    { label: 'Data Annotations', href: '#services' },
+    { label: 'Specialized Outsourcing', href: '/#services?tab=outsourcing' },
+    { label: 'Skill Hiring', href: '/#services?tab=skill-hiring' },
+    { label: 'AI Solutions', href: '/#services?tab=ai-solutions' },
+    { label: 'Data Annotations', href: '/#services?tab=data-annotations' },
   ],
   Company: [
-    { label: 'Ventures Studio', href: '#ventures' },
-    { label: 'Methodology', href: '#process' },
+    { label: 'Ventures Studio', href: '/#ventures' },
+    { label: 'Methodology', href: '/#process' },
     { label: 'Founder', href: '/founder' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Contact', href: '/#contact' },
   ],
   Legal: [
     { label: 'Privacy Policy', href: '/privacy' },
