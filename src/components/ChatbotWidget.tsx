@@ -134,7 +134,7 @@ export function ChatbotWidget() {
                     "p-3.5 rounded-2xl text-sm leading-relaxed",
                     msg.role === 'user'
                       ? "bg-slate-800 text-white rounded-br-none border border-slate-700/50"
-                      : "bg-[#D4AF37]/10 text-slate-205 border border-[#D4AF37]/20 rounded-bl-none"
+                      : "bg-[#D4AF37]/10 text-slate-800 dark:text-slate-100 border border-[#D4AF37]/20 rounded-bl-none"
                   )}
                 >
                   {msg.text.split('\n').map((line, i) => (
