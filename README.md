@@ -4,7 +4,7 @@ This document provides a comprehensive breakdown of the Avora platform codebase.
 
 ---
 
-## 🗺️ System Architecture Map
+## System Architecture Map
 
 ```mermaid
 graph TD
@@ -36,7 +36,7 @@ graph TD
 
 ---
 
-## 📂 Codebase Directory Index
+## Codebase Directory Index
 
 ```
 Avora/
@@ -67,7 +67,7 @@ Avora/
 
 ---
 
-## 💾 Database Schema Details (Prisma + MongoDB)
+## Database Schema Details (Prisma + MongoDB)
 
 The database layers are configured over **MongoDB** via the **Prisma ORM**.
 
@@ -92,7 +92,7 @@ erDiagram
 
 ---
 
-## 🎨 Global Design Tokens & Theme Parameters
+## Global Design Tokens & Theme Parameters
 
 Avora uses **Tailwind v4** configuration integrated via PostCSS. The app has two primary color profiles, blending a luxury gold aesthetic with dark mode and warm alabaster light mode.
 
@@ -114,20 +114,20 @@ Avora uses **Tailwind v4** configuration integrated via PostCSS. The app has two
 
 ---
 
-## 🐴 Ponytail Cleanup
+## Ponytail Cleanup
 * **Deleted `Navbar.tsx`:** Standardized navigation directly on `SpotlightNav` wired in `layout.tsx` to remove a redundant file wrapper.
 * **Deleted `PageTransition.tsx`:** Substituted the Framer Motion layout wrapper for a single high-performance hardware-accelerated CSS transition class (`animate-in fade-in slide-in-from-bottom-2`) directly on the `<main>` root layout tag.
 * **Deleted `ui/TechnicalGrid.tsx`:** Inlined the dotted background layout directly into the single layout referencing it (`Contact.tsx`), saving file reads and loading times.
 
-### 🌞 Light/Dark Theme Switcher
+### Light/Dark Theme Switcher
 * Implemented client-safe theme toggle buttons using `next-themes` and Lucide icons in both the desktop header and the mobile navigation drawer.
 * Fixed contrast issues: Replaced all invalid utility color names (`text-slate-205`, `text-slate-750`) with valid tailwind colors to ensure 100% readability across both modes.
 
-### 💬 Chatbot Cognitive Pipeline
+### Chatbot Cognitive Pipeline
 * Removed unnecessary debug version texts (`v1.2.0-secure_node`) to declutter user interfaces.
 * Removed bold formatting markdown asterisks (`**`) from responses to prevent rendering artifacts.
 * Expanded route keyword match layers (costs, projects, founders, pricing tags) so users get exact information blocks instead of generic fallbacks.
 
-### ⏳ Skeleton Load Templates
+### Skeleton Load Templates
 * Created a layout loader (`src/app/dashboard/loading.tsx`) that renders 4 pulsing placeholder KPI cards and a mock data table while Next.js fetches server-side dynamic statistics from the database.
 * Wrapped main children in a `<Suspense>` boundary inside `layout.tsx` to prevent Next.js static build export errors.
