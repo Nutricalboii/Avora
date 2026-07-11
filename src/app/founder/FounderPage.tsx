@@ -40,7 +40,7 @@ export default function FounderPage() {
               <h1 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 dark:text-white tracking-tight mb-2">
                 Abhay Jain
               </h1>
-              <h2 className="text-xl md:text-2xl font-medium text-slate-600 dark:text-slate-400 mb-5">
+              <h2 className="text-xl md:text-2xl font-medium text-slate-650 dark:text-slate-400 mb-5">
                 Founder &amp; CEO, Avora Ventures
               </h2>
               <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
@@ -48,29 +48,32 @@ export default function FounderPage() {
               </p>
 
               {/* Credential logos strip */}
-              <div className="flex flex-wrap items-center gap-3 mb-5 py-4 px-5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl">
-                <span className="text-[10px] font-mono font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest mr-2">Credentials</span>
-                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
-                  <svg viewBox="0 0 88 22" className="h-5 w-auto" aria-label="Stanford University">
-                    <text x="0" y="17" fontFamily="Georgia, serif" fontWeight="bold" fontSize="15" fill="#8C1515">Stanford</text>
-                  </svg>
-                  <span className="text-[10px] text-slate-400 font-sans">MBA · MS</span>
+              <div className="flex flex-wrap items-center gap-3 mb-5 py-4 px-5 bg-white dark:bg-slate-950 border border-slate-205 dark:border-slate-855 rounded-xl shadow-sm">
+                <span className="text-[10px] font-mono font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mr-2">Credentials</span>
+                
+                {/* Stanford */}
+                <div className="flex items-center gap-1.5 px-3 py-1 bg-[#8c1515]/10 rounded-full border border-[#8c1515]/20">
+                  <span className="w-2 h-2 rounded-full bg-[#8c1515]" />
+                  <span className="text-xs font-heading font-bold text-[#8c1515]">Stanford</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-sans font-medium">MBA &middot; MS</span>
                 </div>
-                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
-                  <svg viewBox="0 0 95 22" className="h-5 w-auto" aria-label="IIT Kanpur">
-                    <text x="0" y="17" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="13" fill="#1a3a6e">IIT Kanpur</text>
-                  </svg>
-                  <span className="text-[10px] text-slate-400 font-sans">B.Tech</span>
+
+                {/* IIT Kanpur */}
+                <div className="flex items-center gap-1.5 px-3 py-1 bg-sky-600/10 rounded-full border border-sky-600/20">
+                  <span className="w-2 h-2 rounded-full bg-sky-600" />
+                  <span className="text-xs font-heading font-bold text-sky-700 dark:text-sky-400">IIT Kanpur</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-sans font-medium">B.Tech</span>
                 </div>
-                <div className="flex items-center px-3 py-1.5 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
-                  <svg viewBox="0 0 118 22" className="h-5 w-auto" aria-label="McKinsey and Company">
-                    <text x="0" y="17" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="13" fill="#111827">McKinsey &amp; Co.</text>
-                  </svg>
+
+                {/* McKinsey */}
+                <div className="flex items-center gap-1.5 px-3 py-1 bg-blue-900/10 rounded-full border border-blue-900/20">
+                  <span className="w-2 h-2 rounded-full bg-[#051c2c]" />
+                  <span className="text-xs font-heading font-bold text-[#051c2c] dark:text-[#3399ff]">McKinsey</span>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 bg-white dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <Globe2 className="w-5 h-5 text-slate-700 dark:text-slate-300 flex-shrink-0 mt-0.5" />
+              <div className="flex items-start gap-3 bg-white dark:bg-slate-955 p-4 rounded-xl border border-slate-205 dark:border-slate-855 shadow-sm">
+                <Globe2 className="w-5 h-5 text-[#D4AF37] flex-shrink-0 mt-0.5" />
                 <p className="text-sm text-slate-600 dark:text-slate-400">
                   Originally from the foothills of the Himalayas in India, lived in Japan for 4 years, and moved to the USA for higher education. When not working, I enjoy table tennis, pool, golf, road trips, and dancing.
                 </p>
@@ -83,7 +86,7 @@ export default function FounderPage() {
         <section ref={expRef} className={cn("mb-20 transition-all duration-700 delay-100", expInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
           <div className="flex items-center gap-3 mb-8">
             <div className="w-10 h-10 bg-slate-100 dark:bg-slate-900 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-800">
-              <Briefcase className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+              <Briefcase className="w-5 h-5 text-[#D4AF37]" />
             </div>
             <h2 className="text-3xl font-heading font-bold text-slate-900 dark:text-white">Work Experience</h2>
           </div>
@@ -94,9 +97,9 @@ export default function FounderPage() {
                 company: "McKinsey & Co.",
                 role: "Consultant",
                 logo: (
-                  <svg viewBox="0 0 130 26" className="h-6 w-auto" aria-label="McKinsey and Company">
-                    <text x="0" y="20" fontFamily="Arial, sans-serif" fontWeight="800" fontSize="15" fill="#111827">McKinsey &amp; Co.</text>
-                  </svg>
+                  <div className="w-16 h-12 bg-[#051c2c] rounded-lg flex items-center justify-center border border-slate-700/50 shadow-sm">
+                    <span className="text-xs font-sans font-black text-white tracking-tighter">McKinsey</span>
+                  </div>
                 ),
                 accent: "border-l-4 border-l-blue-700",
               },
@@ -104,23 +107,23 @@ export default function FounderPage() {
                 company: "Mitsubishi Heavy Industries",
                 role: "Sales and Marketing Executive; Compressor & Steam Turbine Engineer",
                 logo: (
-                  <svg viewBox="0 0 24 24" className="h-7 w-auto" aria-label="Mitsubishi">
-                    <g>
+                  <div className="w-16 h-12 bg-white rounded-lg flex flex-col items-center justify-center border border-slate-300 shadow-sm p-1">
+                    <svg viewBox="0 0 24 24" className="w-6 h-6" aria-label="Mitsubishi">
                       <polygon points="12,2 20,8 12,14 4,8" fill="#e8001c"/>
-                      <polygon points="12,10 20,16 12,22 4,16" fill="#e8001c" opacity="0.7"/>
-                    </g>
-                  </svg>
+                      <polygon points="12,10 20,16 12,22 4,16" fill="#e8001c" opacity="0.8"/>
+                    </svg>
+                  </div>
                 ),
-                accent: "border-l-4 border-l-red-600",
+                accent: "border-l-4 border-l-red-650",
               },
               {
                 company: "NextEra Energy",
                 role: "MBA Intern, Renewable Energy Innovation and Strategy Team",
                 logo: (
-                  <svg viewBox="0 0 140 26" className="h-6 w-auto" aria-label="NextEra Energy">
-                    <text x="0" y="20" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="15" fill="#0077c8">NextEra</text>
-                    <text x="72" y="20" fontFamily="Arial, sans-serif" fontWeight="normal" fontSize="15" fill="#006c3a"> Energy</text>
-                  </svg>
+                  <div className="w-16 h-12 bg-[#003057] rounded-lg flex flex-col items-center justify-center border border-slate-850 shadow-sm leading-none">
+                    <span className="text-[7px] font-sans font-black text-[#5fc2ae] tracking-widest uppercase">NEXT</span>
+                    <span className="text-[7px] font-sans font-black text-white tracking-widest uppercase mt-0.5">ERA</span>
+                  </div>
                 ),
                 accent: "border-l-4 border-l-sky-500",
               },
@@ -128,10 +131,10 @@ export default function FounderPage() {
                 company: "Autogrid",
                 role: "Summer Intern, Solutions and Data Science",
                 logo: (
-                  <svg viewBox="0 0 100 26" className="h-6 w-auto" aria-label="Autogrid">
-                    <text x="0" y="20" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="15" fill="#0099e6">Auto</text>
-                    <text x="41" y="20" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="15" fill="#ff6600">grid</text>
-                  </svg>
+                  <div className="w-16 h-12 bg-[#111] rounded-lg flex flex-col items-center justify-center border border-slate-800 shadow-sm leading-none">
+                    <span className="text-[7px] font-sans font-black text-[#00aaff] tracking-tighter">Auto</span>
+                    <span className="text-[7px] font-sans font-black text-[#ff6600] tracking-tighter mt-0.5">grid</span>
+                  </div>
                 ),
                 accent: "border-l-4 border-l-orange-500",
               },
@@ -139,28 +142,28 @@ export default function FounderPage() {
                 company: "Sparkz Inc.",
                 role: "Business and Product Development Manager (Intern)",
                 logo: (
-                  <svg viewBox="0 0 100 26" className="h-6 w-auto" aria-label="Sparkz">
-                    <text x="0" y="20" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="15" fill="#7c3aed">Sparkz Inc.</text>
-                  </svg>
+                  <div className="w-16 h-12 bg-white rounded-lg flex items-center justify-center border border-slate-350 shadow-sm">
+                    <span className="text-[9px] font-mono font-black text-purple-700 tracking-tighter">⚡SPARKZ</span>
+                  </div>
                 ),
-                accent: "border-l-4 border-l-violet-600",
+                accent: "border-l-4 border-l-violet-655",
               },
               {
                 company: "Averda",
                 role: "Operations Intern, COO Office",
                 logo: (
-                  <svg viewBox="0 0 80 26" className="h-6 w-auto" aria-label="Averda">
-                    <text x="0" y="20" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="15" fill="#00875a">Averda</text>
-                  </svg>
+                  <div className="w-16 h-12 bg-white rounded-lg flex items-center justify-center border border-slate-300 shadow-sm">
+                    <span className="text-[9px] font-sans font-black text-emerald-600 tracking-tight">averda</span>
+                  </div>
                 ),
-                accent: "border-l-4 border-l-green-600",
+                accent: "border-l-4 border-l-green-655",
               },
             ].map((exp, i) => (
-              <div key={i} className={cn("bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 hover:border-slate-300 dark:hover:border-slate-700 flex items-center gap-5", exp.accent)}>
-                <div className="flex-shrink-0 w-24 flex items-center justify-center">
+              <div key={i} className={cn("bg-white dark:bg-slate-950 border border-slate-205 dark:border-slate-855 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 hover:border-slate-300 dark:hover:border-slate-700 flex items-center gap-5", exp.accent)}>
+                <div className="flex-shrink-0 flex items-center justify-center">
                   {exp.logo}
                 </div>
-                <div className="h-10 w-px bg-slate-200 dark:bg-slate-800 flex-shrink-0" />
+                <div className="h-10 w-px bg-slate-200 dark:bg-slate-850 flex-shrink-0" />
                 <div>
                   <h3 className="text-base font-bold text-slate-900 dark:text-white">{exp.company}</h3>
                   <p className="text-sm text-slate-600 dark:text-slate-400 font-medium mt-0.5">{exp.role}</p>
@@ -174,7 +177,7 @@ export default function FounderPage() {
         <section ref={eduRef} className={cn("mb-20 transition-all duration-700 delay-200", eduInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
           <div className="flex items-center gap-3 mb-8">
             <div className="w-10 h-10 bg-slate-100 dark:bg-slate-900 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-800">
-              <GraduationCap className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+              <GraduationCap className="w-5 h-5 text-[#D4AF37]" />
             </div>
             <h2 className="text-3xl font-heading font-bold text-slate-900 dark:text-white">Education</h2>
           </div>
@@ -187,9 +190,9 @@ export default function FounderPage() {
                 sub: "Graduate School of Business",
                 border: "border-t-4 border-t-[#8C1515]",
                 logo: (
-                  <svg viewBox="0 0 100 28" className="h-8 w-auto mb-4" aria-label="Stanford University">
-                    <text x="0" y="22" fontFamily="Georgia, serif" fontWeight="bold" fontSize="18" fill="#8C1515">Stanford</text>
-                  </svg>
+                  <div className="w-24 h-10 rounded bg-[#8C1515] flex items-center justify-center mb-4 shadow-sm">
+                    <span className="font-heading font-extrabold text-white text-sm tracking-wide">STANFORD</span>
+                  </div>
                 ),
               },
               {
@@ -198,24 +201,24 @@ export default function FounderPage() {
                 sub: "School of Earth, Energy & Environmental Sciences",
                 border: "border-t-4 border-t-[#8C1515]",
                 logo: (
-                  <svg viewBox="0 0 100 28" className="h-8 w-auto mb-4" aria-label="Stanford University">
-                    <text x="0" y="22" fontFamily="Georgia, serif" fontWeight="bold" fontSize="18" fill="#8C1515">Stanford</text>
-                  </svg>
+                  <div className="w-24 h-10 rounded bg-[#8C1515] flex items-center justify-center mb-4 shadow-sm">
+                    <span className="font-heading font-extrabold text-white text-sm tracking-wide">STANFORD</span>
+                  </div>
                 ),
               },
               {
                 school: "IIT Kanpur",
                 degree: "B.Tech, Materials & Metallurgical Engineering",
                 sub: "Indian Institute of Technology",
-                border: "border-t-4 border-t-[#1a3a6e]",
+                border: "border-t-4 border-t-sky-650",
                 logo: (
-                  <svg viewBox="0 0 110 28" className="h-8 w-auto mb-4" aria-label="IIT Kanpur">
-                    <text x="0" y="22" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="17" fill="#1a3a6e">IIT Kanpur</text>
-                  </svg>
+                  <div className="w-24 h-10 rounded bg-[#00529b] flex items-center justify-center mb-4 shadow-sm">
+                    <span className="font-heading font-extrabold text-white text-sm tracking-widest">IIT KANPUR</span>
+                  </div>
                 ),
               },
             ].map((edu, i) => (
-              <div key={i} className={cn("p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm hover:shadow-md transition-all duration-200", edu.border)}>
+              <div key={i} className={cn("p-6 rounded-2xl border border-slate-205 dark:border-slate-855 bg-white dark:bg-slate-955 shadow-sm hover:shadow-md transition-all duration-200", edu.border)}>
                 {edu.logo}
                 <h3 className="text-base font-bold mb-1 text-slate-900 dark:text-white">{edu.school}</h3>
                 <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">{edu.degree}</p>
@@ -226,7 +229,7 @@ export default function FounderPage() {
 
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 bg-slate-100 dark:bg-slate-900 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-800">
-              <Trophy className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+              <Trophy className="w-5 h-5 text-[#D4AF37]" />
             </div>
             <h3 className="text-2xl font-heading font-bold text-slate-900 dark:text-white">Awards &amp; Certificates</h3>
           </div>
@@ -240,7 +243,7 @@ export default function FounderPage() {
             ].map((award, i) => (
               <li key={i} className="flex items-start gap-2 bg-white dark:bg-slate-950 p-4 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm">
                 <span className="text-[#D4AF37] mt-0.5">★</span>
-                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{award}</span>
+                <span className="text-sm font-medium text-slate-700 dark:text-slate-350">{award}</span>
               </li>
             ))}
           </ul>
@@ -250,7 +253,7 @@ export default function FounderPage() {
         <section ref={pubRef} className={cn("mb-20 transition-all duration-700 delay-300", pubInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
           <div className="flex items-center gap-3 mb-8">
             <div className="w-10 h-10 bg-slate-100 dark:bg-slate-900 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-800">
-              <FileText className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+              <FileText className="w-5 h-5 text-[#D4AF37]" />
             </div>
             <h2 className="text-3xl font-heading font-bold text-slate-900 dark:text-white">Publications &amp; Patents</h2>
           </div>
@@ -265,7 +268,7 @@ export default function FounderPage() {
               "Emergency Shutoff Device And Emergency Shutoff System Patent, Mitsubishi Heavy Industries, 2016",
               "The clock stops ticking, Vox-populi, IIT Kanpur, 2016",
             ].map((pub, i) => (
-              <div key={i} className="flex gap-4 p-5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-colors group">
+              <div key={i} className="flex gap-4 p-5 bg-white dark:bg-slate-950 border border-slate-205 dark:border-slate-855 rounded-xl shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-colors group">
                 <div className="w-2 h-2 rounded-full bg-[#D4AF37] mt-2 flex-shrink-0 group-hover:scale-150 transition-transform"></div>
                 <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm md:text-base">{pub}</p>
               </div>
