@@ -120,7 +120,6 @@ export function ChatbotWidget() {
               <Terminal className="w-5 h-5 text-[#D4AF37]" />
               <div>
                 <h3 className="text-xs font-mono font-bold text-white tracking-wide">AVORA COGNITIVE ENGINE</h3>
-                <p className="text-[9px] text-slate-500 font-mono">v1.2.0-secure_node</p>
               </div>
             </div>
           </div>
