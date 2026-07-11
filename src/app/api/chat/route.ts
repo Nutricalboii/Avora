@@ -30,18 +30,18 @@ export async function POST(req: Request) {
     } else if (lowerQuery.includes("outsourcing") || lowerQuery.includes("remote") || lowerQuery.includes("engineer") || lowerQuery.includes("hire developer")) {
       answer = "Our Specialized Outsourcing program gives you direct access to 500+ pre-vetted senior remote software developers and system architects. We handle all recruitment, validation, management, and compliance so you can scale your engineering velocity without overhead.";
       sources = ["Avora_Capabilities_2026.pdf"];
-    } else if (lowerQuery.includes("process") || lowerQuery.includes("methodology") || lowerQuery.includes("aim") || lowerQuery.includes("phase")) {
-      answer = "Avora operates under the A.I.M. (Discovery, Implementation, Scaling) framework:\n\n" +
-               "- Phase 01 (Discovery): Architectural Bottleneck Audits producing a Technical Integration Specification.\n" +
-               "- Phase 02 (Implementation): Core systems engineering and pipeline code construction verified via Consensus Logs.\n" +
-               "- Phase 03 (Scaling): Direct private cloud deployment, establishing telemetry dashboards and latency drift guards.";
-      sources = ["Avora_Capabilities_2026.pdf"];
     } else if (/\b(ai|ml|rag|llm|automation|machine learning|models|model)\b/i.test(lowerQuery)) {
       answer = "We design, deploy, and scale custom machine learning solutions. From retrieval-augmented generation (RAG) pipelines to bespoke predictive models, our teams build the enterprise infrastructure that drives automated efficiency.";
       sources = ["ML_Pipeline_Specs.docx"];
     } else if (lowerQuery.includes("data") || lowerQuery.includes("annotation") || lowerQuery.includes("labeling") || lowerQuery.includes("dataset")) {
       answer = "Avora processes high-fidelity labeling workloads at scale. We have labeled over 10M+ data points across specialized domains, including medical text recognition, automated checkout systems, and custom image/video segmentation pipelines.";
       sources = ["Data_Annotation_Standards.pdf"];
+    } else if (lowerQuery.includes("process") || lowerQuery.includes("methodology") || lowerQuery.includes("aim") || lowerQuery.includes("phase")) {
+      answer = "Avora operates under the A.I.M. (Discovery, Implementation, Scaling) framework:\n\n" +
+               "- Phase 01 (Discovery): Architectural Bottleneck Audits producing a Technical Integration Specification.\n" +
+               "- Phase 02 (Implementation): Core systems engineering and pipeline code construction verified via Consensus Logs.\n" +
+               "- Phase 03 (Scaling): Direct private cloud deployment, establishing telemetry dashboards and latency drift guards.";
+      sources = ["Avora_Capabilities_2026.pdf"];
     } else if (lowerQuery.includes("contact") || lowerQuery.includes("hire") || lowerQuery.includes("call") || lowerQuery.includes("schedule") || lowerQuery.includes("talk") || lowerQuery.includes("email")) {
       answer = "To start a conversation or schedule a strategic call, please fill out the contact form at the bottom of the page, or email us directly at partnerships@avora.io. Our team will get back to you within 24 hours.";
       sources = ["Avora_Capabilities_2026.pdf"];
