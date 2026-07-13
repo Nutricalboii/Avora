@@ -12,6 +12,7 @@ const footerLinks = {
     { label: 'Ventures Studio', href: '/#ventures' },
     { label: 'Methodology', href: '/#process' },
     { label: 'Leadership', href: '/leadership' },
+    { label: 'AI Playbook', href: '/insights' },
     { label: 'Contact', href: '/#contact' },
   ],
   Legal: [

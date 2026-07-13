@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
+import InsightsTeaser from '@/components/InsightsTeaser';
 import Process from '@/components/Process';
 import Blog from '@/components/Blog';
 import Ventures from '@/components/Ventures';
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <Services />
+      <InsightsTeaser />
       <Process />
       <Blog />
       <Ventures />
