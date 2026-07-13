@@ -52,7 +52,7 @@ export default function Team() {
                 </p>
 
                 <p className="text-slate-655 dark:text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
-                  Avora Ventures is led by an experienced team with backgrounds spanning global management consulting, advanced engineering, sustainability, artificial intelligence, manufacturing, and technology. The team's combined expertise enables Avora to deliver scalable, high-impact solutions across multiple industries.
+                  Our leadership brings together deep domain expertise from top-tier management consulting, heavy engineering, and sustainable energy. We believe in bridging high-level strategy with hands-on technical execution to deliver real results across industries.
                 </p>
 
                 {/* Credential pills */}

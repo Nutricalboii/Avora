@@ -34,7 +34,7 @@ export default function LeadershipPage() {
                 Avora Ventures
               </h2>
               <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
-                Avora Ventures is led by an experienced leadership team with backgrounds spanning global management consulting, advanced engineering, sustainability, artificial intelligence, manufacturing, and technology. The team's combined expertise enables Avora to deliver scalable, high-impact solutions across multiple industries while maintaining operational excellence and long-term strategic vision.
+                At Avora Ventures, we bring together hands-on leadership rooted in global management consulting, advanced engineering, and sustainable technology. Our background across energy, tech, and industrial operations helps us build systems that last. We focus on real-world execution—bridging strategic direction with operational excellence to support the next generation of industry leaders.
               </p>
 
               {/* Credential logos strip */}
