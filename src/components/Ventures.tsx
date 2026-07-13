@@ -1,6 +1,7 @@
 
 'use client';
 
+import React, { useState } from 'react';
 import { cn } from '@/lib/cn';
 import { useInView } from '@/hooks/useInView';
 import { Server, Activity, ShieldCheck, AreaChart, FlaskConical } from 'lucide-react';
@@ -70,6 +71,7 @@ const caseStudies = [
 ];
 
 export default function Ventures() {
+  const [showAllProjects, setShowAllProjects] = useState(false);
   const { ref, isInView } = useInView({ once: true, threshold: 0.1 });
 
   return (
@@ -110,7 +112,7 @@ export default function Ventures() {
 
           {/* Project Spec Cards */}
           <div className="divide-y divide-slate-200 dark:divide-slate-800">
-            {projects.map((proj, i) => (
+            {projects.slice(0, showAllProjects ? projects.length : 2).map((proj, i) => (
               <div
                 key={i}
                 className="p-6 md:p-8 flex flex-col lg:flex-row justify-between gap-8 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-all duration-150"
@@ -154,6 +156,17 @@ export default function Ventures() {
               </div>
             ))}
           </div>
+
+          {!showAllProjects && (
+            <div className="p-4 text-center border-t border-slate-200 dark:border-slate-800 bg-slate-900/5 dark:bg-slate-900/10">
+              <button
+                onClick={() => setShowAllProjects(true)}
+                className="text-xs font-mono font-bold text-[#D4AF37] hover:text-[#B8962D] uppercase tracking-widest transition-colors"
+              >
+                + View More Active Projects
+              </button>
+            </div>
+          )}
 
         </div>
 

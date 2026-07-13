@@ -88,7 +88,7 @@ export default function Services() {
         <div className="glass-panel rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
           
           {/* Left Panel: Service Selection (Tab navigation) */}
-          <div className="lg:col-span-4 border-r border-slate-205 dark:border-slate-850 divide-y divide-slate-205 dark:divide-slate-850/60 bg-black/[0.01] dark:bg-slate-950/30">
+          <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-slate-205 dark:border-slate-850 flex lg:flex-col overflow-x-auto scrollbar-hide bg-black/[0.01] dark:bg-slate-950/30">
             {services.map((service) => {
               const isActive = service.id === activeTab;
               return (
@@ -96,17 +96,19 @@ export default function Services() {
                   key={service.id}
                   onClick={() => setActiveTab(service.id)}
                   className={cn(
-                    "w-full text-left p-6 transition-all duration-150 flex flex-col gap-2 hover:bg-black/[0.02] dark:hover:bg-white/[0.01]",
-                    isActive ? "bg-black/[0.02] dark:bg-white/[0.02] border-l-2 border-[#D4AF37]" : "border-l-2 border-transparent"
+                    "flex-shrink-0 lg:w-full text-left p-4 lg:p-6 transition-all duration-150 flex flex-col gap-1 hover:bg-black/[0.02] dark:hover:bg-white/[0.01] border-b-2 lg:border-b-0 lg:border-l-2",
+                    isActive 
+                      ? "bg-black/[0.02] dark:bg-white/[0.02] border-[#D4AF37]" 
+                      : "border-transparent"
                   )}
                 >
                   <span className={cn(
-                    "font-heading font-bold text-lg",
+                    "font-heading font-bold text-sm lg:text-lg whitespace-nowrap",
                     isActive ? "text-slate-900 dark:text-white" : "text-slate-500 dark:text-slate-400"
                   )}>
                     {service.title}
                   </span>
-                  <span className="text-xs text-slate-550 dark:text-slate-500 font-sans line-clamp-1">{service.subtitle}</span>
+                  <span className="hidden lg:inline text-xs text-slate-550 dark:text-slate-500 font-sans line-clamp-1">{service.subtitle}</span>
                 </button>
               );
             })}
