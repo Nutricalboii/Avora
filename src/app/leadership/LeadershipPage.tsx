@@ -6,7 +6,7 @@ import { Briefcase, GraduationCap, Trophy, FileText, Globe2 } from 'lucide-react
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function FounderPage() {
+export default function LeadershipPage() {
   const { ref: heroRef, isInView: heroInView } = useInView({ once: true, threshold: 0.1 });
   const { ref: expRef, isInView: expInView } = useInView({ once: true, threshold: 0.1 });
   const { ref: eduRef, isInView: eduInView } = useInView({ once: true, threshold: 0.1 });
@@ -26,54 +26,37 @@ export default function FounderPage() {
         {/* Hero Section */}
         <section ref={heroRef} className={cn("mb-20 transition-all duration-700", heroInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
           <div className="flex flex-col md:flex-row gap-8 items-start">
-            <div className="w-32 h-32 md:w-44 md:h-44 rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-slate-800 shadow-lg flex-shrink-0">
-              <Image
-                src="/abhay-jain.jpg"
-                alt="Abhay Jain"
-                width={176}
-                height={176}
-                className="w-full h-full object-cover object-center"
-                priority
-              />
-            </div>
             <div className="pt-2 flex-1">
               <h1 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 dark:text-white tracking-tight mb-2">
-                Abhay Jain
+                Executive Leadership
               </h1>
               <h2 className="text-xl md:text-2xl font-medium text-slate-650 dark:text-slate-400 mb-5">
-                Founder &amp; CEO, Avora Ventures
+                Avora Ventures
               </h2>
               <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
-                A global professional with experience in management consulting, energy &amp; sustainability, tech, and manufacturing. Focused on full product lifecycle, operations, and driving everything related to growth including marketing, sales, and inorganic growth.
+                Avora Ventures is led by an experienced leadership team with backgrounds spanning global management consulting, advanced engineering, sustainability, artificial intelligence, manufacturing, and technology. The team's combined expertise enables Avora to deliver scalable, high-impact solutions across multiple industries while maintaining operational excellence and long-term strategic vision.
               </p>
 
               {/* Credential logos strip */}
-              <div className="flex flex-wrap items-center gap-4 mb-5 py-4 px-5 bg-white dark:bg-slate-950 border border-[#D4AF37]/35 rounded-xl shadow-sm">
-                <span className="text-[10px] font-mono font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mr-1">Credentials</span>
+              <div className="flex flex-wrap items-center gap-4 mb-5 py-4.5 px-6 bg-slate-900/80 dark:bg-black/60 border border-[#D4AF37]/35 rounded-xl shadow-lg backdrop-blur-md">
+                <span className="text-[11px] font-mono font-bold text-[#D4AF37] uppercase tracking-widest mr-2">Credentials</span>
                 
                 {/* Stanford */}
-                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-900 rounded-lg border border-[#D4AF37]/25 shadow-sm">
-                  <img src="/logos/stanford.svg" alt="Stanford University Logo" className="h-5 w-auto" />
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-sans font-bold">MBA &middot; MS</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/40 rounded-lg border border-[#D4AF37]/20 shadow-sm">
+                  <img src="/logos/stanford.svg" alt="Stanford University Logo" className="h-6 w-auto" />
+                  <span className="text-xs text-slate-300 font-sans font-bold">MBA &middot; MS</span>
                 </div>
 
                 {/* IIT Kanpur */}
-                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-900 rounded-lg border border-[#D4AF37]/25 shadow-sm">
-                  <img src="/logos/iitk.svg" alt="IIT Kanpur Logo" className="h-5 w-auto" />
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-sans font-bold">B.Tech</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/40 rounded-lg border border-[#D4AF37]/20 shadow-sm">
+                  <img src="/logos/iitk.svg" alt="IIT Kanpur Logo" className="h-6 w-auto dark:invert" />
+                  <span className="text-xs text-slate-300 font-sans font-bold">B.Tech</span>
                 </div>
 
                 {/* McKinsey */}
-                <div className="flex items-center px-3 py-1.5 bg-white dark:bg-slate-900 rounded-lg border border-[#D4AF37]/25 shadow-sm">
-                  <img src="/logos/mckinsey.svg" alt="McKinsey Logo" className="h-4 w-auto dark:invert" />
+                <div className="flex items-center px-4 py-2 bg-black/40 rounded-lg border border-[#D4AF37]/20 shadow-sm">
+                  <img src="/logos/mckinsey.svg" alt="McKinsey Logo" className="h-5 w-auto dark:invert" />
                 </div>
-              </div>
-
-              <div className="flex items-start gap-3 bg-black/30 dark:bg-black/50 p-4 rounded-xl border border-[#D4AF37]/20 shadow-sm">
-                <Globe2 className="w-5 h-5 text-[#D4AF37] flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-slate-350 dark:text-slate-400">
-                  Originally from the foothills of the Himalayas in India, lived in Japan for 4 years, and moved to the USA for higher education. When not working, I enjoy table tennis, pool, golf, road trips, and dancing.
-                </p>
               </div>
             </div>
           </div>

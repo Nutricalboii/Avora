@@ -25,7 +25,7 @@ export default function Team() {
           className="mb-14"
         >
           <span className="section-eyebrow">Leadership</span>
-          <h2 className="section-heading mt-2">Meet the Founder</h2>
+          <h2 className="section-heading mt-2">Executive Leadership</h2>
         </motion.div>
 
         {/* Founder card */}
@@ -37,36 +37,22 @@ export default function Team() {
           <div className="glass-panel rounded-2xl overflow-hidden hover:border-[#D4AF37]/40 transition-all duration-500 group">
             <div className="flex flex-col md:flex-row">
 
-              {/* Photo panel */}
-              <div className="relative md:w-64 lg:w-72 flex-shrink-0 bg-black/10 dark:bg-[#0c1018] overflow-hidden">
-                <div className="aspect-square md:aspect-auto md:h-full min-h-[240px]">
-                  <Image
-                    src="/abhay-jain.jpg"
-                    alt="Abhay Jain — Founder, Avora Ventures"
-                    fill
-                    className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
-                    sizes="(max-width: 768px) 100vw, 288px"
-                    priority
-                  />
-                </div>
-              </div>
-
               {/* Content panel */}
               <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-center">
                 <div className="mb-1">
                   <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#D4AF37]">
-                    Founder &amp; CEO
+                    Founding Leadership
                   </span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-900 dark:text-white mb-1">
-                  Abhay Jain
+                  Proven Experience &amp; Pedigree
                 </h3>
                 <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-5">
                   Avora Ventures
                 </p>
 
-                <p className="text-slate-650 dark:text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
-                  A global professional with extensive experience in management consulting (McKinsey &amp; Co.), energy &amp; sustainability, and tech. Educated at Stanford University (MBA, MS) and IIT Kanpur. Previously with Mitsubishi Heavy Industries, NextEra Energy, and Autogrid.
+                <p className="text-slate-655 dark:text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
+                  Avora Ventures is led by an experienced team with backgrounds spanning global management consulting, advanced engineering, sustainability, artificial intelligence, manufacturing, and technology. The team's combined expertise enables Avora to deliver scalable, high-impact solutions across multiple industries.
                 </p>
 
                 {/* Credential pills */}
@@ -82,10 +68,10 @@ export default function Team() {
                 </div>
 
                 <Link
-                  href="/founder"
+                  href="/leadership"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-[#D4AF37] hover:text-[#B8962D] transition-colors group/link"
                 >
-                  Read Full Profile
+                  Read Leadership Profile
                   <svg
                     className="w-4 h-4 group-hover/link:translate-x-1 transition-transform"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor"

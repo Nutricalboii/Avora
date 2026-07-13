@@ -6,7 +6,7 @@ import { useInView } from '@/hooks/useInView';
 
 const testimonials = [
   {
-    quote: "Working with Abhay and the Avora team was a game-changer. They streamlined our entire operation and set us up for scalable growth. The strategic insight is unparalleled.",
+    quote: "Working with the Avora leadership team was a game-changer. They streamlined our entire operation and set us up for scalable growth. The strategic insight is unparalleled.",
     author: "Michael Roberts",
     role: "VP of Operations, TechFlow (USA)",
     avatar: "MR",

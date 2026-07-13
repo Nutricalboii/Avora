@@ -11,7 +11,7 @@ const footerLinks = {
   Company: [
     { label: 'Ventures Studio', href: '/#ventures' },
     { label: 'Methodology', href: '/#process' },
-    { label: 'Founder', href: '/founder' },
+    { label: 'Leadership', href: '/leadership' },
     { label: 'Contact', href: '/#contact' },
   ],
   Legal: [
