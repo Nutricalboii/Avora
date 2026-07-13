@@ -256,7 +256,7 @@ const stages = [
 
 const navItems = stages.map((s) => ({ id: s.id, number: s.number, title: s.title }));
 
-function StageSection({ stage, index }: { stage: (typeof stages)[0]; index: number }) {
+function StageSection({ stage }: { stage: (typeof stages)[0] }) {
   const [expanded, setExpanded] = useState(false);
   const { ref, isInView } = useInView({ once: true, threshold: 0.1 });
   const Icon = stage.icon;
@@ -507,8 +507,8 @@ export default function InsightsPage() {
       </div>
 
       {/* Stage Sections */}
-      {stages.map((stage, index) => (
-        <StageSection key={stage.id} stage={stage} index={index} />
+      {stages.map((stage) => (
+        <StageSection key={stage.id} stage={stage} />
       ))}
 
       {/* CTA Footer */}
