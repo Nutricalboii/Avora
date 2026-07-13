@@ -445,12 +445,34 @@ export default function InsightsPage() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+
+    const scrollToHash = () => {
+      const el = document.querySelector(hash);
+      if (el) {
+        const offset = 140;
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+        return true;
+      }
+      return false;
+    };
+
+    if (!scrollToHash()) {
+      const timer = setTimeout(scrollToHash, 300);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   const scrollToStage = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      const offset = 140; // navbar + sub-nav height
+      const offset = 140;
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
+      window.history.replaceState(null, '', `#${id}`);
     }
   };
 
