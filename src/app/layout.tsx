@@ -8,6 +8,7 @@ import { SpotlightNav } from '@/components/ui/SpotlightNav';
 import Footer from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ChatbotWidget } from '@/components/ChatbotWidget';
+import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 import "./globals.css";
 
 
@@ -93,15 +94,17 @@ export default function RootLayout({
           Skip to content
         </a>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <SpotlightNav />
-          {/* ponytail: inlined PageTransition — opacity/translate on mount via CSS */}
-          <main id="main-content" className="flex-grow flex flex-col relative z-0 animate-in fade-in slide-in-from-bottom-2 duration-700">
-            <Suspense fallback={<div className="min-h-screen bg-[#080b12]" />}>
-              {children}
-            </Suspense>
-          </main>
-          <Footer />
-          <ChatbotWidget />
+          <SmoothScrollProvider>
+            <SpotlightNav />
+            {/* ponytail: inlined PageTransition — opacity/translate on mount via CSS */}
+            <main id="main-content" className="flex-grow flex flex-col relative z-0 animate-in fade-in slide-in-from-bottom-2 duration-700">
+              <Suspense fallback={<div className="min-h-screen bg-[#080b12]" />}>
+                {children}
+              </Suspense>
+            </main>
+            <Footer />
+            <ChatbotWidget />
+          </SmoothScrollProvider>
         </ThemeProvider>
         <Analytics />
       </body>
