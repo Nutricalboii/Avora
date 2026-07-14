@@ -28,6 +28,15 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/founder",
+        destination: "/leadership",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
