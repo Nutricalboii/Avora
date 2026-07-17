@@ -66,10 +66,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#080b12' },
-    { media: '(prefers-color-scheme: light)', color: '#f9f6f0' },
-  ],
+  themeColor: '#FBF8F1',
 };
 
 export default function RootLayout({
@@ -93,7 +90,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" enableSystem={false}>
           <SmoothScrollProvider>
             <SpotlightNav />
             {/* ponytail: inlined PageTransition — opacity/translate on mount via CSS */}

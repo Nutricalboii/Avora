@@ -12,71 +12,76 @@ export const services: Service[] = [
   {
     id: "data-generation",
     title: "Data Generation",
-    subtitle: "High-fidelity synthetic dataset engineering",
-    description: "Engineering synthetic datasets to solve data scarcity, simulate rare edge cases, and enforce privacy controls across vision, language, and structured tabular systems.",
+    subtitle: "Synthetic datasets for scarce or sensitive training data",
+    description:
+      "We engineer synthetic datasets when real data is scarce, sensitive, or too expensive to collect. Generation is grounded in domain rules and validated against the downstream task the model must actually perform.",
     features: [
-      "Rule-based patterns & heuristics",
-      "GAN & diffusion architectures",
-      "Differential privacy controls",
-      "Downstream task validation"
+      "Rule-based and generative models (GAN, diffusion)",
+      "Differential privacy budgets enforced per release",
+      "Distribution validation against real samples",
+      "Downstream task performance sign-off",
     ],
-    metrics: "10x dataset scale expansion",
-    icon: "Database"
+    metrics: "Up to 10x training set expansion",
+    icon: "Database",
   },
   {
     id: "data-annotation",
     title: "Data Annotation",
-    subtitle: "Structure, ontologies, and consensus design",
-    description: "Designing domain-specific guidelines, custom classification ontologies, and double-blind consensus workflows before labeling execution begins.",
+    subtitle: "Ontologies, guidelines, and consensus design",
+    description:
+      "Before any label is applied, we define what the model must learn. We build the ontology, write the annotation guidelines with edge-case examples, and design the consensus workflow that governs labeling.",
     features: [
-      "Exhaustive ontology design",
-      "Inter-annotator agreement tracking",
-      "Gold-standard validation checks",
-      "Expert-in-the-loop review"
+      "Domain-specific ontology and schema design",
+      "Exhaustive annotation guidelines with examples",
+      "Inter-annotator agreement targets set up front",
+      "Gold-standard benchmark samples",
     ],
-    metrics: "Cohen's Kappa > 0.91 target",
-    icon: "Tag"
+    metrics: "Inter-annotator Kappa target ≥ 0.85",
+    icon: "Tag",
   },
   {
     id: "labeling",
     title: "Labeling",
     subtitle: "Consensus-verified annotation at scale",
-    description: "Scaling high-fidelity annotation workloads using model-assisted acceleration, expert workgroups, and multi-pass validation runs.",
+    description:
+      "We execute annotation at scale using modality-specific tooling, model-assisted pre-labeling, and multi-pass review. Every batch passes a consensus gate before it is released for training.",
     features: [
-      "Model-assisted pre-labeling",
-      "Modality-optimized tooling",
-      "Multi-pass validation runs",
-      "Edge-case adjudication"
+      "Model-assisted pre-labeling to reduce manual load",
+      "Modality-optimized tooling (CVAT, Prodigy)",
+      "Double-blind adjudication on disagreements",
+      "Per-batch consensus sign-off",
     ],
-    metrics: "60% speed acceleration",
-    icon: "Tags"
+    metrics: "Up to 60% reduction in manual effort",
+    icon: "Tags",
   },
   {
     id: "auditing",
     title: "Auditing",
-    subtitle: "Eight-dimension quality gate verification",
-    description: "Measuring dataset quality across accuracy, completeness, consistency, timeliness, and consensus reliability before model training.",
+    subtitle: "Quality verification before training",
+    description:
+      "We measure dataset quality across eight dimensions before any model is trained on it. Auditing catches label drift, missing edge cases, and consistency gaps that would otherwise surface as model failures in production.",
     features: [
-      "Multi-stage QA matrix",
-      "Statistical drift checks",
-      "Discrepancy resolution panels",
-      "Downstream validation loops"
+      "Eight-dimension quality scoring",
+      "Statistical drift and distribution checks",
+      "Discrepancy review panels",
+      "Downstream validation against gold samples",
     ],
-    metrics: "F1 > 0.94 score achieved",
-    icon: "ShieldCheck"
+    metrics: "Entity-level F1 target ≥ 0.94",
+    icon: "ShieldCheck",
   },
   {
     id: "ai-implementation",
     title: "AI Implementation",
-    subtitle: "Production-grade ML pipeline construction",
-    description: "Engineering production-ready machine learning pipelines, custom RAG integrations, domain-specific models, and explainable systems.",
+    subtitle: "Production ML systems, end to end",
+    description:
+      "We design, build, and deploy production machine learning systems. Work spans problem framing, model development, integration, deployment, and monitoring. We deliver working systems, not just notebooks.",
     features: [
-      "End-to-end pipeline coding",
-      "SHAP explainability mapping",
-      "Real-time drift telemetry",
-      "Three-phase A.I.M. framework"
+      "Problem framing tied to measurable KPIs",
+      "SHAP-based explainability for stakeholders",
+      "Drift monitoring and retraining built in",
+      "Three-phase A.I.M. delivery framework",
     ],
-    metrics: "2 to 6 week MVP cycle",
-    icon: "BrainCircuit"
-  }
+    metrics: "Typical first deployment: 2–6 weeks",
+    icon: "BrainCircuit",
+  },
 ];

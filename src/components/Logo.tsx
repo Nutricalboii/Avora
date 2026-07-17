@@ -67,7 +67,7 @@ export function Logo({ className, size = 'md' }: LogoProps) {
         fontWeight="800"
         fontSize="30"
         letterSpacing="4"
-        className="fill-slate-900 dark:fill-white"
+        className="fill-[#2A1A0E]"
         style={{ fill: 'currentColor' }}
       >
         AVORA
@@ -81,7 +81,7 @@ export function Logo({ className, size = 'md' }: LogoProps) {
         fontWeight="400"
         fontSize="13"
         letterSpacing="7"
-        className="fill-slate-500 dark:fill-slate-400"
+        className="fill-[#6B5642]"
         style={{ fill: 'currentColor', opacity: 0.7 }}
       >
         VENTURES

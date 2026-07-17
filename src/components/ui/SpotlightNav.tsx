@@ -4,13 +4,13 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from 'next-themes';
 import { cn } from '@/lib/cn';
 import { Logo } from '../Logo';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { name: 'Services', href: '#services' },
+  { name: 'Work', href: '/work' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -19,42 +19,33 @@ export function SpotlightNav() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className={cn(
-      "fixed top-0 inset-x-0 z-50 transition-all duration-500",
-      isScrolled ? "py-3" : "py-5"
-    )}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={cn(
-          "relative flex items-center justify-between px-4 md:px-6 py-3 mx-auto transition-all duration-500 rounded-2xl border",
-          isScrolled
-            ? "glass-panel shadow-2xl"
-            : "bg-transparent border-transparent"
-        )}>
-
-          {/* Logo: always visible on mobile; fades in on desktop once scrolled */}
-          <div className={cn(
-            "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center overflow-hidden",
-            isScrolled
-              ? "opacity-100 w-[140px] md:w-[160px] translate-x-0 pointer-events-auto mr-4"
-              : "w-[140px] opacity-100 md:w-0 md:opacity-0 md:-translate-x-4 md:pointer-events-none md:mr-0"
-          )}>
+    <header
+      className={cn(
+        'fixed top-0 inset-x-0 z-50 transition-all duration-500',
+        isScrolled ? 'py-3' : 'py-5'
+      )}
+    >
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div
+          className={cn(
+            'relative flex items-center justify-between px-5 md:px-6 py-3 transition-all duration-500 rounded-2xl border',
+            isScrolled ? 'glass-panel shadow-soft' : 'bg-transparent border-transparent'
+          )}
+        >
+          <div className="flex items-center">
             <Link href="/" aria-label="Avora Ventures" className="block">
-              <Logo className="h-8 md:h-9 w-auto text-slate-900 dark:text-white" />
+              <Logo className="h-8 md:h-9 w-auto text-[var(--foreground)]" />
             </Link>
           </div>
 
-          {/* ── Desktop Nav Links ── */}
           <nav
             className="hidden md:flex items-center space-x-1 relative z-10"
             onMouseLeave={() => setHoveredIndex(null)}
@@ -66,14 +57,14 @@ export function SpotlightNav() {
                 <Link
                   key={item.name}
                   href={itemHref}
-                  className="relative px-4 py-2 text-sm font-sans font-medium text-slate-700 dark:text-slate-400 transition-colors hover:text-slate-900 dark:hover:text-white"
+                  className="relative px-4 py-2 text-sm font-medium text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
                   onMouseEnter={() => setHoveredIndex(index)}
                 >
                   {item.name}
                   {hoveredIndex === index && (
                     <motion.div
                       layoutId="spotlight"
-                      className="absolute inset-0 bg-slate-100 dark:bg-white/[0.06] rounded-lg -z-10"
+                      className="absolute inset-0 bg-[var(--accent-tint)] rounded-lg -z-10"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -85,32 +76,27 @@ export function SpotlightNav() {
             })}
           </nav>
 
-          {/* ── Desktop Controls & CTA ── */}
           <div className="hidden md:flex items-center gap-4 relative z-10">
-
             <Link
               href={pathname === '/' ? '#contact' : '/#contact'}
-              className="inline-flex items-center justify-center px-5 py-2 text-sm font-sans font-semibold text-white bg-[#D4AF37] hover:bg-[#B8962D] transition-colors rounded-lg"
+              className="btn-primary text-sm px-5 py-2"
             >
-              Partner With Us
+              Partner with us
             </Link>
           </div>
 
-          {/* ── Mobile Hamburger ── */}
           <div className="flex md:hidden items-center gap-2 z-20">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white focus:outline-none transition-colors"
+              className="p-2 text-[var(--foreground)] hover:text-[var(--accent)] focus:outline-none transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
-
         </div>
       </div>
 
-      {/* ── Mobile Drawer ── */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -118,9 +104,9 @@ export function SpotlightNav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute top-full left-4 right-4 mt-2 px-4 pt-2 pb-6 glass-panel rounded-2xl z-40 md:hidden"
+            className="absolute top-full left-4 right-4 mt-2 px-4 pt-2 pb-6 glass-panel-strong rounded-2xl z-40 md:hidden"
           >
-            <div className="flex flex-col gap-4 p-4">
+            <div className="flex flex-col gap-2 p-4">
               {navItems.map((item) => {
                 const isHash = item.href.startsWith('#');
                 const itemHref = isHash && pathname !== '/' ? `/${item.href}` : item.href;
@@ -129,7 +115,7 @@ export function SpotlightNav() {
                     key={item.name}
                     href={itemHref}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-base font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors py-2 border-b border-slate-200 dark:border-slate-800/20"
+                    className="text-base font-medium text-[var(--foreground)] hover:text-[var(--accent)] transition-colors py-3 border-b border-[var(--border)]"
                   >
                     {item.name}
                   </Link>
@@ -138,9 +124,9 @@ export function SpotlightNav() {
               <Link
                 href={pathname === '/' ? '#contact' : '/#contact'}
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center px-5 py-3 text-sm font-sans font-semibold text-white bg-[#D4AF37] hover:bg-[#B8962D] transition-colors rounded-lg mt-2"
+                className="btn-primary w-full mt-3 py-3"
               >
-                Partner With Us
+                Partner with us
               </Link>
             </div>
           </motion.div>
