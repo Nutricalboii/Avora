@@ -24,10 +24,27 @@
 
   body {
     background-color: var(--background);
+    /* Subtle warm gradient base so pure white never looks flat */
+    background-image:
+      radial-gradient(ellipse 120% 60% at 10% 0%, rgba(212, 175, 55, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 100% 80% at 90% 100%, rgba(184, 134, 11, 0.05) 0%, transparent 55%);
+    background-attachment: fixed;
     color: var(--foreground);
     @apply font-sans antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* SVG noise overlay for all pages — gives paper-like texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
   }
 
   h1, h2, h3, h4, h5, h6 {

@@ -25,69 +25,59 @@ const faqs = [
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-28 md:py-36 relative overflow-hidden bg-slate-50">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        <div className="mb-16 text-center max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm text-[11px] font-mono font-semibold tracking-[0.18em] uppercase text-[#B8860B] mb-6 shadow-sm">
+    <section id="faq" className="bg-slate-50 border-t border-slate-200">
+      <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
+
+        {/* Header — matches editorial style */}
+        <div className="py-16 md:py-24 border-b border-slate-200">
+          <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+            Common Questions
+          </p>
+          <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
             FAQ
-          </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 mb-6 tracking-tight">
-            Frequently Asked Questions
           </h2>
         </div>
 
-        <div className="space-y-4 max-w-3xl mx-auto">
+        {/* Accordion rows — no cards, just lines */}
+        <div>
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div
-                key={index}
-                className={cn(
-                  'glass-panel rounded-2xl overflow-hidden transition-all duration-300',
-                  isOpen ? 'border-[#B8860B]/40 shadow-md' : 'hover:border-[#B8860B]/20 shadow-sm'
-                )}
-              >
+              <div key={index} className="border-b border-slate-200">
                 <button
-                  className="w-full px-7 py-6 text-left flex justify-between items-center gap-4 focus:outline-none group"
+                  className="w-full py-8 md:py-10 text-left flex justify-between items-center gap-6 focus:outline-none group"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
                 >
-                  <span
-                    className={cn(
-                      'font-heading font-semibold text-lg transition-colors',
-                      isOpen
-                        ? 'text-slate-900'
-                        : 'text-slate-700 group-hover:text-[#B8860B]'
-                    )}
-                  >
+                  {/* Question — use DM Sans, NOT Bebas Neue (avoid cramped caps) */}
+                  <span className="font-sans font-semibold text-xl md:text-2xl text-slate-800 leading-snug group-hover:text-[#B8860B] transition-colors duration-200 tracking-normal">
                     {faq.question}
                   </span>
-                  <div
-                    className={cn(
-                      'flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300',
-                      isOpen
-                        ? 'bg-[#B8860B] text-white rotate-180'
-                        : 'bg-slate-100 text-[#B8860B] group-hover:bg-[#B8860B]/10'
-                    )}
-                  >
-                    <ChevronDown className="w-4 h-4" />
+                  <div className={cn(
+                    'flex-shrink-0 w-10 h-10 border flex items-center justify-center transition-all duration-300',
+                    isOpen
+                      ? 'border-[#B8860B] bg-[#B8860B] text-white'
+                      : 'border-slate-300 text-slate-500 group-hover:border-[#B8860B] group-hover:text-[#B8860B]'
+                  )}>
+                    <ChevronDown className={cn('w-5 h-5 transition-transform duration-300', isOpen && 'rotate-180')} />
                   </div>
                 </button>
 
                 <AnimatePresence initial={false}>
                   {isOpen && (
-                     <motion.div
+                    <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
                     >
-                      <div className="px-7 pb-7 text-base text-slate-600 leading-relaxed">
-                        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#B8860B]/30 to-transparent mb-5" />
-                        {faq.answer}
+                      <div className="pb-10 max-w-3xl">
+                        <p className="font-sans text-lg md:text-xl text-slate-600 leading-loose tracking-normal font-normal">
+                          {faq.answer}
+                        </p>
                       </div>
                     </motion.div>
                   )}

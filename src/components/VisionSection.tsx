@@ -87,12 +87,6 @@ export default function VisionSection() {
                 </p>
               </div>
 
-              {/* Arrow accent */}
-              <div className="hidden md:flex col-span-1 justify-end">
-                <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:border-[#B8860B] group-hover:bg-[#B8860B] transition-all duration-300">
-                  <span className="text-slate-400 group-hover:text-white text-sm transition-colors">→</span>
-                </div>
-              </div>
             </div>
           ))}
         </div>

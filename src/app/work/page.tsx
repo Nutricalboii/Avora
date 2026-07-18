@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Delivered Work | Avora Ventures',
@@ -10,116 +9,128 @@ export const metadata: Metadata = {
 
 const cases = [
   {
-    id: 'med-gen',
-    sector: 'Rare Disease Diagnostics — Healthcare',
+    id: '01',
+    sector: 'Healthcare',
     service: 'Data Generation',
+    tag: 'Rare Disease Diagnostics',
+    metric: '0.72→0.91',
+    metricLabel: 'Diagnostic AUC',
     what: 'Engineered a physics-informed synthetic MRI volume library to address severe scarcity in confirmed training cases for a rare oncological condition.',
-    how: 'Applied parametric copula modeling to capture inter-slice spatial correlations. Differential privacy budget (ε = 1.2) enforced throughout generation. Wasserstein distance between synthetic and real distributions validated below 0.04 before sign-off. Domain expert radiologists reviewed 500 stratified samples.',
-    result:
-      'Diagnostic AUC improved from 0.72 → 0.91. Training corpus scaled from 87 confirmed cases to 50,000 synthetic volumes, enabling the first statistically valid model training run.',
-    metric: 'AUC 0.72 → 0.91',
+    how: 'Applied parametric copula modeling to capture inter-slice spatial correlations. Differential privacy budget (ε = 1.2) enforced throughout generation. Wasserstein distance validated below 0.04 before sign-off.',
+    result: 'Training corpus scaled from 87 confirmed cases to 50,000 synthetic volumes, enabling the first statistically valid model training run.',
   },
   {
-    id: 'agri-ann',
-    sector: 'Precision Agriculture — Drone Telemetry',
+    id: '02',
+    sector: 'Precision Agriculture',
     service: 'Data Annotation',
-    what: 'Annotated high-density multispectral drone imagery across 14 distinct crop stress classes for a precision agriculture platform operating across multiple growing regions.',
-    how: "Built a domain ontology covering stress type, severity stage, and spectral band signature. Model-assisted pre-labeling using a fine-tuned segmentation model reduced manual load by 58%. Double-blind adjudication enforced on all disagreement cases. Fleiss' Kappa target ≥ 0.91 required before batch sign-off.",
-    result:
-      'Field scouting time reduced from 3 hours to 25 minutes per plot. 800,000 multispectral frames delivered at a final inter-annotator Kappa of 0.93.',
-    metric: 'Scouting: 3h → 25min',
+    tag: 'Drone Telemetry',
+    metric: '3h→25min',
+    metricLabel: 'Field scouting time',
+    what: 'Annotated high-density multispectral drone imagery across 14 distinct crop stress classes for a precision agriculture platform.',
+    how: "Built a domain ontology covering stress type, severity stage, and spectral band signature. Model-assisted pre-labeling reduced manual load by 58%. Fleiss' Kappa target ≥ 0.91 required before batch sign-off.",
+    result: '800,000 multispectral frames delivered at a final inter-annotator Kappa of 0.93.',
   },
   {
-    id: 'clinical-label',
-    sector: 'Clinical Document Processing — Pharmaceutical',
+    id: '03',
+    sector: 'Pharmaceutical',
     service: 'Data Labeling',
-    what: 'Operationalized OCR-based layout-analysis extraction and structured labeling across multi-format clinical trial data collection sheets for a pharmaceutical data operations team.',
-    how: "Deployed a consensus verification protocol with triple-review on ambiguous table regions and handwritten fields. Prodigy used for span-level entity labeling; CVAT for table structure and form-field annotation. Statistical QA gate: minimum F1 ≥ 0.93 and Cohen's Kappa ≥ 0.90 required per data point category before delivery.",
-    result:
-      '2.1 million pages processed across 47 distinct data point categories. Final F1: 0.94, Kappa: 0.90. Zero pages required re-extraction post-delivery.',
-    metric: 'F1: 0.94 · Kappa: 0.90',
+    tag: 'Clinical Document Processing',
+    metric: 'F1: 0.94',
+    metricLabel: 'Kappa: 0.90',
+    what: 'Operationalized OCR-based layout-analysis extraction and structured labeling across multi-format clinical trial data collection sheets.',
+    how: "Deployed a consensus verification protocol with triple-review on ambiguous table regions. Statistical QA gate: minimum F1 ≥ 0.93 and Cohen's Kappa ≥ 0.90 required per category before delivery.",
+    result: '2.1 million pages processed across 47 distinct data point categories. Zero pages required re-extraction post-delivery.',
   },
   {
-    id: 'retail-ai',
-    sector: 'Multi-SKU Retail — Demand Forecasting',
+    id: '04',
+    sector: 'Retail',
     service: 'AI Implementation',
-    what: "Designed and integrated a custom predictive ensemble model into the client's on-premise cloud infrastructure for multi-horizon demand forecasting across a large-scale product catalogue.",
-    how: 'Three-week discovery phase mapped existing data pipelines, identified distribution shift patterns, and defined forecast horizons. PyTorch model compiled to ONNX Runtime for edge deployment. SHAP explainability layer added to satisfy internal procurement audit requirements. Kolmogorov-Smirnov drift monitoring deployed post-launch to flag covariate shift.',
-    result:
-      '40% reduction in manual planning overhead in the first quarter. 680% ROI demonstrated at the 36-month projection horizon.',
-    metric: '680% ROI · 36 months',
+    tag: 'Multi-SKU Demand Forecasting',
+    metric: '680%',
+    metricLabel: 'ROI at 36-month horizon',
+    what: "Designed and integrated a custom predictive ensemble model into the client's on-premise cloud infrastructure for multi-horizon demand forecasting.",
+    how: 'Three-week discovery phase mapped existing data pipelines, identified distribution shift patterns, and defined forecast horizons. SHAP explainability layer added to satisfy internal procurement audit requirements.',
+    result: '40% reduction in manual planning overhead in the first quarter. 680% ROI demonstrated at the 36-month projection horizon.',
   },
 ];
 
 export default function WorkPage() {
   return (
-    <main className="min-h-screen pt-36 pb-24 bg-[var(--background)]">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="mb-20">
-          <Link
-            href="/"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-[var(--foreground-muted)] hover:text-[var(--accent)] transition-colors mb-10"
+    <main className="min-h-screen bg-white">
+      {/* Page header */}
+      <div className="border-b border-slate-200 pt-36 pb-16 md:pb-24">
+        <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+                Avora / Delivered Outcomes
+              </p>
+              <h1 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
+                Work From<br/>The Field.
+              </h1>
+            </div>
+            <p className="text-base md:text-lg text-slate-500 max-w-sm leading-relaxed md:pb-4 font-sans">
+              Anonymized engagement outcomes. No client names — sector, methodology, and verified result only. All engagements are NDA-protected.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Case study rows */}
+      <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
+        {cases.map((c) => (
+          <article
+            key={c.id}
+            className="border-b border-slate-200 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-start"
           >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Back to home
-          </Link>
-          <span className="section-eyebrow">Delivered outcomes</span>
-          <h1 className="section-heading mt-2 mb-5">Work from the field.</h1>
-          <p className="section-subtext max-w-xl">
-            Anonymized engagement outcomes. No client names — sector, methodology, and verified
-            result only. All engagements are NDA-protected.
-          </p>
-        </div>
-
-        <div className="space-y-6">
-          {cases.map((c) => (
-            <article
-              key={c.id}
-              className="card card-hover rounded-2xl p-8 md:p-12"
-            >
-              <div className="flex flex-col lg:flex-row gap-10 lg:justify-between">
-                <div className="space-y-7 max-w-2xl">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="text-[10px] font-mono font-semibold text-[var(--accent)] uppercase tracking-[0.2em] border border-[var(--accent)]/30 bg-[var(--accent-tint)] px-3 py-1 rounded-full">
-                      {c.service}
-                    </span>
-                    <span className="text-sm font-heading font-semibold text-[var(--foreground)]">
-                      {c.sector}
-                    </span>
-                  </div>
-
-                  {[
-                    { label: 'What we did', body: c.what },
-                    { label: 'How', body: c.how },
-                    { label: 'Result', body: c.result },
-                  ].map((row) => (
-                    <div key={row.label}>
-                      <p className="text-[10px] font-mono font-semibold text-[var(--foreground-muted)] uppercase tracking-[0.18em] mb-2">
-                        {row.label}
-                      </p>
-                      <p className="text-[15px] text-[var(--foreground)] leading-relaxed">
-                        {row.body}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex-shrink-0 lg:items-start">
-                  <div className="rounded-2xl border border-[var(--accent)]/30 bg-[var(--accent-tint)] p-7 min-w-[200px] text-center">
-                    <span className="block text-[10px] font-mono font-semibold text-[var(--accent)] uppercase tracking-[0.2em] mb-3">
-                      Primary outcome
-                    </span>
-                    <span className="block text-lg font-heading font-bold text-[var(--foreground)] leading-snug">
-                      {c.metric}
-                    </span>
-                  </div>
-                </div>
+            {/* Left: Big metric */}
+            <div className="md:col-span-3">
+              <p className="font-mono text-[11px] tracking-[0.2em] text-slate-400 uppercase mb-4">
+                {c.id} / {c.service.toUpperCase()}
+              </p>
+              <div className="font-heading text-7xl md:text-8xl lg:text-[7rem] leading-none text-[#B8860B] tracking-tight">
+                {c.metric}
               </div>
-            </article>
-          ))}
-        </div>
+              <p className="font-mono text-[11px] tracking-[0.15em] text-slate-400 uppercase mt-3">{c.metricLabel}</p>
+            </div>
 
-        <p className="mt-10 text-[13px] font-mono text-[var(--foreground-muted)] border-t border-[var(--border)] pt-6">
+            {/* Divider */}
+            <div className="hidden md:flex md:col-span-1 items-start pt-2 justify-center">
+              <div className="w-px h-40 bg-slate-200"></div>
+            </div>
+
+            {/* Right: content */}
+            <div className="md:col-span-8 md:pl-6">
+              <div className="flex flex-wrap items-center gap-4 mb-8">
+                <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5">
+                  {c.service}
+                </span>
+                <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-slate-500">
+                  {c.sector} — {c.tag}
+                </span>
+              </div>
+
+              <h2 className="font-heading text-4xl md:text-5xl uppercase tracking-wide text-slate-900 mb-10 leading-tight">
+                {c.tag}
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-slate-200">
+                {[
+                  { label: 'What we did', body: c.what },
+                  { label: 'How', body: c.how },
+                  { label: 'Result', body: c.result },
+                ].map((row, i) => (
+                  <div key={i} className="pt-8 pr-0 md:pr-10 pb-4 border-r border-slate-200 last:border-r-0 mr-0 md:mr-10 last:mr-0">
+                    <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B] mb-4">{row.label}</p>
+                    <p className="font-sans text-base text-slate-600 leading-relaxed">{row.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+
+        <p className="py-10 font-mono text-[11px] text-slate-400 tracking-[0.15em] uppercase">
           Metrics verified through partner delivery logs. Client names withheld by default under NDA.
         </p>
       </div>

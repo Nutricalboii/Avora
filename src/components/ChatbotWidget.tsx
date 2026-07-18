@@ -99,7 +99,7 @@ export function ChatbotWidget() {
             </h3>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ scrollbarWidth: 'thin', scrollbarColor: '#B8860B #f1f5f9' }}>
             {messages.map((msg, index) => (
               <div
                 key={index}
