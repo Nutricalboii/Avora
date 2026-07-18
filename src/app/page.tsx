@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Hero from '@/components/Hero';
+import VisionSection from '@/components/VisionSection';
 import Services from '@/components/Services';
 import WorkPreview from '@/components/WorkPreview';
 
@@ -36,6 +37,7 @@ export default function Home() {
     <>
       <HashScrollHandler />
       <Hero />
+      <VisionSection />
       <Services />
       <WorkPreview />
       <FAQ />
