@@ -5,137 +5,138 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
-// Register ScrollTrigger
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
 const stages = [
   {
-    title: 'Stage 1: Data Generation',
-    subtitle: 'Overcoming Data Scarcity',
+    id: '01.01',
+    label: 'ANNOTATION',
+    title: 'Data Generation',
     desc: 'We engineer robust, physics-informed synthetic datasets under expert domain oversight. This ensures our AI-native models have a high-fidelity foundation even when real-world market data is sparse.',
-    color: 'bg-white',
   },
   {
-    title: 'Stage 2: Data Annotation & Labeling',
-    subtitle: 'Structuring Knowledge',
-    desc: 'We divide execution into precise ontologies (annotation) and high-volume deployment (labeling). By using modality-specific tooling and model-assisted automation, we accelerate data readiness by up to 60%.',
-    color: 'bg-slate-50',
+    id: '01.02',
+    label: 'LABELING',
+    title: 'Data Annotation & Labeling',
+    desc: 'We divide execution into precise ontologies and high-volume deployment. Using modality-specific tooling and model-assisted automation, we accelerate data readiness by up to 60%.',
   },
   {
-    title: 'Stage 3: Data Auditing & Quality Assurance',
-    subtitle: 'Ensuring Rigor & Compliance',
-    desc: 'To prevent downstream model errors, our multi-stage QA framework enforces strict inter-annotator agreement metrics (Kappa ≥ 0.91). Datasets are treated like versioned software releases.',
-    color: 'bg-white',
+    id: '01.03',
+    label: 'AUDITING',
+    title: 'Data Auditing & QA',
+    desc: 'Our multi-stage QA framework enforces strict inter-annotator agreement metrics (Kappa ≥ 0.91). Datasets are treated like versioned software releases.',
   },
   {
-    title: 'Stage 4: AI Implementation',
-    subtitle: 'Validated Deployment',
-    desc: 'We build and launch custom MVPs within 2 to 6 weeks. We treat initial infrastructure as a measurable hypothesis, scaling computational resources only when commercial value and product-market fit are proven.',
-    color: 'bg-slate-50',
-  }
+    id: '01.04',
+    label: 'IMPLEMENTATION',
+    title: 'AI Implementation',
+    desc: 'We build and launch custom MVPs within 2 to 6 weeks. We treat initial infrastructure as a measurable hypothesis, scaling computational resources only when commercial value is proven.',
+  },
 ];
 
 export default function Services() {
   const container = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const panels = gsap.utils.toArray('.panel') as HTMLElement[];
-    
-    if (panels.length === 0) return;
-
-    // Create a timeline that pins the container
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: 'top top',
-        end: `+=${100 * panels.length}%`, // Scroll duration based on number of panels
-        pin: true,
-        scrub: 1, // Smooth scrubbing
+    gsap.fromTo('.pipeline-header',
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: container.current, start: 'top 80%' }
       }
-    });
+    );
 
-    // Animate each panel (except the first one, which is already in place)
-    panels.forEach((panel, i) => {
-      if (i === 0) {
-        // First panel stays in place
-        // Optionally animate elements inside the first panel on initial scroll
-        return;
-      }
-
-      // Slide up from bottom and stack
-      tl.fromTo(panel, 
-        { yPercent: 100 }, 
-        { yPercent: 0, ease: 'none' }
+    const cols = gsap.utils.toArray('.pipeline-col') as HTMLElement[];
+    cols.forEach((col, i) => {
+      gsap.fromTo(col,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+          delay: i * 0.1,
+          scrollTrigger: { trigger: container.current, start: 'top 70%' }
+        }
       );
     });
-
   }, { scope: container });
 
   return (
-    <section id="services" ref={container} className="relative w-full h-screen overflow-hidden bg-slate-50">
-      {/* Intro Panel (Not part of the stack, or the first in the stack) */}
-      <div className="panel absolute inset-0 w-full h-full flex flex-col justify-center items-center px-6 z-0 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-[11px] font-mono font-semibold tracking-[0.18em] uppercase text-[#B8860B] mb-6">
-            Our Process
+    <section id="services" ref={container} className="bg-slate-50 border-t border-slate-200">
+      <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
+
+        {/* Header */}
+        <div className="pipeline-header py-16 md:py-24 border-b border-slate-200">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+                Architecture / 01
+              </p>
+              <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
+                The Institutional<br/>Pipeline
+              </h2>
+            </div>
+            <p className="text-base md:text-lg text-slate-500 max-w-sm leading-relaxed md:pb-4 font-sans">
+              We do not build on assumptions. Every AI-native model passes through a strict, four-stage validation framework.
+            </p>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-slate-900 mb-6 tracking-tight">
-            How We Incubate: <br/>De-risking via Lean MVPs.
-          </h2>
-          <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
-            We do not build on assumptions. Every venture in our portfolio passes through a strict validation framework before scaling. For our technology and AI-native models, we deploy an end-to-end operational data pipeline that guarantees reliability from day one.
-          </p>
-          <div className="mt-12 text-slate-400 animate-bounce">
-            <span className="text-[11px] font-mono uppercase tracking-[0.2em]">Scroll to explore pipeline</span>
-            <div className="w-px h-12 bg-slate-200 mx-auto mt-2"></div>
+        </div>
+
+        {/* Pipeline Table — like the reference image */}
+        <div className="py-12 md:py-20">
+          {/* Column headers with rotated labels on top */}
+          <div className="grid grid-cols-4 gap-0 border border-slate-200">
+            {/* Row 1: Stage IDs */}
+            <div className="grid grid-cols-4 col-span-4 border-b border-slate-200">
+              {stages.map((s) => (
+                <div key={s.id} className="border-r border-slate-200 last:border-r-0 px-6 py-3">
+                  <span className="font-mono text-[10px] tracking-[0.2em] text-slate-400 uppercase">{s.id}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Row 2: Rotated labels */}
+            <div className="grid grid-cols-4 col-span-4 border-b border-slate-200">
+              {stages.map((s, i) => (
+                <div key={i} className="border-r border-slate-200 last:border-r-0 px-6 py-8 flex items-center justify-center">
+                  <span
+                    className="font-heading text-3xl md:text-4xl tracking-[0.15em] text-slate-900 uppercase"
+                    style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(180deg)' }}
+                  >
+                    {s.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Row 3: Title + Description — bulk of the content */}
+            <div className="grid grid-cols-4 col-span-4 border-b border-slate-200">
+              {stages.map((s, i) => (
+                <div key={i} className="pipeline-col border-r border-slate-200 last:border-r-0 px-6 py-10 flex flex-col justify-between min-h-[260px]">
+                  <div>
+                    <h3 className="font-heading text-2xl md:text-3xl uppercase text-slate-900 mb-5 tracking-wide">
+                      {s.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-slate-500 leading-relaxed font-sans">
+                      {s.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Row 4: Footer row */}
+            <div className="grid grid-cols-4 col-span-4">
+              {stages.map((s, i) => (
+                <div key={i} className="border-r border-slate-200 last:border-r-0 px-6 py-4 flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B]"></div>
+                  <span className="font-mono text-[10px] tracking-[0.15em] text-slate-400 uppercase">Stage {i + 1} of 4</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-
-      {/* The 4 Stages */}
-      {stages.map((stage, i) => (
-        <div 
-          key={i} 
-          className={`panel absolute inset-0 w-full h-full flex flex-col justify-center items-center px-6 z-${(i + 1) * 10} ${stage.color}`}
-          style={{ transform: 'translateY(100%)' }}
-        >
-          <div className="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Visual/Number Side */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative">
-                <span className="text-[12rem] lg:text-[16rem] font-heading font-bold text-slate-100 leading-none select-none">
-                  0{i + 1}
-                </span>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full border border-[#B8860B]/20 bg-white/50 backdrop-blur flex items-center justify-center shadow-lg">
-                    <span className="text-[#B8860B] font-mono font-bold tracking-widest uppercase text-sm text-center px-4">
-                      {stage.subtitle.split(' ')[0]}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Text Side */}
-            <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-slate-200 bg-white text-[11px] font-mono font-semibold tracking-[0.18em] uppercase text-[#B8860B] mb-6 shadow-sm">
-                Pipeline Stage {i + 1}
-              </div>
-              <h3 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 mb-4 tracking-tight">
-                {stage.subtitle}
-              </h3>
-              <h4 className="text-xl text-[#B8860B] font-medium mb-6">
-                {stage.title}
-              </h4>
-              <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl">
-                {stage.desc}
-              </p>
-            </div>
-          </div>
-        </div>
-      ))}
     </section>
   );
 }

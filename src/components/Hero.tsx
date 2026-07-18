@@ -2,7 +2,6 @@
 
 import React, { useRef } from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -11,62 +10,70 @@ export default function Hero() {
   const gridRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Subtle mouse move parallax effect on the SVG grid
+    // Subtle mouse parallax on background
     const handleMouseMove = (e: MouseEvent) => {
       if (!gridRef.current) return;
       const { innerWidth, innerHeight } = window;
-      const x = (e.clientX / innerWidth - 0.5) * 40; // 40px movement range
-      const y = (e.clientY / innerHeight - 0.5) * 40;
-      
-      gsap.to(gridRef.current, {
-        x,
-        y,
-        duration: 1,
-        ease: 'power2.out',
-      });
+      const x = (e.clientX / innerWidth - 0.5) * 30;
+      const y = (e.clientY / innerHeight - 0.5) * 30;
+      gsap.to(gridRef.current, { x, y, duration: 1.2, ease: 'power2.out' });
     };
-
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, { scope: container });
 
   return (
-    <section ref={container} className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-slate-50">
-      {/* Primary Background Image Container */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-slate-50/85 backdrop-blur-[4px] z-10" />
-        <div className="absolute inset-0 opacity-40 bg-[url('/Gold_Flow_Light.jpg.jpeg')] bg-cover bg-center" />
+    <section ref={container} className="relative min-h-screen flex flex-col justify-end pb-16 md:pb-24 overflow-hidden bg-white">
+      {/* Background texture */}
+      <div ref={gridRef} className="absolute inset-[-40px] z-0">
+        <div className="absolute inset-0 bg-[url('/Gold_Flow_Light.jpg.jpeg')] bg-cover bg-center opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/30 to-white/80" />
       </div>
 
-      {/* SVG Grid Overlay - Parallax Layer */}
-      <div 
-        ref={gridRef}
-        className="absolute inset-[-50px] z-10 pointer-events-none opacity-[0.12]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f172a' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px'
-        }}
-      />
-
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 relative z-20 w-full text-center">
-        {/* Added a glassmorphism backdrop to the text to prevent any visual overlap with the grid */}
-        <div className="bg-white/70 backdrop-blur-md p-10 md:p-16 rounded-[2.5rem] shadow-2xl border border-white/50">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-heading font-bold tracking-tight leading-[1.1] text-slate-900 mb-8">
-            From Idea to Impact — <br />
-            <span className="text-slate-600">Fast, Lean, and Profitable.</span>
-          </h1>
-
-          <p className="text-lg md:text-xl leading-loose max-w-3xl mx-auto text-slate-700 mb-12">
-            Avora Ventures operates as a family-office-style incubator. We identify gaps in high-potential markets, validate them through lean MVPs, and build sustainable ventures around proven demand.
+      {/* Eyebrow bar pinned to top */}
+      <div className="absolute top-0 left-0 right-0 z-10 border-b border-slate-200/60">
+        <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16 py-4 flex items-center justify-between">
+          <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-slate-400">
+            &gt; AI-first infrastructure
           </p>
+          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B]">
+            Navigating Ventures
+          </p>
+        </div>
+      </div>
 
-          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <Link href="#contact" className="btn-primary group !px-10 !py-5 text-base shadow-[0_8px_30px_-8px_rgba(184,134,11,0.6)] hover:shadow-[0_12px_40px_-10px_rgba(184,134,11,0.8)]">
-              Discuss Your Venture
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+      {/* Main content */}
+      <div className="relative z-10 max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16 w-full pt-32">
+        {/* Giant display heading */}
+        <h1 className="font-heading text-[13vw] md:text-[11vw] lg:text-[10vw] leading-[0.9] tracking-wide uppercase text-slate-900 mb-12">
+          Scale Your{' '}
+          <span className="text-[#B8860B]">AI Vision</span>
+          <br />
+          With Precision
+          <br />
+          And Fidelity.
+        </h1>
+
+        {/* Bottom row: subtext + CTAs */}
+        <div className="border-t border-slate-200 pt-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+          <div className="md:col-span-5">
+            <p className="text-slate-500 text-base md:text-lg leading-relaxed font-sans max-w-md">
+              We specialize in production-grade AI solutions for high-stakes environments, bridging proprietary data quality to deliver systems that perform when outcomes matter.
+            </p>
+          </div>
+          <div className="md:col-span-7 flex flex-col sm:flex-row gap-4 md:justify-end items-start sm:items-center">
+            <Link
+              href="#contact"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white font-sans font-semibold text-sm tracking-wide hover:bg-[#B8860B] transition-colors duration-300"
+            >
+              Discuss A Venture
+              <span>→</span>
             </Link>
-            <Link href="#portfolio" className="btn-secondary !px-10 !py-5 text-base bg-white/80 hover:bg-white backdrop-blur shadow-sm">
-              Explore Our Portfolio
+            <Link
+              href="#portfolio"
+              className="inline-flex items-center gap-3 px-8 py-4 border border-slate-300 text-slate-700 font-sans font-semibold text-sm tracking-wide hover:border-slate-900 hover:text-slate-900 transition-colors duration-300"
+            >
+              Explore Capabilities
             </Link>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { DM_Sans, Bebas_Neue, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
 import { siteConfig } from '@/config/site';
 import { generateSchema } from '@/app/schema';
@@ -12,15 +12,16 @@ import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 import "./globals.css";
 
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  variable: '--font-plus-jakarta-sans',
+  variable: '--font-dm-sans',
   display: 'swap',
 });
 
-const spaceGrotesk = Space_Grotesk({
+const bebasNeue = Bebas_Neue({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  weight: ['400'],
+  variable: '--font-bebas-neue',
   display: 'swap',
 });
 
@@ -75,7 +76,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`scroll-smooth ${plusJakartaSans.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`scroll-smooth ${dmSans.variable} ${bebasNeue.variable} ${ibmPlexMono.variable}`}>
       <head>
         <script
           type="application/ld+json"

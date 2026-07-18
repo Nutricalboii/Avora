@@ -9,134 +9,111 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const cases = [
+const outcomes = [
   {
-    title: 'Medical Diagnostics AI-Native',
-    subtitle: 'Scaled a rare disease training corpus from 87 confirmed cases to 50,000 synthetic volumes.',
+    id: 'CS-01',
+    title: 'Medical Diagnostics AI',
+    metric: '0.91',
+    metricLabel: 'AUC achieved',
+    execution: 'Scaled a rare disease training corpus from 87 confirmed cases to 50,000 synthetic volumes.',
     outcome: 'Improved diagnostic AUC from 0.72 to 0.91, creating a highly scalable medical AI product.',
-    color: 'bg-white',
   },
   {
+    id: 'CS-02',
     title: 'Enterprise Infrastructure NLP',
-    subtitle: 'Automated high-volume clinical and document extraction processing via custom NLP labeling schemas.',
+    metric: '0.95+',
+    metricLabel: 'Kappa threshold',
+    execution: 'Automated high-volume clinical and document extraction via custom NLP labeling schemas.',
     outcome: 'Reached a verified 0.95+ Kappa threshold, completely eliminating administrative processing bottlenecks.',
-    color: 'bg-slate-50',
   },
   {
+    id: 'CS-03',
     title: 'Predictive Demand Logistics',
-    subtitle: 'Deployed localized multi-SKU demand forecasting models integrated into operational supply chains.',
+    metric: '12×',
+    metricLabel: 'forecasting precision',
+    execution: 'Deployed localized multi-SKU demand forecasting models integrated into operational supply chains.',
     outcome: 'Reduced over-allocation risks and optimized inventory tracking with transparent performance metrics.',
-    color: 'bg-white',
-  }
+  },
 ];
 
 export default function WorkPreview() {
   const container = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const panels = gsap.utils.toArray('.portfolio-panel') as HTMLElement[];
-    
-    if (panels.length === 0) return;
-
-    // Create a timeline that pins the container
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: 'top top',
-        end: `+=${100 * panels.length}%`, // Scroll duration based on number of panels
-        pin: true,
-        scrub: 1, // Smooth scrubbing
-      }
-    });
-
-    // Animate each panel (except the first intro panel)
-    panels.forEach((panel, i) => {
-      if (i === 0) return;
-
-      // Slide up from bottom and stack
-      tl.fromTo(panel, 
-        { yPercent: 100 }, 
-        { yPercent: 0, ease: 'none' }
+    const rows = gsap.utils.toArray('.outcome-row') as HTMLElement[];
+    rows.forEach((row, i) => {
+      gsap.fromTo(row,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+          delay: i * 0.12,
+          scrollTrigger: { trigger: row, start: 'top 82%' }
+        }
       );
     });
-
   }, { scope: container });
 
   return (
-    <section id="portfolio" ref={container} className="relative w-full h-screen overflow-hidden bg-slate-50 border-t border-slate-200/60">
-      
-      {/* Intro Panel (Index 0) */}
-      <div className="portfolio-panel absolute inset-0 w-full h-full flex flex-col justify-center items-center px-6 z-0 bg-slate-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-slate-200 bg-white text-[11px] font-mono font-semibold tracking-[0.18em] uppercase text-[#B8860B] mb-8 shadow-sm">
-            Delivered Work
-          </div>
-          <h2 className="text-5xl md:text-7xl font-heading font-bold text-slate-900 mb-8 tracking-tight">
-            Proven Demand. <br/>
-            <span className="text-slate-400">Sustainable Growth.</span>
-          </h2>
-          <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
-            Our delivery logs reflect practical, high-performance deployments across our core operational verticals. To maintain strict corporate discipline, client data is compiled anonymously.
-          </p>
-          <div className="mt-16 text-slate-400 animate-bounce">
-            <span className="text-[11px] font-mono uppercase tracking-[0.2em] font-bold">Scroll to view case studies</span>
-            <div className="w-px h-12 bg-slate-200 mx-auto mt-2"></div>
-          </div>
-        </div>
-      </div>
+    <section id="portfolio" ref={container} className="bg-white border-t border-slate-200">
+      <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
 
-      {/* The Case Study Panels */}
-      {cases.map((c, i) => (
-        <div 
-          key={i} 
-          className={`portfolio-panel absolute inset-0 w-full h-full flex flex-col justify-center items-center px-6 z-${(i + 1) * 10} ${c.color} border-t border-slate-200/50 shadow-[0_-20px_50px_rgba(0,0,0,0.03)]`}
-          style={{ transform: 'translateY(100%)' }}
-        >
-          <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            
-            {/* Left Side: Numbering and Visual Element */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative">
-                <span className="text-[14rem] lg:text-[18rem] font-heading font-bold text-slate-100/60 leading-none select-none drop-shadow-sm -ml-8">
-                  0{i + 1}
-                </span>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-48 h-48 rounded-full border border-[#B8860B]/10 bg-gradient-to-br from-white to-slate-50 flex flex-col items-center justify-center shadow-2xl">
-                    <span className="text-slate-400 font-mono font-bold text-sm tracking-[0.2em] mb-2 uppercase">
-                      Case Study
-                    </span>
-                    <span className="text-[#B8860B] font-heading font-bold text-5xl">
-                      CS-0{i + 1}
-                    </span>
+        {/* Header */}
+        <div className="py-16 md:py-24 border-b border-slate-200 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div>
+            <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+              Network / 01
+            </p>
+            <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
+              Work-Tested<br/>Outcomes
+            </h2>
+          </div>
+          <p className="text-base md:text-lg text-slate-500 max-w-sm leading-relaxed md:pb-4 font-sans">
+            Our delivery logs reflect practical, high-performance deployments across our core operational verticals. Client data is compiled anonymously.
+          </p>
+        </div>
+
+        {/* Outcome rows — large stat + content, no cards */}
+        <div>
+          {outcomes.map((o, i) => (
+            <div
+              key={i}
+              className="outcome-row border-b border-slate-200 py-14 md:py-20 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-start"
+            >
+              {/* Left: ID + big stat */}
+              <div className="md:col-span-3">
+                <p className="font-mono text-[11px] tracking-[0.2em] text-slate-400 uppercase mb-6">{o.id} / To: {o.metricLabel.split(' ')[0].toUpperCase()}</p>
+                <div className="font-heading text-8xl md:text-9xl lg:text-[9rem] leading-none text-[#B8860B] tracking-tight">
+                  {o.metric}
+                </div>
+                <p className="font-mono text-[11px] tracking-[0.15em] text-slate-400 uppercase mt-3">{o.metricLabel}</p>
+              </div>
+
+              {/* Center: Title + divider */}
+              <div className="md:col-span-1 hidden md:flex items-start pt-2 justify-center">
+                <div className="w-px h-40 bg-slate-200"></div>
+              </div>
+
+              {/* Right: execution + outcome */}
+              <div className="md:col-span-8 md:pl-6">
+                <h3 className="font-heading text-4xl md:text-5xl uppercase tracking-wide text-slate-900 mb-8 leading-tight">
+                  {o.title}
+                </h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-[#B8860B] mb-3">Execution</p>
+                    <p className="text-slate-600 leading-relaxed text-base md:text-lg font-sans">{o.execution}</p>
+                  </div>
+                  <div>
+                    <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-slate-900 mb-3">Outcome</p>
+                    <p className="text-slate-800 font-semibold leading-relaxed text-base md:text-lg font-sans">{o.outcome}</p>
                   </div>
                 </div>
               </div>
             </div>
-            
-            {/* Right Side: Content */}
-            <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#B8860B]/20 bg-white text-[11px] font-mono font-semibold tracking-[0.18em] uppercase text-[#B8860B] mb-8 shadow-sm">
-                Portfolio Log {i + 1}
-              </div>
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-slate-900 mb-8 tracking-tight leading-tight">
-                {c.title}
-              </h3>
-              
-              <div className="space-y-8 max-w-2xl">
-                <div className="bg-white/60 p-6 rounded-2xl border border-slate-200/60 shadow-sm backdrop-blur-sm">
-                  <span className="text-[11px] font-mono font-bold text-[#B8860B] uppercase tracking-[0.2em] block mb-3">Execution</span>
-                  <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-light">{c.subtitle}</p>
-                </div>
-                <div className="bg-white p-6 rounded-2xl border-l-4 border-l-[#B8860B] shadow-md relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#B8860B]/5 rounded-bl-full -mr-16 -mt-16 pointer-events-none"></div>
-                  <span className="text-[11px] font-mono font-bold text-slate-900 uppercase tracking-[0.2em] block mb-3">Outcome</span>
-                  <p className="text-lg md:text-xl font-semibold text-slate-800 leading-relaxed">{c.outcome}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-      ))}
+      </div>
     </section>
   );
 }

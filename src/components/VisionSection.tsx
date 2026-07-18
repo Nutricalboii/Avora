@@ -10,108 +10,93 @@ if (typeof window !== 'undefined') {
 }
 
 const verticals = [
-  { title: 'AI-Native Digital Tools', desc: 'Building proprietary intelligent software powered by our rigorous data and implementation pipeline.', id: '01', color: 'bg-white' },
-  { title: 'Consumer & Lifestyle Products', desc: 'Designing and launching agile consumer brands scaled through digital-first infrastructure.', id: '02', color: 'bg-slate-50' },
-  { title: 'Sourcing & Export-Driven Models', desc: 'Developing high-efficiency operational channels to capture global trade opportunities.', id: '03', color: 'bg-white' },
-  { title: 'Operational Ventures', desc: 'Deploying hands-on management and infrastructure within high-growth emerging industries.', id: '04', color: 'bg-slate-50' }
+  { title: 'AI-Native Digital Tools', desc: 'Building proprietary intelligent software powered by our rigorous data and implementation pipeline.', id: '01' },
+  { title: 'Consumer & Lifestyle Products', desc: 'Designing and launching agile consumer brands scaled through digital-first infrastructure.', id: '02' },
+  { title: 'Sourcing & Export-Driven Models', desc: 'Developing high-efficiency operational channels to capture global trade opportunities.', id: '03' },
+  { title: 'Operational Ventures', desc: 'Deploying hands-on management and infrastructure within high-growth emerging industries.', id: '04' }
 ];
 
 export default function VisionSection() {
   const container = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const panels = gsap.utils.toArray('.vision-panel') as HTMLElement[];
-    
-    if (panels.length === 0) return;
-
-    // Create a timeline that pins the container
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: 'top top',
-        end: `+=${100 * panels.length}%`, // Scroll duration based on number of panels
-        pin: true,
-        scrub: 1, // Smooth scrubbing
-      }
-    });
-
-    // Animate each panel (except the first intro panel)
-    panels.forEach((panel, i) => {
-      if (i === 0) return;
-
-      // Slide up from bottom and stack
-      tl.fromTo(panel, 
-        { yPercent: 100 }, 
-        { yPercent: 0, ease: 'none' }
+    const rows = gsap.utils.toArray('.vertical-row') as HTMLElement[];
+    rows.forEach((row, i) => {
+      gsap.fromTo(row,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 85%',
+          },
+          delay: i * 0.08,
+        }
       );
     });
-
   }, { scope: container });
 
   return (
-    <section ref={container} className="relative w-full h-screen overflow-hidden bg-slate-50">
-      
-      {/* Intro Panel (Index 0 in animation timeline) */}
-      <div className="vision-panel absolute inset-0 w-full h-full flex flex-col justify-center items-center px-6 z-0 bg-[url('/Gold_Flow_Light.jpg.jpeg')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-slate-50/90 backdrop-blur-md z-0" />
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-slate-200 bg-white/95 text-[11px] font-mono font-semibold tracking-[0.18em] uppercase text-[#B8860B] mb-8 shadow-sm">
-            Our Vision & Core Model
-          </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 mb-8 tracking-tight">
-            Building the Next Generation of High-Performance Businesses.
-          </h2>
-          <p className="text-lg md:text-xl text-slate-700 max-w-4xl mx-auto leading-loose bg-white/80 p-8 rounded-2xl border border-slate-200/50 shadow-sm">
-            Our mission is to create a new generation of lean, high-performance businesses that seamlessly blend technology, creativity, and commercial discipline. As a family-office-style incubator, we provide both the operational infrastructure and the technical execution required to turn validated concepts into scalable enterprise assets. We protect capital by engineering products around absolute, proven demand.
-          </p>
-          <div className="mt-12 text-[#B8860B] animate-bounce opacity-80">
-            <span className="text-[11px] font-mono uppercase tracking-[0.2em] font-bold">Scroll to explore</span>
-            <div className="w-px h-12 bg-[#B8860B]/30 mx-auto mt-2"></div>
+    <section ref={container} className="bg-white border-t border-slate-200">
+      {/* Header row */}
+      <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="py-16 md:py-24 border-b border-slate-200">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+                Avora / 01 — Our Vision & Core Model
+              </p>
+              <h2 className="font-heading text-7xl md:text-9xl lg:text-[10rem] leading-none text-slate-900 tracking-wide uppercase">
+                The Portfolio
+              </h2>
+            </div>
+            <p className="text-base md:text-lg text-slate-500 max-w-md leading-relaxed md:pb-4 font-sans">
+              We protect capital by engineering products around absolute, proven demand. Four distinct verticals, each validated before scale.
+            </p>
           </div>
         </div>
-      </div>
 
-      {/* The 4 Vertical Panels */}
-      {verticals.map((item, i) => (
-        <div 
-          key={i} 
-          className={`vision-panel absolute inset-0 w-full h-full flex flex-col justify-center items-center px-6 z-${(i + 1) * 10} ${item.color}`}
-          style={{ transform: 'translateY(100%)' }}
-        >
-          <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Massive Number Left Side */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative">
-                <span className="text-[14rem] lg:text-[18rem] font-heading font-bold text-slate-100 leading-none select-none drop-shadow-sm">
-                  {item.id}
-                </span>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-2xl border border-[#B8860B]/30 bg-white/60 backdrop-blur-md flex items-center justify-center shadow-xl rotate-3">
-                    <span className="text-[#B8860B] font-mono font-bold text-3xl">
-                      {item.id}
-                    </span>
-                  </div>
+        {/* Table-style rows — no cards */}
+        <div>
+          {verticals.map((item, i) => (
+            <div
+              key={i}
+              className="vertical-row group border-b border-slate-200 py-10 md:py-14 grid grid-cols-12 gap-6 items-center hover:bg-slate-50 transition-colors duration-200 cursor-default"
+            >
+              {/* Index */}
+              <div className="col-span-1 md:col-span-1">
+                <span className="font-mono text-[11px] tracking-[0.2em] text-slate-400">{item.id}</span>
+              </div>
+
+              {/* Title */}
+              <div className="col-span-11 md:col-span-4">
+                <h3 className="font-heading text-4xl md:text-5xl lg:text-6xl uppercase tracking-wide text-slate-900 leading-none group-hover:text-[#B8860B] transition-colors duration-300">
+                  {item.title}
+                </h3>
+              </div>
+
+              {/* Divider — only on desktop */}
+              <div className="hidden md:block md:col-span-1">
+                <div className="h-px w-full bg-slate-200"></div>
+              </div>
+
+              {/* Description */}
+              <div className="col-span-12 md:col-span-5 md:pl-4">
+                <p className="text-slate-500 text-base md:text-lg leading-relaxed font-sans">
+                  {item.desc}
+                </p>
+              </div>
+
+              {/* Arrow accent */}
+              <div className="hidden md:flex col-span-1 justify-end">
+                <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:border-[#B8860B] group-hover:bg-[#B8860B] transition-all duration-300">
+                  <span className="text-slate-400 group-hover:text-white text-sm transition-colors">→</span>
                 </div>
               </div>
             </div>
-            
-            {/* Text Content Right Side */}
-            <div className="lg:col-span-7 pr-4 lg:pr-12">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#B8860B]/20 bg-[#B8860B]/5 text-[11px] font-mono font-semibold tracking-[0.18em] uppercase text-[#B8860B] mb-6 shadow-sm">
-                Focus Area {item.id}
-              </div>
-              <h3 className="text-4xl md:text-6xl font-heading font-bold text-slate-900 mb-6 tracking-tight leading-tight">
-                {item.title}
-              </h3>
-              <div className="h-px w-24 bg-gradient-to-r from-[#B8860B] to-transparent mb-8"></div>
-              <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-2xl font-light">
-                {item.desc}
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
-      ))}
+      </div>
     </section>
   );
 }
