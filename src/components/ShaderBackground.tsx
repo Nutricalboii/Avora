@@ -45,7 +45,7 @@ void main() {
   }
   
   // Bright gold instead of pastel blue
-  vec3 brightGold = vec3(0.92, 0.75, 0.20);
+  vec3 brightGold = vec3(0.90, 0.78, 0.38);
   vec3 veryPaleCream = vec3(1.0, 0.98, 0.92);
   // Bright metallic highlight
   vec3 highlight = vec3(1.0, 1.0, 1.0); 
