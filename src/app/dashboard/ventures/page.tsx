@@ -1,4 +1,4 @@
-import { getVentures } from '@/actions/venture.actions';
+﻿import { getVentures } from '@/actions/venture.actions';
 import VentureModal from '@/components/dashboard/VentureModal';
 import Link from 'next/link';
 
@@ -27,7 +27,7 @@ export default async function VenturesPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Venture Studio</h1>
-          <p className="text-sm text-slate-500 mt-1">Ideate, manage, and scale Avora internal spin-outs.</p>
+          <p className="text-sm text-slate-900 mt-1">Ideate, manage, and scale Avora internal spin-outs.</p>
         </div>
         <VentureModal />
       </div>
@@ -36,12 +36,12 @@ export default async function VenturesPage() {
         {ventures.length === 0 ? (
           <div className="col-span-full py-16 text-center bg-white rounded-xl border border-slate-200 border-dashed">
             <div className="mx-auto w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
             <h3 className="text-lg font-medium text-slate-900 mb-1">No ventures pitched yet</h3>
-            <p className="text-slate-500 max-w-sm mx-auto">Start building the next big thing by pitching a new venture to the studio.</p>
+            <p className="text-slate-900 max-w-sm mx-auto">Start building the next big thing by pitching a new venture to the studio.</p>
           </div>
         ) : (
           ventures.map((venture) => {
@@ -57,16 +57,16 @@ export default async function VenturesPage() {
                   </div>
                   
                   <div className="mb-6 flex-grow">
-                    <p className="text-sm text-slate-600 line-clamp-3 leading-relaxed">{venture.vision}</p>
+                    <p className="text-sm text-slate-900 line-clamp-3 leading-relaxed">{venture.vision}</p>
                   </div>
                   
                   <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-slate-500 font-medium mb-1">Avora Stake</p>
+                      <p className="text-xs text-slate-900 font-medium mb-1">Avora Stake</p>
                       <p className="text-sm font-bold text-slate-800">{avoraEquity}%</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-xs text-slate-500 font-medium mb-1">Target Funding</p>
+                      <p className="text-xs text-slate-900 font-medium mb-1">Target Funding</p>
                       <p className="text-sm font-bold text-green-600">${venture.fundingTarget.toLocaleString()}</p>
                     </div>
                   </div>

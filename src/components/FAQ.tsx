@@ -1,90 +1,69 @@
-'use client';
+﻿﻿'use client';
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/cn';
-import { useInView } from '@/hooks/useInView';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
   {
-    question: "How fast can you deploy a custom AI solution?",
-    answer: "Our standard engagement runs 2 to 6 weeks from scoping to first validated output, depending on complexity. We start with the business problem — not a preferred algorithm — run a discovery phase to map constraints and data readiness, then execute in tight iteration cycles with transparent metrics at every step. The first deployment is treated as a validated hypothesis, not a finished product. Scaling follows once value is demonstrated.",
+    question: 'What exactly does a "family-office-style incubator" mean?',
+    answer: 'It means we operate with high commercial discipline, agility, and a long-term capital preservation mindset. Instead of chasing speculative metrics, we invest operational resources directly into identifying structural market gaps, building lean MVPs, and scaling only when real revenue and demand are proven.',
   },
   {
-    question: "Is synthetic data reliable enough to train production models?",
-    answer: "When engineered correctly, yes. Poorly designed synthetic data can memorise and reproduce rare real-world combinations — that is a genuine risk. Well-designed synthetic data, validated against downstream task performance, can outperform scarce or noisy real data. One of our medical imaging engagements scaled a rare disease training corpus from 87 confirmed cases to 50,000 synthetic volumes, improving diagnostic AUC from 0.72 to 0.91. The critical controls are domain expert oversight, physics-informed generation, and explicit differential privacy budgets — not just labelling output as synthetic.",
+    question: 'How fast do you launch an initial MVP or product?',
+    answer: 'Our standard technical engagements run 2 to 6 weeks from scoping to the first validated deployment. We run a tight discovery phase to map data readiness and technical constraints, treating the initial launch as a live test to prove product viability.',
   },
   {
-    question: "What does your data annotation process look like?",
-    answer: "Annotation begins with a requirement and ontology phase — defining exactly what the model must learn before any labelling starts. We write exhaustive annotation guidelines with visual examples and edge-case handling. Execution uses modality-specific tooling: CVAT for computer vision tasks, Prodigy for NLP labelling, with model-assisted pre-labelling reducing manual effort by up to 60%. A senior expert reviews a stratified sample of every batch, and a third expert adjudicates all disagreements. Inter-annotator Kappa must reach 0.91 or above before any dataset is signed off.",
+    question: 'What industries does the Avora Ventures portfolio cover?',
+    answer: 'Our portfolio spans four distinct emerging spaces: AI-native digital tools, consumer and lifestyle products, sourcing and export-driven models, and operational ventures.',
   },
   {
-    question: "What is the difference between annotation and labeling in your pipeline?",
-    answer: "Annotation is the structured process of adding meaning to raw data using ontologies, schemas, and classification rules — it defines what the model must learn. Labeling is the operational execution at scale, applying those annotated rules consistently across large workloads with consensus verification protocols. Both steps are sequential in our pipeline and governed by distinct quality gates.",
-  },
-  {
-    question: "How do you ensure quality across large labeling workloads?",
-    answer: "Inconsistent labels do not just add noise — they create dangerous overconfidence in model outputs. Our QA framework measures accuracy, completeness, consistency, timeliness, and inter-annotator agreement across every batch. We run multi-stage validation: statistical tests on label distributions, downstream task performance checks, expert benchmarking against gold-standard samples, and formal sign-off against defined Kappa thresholds. Datasets are versioned like software releases and flagged for regeneration when source distributions drift post-deployment.",
-  },
-  {
-    question: "What industries do you work in?",
-    answer: "Delivered engagements span medical AI and rare disease diagnostics, pharmaceutical clinical trial document processing, precision agriculture and drone telemetry, multi-SKU retail demand forecasting, and enterprise data infrastructure. We apply the same rigorous pipeline framework across verticals, with particular depth in regulated industries where data quality, model explainability, and compliance are non-negotiable.",
-  },
-  {
-    question: "Can I see examples of your previous work?",
-    answer: "Yes — all engagements are documented anonymously on the Delivered Work page. You will find the sector type, what was built, how it was done technically, and the verified outcome. No client names are used; results are compiled from delivery logs. If you want to discuss a specific use case in more detail before engaging, reach out through the contact form.",
-  },
+    question: 'How do you guarantee the quality of your technical assets?',
+    answer: 'Every digital tool we incubate runs through our multi-stage QA framework. We measure label distribution, run expert benchmarking against gold-standard samples, and require high statistical validation before any software or dataset is deployed to production.',
+  }
 ];
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const { ref, isInView } = useInView({ once: true, threshold: 0.1 });
 
   return (
-    <section id="faq" className="py-24 relative overflow-hidden contact-bg">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section header */}
-        <div
-          ref={ref}
-          className="mb-16 text-center"
-        >
-          <span className="section-eyebrow">FAQ</span>
-          <h2 className="section-heading">
-            Frequently Asked Questions
+    <section id="faq" className="border-t border-slate-200/70" style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}>
+      <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
+
+        {/* Header â€” matches editorial style */}
+        <div className="py-16 md:py-24 border-b border-slate-200">
+          <p className="font-mono font-medium text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+            Common Questions
+          </p>
+          <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
+            FAQ
           </h2>
         </div>
 
-        {/* Accordion List */}
-        <div className="space-y-3 max-w-3xl mx-auto">
+        {/* Accordion rows â€” no cards, just lines */}
+        <div>
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div
-                key={index}
-                className={cn(
-                  'glass-panel rounded-xl overflow-hidden transition-all duration-300',
-                  isOpen ? 'border-[#D4AF37]/40 shadow-lg' : 'hover:border-[#D4AF37]/20'
-                )}
-              >
+              <div key={index} className="group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-6 md:p-8 mb-6 shadow-sm hover:shadow-md transition-all duration-300">
                 <button
-                  className="w-full px-6 py-5 text-left flex justify-between items-center gap-4 focus:outline-none"
+                  className="w-full py-2 text-left flex justify-between items-center gap-6 focus:outline-none"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
                 >
-                  <span className={cn(
-                    'font-sans font-semibold text-sm md:text-base transition-colors',
-                    isOpen ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300 hover:text-[#D4AF37] dark:hover:text-white'
-                  )}>
+                  {/* Question â€” use DM Sans, NOT Bebas Neue (avoid cramped caps) */}
+                  <span className="font-sans font-semibold text-xl md:text-2xl text-slate-800 leading-snug group-hover:text-[#B8860B] transition-colors duration-200 tracking-normal">
                     {faq.question}
                   </span>
-                  <ChevronDown
-                    className={cn(
-                      'w-4 h-4 flex-shrink-0 transition-transform duration-300 text-slate-500',
-                      isOpen && 'rotate-180'
-                    )}
-                  />
+                  <div className={cn(
+                    'flex-shrink-0 w-10 h-10 border flex items-center justify-center transition-all duration-300',
+                    isOpen
+                      ? 'border-[#B8860B] bg-[#B8860B] text-white'
+                      : 'border-slate-300 text-slate-900 group-hover:border-[#B8860B] group-hover:text-[#B8860B]'
+                  )}>
+                    <ChevronDown className={cn('w-5 h-5 transition-transform duration-300', isOpen && 'rotate-180')} />
+                  </div>
                 </button>
 
                 <AnimatePresence initial={false}>
@@ -93,11 +72,12 @@ export default function FAQ() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ type: 'tween', ease: 'easeInOut', duration: 0.25 }}
+                      transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
                     >
-                      <div className="px-6 pb-6 pt-0 font-sans text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                        <div className="h-px bg-slate-200 dark:bg-slate-800/40 mb-4" />
-                        {faq.answer}
+                      <div className="pb-10 max-w-3xl">
+                        <p className="font-sans font-medium text-lg md:text-xl text-slate-900 leading-loose tracking-normal font-normal">
+                          {faq.answer}
+                        </p>
                       </div>
                     </motion.div>
                   )}
@@ -106,8 +86,13 @@ export default function FAQ() {
             );
           })}
         </div>
-
       </div>
     </section>
   );
 }
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-import { getClients } from '@/actions/client.actions';
+﻿import { getClients } from '@/actions/client.actions';
 import ClientModal from '@/components/dashboard/ClientModal';
 
 export const dynamic = 'force-dynamic';
@@ -11,7 +11,7 @@ export default async function ClientsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Clients</h1>
-          <p className="text-sm text-slate-500 mt-1">Manage your client relationships and revenue.</p>
+          <p className="text-sm text-slate-900 mt-1">Manage your client relationships and revenue.</p>
         </div>
         <ClientModal />
       </div>
@@ -21,17 +21,17 @@ export default async function ClientsPage() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Client Name</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Company</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Tier</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Revenue</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Date Added</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Client Name</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Company</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Tier</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Total Revenue</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Date Added</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200">
               {clients.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-10 text-center text-slate-500">
+                  <td colSpan={5} className="px-6 py-10 text-center text-slate-900">
                     No clients found. Click "New Client" to add one.
                   </td>
                 </tr>
@@ -45,7 +45,7 @@ export default async function ClientsPage() {
                         </div>
                         <div>
                           <div className="text-sm font-medium text-slate-900">{client.name}</div>
-                          <div className="text-xs text-slate-500">{client.email}</div>
+                          <div className="text-xs text-slate-900">{client.email}</div>
                         </div>
                       </div>
                     </td>
@@ -58,7 +58,7 @@ export default async function ClientsPage() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">
                       ${client.totalRevenue.toLocaleString()}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">
                       {new Date(client.createdAt).toLocaleDateString()}
                     </td>
                   </tr>

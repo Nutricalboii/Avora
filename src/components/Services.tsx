@@ -1,249 +1,242 @@
-'use client';
+﻿'use client';
 
-import React, { useState, useEffect } from 'react';
-import { cn } from '@/lib/cn';
-import { Database, Tag, Tags, ShieldCheck, BrainCircuit, Cpu, ArrowRight } from 'lucide-react';
-import { useInView } from '@/hooks/useInView';
-import { useSearchParams } from 'next/navigation';
-import { services } from '@/config/services';
+import React, { useState, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 
-const iconMap: Record<string, React.ComponentType<any>> = {
-  Database,
-  Tag,
-  Tags,
-  ShieldCheck,
-  BrainCircuit,
-};
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
-const aimSteps = [
+const stages = [
   {
-    phase: "01",
-    title: "Discovery",
-    deliverable: "Architectural Bottleneck Audit",
-    artifact: "Technical Integration Specification"
+    seq: 'SEQ.01',
+    label: 'ANNOTATION',
+    title: 'Data Generation',
+    desc: 'We engineer robust, physics-informed synthetic datasets under expert domain oversight. This ensures our AI-native models have a high-fidelity foundation even when real-world market data is sparse.',
+    detail: 'Our data generation pipeline combines physics-informed simulation with domain expert validation. Every synthetic dataset passes through multi-layer fidelity checks before being approved for model training. Edge-case richness and statistical diversity are built in by design, not as afterthoughts.',
+    bgImage: '/Gold_Flow_Light.jpg.jpeg',
+    icon: '⬡',
+    stat: '60%',
+    statLabel: 'faster data readiness',
   },
   {
-    phase: "02",
-    title: "Implementation",
-    deliverable: "Custom Pipeline Core",
-    artifact: "Consensus Verification Logs"
+    seq: 'SEQ.02',
+    label: 'LABELING',
+    title: 'Data Annotation & Labeling',
+    desc: 'We divide execution into precise ontologies and high-volume deployment. Using modality-specific tooling and model-assisted automation, we accelerate data readiness by up to 60%.',
+    detail: 'Our annotation workflows use custom modality-specific tooling built for speed without sacrificing precision. Model-assisted pre-labeling reduces manual overhead while human review cycles ensure every ontology is correctly applied at volume.',
+    bgImage: '/Institutional_Network_Light.jpg.jpeg',
+    icon: '◈',
+    stat: '0.91+',
+    statLabel: 'Kappa agreement',
   },
   {
-    phase: "03",
-    title: "Scaling",
-    deliverable: "Active Cloud Endpoint",
-    artifact: "Latency Telemetry Dashboard"
-  }
+    seq: 'SEQ.03',
+    label: 'AUDITING',
+    title: 'Data Auditing & QA',
+    desc: 'Our multi-stage QA framework enforces strict inter-annotator agreement metrics (Kappa ≥ 0.91). Datasets are treated like versioned software releases.',
+    detail: 'Every dataset is version-controlled and passed through automated agreement scoring, expert spot-checks, and adversarial edge-case stress tests. Datasets failing our Kappa threshold are routed back to reannotation — never shipped.',
+    bgImage: '/Silicone_Gold_Light.jpg.jpeg',
+    icon: '◎',
+    stat: '100%',
+    statLabel: 'versioned releases',
+  },
+  {
+    seq: 'SEQ.04',
+    label: 'IMPLEMENTATION',
+    title: 'AI Implementation',
+    desc: 'We build and launch custom MVPs within 2 to 6 weeks. We treat initial infrastructure as a measurable hypothesis, scaling computational resources only when commercial value is proven.',
+    detail: 'Post-validation, we architect secure, interpretable AI systems with SHAP-based explainability and drift monitoring built in from day one. Deployments are scoped as live hypotheses: lean, measurable, and ready to scale when the numbers say so.',
+    bgImage: '/Structural_Precision_Light.jpg.jpeg',
+    icon: '◉',
+    stat: '2–6wk',
+    statLabel: 'MVP to deployment',
+  },
 ];
 
 export default function Services() {
-  const [activeTab, setActiveTab] = useState<string>('data-generation');
-  const searchParams = useSearchParams();
-  const { ref, isInView } = useInView({ once: true, threshold: 0.1 });
+  const container = useRef<HTMLDivElement>(null);
+  const [openIndex, setOpenIndex] = useState<number>(0);
 
-  useEffect(() => {
-    const tabParam = searchParams.get('tab');
-    if (tabParam && services.some((s) => s.id === tabParam)) {
-      setActiveTab(tabParam);
-    }
-  }, [searchParams]);
+  useGSAP(() => {
+    gsap.fromTo('.pipeline-header',
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1, y: 0, duration: 1.0, ease: 'power4.out',
+        scrollTrigger: { trigger: container.current, start: 'top 80%' },
+      }
+    );
 
-  const currentService = services.find((s) => s.id === activeTab) || services[0];
+    const cards = gsap.utils.toArray('.pipeline-card') as HTMLElement[];
+    cards.forEach((card, i) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1, y: 0, duration: 0.9, ease: 'power4.out',
+          delay: i * 0.12,
+          scrollTrigger: { trigger: container.current, start: 'top 68%' },
+        }
+      );
+    });
+  }, { scope: container });
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden services-bg">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        
-        {/* Section Header */}
-        <div ref={ref} className="text-left mb-16 max-w-3xl">
-          <span className="section-eyebrow">Services &amp; Capabilities</span>
-          <h2 className="section-heading mb-4">
-            Five disciplines, one continuous pipeline.
-          </h2>
-          <p className="section-subtext max-w-xl">
-            Avora operates a structured data-to-deployment sequence designed for deep safety, precision engineering, and zero operational abstractions.
-          </p>
+    <section
+      id="services"
+      ref={container}
+      style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}
+      className="border-t border-slate-200/70"
+    >
+      <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
+
+        {/* Header */}
+        <div className="pipeline-header py-16 md:py-24 border-b border-slate-200">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div>
+              <p className="font-mono font-medium text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+                Architecture / 01
+              </p>
+              <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
+                The Institutional<br />Pipeline
+              </h2>
+            </div>
+            <p className="text-base md:text-lg text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans font-medium">
+              We do not build on assumptions. Every AI-native model passes through a strict, four-stage validation framework.
+            </p>
+          </div>
         </div>
 
-        {/* Tabular Specification Console */}
-        <div className="glass-panel rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 border border-slate-300 dark:border-slate-800">
-          
-          {/* Left Panel: Service Selection (Tab navigation) */}
-          <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-slate-300 dark:border-slate-800 flex lg:flex-col overflow-x-auto scrollbar-hide bg-black/[0.01] dark:bg-slate-950/30">
-            {services.map((service, index) => {
-              const isActive = service.id === activeTab;
-              const Icon = iconMap[service.icon] || Database;
+        {/* Collapsible Pipeline Cards */}
+        <div className="py-12 md:py-20">
+          <div className="flex flex-col gap-0 border border-slate-200/80 overflow-hidden rounded-sm bg-white shadow-sm">
+            {stages.map((stage, i) => {
+              const isOpen = openIndex === i;
               return (
-                <button
-                  key={service.id}
-                  onClick={() => setActiveTab(service.id)}
-                  className={cn(
-                    "flex-shrink-0 lg:w-full text-left p-5 lg:p-6 transition-all duration-150 flex flex-col gap-1.5 hover:bg-black/[0.02] dark:hover:bg-white/[0.01] border-b-2 lg:border-b-0 lg:border-l-2",
-                    isActive 
-                      ? "bg-black/[0.02] dark:bg-white/[0.02] border-[#D4AF37]" 
-                      : "border-transparent"
-                  )}
+                <div
+                  key={i}
+                  className="pipeline-card group relative border-b border-slate-200/80 last:border-b-0"
                 >
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-[#D4AF37]">0{index + 1}</span>
-                    <span className={cn(
-                      "font-heading font-bold text-sm lg:text-base whitespace-nowrap",
-                      isActive ? "text-slate-900 dark:text-white" : "text-slate-500 dark:text-slate-400"
-                    )}>
-                      {service.title}
-                    </span>
-                  </div>
-                  <span className="hidden lg:inline text-xs text-slate-500 dark:text-slate-500 font-sans line-clamp-1">{service.subtitle}</span>
-                </button>
+                  
+
+                  {/* Card trigger row */}
+                  <button
+                    className="relative w-full text-left focus:outline-none"
+                    onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                    aria-expanded={isOpen}
+                  >
+                    <div className={`flex flex-wrap md:grid md:grid-cols-12 items-center gap-4 px-6 md:px-10 transition-all duration-500 ${isOpen ? 'py-8 md:py-10' : 'py-6 md:py-8'}`}>
+                      {/* Seq number */}
+                      <div className="w-full md:w-auto md:col-span-1">
+                        <span className={`font-mono font-semibold text-xs tracking-[0.22em] uppercase transition-colors duration-300 ${isOpen ? 'text-[#B8860B]' : 'text-slate-700'}`}>
+                          {stage.seq}
+                        </span>
+                      </div>
+
+                      {/* Label */}
+                      <div className="flex-1 md:col-span-7">
+                        <div className="flex items-center gap-4">
+                          <span className={`font-heading text-3xl md:text-4xl lg:text-5xl tracking-[0.08em] uppercase leading-none transition-colors duration-300 ${isOpen ? 'text-[#B8860B]' : 'text-slate-800 group-hover:text-slate-900'}`}>
+                            {stage.label}
+                          </span>
+                          {isOpen && (
+                            <span className="hidden md:inline font-mono font-medium text-xs tracking-[0.18em] uppercase text-slate-700 border-l border-slate-200 pl-4">
+                              {stage.title}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Stat — visible when open */}
+                      <div className="hidden md:flex col-span-2 flex-col items-end">
+                        <AnimatePresence>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 4 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: 4 }}
+                              transition={{ duration: 0.3 }}
+                              className="text-right"
+                            >
+                              <div className="font-heading text-3xl text-[#B8860B] leading-none">{stage.stat}</div>
+                              <div className="font-mono font-semibold text-[11px] tracking-[0.15em] uppercase text-slate-700 mt-1">{stage.statLabel}</div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+
+                      {/* Chevron */}
+                      <div className="flex-none md:col-span-2 flex justify-end">
+                        <div className={`w-9 h-9 flex items-center justify-center border transition-all duration-300 ${isOpen ? 'border-[#B8860B] bg-[#B8860B] text-white' : 'border-slate-200 text-slate-700 group-hover:border-slate-300'}`}>
+                          <ChevronDown className={`w-4 h-4 transition-transform duration-400 ${isOpen ? 'rotate-180' : ''}`} />
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+
+                  {/* Expandable content */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        key="content"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                        style={{ overflow: 'hidden' }}
+                      >
+                        <div className="relative px-6 md:px-10 pb-10 md:pb-12">
+                          <div className="border-t border-slate-200/60 pt-8">
+                            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+                              {/* Left: short desc */}
+                              <div className="md:col-span-5">
+                                <p className="font-mono font-semibold text-xs tracking-[0.2em] uppercase text-[#B8860B] mb-4">Overview</p>
+                                <p className="text-slate-900 text-base md:text-lg leading-relaxed font-sans font-medium">
+                                  {stage.desc}
+                                </p>
+                              </div>
+                              {/* Right: detail */}
+                              <div className="md:col-span-7">
+                                <p className="font-mono font-semibold text-xs tracking-[0.2em] uppercase text-slate-700 mb-4">Methodology</p>
+                                <p className="text-slate-900 text-base leading-relaxed font-sans font-medium">
+                                  {stage.detail}
+                                </p>
+                                {/* Stat row on mobile */}
+                                <div className="mt-6 md:hidden flex items-center gap-3">
+                                  <div className="font-heading text-4xl text-[#B8860B]">{stage.stat}</div>
+                                  <div className="font-mono font-semibold text-[11px] tracking-[0.15em] uppercase text-slate-700">{stage.statLabel}</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               );
             })}
           </div>
 
-          {/* Right Panel: Spec Sheet & Custom Graphic per service category */}
-          <div className="lg:col-span-8 p-8 flex flex-col md:flex-row gap-8 justify-between">
-            
-            {/* Spec details */}
-            <div className="flex-1 space-y-6">
-              <div>
-                <span className="text-xs font-mono font-semibold text-[#D4AF37] uppercase tracking-widest block mb-1">
-                  Capability Parameters
-                </span>
-                <h3 className="text-2xl font-heading font-bold text-slate-900 dark:text-white tracking-tight">
-                  {currentService.title}
-                </h3>
-                <p className="text-sm font-sans text-slate-500 dark:text-slate-400 mt-1">{currentService.subtitle}</p>
-              </div>
-
-              <div className="h-px bg-slate-200 dark:bg-slate-800" />
-
-              <div className="space-y-4 font-sans text-sm">
-                <p className="leading-relaxed text-slate-650 dark:text-slate-300">
-                  {currentService.description}
-                </p>
-                
-                <div className="space-y-2">
-                  <span className="text-xs font-mono text-slate-500 dark:text-slate-500 uppercase tracking-wider block">Key Operational Protocols:</span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                    {currentService.features.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
-                <span className="text-xs font-mono text-slate-500 dark:text-slate-500 uppercase block mb-1">Target SLA Objective:</span>
-                <span className="text-sm font-mono font-bold text-[#D4AF37] uppercase tracking-wider">
-                  {currentService.metrics}
-                </span>
-              </div>
-            </div>
-
-            {/* Right block: Contextual Diagrams */}
-            <div className="w-full md:w-72 flex-shrink-0 flex flex-col justify-center border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-[#0a0a0f] rounded-xl p-6">
-              
-              {activeTab === 'data-generation' && (
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
-                    <span className="text-[10px] font-mono text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">Generation Engine</span>
-                    <span className="text-[9px] font-mono text-[#D4AF37] uppercase font-bold">Active</span>
-                  </div>
-                  <div className="space-y-2 text-[10px] font-mono text-slate-600 dark:text-slate-400">
-                    <div className="p-2 border border-slate-200 dark:border-slate-800 rounded bg-black/[0.01] dark:bg-white/[0.01]">
-                      <span className="text-slate-550 block">Modality:</span>
-                      <span className="text-slate-900 dark:text-white block mt-0.5 font-bold">Tabular / Vision / Text</span>
-                    </div>
-                    <div className="p-2 border border-slate-200 dark:border-slate-800 rounded bg-black/[0.01] dark:bg-white/[0.01]">
-                      <span className="text-slate-550 block">Verification:</span>
-                      <span className="text-slate-900 dark:text-white block mt-0.5 font-bold">Downstream Task Validation</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'data-annotation' && (
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
-                    <span className="text-[10px] font-mono text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">Ontology Framework</span>
-                    <span className="text-[9px] font-mono text-teal-650 dark:text-teal-400 uppercase font-bold">Configured</span>
-                  </div>
-                  <div className="space-y-2 text-[10px] font-mono text-slate-650 dark:text-slate-400">
-                    <div className="p-2 border border-slate-200 dark:border-slate-800 rounded bg-black/[0.01] dark:bg-white/[0.01]">
-                      <span className="text-slate-550 block">Consensus Metric:</span>
-                      <span className="text-slate-900 dark:text-white block mt-0.5 font-bold">Inter-Annotator Kappa</span>
-                    </div>
-                    <div className="p-2 border border-slate-200 dark:border-slate-800 rounded bg-black/[0.01] dark:bg-white/[0.01]">
-                      <span className="text-slate-550 block">Guidelines:</span>
-                      <span className="text-slate-900 dark:text-white block mt-0.5 font-bold">Multi-Pass Edge Case Rules</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'labeling' && (
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
-                    <span className="text-[10px] font-mono text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">Consensus Overlap</span>
-                    <span className="text-[9px] font-mono text-emerald-600 dark:text-emerald-400 uppercase font-bold">Verified</span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center py-2 space-y-4">
-                    <div className="relative w-24 h-24 flex items-center justify-center">
-                      <div className="absolute top-0 left-2 w-14 h-14 rounded-full border border-[#D4AF37]/50 bg-[#D4AF37]/5 flex items-center justify-center text-[8px] text-slate-500 dark:text-slate-400 font-mono">Annotator_A</div>
-                      <div className="absolute bottom-0 right-2 w-14 h-14 rounded-full border border-teal-500/50 bg-teal-500/5 flex items-center justify-center text-[8px] text-slate-500 dark:text-slate-400 font-mono">Annotator_B</div>
-                    </div>
-                    <p className="text-[9px] font-mono text-slate-500 dark:text-slate-500 text-center">Double-Blind Overlap consensus (99.98% Confidence Threshold)</p>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'auditing' && (
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
-                    <span className="text-[10px] font-mono text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">Quality Scoring</span>
-                    <span className="text-[9px] font-mono text-[#D4AF37] uppercase font-bold">System Gate</span>
-                  </div>
-                  <div className="space-y-3 text-[10px] font-mono text-slate-600 dark:text-slate-400">
-                    <div className="p-2 border border-slate-200 dark:border-slate-800 rounded bg-black/[0.01] dark:bg-white/[0.01]">
-                      <span className="text-slate-550 block">Accuracy Dimension:</span>
-                      <span className="text-slate-900 dark:text-white block mt-0.5 font-bold">Statistical Drift check</span>
-                    </div>
-                    <div className="p-2 border border-slate-200 dark:border-slate-800 rounded bg-black/[0.01] dark:bg-white/[0.01]">
-                      <span className="text-slate-550 block">Compliance Check:</span>
-                      <span className="text-slate-900 dark:text-white block mt-0.5 font-bold">Cohen&apos;s Kappa Adjudicated</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'ai-implementation' && (
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
-                    <span className="text-[10px] font-mono text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">A.I.M. Framework</span>
-                    <span className="text-[9px] font-mono text-[#D4AF37] uppercase font-bold">Deployment</span>
-                  </div>
-                  
-                  {/* Embedded AIM steps */}
-                  <div className="space-y-2 font-mono text-[9px]">
-                    {aimSteps.map((step) => (
-                      <div key={step.phase} className="p-2 border border-slate-200 dark:border-slate-800 rounded bg-black/[0.01] dark:bg-white/[0.01]">
-                        <span className="text-[#D4AF37] block font-bold">PHASE {step.phase} / {step.title.toUpperCase()}</span>
-                        <span className="text-slate-600 dark:text-slate-400 block mt-0.5 font-sans leading-tight">{step.deliverable}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-            </div>
-
+          {/* Footer label */}
+          <div className="mt-8 flex items-center gap-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B]" />
+            <span className="font-mono font-medium text-xs tracking-[0.18em] uppercase text-slate-700">
+              Four-stage institutional validation — click any stage to expand
+            </span>
           </div>
-
         </div>
-
       </div>
     </section>
   );
 }
+
+
+
+
+
+
+

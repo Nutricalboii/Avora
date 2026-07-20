@@ -1,4 +1,4 @@
-import { getAiModels } from '@/actions/ai.actions';
+﻿import { getAiModels } from '@/actions/ai.actions';
 import { getProjects } from '@/actions/project.actions';
 import AiModelModal from '@/components/dashboard/AiModelModal';
 
@@ -30,7 +30,7 @@ export default async function AiModelsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-900">AI Models Registry</h1>
-          <p className="text-sm text-slate-500 mt-1">Manage and track your registered AI solutions and endpoints.</p>
+          <p className="text-sm text-slate-900 mt-1">Manage and track your registered AI solutions and endpoints.</p>
         </div>
         <AiModelModal projects={projects} />
       </div>
@@ -40,18 +40,18 @@ export default async function AiModelsPage() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Model Name</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Framework</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Linked Project</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Accuracy</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Latency</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Cost / Inf</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Model Name</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Framework</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Linked Project</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Accuracy</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Latency</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Cost / Inf</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200">
               {models.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-10 text-center text-slate-500">
+                  <td colSpan={6} className="px-6 py-10 text-center text-slate-900">
                     No AI models registered. Click "Register Model" to add one.
                   </td>
                 </tr>
@@ -60,21 +60,21 @@ export default async function AiModelsPage() {
                   <tr key={model.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm font-medium text-slate-900">{model.name}</div>
-                      <div className="text-xs text-slate-500 truncate max-w-[200px]">{model.endpoint}</div>
+                      <div className="text-xs text-slate-900 truncate max-w-[200px]">{model.endpoint}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {getFrameworkBadge(model.framework)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
-                      {(model as any).project?.name || <span className="text-slate-400 italic">Unlinked</span>}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">
+                      {(model as any).project?.name || <span className="text-slate-700 italic">Unlinked</span>}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-700">
                       {model.accuracy ? `${model.accuracy}%` : 'N/A'}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">
                       {model.latency_ms ? `${model.latency_ms}ms` : 'N/A'}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">
                       {model.cost_per_inference ? `$${model.cost_per_inference.toFixed(4)}` : 'N/A'}
                     </td>
                   </tr>

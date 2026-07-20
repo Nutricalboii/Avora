@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import Link from 'next/link';
-import { useInView } from '@/hooks/useInView';
+import { useReveal } from '@/hooks/useInView';
 import { cn } from '@/lib/cn';
 import {
   Database,
@@ -10,64 +10,69 @@ import {
   Tags,
   ShieldCheck,
   BrainCircuit,
-  ArrowRight,
+  ArrowUpRight,
 } from 'lucide-react';
 
 const stages = [
   {
     number: '01',
     title: 'Data Generation',
-    summary: 'Engineering synthetic data for scarcity, privacy, and scale',
+    summary: 'Synthetic data for scarcity, privacy, and scale.',
     icon: Database,
     href: '/#services?tab=data-generation',
+    span: 'sm:col-span-2',
   },
   {
     number: '02',
     title: 'Data Annotation',
-    summary: 'The foundational act of giving raw data meaning',
+    summary: 'Ontologies and guidelines that define what to learn.',
     icon: Tag,
     href: '/#services?tab=data-annotation',
+    span: '',
   },
   {
     number: '03',
-    title: 'Data Labeling',
-    summary: 'Operationalising annotation at scale',
+    title: 'Labeling',
+    summary: 'Consensus-verified annotation at scale.',
     icon: Tags,
     href: '/#services?tab=labeling',
+    span: '',
   },
   {
     number: '04',
-    title: 'Quality Assurance',
-    summary: 'Making data fit for purpose across eight dimensions',
+    title: 'Auditing',
+    summary: 'Eight-dimension quality gate before training.',
     icon: ShieldCheck,
     href: '/#services?tab=auditing',
+    span: '',
   },
   {
     number: '05',
-    title: 'AI Solutions',
-    summary: 'Where quality data becomes engineered systems',
+    title: 'AI Implementation',
+    summary: 'Production ML systems, deployed and monitored.',
     icon: BrainCircuit,
     href: '/#services?tab=ai-implementation',
+    span: 'sm:col-span-2',
   },
 ];
 
 export default function HeroBento() {
-  const { ref, isInView } = useInView({ once: true, threshold: 0.1 });
+  const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
     <div ref={ref} className="w-full">
-      {/* Section Header */}
-      <div className="mb-6">
-        <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#D4AF37] mb-2 block">
-          AI Delivery Pipeline
-        </span>
-        <p className="text-sm text-slate-500 dark:text-slate-400 font-sans">
-          Five disciplines, one continuous sequence
-        </p>
+      <div className="mb-5 flex items-end justify-between">
+        <div>
+          <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.22em] text-[var(--accent)] block mb-1">
+            The pipeline
+          </span>
+          <p className="text-sm text-[var(--foreground-muted)]">
+            Five stages, one continuous sequence
+          </p>
+        </div>
       </div>
 
-      {/* Bento Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {stages.map((stage, index) => {
           const Icon = stage.icon;
           return (
@@ -75,49 +80,37 @@ export default function HeroBento() {
               key={stage.number}
               href={stage.href}
               className={cn(
-                'group relative glass-panel p-4 rounded-xl transition-all duration-300',
-                'hover:border-[#D4AF37]/40 hover:shadow-lg hover:shadow-[#D4AF37]/5',
-                'hover:-translate-y-0.5',
-                isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                'group relative glass-panel p-5 rounded-2xl transition-all duration-500',
+                'hover:border-[var(--accent)]/40 hover:shadow-premium',
+                'hover:-translate-y-1',
+                stage.span,
+                visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               )}
-              style={{ transitionDelay: `${index * 80}ms` }}
+              style={{ transitionDelay: `${index * 90}ms` }}
             >
-              {/* Stage Number */}
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-mono font-bold text-[#D4AF37] uppercase tracking-wider">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[10px] font-mono font-semibold text-[var(--accent)] uppercase tracking-[0.18em]">
                   Stage {stage.number}
                 </span>
-                <Icon className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-[#D4AF37] transition-colors" />
+                <div className="w-9 h-9 rounded-full bg-[var(--accent-tint)] flex items-center justify-center group-hover:bg-[var(--accent)] transition-colors duration-300">
+                  <Icon className="w-4 h-4 text-[var(--accent)] group-hover:text-white transition-colors duration-300" />
+                </div>
               </div>
 
-              {/* Title */}
-              <h3 className="text-sm font-heading font-bold text-slate-900 dark:text-white mb-1.5 group-hover:text-[#D4AF37] transition-colors">
+              <h3 className="text-base font-heading font-bold text-[var(--foreground)] mb-1.5 group-hover:text-[var(--accent)] transition-colors">
                 {stage.title}
               </h3>
 
-              {/* Summary */}
-              <p className="text-xs text-slate-550 dark:text-slate-400 font-sans leading-relaxed line-clamp-2">
+              <p className="text-[13px] text-[var(--foreground-muted)] leading-relaxed">
                 {stage.summary}
               </p>
 
-              {/* Hover Arrow */}
-              <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <div className="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-x-0.5">
+                <ArrowUpRight className="w-4 h-4 text-[var(--accent)]" />
               </div>
             </Link>
           );
         })}
-      </div>
-
-      {/* CTA */}
-      <div className="mt-5">
-        <Link
-          href="/#services"
-          className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-[#D4AF37] hover:text-[#B8962D] transition-colors group"
-        >
-          Explore the services pipeline
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </Link>
       </div>
     </div>
   );

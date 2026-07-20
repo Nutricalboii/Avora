@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 export default function CapTable({ capTable }: { capTable: any }) {
   const parsedCapTable = capTable || { avora: 100, founders: 0, investors: 0, optionsPool: 0 };

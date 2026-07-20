@@ -1,4 +1,4 @@
-export const siteConfig = {
+﻿export const siteConfig = {
   name: "Avora Ventures",
   description: "Data generation, annotation, labeling, quality auditing, and AI implementation pipelines.",
   url: "https://avora-3kyx.vercel.app",

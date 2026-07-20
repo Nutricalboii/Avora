@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma';
+﻿import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
@@ -59,7 +59,7 @@ export default async function DashboardHome() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {kpis.map((kpi, index) => (
           <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
-            <h3 className="text-sm font-medium text-slate-500 mb-1">{kpi.title}</h3>
+            <h3 className="text-sm font-medium text-slate-900 mb-1">{kpi.title}</h3>
             <div className="flex items-end justify-between mt-auto">
               <p className="text-3xl font-bold text-slate-900">{kpi.value}</p>
               <div className={`flex items-center text-sm font-medium ${kpi.isPositive ? 'text-green-600' : 'text-red-600'}`}>
@@ -84,17 +84,17 @@ export default async function DashboardHome() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Project Name</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Client</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Type</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
-                <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Created</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Project Name</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Client</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Type</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Status</th>
+                <th className="px-6 py-3 text-xs font-semibold text-slate-900 uppercase tracking-wider">Created</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200">
               {recentProjects.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-10 text-center text-slate-500">
+                  <td colSpan={5} className="px-6 py-10 text-center text-slate-900">
                     No recent projects. Head to the Projects tab to create one!
                   </td>
                 </tr>
@@ -102,12 +102,12 @@ export default async function DashboardHome() {
                 recentProjects.map((project) => (
                   <tr key={project.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">{project.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">{(project as any).client?.name || 'Unknown'}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">{project.type.replace('_', ' ')}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">{(project as any).client?.name || 'Unknown'}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">{project.type.replace('_', ' ')}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {getStatusBadge(project.status)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500">{new Date(project.createdAt).toLocaleDateString()}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">{new Date(project.createdAt).toLocaleDateString()}</td>
                   </tr>
                 ))
               )}

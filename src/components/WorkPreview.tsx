@@ -1,60 +1,134 @@
-'use client';
+﻿'use client';
 
-import Link from 'next/link';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
-// Sector + service + primary metric only — no company names, no fake IDs
-const previews = [
-  { sector: 'Rare Disease Diagnostics', service: 'Data Generation', metric: 'AUC 0.72 → 0.91' },
-  { sector: 'Precision Agriculture', service: 'Data Annotation', metric: 'Scouting: 3h → 25min' },
-  { sector: 'Clinical Document Processing', service: 'Labeling', metric: 'F1: 0.94 · Kappa: 0.90' },
-  { sector: 'Retail Demand Forecasting', service: 'AI Implementation', metric: '680% ROI at 36 months' },
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+const outcomes = [
+  {
+    id: 'CS-01',
+    title: 'Medical Diagnostics AI',
+    metric: '0.91',
+    metricLabel: 'AUC achieved',
+    execution: 'Scaled a rare disease training corpus from 87 confirmed cases to 50,000 synthetic volumes.',
+    outcome: 'Improved diagnostic AUC from 0.72 to 0.91, creating a highly scalable medical AI product.',
+  },
+  {
+    id: 'CS-02',
+    title: 'Enterprise Infrastructure NLP',
+    metric: '0.95+',
+    metricLabel: 'Kappa threshold',
+    execution: 'Automated high-volume clinical and document extraction via custom NLP labeling schemas.',
+    outcome: 'Reached a verified 0.95+ Kappa threshold, completely eliminating administrative processing bottlenecks.',
+  },
+  {
+    id: 'CS-03',
+    title: 'Predictive Demand Logistics',
+    metric: '12×',
+    metricLabel: 'forecasting precision',
+    execution: 'Deployed localized multi-SKU demand forecasting models integrated into operational supply chains.',
+    outcome: 'Reduced over-allocation risks and optimized inventory tracking with transparent performance metrics.',
+  },
 ];
 
 export default function WorkPreview() {
-  return (
-    <section className="py-24 relative overflow-hidden services-bg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  const container = useRef<HTMLDivElement>(null);
 
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+  useGSAP(() => {
+    gsap.fromTo('.work-header',
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1, y: 0, duration: 1.0, ease: 'power4.out',
+        scrollTrigger: { trigger: container.current, start: 'top 80%' },
+      }
+    );
+
+    const rows = gsap.utils.toArray('.outcome-row') as HTMLElement[];
+    rows.forEach((row, i) => {
+      gsap.fromTo(row,
+        { opacity: 0, y: 56, willChange: 'transform' },
+        {
+          opacity: 1, y: 0, duration: 1.0, ease: 'power4.out',
+          delay: i * 0.13,
+          clearProps: 'willChange',
+          scrollTrigger: { trigger: row, start: 'top 84%' },
+        }
+      );
+    });
+  }, { scope: container });
+
+  return (
+    <section
+      id="portfolio"
+      ref={container}
+      className="border-t border-slate-200/70"
+      style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}
+    >
+      <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
+
+        {/* Header */}
+        <div className="work-header py-16 md:py-24 border-b border-slate-200 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
           <div>
-            <span className="section-eyebrow">Delivered Outcomes</span>
-            <h2 className="section-heading mt-2">Work from the field.</h2>
-            <p className="section-subtext mt-3 max-w-lg">
-              Anonymized engagement results. Sector, methodology, and verified outcome only.
+            <p className="font-mono font-medium text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+              Network / 01
             </p>
+            <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
+              Work-Tested<br/>Outcomes
+            </h2>
           </div>
-          <Link
-            href="/work"
-            className="flex-shrink-0 text-xs font-mono font-bold text-[#D4AF37] hover:text-[#c09f32] uppercase tracking-widest transition-colors"
-          >
-            Read More →
-          </Link>
+          <p className="text-base md:text-lg text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans font-medium">
+            Our delivery logs reflect practical, high-performance deployments across our core operational verticals. Client data is compiled anonymously.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          {previews.map((p) => (
-            <Link
-              key={p.sector}
-              href="/work"
-              className="group glass-panel rounded-xl p-6 flex flex-col gap-4 hover:border-[#D4AF37]/40 transition-all duration-200"
+        {/* Outcome rows */}
+        <div>
+          {outcomes.map((o, i) => (
+            <div
+              key={i}
+              className="outcome-row group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-start"
             >
-              <div>
-                <span className="text-[9px] font-mono font-bold text-[#D4AF37] uppercase tracking-widest block mb-1">
-                  {p.service}
-                </span>
-                <span className="text-sm font-sans font-semibold text-slate-800 dark:text-slate-100">
-                  {p.sector}
-                </span>
+              {/* Left: ID + big stat */}
+              <div className="md:col-span-4">
+                <p className="font-mono font-medium text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-6">{o.id} / To: {o.metricLabel.split(' ')[0].toUpperCase()}</p>
+                <div className="font-heading text-8xl md:text-9xl lg:text-[9rem] leading-none text-[#B8860B] tracking-tight">
+                  {o.metric}
+                </div>
+                <p className="font-mono font-medium text-[11px] tracking-[0.15em] text-slate-700 uppercase mt-3">{o.metricLabel}</p>
               </div>
-              <div className="h-px bg-slate-200 dark:bg-slate-800" />
-              <span className="text-base font-mono font-extrabold text-slate-900 dark:text-white group-hover:text-[#D4AF37] transition-colors">
-                {p.metric}
-              </span>
-            </Link>
+
+              {/* Right: execution + outcome */}
+              <div className="md:col-span-8 md:pl-6">
+                <h3 className="font-heading text-4xl md:text-5xl uppercase tracking-wide text-slate-900 mb-8 leading-tight">
+                  {o.title}
+                </h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <p className="font-mono font-medium text-[11px] tracking-[0.18em] uppercase text-[#B8860B] mb-3">Execution</p>
+                    <p className="text-slate-900 leading-relaxed text-base md:text-lg font-sans font-medium">{o.execution}</p>
+                  </div>
+                  <div>
+                    <p className="font-mono font-medium text-[11px] tracking-[0.18em] uppercase text-slate-900 mb-3">Outcome</p>
+                    <p className="text-slate-800 font-semibold leading-relaxed text-base md:text-lg font-sans font-medium">{o.outcome}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
-
       </div>
     </section>
   );
 }
+
+
+
+
+
+

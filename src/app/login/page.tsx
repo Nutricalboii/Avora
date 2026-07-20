@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
@@ -33,7 +33,7 @@ export default function LoginPage() {
           <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-900">
             Sign in to your account
           </h2>
-          <p className="mt-2 text-center text-sm text-slate-600">
+          <p className="mt-2 text-center text-sm text-slate-900">
             Avora Client Operations Dashboard
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function LoginPage() {
             </button>
           </div>
           
-          <div className="mt-4 text-center text-xs text-slate-500">
+          <div className="mt-4 text-center text-xs text-slate-900">
             <p>For testing, use:</p>
             <p>Email: admin@avora.io</p>
             <p>Password: password</p>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -30,7 +30,7 @@ export default function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsO
           <Link href="/dashboard" className="text-xl font-bold text-white tracking-tight">
             Avora Ops
           </Link>
-          <button className="md:hidden text-slate-400 hover:text-white" onClick={() => setIsOpen(false)}>
+          <button className="md:hidden text-slate-700 hover:text-white" onClick={() => setIsOpen(false)}>
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
