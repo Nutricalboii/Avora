@@ -120,14 +120,7 @@ export default function Services() {
                   key={i}
                   className="pipeline-card group relative border-b border-slate-200/80 last:border-b-0"
                 >
-                  {/* Background image — very low opacity */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
-                    style={{
-                      backgroundImage: `url('${stage.bgImage}')`,
-                      opacity: isOpen ? 0.35 : 0.15,
-                    }}
-                  />
+                  
 
                   {/* Card trigger row */}
                   <button
@@ -240,6 +233,7 @@ export default function Services() {
     </section>
   );
 }
+
 
 
 
