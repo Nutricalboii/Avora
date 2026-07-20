@@ -116,6 +116,7 @@ export default function IntroPage() {
   const router = useRouter();
   const [leaving, setLeaving] = useState(false);
   useWebGL(canvasRef);
+  useEffect(() => { router.prefetch('/home'); }, [router]);
 
   const enter = () => {
     if (leaving) return;
