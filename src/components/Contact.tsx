@@ -90,7 +90,7 @@ export default function Contact() {
               With Us.
             </h2>
             <p className="text-lg text-slate-600 mb-8 max-w-md leading-relaxed">
-              If you are looking to deploy commercial discipline, advanced technical execution, and lean operational structures to a high-potential market gap, letâ€™s connect.
+              If you are looking to deploy commercial discipline, advanced technical execution, and lean operational structures to a high-potential market gap, let's connect.
             </p>
 
             <div className="space-y-4 pt-6 border-t border-slate-200">
@@ -232,7 +232,7 @@ export default function Contact() {
                     disabled={isSubmitting}
                     className="btn-primary w-full py-4 disabled:opacity-60 bg-[#1e293b] text-white"
                   >
-                    {isSubmitting ? 'Sendingâ€¦' : 'Submit Structural Overview'}
+                    {isSubmitting ? 'Sending...' : 'Submit Structural Overview'}
                   </button>
                 </form>
               )}
@@ -243,4 +243,5 @@ export default function Contact() {
     </section>
   );
 }
+
 

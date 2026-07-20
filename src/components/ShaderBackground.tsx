@@ -27,28 +27,50 @@ export default function ShaderBackground() {
     if (!gl) return;
 
     const VS = `attribute vec2 a_position;varying vec2 v_uv;void main(){v_uv=a_position*0.5+0.5;gl_Position=vec4(a_position,0.0,1.0);}`;
+
+    // High-contrast, clearly visible cream & gold fluid shader
     const FS = `precision highp float;
 uniform float u_time;uniform vec2 u_resolution;uniform vec2 u_mouse;varying vec2 v_uv;
 void main(){
   vec2 p=(gl_FragCoord.xy*2.0-u_resolution.xy)/min(u_resolution.x,u_resolution.y);
-  float t=u_time*0.10;
+  float t=u_time*0.12;
   vec2 mouse=(u_mouse/u_resolution)-0.5;
-  for(float n=1.0;n<7.0;n++){
-    p.x+=0.45/n*sin(n*p.y+t+0.55*n)+mouse.x*0.025;
-    p.y+=0.38/n*sin(n*p.x+t+0.40*n)-mouse.y*0.025;
+  for(float n=1.0;n<8.0;n++){
+    p.x+=0.5/n*sin(n*p.y+t+0.6*n)+mouse.x*0.04;
+    p.y+=0.4/n*sin(n*p.x+t+0.4*n)-mouse.y*0.04;
   }
-  vec3 cream=vec3(0.984,0.976,0.965);
-  vec3 deepCream=vec3(0.940,0.928,0.912);
-  vec3 gold=vec3(0.722,0.525,0.044);
-  float flow=abs(sin(p.x*1.1+p.y*1.1+t*0.45));
-  float shadow=smoothstep(0.12,0.88,flow);
-  vec3 color=mix(deepCream,cream,shadow);
-  float vein=smoothstep(0.38,0.62,flow);
-  color=mix(color,gold,vein*0.16);
-  float ridge=pow(max(0.0,1.0-flow),20.0);
-  color+=gold*ridge*0.13;
-  float grain=fract(sin(dot(v_uv+u_time*0.007,vec2(12.9898,78.233)))*43758.5453);
-  color+=(grain-0.5)*0.016;
+  /* Palette */
+  vec3 cream     = vec3(0.980, 0.972, 0.958);
+  vec3 deepCream = vec3(0.910, 0.895, 0.872);
+  vec3 gold      = vec3(0.769, 0.627, 0.110);
+  vec3 darkGold  = vec3(0.600, 0.460, 0.030);
+
+  float flow = abs(sin(p.x*1.2+p.y*1.2+t*0.5));
+
+  /* Deep cream base with strong shadow for volume */
+  float shadow = smoothstep(0.10, 0.90, flow);
+  vec3 color = mix(deepCream, cream, shadow);
+
+  /* Bold gold veins — increased from 0.16 to 0.42 for visibility */
+  float vein = smoothstep(0.32, 0.62, flow);
+  color = mix(color, gold, vein * 0.42);
+
+  /* Dark gold undertone in troughs */
+  float trough = smoothstep(0.0, 0.30, flow);
+  color = mix(color, darkGold, trough * 0.18);
+
+  /* Strong specular ridge — was 0.13, now 0.30 */
+  float ridge = pow(max(0.0,1.0-flow), 14.0);
+  color += gold * ridge * 0.30;
+
+  /* Warm shimmer wave */
+  float shimmer = sin(p.x*3.0+p.y*2.0+t*2.0)*0.5+0.5;
+  color += gold * shimmer * 0.06;
+
+  /* Very slight grain */
+  float grain = fract(sin(dot(v_uv+u_time*0.007,vec2(12.9898,78.233)))*43758.5453);
+  color += (grain-0.5)*0.018;
+
   gl_FragColor=vec4(color,1.0);
 }`;
 

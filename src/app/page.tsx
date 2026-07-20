@@ -1,47 +1,16 @@
-'use client';
-
+﻿'use client';
 import { useEffect } from 'react';
-import Hero from '@/components/Hero';
-import VisionSection from '@/components/VisionSection';
-import Services from '@/components/Services';
-import WorkPreview from '@/components/WorkPreview';
+import { useRouter } from 'next/navigation';
 
-import FAQ from '@/components/FAQ';
-import Contact from '@/components/Contact';
-
-function HashScrollHandler() {
+export default function Root() {
+  const router = useRouter();
+  // If they have visited before, skip intro (sessionStorage flag)
   useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        const id = hash.replace('#', '');
-        const element = document.getElementById(id);
-        if (element) {
-          setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 100);
-        }
-      }
-    };
-
-    handleHash();
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
-
+    if (sessionStorage.getItem('avora_intro_seen')) {
+      router.replace('/home');
+    } else {
+      router.replace('/intro');
+    }
+  }, [router]);
   return null;
-}
-
-export default function Home() {
-  return (
-    <>
-      <HashScrollHandler />
-      <Hero />
-      <VisionSection />
-      <Services />
-      <WorkPreview />
-      <FAQ />
-      <Contact />
-    </>
-  );
 }
