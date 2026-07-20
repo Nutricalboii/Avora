@@ -100,15 +100,15 @@ export default function BlogPage() {
 
       {/* Featured post — first entry, large */}
       <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="blog-post group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-end hover:bg-white/30 transition-colors duration-200"
+        <div className="blog-post group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-end hover:bg-white/30 transition-colors duration-200"
         >
-          <div className="md:col-span-2">
+          <div className="lg:col-span-2 lg:col-span-6 md:col-span-12">
             <p className="font-mono text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-4">Featured</p>
             <span className="font-mono font-semibold text-xs tracking-[0.15em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5 whitespace-nowrap inline-block">
               {posts[0].category}
             </span>
           </div>
-          <div className="md:col-span-7">
+          <div className="lg:col-span-7 lg:col-span-1 md:col-span-122">
             <h2 className="font-heading text-5xl md:text-7xl uppercase tracking-wide text-slate-900 mb-6 leading-tight">
               {posts[0].title}
             </h2>
@@ -116,7 +116,7 @@ export default function BlogPage() {
               {posts[0].excerpt}
             </p>
           </div>
-          <div className="md:col-span-3 md:text-right">
+          <div className="lg:col-span-3 lg:col-span-6 md:col-span-12 lg:text-right">
             <div className="font-mono text-base text-slate-700 tracking-[0.15em] uppercase space-y-2 mb-8">
               <p>{posts[0].date}</p>
               <p>{posts[0].readTime} read</p>
@@ -130,27 +130,27 @@ export default function BlogPage() {
 
         {/* Rest of posts — table rows */}
         {posts.slice(1).map((post, i) => (
-          <div key={i} className="blog-post group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-6 md:p-8 mb-6 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:bg-white/30 transition-colors duration-200"
+          <div key={i} className="blog-post group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-6 md:p-8 mb-6 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center hover:bg-white/30 transition-colors duration-200"
           >
-            <div className="md:col-span-1">
+            <div className="lg:col-span-1 md:col-span-12">
               <span className="font-mono font-semibold text-sm tracking-[0.2em] text-slate-700 uppercase">0{i + 2}</span>
             </div>
-            <div className="md:col-span-2">
+            <div className="lg:col-span-2 lg:col-span-6 md:col-span-12">
               <span className="font-mono font-semibold text-xs tracking-[0.15em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5 whitespace-nowrap inline-block">
                 {post.category}
               </span>
             </div>
-            <div className="md:col-span-6">
+            <div className="lg:col-span-6 md:col-span-12">
               <h3 className="font-heading text-3xl md:text-4xl uppercase tracking-wide text-slate-900 leading-tight">
                 {post.title}
               </h3>
               <p className="font-sans font-medium text-base text-slate-900 mt-3 leading-relaxed hidden md:block">{post.excerpt}</p>
             </div>
-            <div className="md:col-span-2 font-mono font-semibold text-sm text-slate-700 tracking-[0.12em] uppercase space-y-1">
+            <div className="lg:col-span-2 lg:col-span-6 md:col-span-12 font-mono font-semibold text-sm text-slate-700 tracking-[0.12em] uppercase space-y-1">
               <p className="flex items-center gap-2"><Calendar className="w-3 h-3 text-[#B8860B]" />{post.date}</p>
               <p className="flex items-center gap-2"><User className="w-3 h-3 text-[#B8860B]" />{post.author}</p>
             </div>
-            <div className="md:col-span-1 md:text-right">
+            <div className="lg:col-span-1 md:col-span-12 lg:text-right">
               <div className="w-10 h-10 border border-slate-200 flex items-center justify-center ml-auto">
                 <span className="font-mono text-[9px] text-slate-700 tracking-wider">SOON</span>
               </div>
@@ -165,6 +165,7 @@ export default function BlogPage() {
     </main>
   );
 }
+
 
 
 

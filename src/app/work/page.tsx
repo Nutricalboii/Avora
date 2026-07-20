@@ -79,10 +79,10 @@ export default function WorkPage() {
       {/* Case study rows */}
       <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
         {cases.map((c) => (
-          <article key={c.id} className="work-row group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-start"
+          <article key={c.id} className="work-row group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-start"
           >
             {/* Left: Big metric */}
-            <div className="md:col-span-4">
+            <div className="lg:col-span-4 md:col-span-12">
               <p className="font-mono text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-4">
                 {c.id} / {c.service.toUpperCase()}
               </p>
@@ -95,7 +95,7 @@ export default function WorkPage() {
             
 
             {/* Right: content */}
-            <div className="md:col-span-8 md:pl-6">
+            <div className="lg:col-span-8 md:col-span-12 lg:pl-6">
               <div className="flex flex-wrap items-center gap-4 mb-8">
                 <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5">
                   {c.service}
@@ -109,13 +109,13 @@ export default function WorkPage() {
                 {c.tag}
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-slate-200">
+              <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-0 border-t border-slate-200">
                 {[
                   { label: 'What we did', body: c.what },
                   { label: 'How', body: c.how },
                   { label: 'Result', body: c.result },
                 ].map((row, i) => (
-                  <div key={i} className="pt-8 pr-0 md:pr-10 pb-4 border-r border-slate-200 last:border-r-0 mr-0 md:mr-10 last:mr-0">
+                  <div key={i} className="pt-8 pr-0 lg:pr-10 pb-4 lg:border-r border-slate-200 last:border-r-0 mr-0 lg:mr-10 last:mr-0">
                     <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B] mb-4">{row.label}</p>
                     <p className="font-sans font-medium text-base text-slate-900 leading-relaxed">{row.body}</p>
                   </div>
@@ -132,6 +132,7 @@ export default function WorkPage() {
     </main>
   );
 }
+
 
 
 
