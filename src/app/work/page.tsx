@@ -82,7 +82,7 @@ export default function WorkPage() {
           <article key={c.id} className="work-row group block border border-slate-200/80 bg-white/70 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-start"
           >
             {/* Left: Big metric */}
-            <div className="md:col-span-3">
+            <div className="md:col-span-4">
               <p className="font-mono text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-4">
                 {c.id} / {c.service.toUpperCase()}
               </p>
@@ -92,10 +92,7 @@ export default function WorkPage() {
               <p className="font-mono text-[11px] tracking-[0.15em] text-slate-700 uppercase mt-3">{c.metricLabel}</p>
             </div>
 
-            {/* Divider */}
-            <div className="hidden md:flex md:col-span-1 items-start pt-2 justify-center">
-              <div className="w-px h-40 bg-slate-200"></div>
-            </div>
+            
 
             {/* Right: content */}
             <div className="md:col-span-8 md:pl-6">
@@ -135,6 +132,7 @@ export default function WorkPage() {
     </main>
   );
 }
+
 
 
 
