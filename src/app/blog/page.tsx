@@ -1,11 +1,11 @@
-﻿import type { Metadata } from 'next';
-import { Calendar, User } from 'lucide-react';
+﻿'use client';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
-export const metadata: Metadata = {
-  title: 'Blog | Avora Ventures',
-  description:
-    'Engineering updates, methodology notes, and operational lessons from the Avora Ventures pipeline team.',
-};
+if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
+import { Calendar, User } from 'lucide-react';
 
 const posts = [
   {
@@ -61,13 +61,28 @@ const posts = [
 ];
 
 export default function BlogPage() {
-  return (
-    <main className="min-h-screen" style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}>
+  const container = useRef<HTMLDivElement>(null);
+  
+  useGSAP(() => {
+    gsap.fromTo('.blog-header > *',
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: 'power3.out' }
+    );
+    gsap.fromTo('.blog-post',
+      { opacity: 0, y: 40 },
+      { 
+        opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
+        scrollTrigger: { trigger: '.blog-post', start: 'top 85%' }
+      }
+    );
+  }, { scope: container });
 
+  return (
+    <main ref={container} className="min-h-screen" style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}>
       {/* Page header */}
       <div className="border-b border-slate-200 pt-36 pb-16 md:pb-24">
         <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div className="blog-header flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
               <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
                 Avora / Blog
@@ -85,12 +100,11 @@ export default function BlogPage() {
 
       {/* Featured post — first entry, large */}
       <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div
-          className="group block border-b border-slate-200 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-end hover:bg-white/30 transition-colors duration-200"
+        <div className="blog-post group block border-b border-slate-200 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-end hover:bg-white/30 transition-colors duration-200"
         >
           <div className="md:col-span-2">
             <p className="font-mono text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-4">Featured</p>
-            <span className="font-mono text-xs tracking-[0.15em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5">
+            <span className="font-mono text-xs tracking-[0.15em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5 whitespace-nowrap inline-block">
               {posts[0].category}
             </span>
           </div>
@@ -116,15 +130,13 @@ export default function BlogPage() {
 
         {/* Rest of posts — table rows */}
         {posts.slice(1).map((post, i) => (
-          <div
-            key={i}
-            className="group block border-b border-slate-200 py-10 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:bg-white/30 transition-colors duration-200"
+          <div key={i} className="blog-post group block border-b border-slate-200 py-10 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:bg-white/30 transition-colors duration-200"
           >
             <div className="md:col-span-1">
               <span className="font-mono text-sm tracking-[0.2em] text-slate-700 uppercase">0{i + 2}</span>
             </div>
             <div className="md:col-span-2">
-              <span className="font-mono text-xs tracking-[0.15em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5">
+              <span className="font-mono text-xs tracking-[0.15em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5 whitespace-nowrap inline-block">
                 {post.category}
               </span>
             </div>
@@ -153,6 +165,8 @@ export default function BlogPage() {
     </main>
   );
 }
+
+
 
 
 

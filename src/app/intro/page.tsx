@@ -193,7 +193,7 @@ export default function IntroPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.8, duration: 0.8, ease: [0.22,1,0.36,1] }}
               onClick={enter}
-              className="group relative flex items-center gap-3 px-8 py-4 bg-slate-900 border border-slate-900 text-white font-sans font-semibold text-sm tracking-[0.12em] uppercase hover:bg-slate-800 shadow-lg transition-all duration-400"
+              className="group relative flex items-center gap-3 px-8 py-4 bg-[#B8860B] border-[#B8860B] text-white font-sans font-semibold text-sm tracking-[0.12em] uppercase hover:bg-[#a67809] shadow-lg transition-all duration-400"
             >
               <span>Explore Services</span>
               <span className="text-white transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -206,6 +206,7 @@ export default function IntroPage() {
     </AnimatePresence>
   );
 }
+
 
 
 

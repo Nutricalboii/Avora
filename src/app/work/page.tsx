@@ -1,11 +1,11 @@
-﻿import type { Metadata } from 'next';
-import Link from 'next/link';
+﻿'use client';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
-export const metadata: Metadata = {
-  title: 'Delivered Work | Avora Ventures',
-  description:
-    'Anonymized engagement outcomes from Avora Ventures — sector, methodology, and verified results across data generation, annotation, labeling, and AI implementation.',
-};
+if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
+import Link from 'next/link';
 
 const cases = [
   {
@@ -60,7 +60,7 @@ export default function WorkPage() {
       {/* Page header */}
       <div className="border-b border-slate-200 pt-36 pb-16 md:pb-24">
         <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div className="work-header flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
               <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
                 Avora / Delivered Outcomes
@@ -137,6 +137,7 @@ export default function WorkPage() {
     </main>
   );
 }
+
 
 
 

@@ -131,7 +131,7 @@ export default function Services() {
                     <div className={`grid grid-cols-12 items-center gap-4 px-6 md:px-10 transition-all duration-500 ${isOpen ? 'py-8 md:py-10' : 'py-6 md:py-8'}`}>
                       {/* Seq number */}
                       <div className="col-span-2 md:col-span-1">
-                        <span className={`font-mono text-[10px] tracking-[0.22em] uppercase transition-colors duration-300 ${isOpen ? 'text-[#B8860B]' : 'text-slate-700'}`}>
+                        <span className={`font-mono text-xs tracking-[0.22em] uppercase transition-colors duration-300 ${isOpen ? 'text-[#B8860B]' : 'text-slate-700'}`}>
                           {stage.seq}
                         </span>
                       </div>
@@ -143,7 +143,7 @@ export default function Services() {
                             {stage.label}
                           </span>
                           {isOpen && (
-                            <span className="hidden md:inline font-mono text-[10px] tracking-[0.18em] uppercase text-slate-700 border-l border-slate-200 pl-4">
+                            <span className="hidden md:inline font-mono text-xs tracking-[0.18em] uppercase text-slate-700 border-l border-slate-200 pl-4">
                               {stage.title}
                             </span>
                           )}
@@ -162,7 +162,7 @@ export default function Services() {
                               className="text-right"
                             >
                               <div className="font-heading text-3xl text-[#B8860B] leading-none">{stage.stat}</div>
-                              <div className="font-mono text-[9px] tracking-[0.15em] uppercase text-slate-700 mt-1">{stage.statLabel}</div>
+                              <div className="font-mono text-[11px] tracking-[0.15em] uppercase text-slate-700 mt-1">{stage.statLabel}</div>
                             </motion.div>
                           )}
                         </AnimatePresence>
@@ -193,21 +193,21 @@ export default function Services() {
                             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
                               {/* Left: short desc */}
                               <div className="md:col-span-5">
-                                <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B] mb-4">Overview</p>
+                                <p className="font-mono text-xs tracking-[0.2em] uppercase text-[#B8860B] mb-4">Overview</p>
                                 <p className="text-slate-900 text-base md:text-lg leading-relaxed font-sans">
                                   {stage.desc}
                                 </p>
                               </div>
                               {/* Right: detail */}
                               <div className="md:col-span-7">
-                                <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-slate-700 mb-4">Methodology</p>
+                                <p className="font-mono text-xs tracking-[0.2em] uppercase text-slate-700 mb-4">Methodology</p>
                                 <p className="text-slate-900 text-base leading-relaxed font-sans">
                                   {stage.detail}
                                 </p>
                                 {/* Stat row on mobile */}
                                 <div className="mt-6 md:hidden flex items-center gap-3">
                                   <div className="font-heading text-4xl text-[#B8860B]">{stage.stat}</div>
-                                  <div className="font-mono text-[9px] tracking-[0.15em] uppercase text-slate-700">{stage.statLabel}</div>
+                                  <div className="font-mono text-[11px] tracking-[0.15em] uppercase text-slate-700">{stage.statLabel}</div>
                                 </div>
                               </div>
                             </div>
@@ -224,7 +224,7 @@ export default function Services() {
           {/* Footer label */}
           <div className="mt-8 flex items-center gap-3">
             <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B]" />
-            <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-slate-700">
+            <span className="font-mono text-xs tracking-[0.18em] uppercase text-slate-700">
               Four-stage institutional validation — click any stage to expand
             </span>
           </div>
@@ -233,6 +233,7 @@ export default function Services() {
     </section>
   );
 }
+
 
 
 

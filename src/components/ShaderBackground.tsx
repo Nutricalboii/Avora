@@ -48,7 +48,7 @@ void main() {
   vec3 lightCyan = vec3(0.55, 0.85, 0.95);
   vec3 veryPaleBlue = vec3(0.90, 0.96, 1.0);
   // Bright metallic gold
-  vec3 gold = vec3(0.95, 0.75, 0.20); 
+  vec3 gold = vec3(1.0, 1.0, 1.0); 
 
   float flow = abs(sin(p.x*1.2+p.y*1.2+t*0.5));
 
@@ -137,6 +137,7 @@ void main() {
     />
   );
 }
+
 
 
 
