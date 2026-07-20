@@ -5,68 +5,102 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // ─── Shader source ───────────────────────────────────────────────────
-// Drop-in: replace VS/FS strings with your own .vs/.fs file contents.
-// The canvas uniform contract is: u_time (float), u_resolution (vec2), u_mouse (vec2).
 const INTRO_VS = `attribute vec2 a_position;varying vec2 v_uv;void main(){v_uv=a_position*0.5+0.5;gl_Position=vec4(a_position,0.0,1.0);}`;
 
 const INTRO_FS = `precision highp float;
-uniform float u_time;uniform vec2 u_resolution;uniform vec2 u_mouse;varying vec2 v_uv;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_uv;
 
-// ── Signed-distance field helpers ──────────────────────────────────
-float sdCircle(vec2 p,float r){return length(p)-r;}
-mat2 rot(float a){float c=cos(a),s=sin(a);return mat2(c,-s,s,c);}
+vec3 sim(vec3 p,float s);
+vec2 rot(vec2 p,float r);
+vec2 rotsim(vec2 p,float s);
+vec2 zoom(vec2 p,float f);
 
-// ── Noise ───────────────────────────────────────────────────────────
-float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
-float fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<6;i++){v+=a*noise(p);p=p*2.1+vec2(1.3,7.2);a*=0.5;}return v;}
+vec2 makeSymmetry(vec2 p){
+   vec2 ret=p;
+   ret=rotsim(ret,sin(u_time*0.3)*2.0+3.0);
+   ret.x=abs(ret.x);
+   return ret;
+}
 
-void main(){
-  vec2 uv=(gl_FragCoord.xy/u_resolution.xy)*2.0-1.0;
-  uv.x*=u_resolution.x/u_resolution.y;
-  float t=u_time*0.18;
-  vec2 mouse=(u_mouse/u_resolution)*2.0-1.0;
-  mouse.x*=u_resolution.x/u_resolution.y;
+float makePoint(float x,float y,float fx,float fy,float sx,float sy,float t){
+   float xx=x+tan(t*fx)*sy;
+   float yy=y-tan(t*fy)*sy;
+   float a=0.5/sqrt(abs(abs(x*xx)+abs(yy*y)));
+   float b=0.5/sqrt(abs(x*xx+yy*y));
+   return a*b;
+}
 
-  /* Swirling domain warp */
-  vec2 q=uv;
-  q+=0.3*vec2(fbm(uv+t*0.4),fbm(uv+vec2(5.2,1.3)));
-  vec2 r=uv;
-  r+=0.4*vec2(fbm(q+t*0.3+vec2(1.7,9.2)+mouse*0.08),
-               fbm(q+t*0.2+vec2(8.3,2.8)-mouse*0.06));
+const float PI=3.14159265;
 
-  float f=fbm(r+t*0.25);
+vec3 sim(vec3 p,float s){
+   vec3 ret=p;
+   ret=p+s/2.0;
+   ret=fract(ret/s)*s-s/4.0;
+   return ret;
+}
 
-  /* Gold palette ─ dark void → rich gold → cream highlight */
-  vec3 void_   = vec3(0.06, 0.04, 0.01);
-  vec3 amber   = vec3(0.45, 0.28, 0.02);
-  vec3 gold    = vec3(0.80, 0.60, 0.08);
-  vec3 pale    = vec3(0.97, 0.90, 0.72);
-  vec3 white   = vec3(1.00, 0.97, 0.92);
+vec2 rot(vec2 p,float r){
+   vec2 ret;
+   ret.x=p.x*sin(r)*cos(r)-p.y*cos(r);
+   ret.y=p.x*cos(r)+p.y*sin(r);
+   return ret;
+}
 
-  vec3 col = void_;
-  col = mix(col, amber, smoothstep(0.0, 0.4, f));
-  col = mix(col, gold,  smoothstep(0.3, 0.6, f));
-  col = mix(col, pale,  smoothstep(0.5, 0.8, f));
-  col = mix(col, white, smoothstep(0.78,0.95,f));
+vec2 rotsim(vec2 p,float s){
+   vec2 ret=p;
+   ret=rot(p,-PI/(s*2.0));
+   ret=rot(p,floor(atan(ret.x,ret.y)/PI*s)*(PI/s));
+   return ret;
+}
 
-  /* Specular veins */
-  float vein = pow(max(0.0, f-0.55), 3.0)*4.0;
-  col += gold*vein*0.7;
+vec2 zoom(vec2 p,float f){
+    return vec2(p.x*f,p.y*f);
+}
 
-  /* Depth vignette */
-  float vig = 1.0-dot(uv*0.55,uv*0.55);
-  col *= vig*0.7+0.3;
+void main( void ) {
+   vec2 p = gl_FragCoord.xy/u_resolution.y-vec2((u_resolution.x/u_resolution.y)/2.0,0.5);
+   p=rot(p,sin(u_time+length(p))*4.0);
+   p=zoom(p,sin(u_time*2.0)*0.5+0.8);
+   p=p*2.0;
+   float x=p.x;
+   float y=p.y;
+   float speed = 0.3;
+   float level = 0.3;
+   float t = u_time * speed;
+   float a, b, c;
+   a = makePoint(x,y,3.3,2.9,0.3,0.3,t);
+   a=a+makePoint(x,y,1.9,2.0,0.4,0.4,t);
+   a=a+makePoint(x,y,0.8,0.7,0.4,0.5,t);
+   a=a+makePoint(x,y,2.3,0.1,0.6,0.3,t);
+   a=a+makePoint(x,y,0.8,1.7,0.5,0.4,t);
+   a=a+makePoint(x,y,0.3,1.0,0.4,0.4,t);
+   a=a+makePoint(x,y,1.4,1.7,0.4,0.5,t);
+   a=a+makePoint(x,y,1.3,2.1,0.6,0.3,t);
+   a=a+makePoint(x,y,1.8,1.7,0.5,0.4,t);
+   b=makePoint(x,y,1.2,1.9,0.3,0.3,t);
+   b=b+makePoint(x,y,0.7,2.7,0.4,0.4,t);
+   b=b+makePoint(x,y,1.4,0.6,0.4,0.5,t);
+   b=b+makePoint(x,y,2.6,0.4,0.6,0.3,t);
+   b=b+makePoint(x,y,0.7,1.4,0.5,0.4,t);
+   b=b+makePoint(x,y,0.7,1.7,0.4,0.4,t);
+   b=b+makePoint(x,y,0.8,0.5,0.4,0.5,t);
+   b=b+makePoint(x,y,1.4,0.9,0.6,0.3,t);
+   b=b+makePoint(x,y,0.7,1.3,0.5,0.4,t);
+   c=makePoint(x,y,3.7,0.3,0.3,0.3,t);
+   c=c+makePoint(x,y,1.9,1.3,0.4,0.4,t);
+   c=c+makePoint(x,y,0.8,0.9,0.4,0.5,t);
+   c=c+makePoint(x,y,1.2,1.7,0.6,0.3,t);
+   c=c+makePoint(x,y,0.3,0.6,0.5,0.4,t);
+   c=c+makePoint(x,y,0.3,0.3,0.4,0.4,t);
+   c=c+makePoint(x,y,1.4,0.8,0.4,0.5,t);
+   c=c+makePoint(x,y,0.2,0.6,0.6,0.3,t);
+   c=c+makePoint(x,y,1.3,0.5,0.5,0.4,t);
 
-  /* Central glow under cursor/logo */
-  float glow = exp(-length(uv-mouse*0.3)*2.5)*0.18;
-  col += gold*glow;
-
-  /* Film grain */
-  float grain=fract(sin(dot(v_uv+u_time*0.01,vec2(12.9898,78.233)))*43758.5453);
-  col+=(grain-0.5)*0.022;
-
-  gl_FragColor=vec4(col,1.0);
+   vec3 d=vec3(a,b,c)*level/10.0;
+   gl_FragColor = vec4(d.x,d.y,d.z,1.0);
 }`;
 
 function useWebGL(canvasRef: React.RefObject<HTMLCanvasElement | null>) {
@@ -193,7 +227,7 @@ export default function IntroPage() {
               transition={{ delay: 0.6, duration: 1.0, ease: [0.22,1,0.36,1] }}
               className="mb-6"
             >
-              <span className="font-mono text-[11px] tracking-[0.35em] uppercase text-[#D4AF37]/80">
+              <span className="font-mono text-[11px] tracking-[0.35em] uppercase text-white/80">
                 Avora Ventures
               </span>
             </motion.div>
@@ -202,13 +236,7 @@ export default function IntroPage() {
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.85, duration: 1.1, ease: [0.22,1,0.36,1] }}
-              className="font-heading text-[15vw] md:text-[10vw] lg:text-[8vw] uppercase leading-none tracking-wide mb-3"
-              style={{
-                background: 'linear-gradient(135deg, #F5E6A0 0%, #D4AF37 40%, #B8860B 70%, #FDF2C0 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
+              className="font-heading text-[15vw] md:text-[10vw] lg:text-[8vw] uppercase leading-none tracking-wide mb-3 text-white"
             >
               Avora
             </motion.h1>
@@ -217,7 +245,7 @@ export default function IntroPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.4, duration: 1.0 }}
-              className="font-sans text-base md:text-lg text-white/60 tracking-wide max-w-xs mb-16"
+              className="font-sans text-base md:text-lg text-white/80 tracking-wide max-w-xs mb-16"
             >
               Institutional AI Infrastructure
             </motion.p>
@@ -228,18 +256,18 @@ export default function IntroPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.8, duration: 0.8, ease: [0.22,1,0.36,1] }}
               onClick={enter}
-              className="group relative flex items-center gap-3 px-8 py-4 border border-[#D4AF37]/50 text-[#D4AF37] font-sans font-semibold text-sm tracking-[0.12em] uppercase hover:bg-[#D4AF37]/10 transition-all duration-400"
+              className="group relative flex items-center gap-3 px-8 py-4 border border-white/50 text-white font-sans font-semibold text-sm tracking-[0.12em] uppercase hover:bg-white/10 transition-all duration-400"
             >
               <span>Enter Experience</span>
-              <span className="text-[#D4AF37] transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <span className="text-white transition-transform duration-300 group-hover:translate-x-1">→</span>
             </motion.button>
 
             {/* Scroll hint */}
             <motion.p
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
+              animate={{ opacity: 0.6 }}
               transition={{ delay: 2.4, duration: 1.0 }}
-              className="absolute bottom-10 font-mono text-[10px] tracking-[0.25em] uppercase text-white/40"
+              className="absolute bottom-10 font-mono text-[10px] tracking-[0.25em] uppercase text-white/60"
             >
               or scroll down
             </motion.p>
@@ -249,4 +277,3 @@ export default function IntroPage() {
     </AnimatePresence>
   );
 }
-
