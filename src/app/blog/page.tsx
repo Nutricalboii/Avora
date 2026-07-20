@@ -100,7 +100,7 @@ export default function BlogPage() {
 
       {/* Featured post — first entry, large */}
       <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="blog-post group block border border-slate-200/80 bg-white/70 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-end hover:bg-white/30 transition-colors duration-200"
+        <div className="blog-post group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-end hover:bg-white/30 transition-colors duration-200"
         >
           <div className="md:col-span-2">
             <p className="font-mono text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-4">Featured</p>
@@ -130,7 +130,7 @@ export default function BlogPage() {
 
         {/* Rest of posts — table rows */}
         {posts.slice(1).map((post, i) => (
-          <div key={i} className="blog-post group block border border-slate-200/80 bg-white/70 hover:bg-white rounded-sm p-6 md:p-8 mb-6 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:bg-white/30 transition-colors duration-200"
+          <div key={i} className="blog-post group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-6 md:p-8 mb-6 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:bg-white/30 transition-colors duration-200"
           >
             <div className="md:col-span-1">
               <span className="font-mono font-semibold text-sm tracking-[0.2em] text-slate-700 uppercase">0{i + 2}</span>
@@ -165,6 +165,7 @@ export default function BlogPage() {
     </main>
   );
 }
+
 
 
 

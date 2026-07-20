@@ -73,7 +73,7 @@ export default function VisionSection() {
           {verticals.map((item, i) => (
             <div
               key={i}
-              className="vertical-row group border-b border-slate-200 py-10 md:py-14 grid grid-cols-12 gap-6 items-center hover:bg-white/30 transition-colors duration-300 cursor-default"
+              className="vertical-row group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-12 gap-6 items-center hover:bg-white/30 transition-colors duration-300 cursor-default"
               style={{ willChange: 'auto' }}
             >
               {/* Index */}
@@ -106,6 +106,7 @@ export default function VisionSection() {
     </section>
   );
 }
+
 
 
 

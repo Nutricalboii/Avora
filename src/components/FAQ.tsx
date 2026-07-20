@@ -46,7 +46,7 @@ export default function FAQ() {
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div key={index} className="group block border border-slate-200/80 bg-white/70 hover:bg-white rounded-sm p-6 md:p-8 mb-6 shadow-sm hover:shadow-md transition-all duration-300">
+              <div key={index} className="group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-6 md:p-8 mb-6 shadow-sm hover:shadow-md transition-all duration-300">
                 <button
                   className="w-full py-2 text-left flex justify-between items-center gap-6 focus:outline-none"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -90,6 +90,7 @@ export default function FAQ() {
     </section>
   );
 }
+
 
 
 

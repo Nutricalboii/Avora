@@ -79,7 +79,7 @@ export default function WorkPage() {
       {/* Case study rows */}
       <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
         {cases.map((c) => (
-          <article key={c.id} className="work-row group block border border-slate-200/80 bg-white/70 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-start"
+          <article key={c.id} className="work-row group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-start"
           >
             {/* Left: Big metric */}
             <div className="md:col-span-4">
@@ -132,6 +132,7 @@ export default function WorkPage() {
     </main>
   );
 }
+
 
 
 

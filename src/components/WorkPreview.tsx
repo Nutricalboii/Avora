@@ -91,7 +91,7 @@ export default function WorkPreview() {
           {outcomes.map((o, i) => (
             <div
               key={i}
-              className="outcome-row group block border border-slate-200/80 bg-white/70 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-start"
+              className="outcome-row group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-start"
             >
               {/* Left: ID + big stat */}
               <div className="md:col-span-4">
@@ -102,7 +102,23 @@ export default function WorkPreview() {
                 <p className="font-mono font-medium text-[11px] tracking-[0.15em] text-slate-700 uppercase mt-3">{o.metricLabel}</p>
               </div>
 
-              
+              {/* Right: execution + outcome */}
+              <div className="md:col-span-8 md:pl-6">
+                <h3 className="font-heading text-4xl md:text-5xl uppercase tracking-wide text-slate-900 mb-8 leading-tight">
+                  {o.title}
+                </h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <p className="font-mono font-medium text-[11px] tracking-[0.18em] uppercase text-[#B8860B] mb-3">Execution</p>
+                    <p className="text-slate-900 leading-relaxed text-base md:text-lg font-sans font-medium">{o.execution}</p>
+                  </div>
+                  <div>
+                    <p className="font-mono font-medium text-[11px] tracking-[0.18em] uppercase text-slate-900 mb-3">Outcome</p>
+                    <p className="text-slate-800 font-semibold leading-relaxed text-base md:text-lg font-sans font-medium">{o.outcome}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -110,6 +126,8 @@ export default function WorkPreview() {
     </section>
   );
 }
+
+
 
 
 
