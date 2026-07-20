@@ -35,53 +35,38 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 varying vec2 v_uv;
 
-float random(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453123); }
-float noise(vec2 p) {
-    vec2 i = floor(p), f = fract(p);
-    vec2 u = f * f * (3.0 - 2.0 * f);
-    return mix(mix(random(i + vec2(0.0,0.0)), random(i + vec2(1.0,0.0)), u.x),
-               mix(random(i + vec2(0.0,1.0)), random(i + vec2(1.0,1.0)), u.x), u.y);
-}
-float fbm(vec2 p) {
-    float value = 0.0, amplitude = 0.5;
-    for (int i = 0; i < 5; i++) {
-        value += amplitude * noise(p);
-        p *= 2.0; amplitude *= 0.5;
-    }
-    return value;
-}
-
 void main() {
-    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-    vec2 p = uv * 2.0 - 1.0;
-    p.x *= u_resolution.x / u_resolution.y;
-    
-    float t = u_time * 0.15;
-    
-    vec2 mouse = u_mouse / u_resolution.xy;
-    mouse = mouse * 2.0 - 1.0;
-    mouse.y = -mouse.y;
-    p -= mouse * 0.15;
+  vec2 p=(gl_FragCoord.xy*2.0-u_resolution.xy)/min(u_resolution.x,u_resolution.y);
+  float t=u_time*0.12;
+  vec2 mouse=(u_mouse/u_resolution)-0.5;
+  for(float n=1.0;n<8.0;n++){
+    p.x+=0.5/n*sin(n*p.y+t+0.6*n)+mouse.x*0.04;
+    p.y+=0.4/n*sin(n*p.x+t+0.4*n)-mouse.y*0.04;
+  }
+  
+  // Light, airy pastel blues
+  vec3 lightCyan = vec3(0.55, 0.85, 0.95);
+  vec3 veryPaleBlue = vec3(0.90, 0.96, 1.0);
+  // Bright metallic gold
+  vec3 gold = vec3(1.0, 1.0, 1.0); 
 
-    vec2 q = vec2(fbm(p + vec2(t * 0.2)), fbm(p + vec2(1.0)));
-    vec2 r = vec2(fbm(p + 1.0 * q + vec2(1.7, 9.2) + t * 0.1), fbm(p + 1.0 * q + vec2(8.3, 2.8) + t * 0.15));
-    float f = fbm(p + r * 2.0 + t * 0.2);
-    
-    vec3 colMain = vec3(1.0, 1.0, 1.0);
-    vec3 colAccent = vec3(0.0, 0.8, 1.0);
-    vec3 colDeep = vec3(0.96, 0.99, 1.0);
-    
-    vec3 color = mix(colDeep, colAccent, clamp(f * f * 1.5, 0.0, 1.0));
-    color = mix(color, colMain, clamp(r.x * 2.0, 0.0, 1.0));
-    
-    float highlight = pow(clamp(1.0 - abs(f - 0.5) * 2.0, 0.0, 1.0), 4.0);
-    color += colMain * highlight * 0.8;
-    color = smoothstep(0.0, 1.0, color);
-    
-    float grain = random(uv + t) * 0.02;
-    color += grain;
-    
-    gl_FragColor = vec4(color, 1.0);
+  float flow = abs(sin(p.x*1.2+p.y*1.2+t*0.5));
+
+  // Base background (bright rippling water)
+  vec3 color = mix(lightCyan, veryPaleBlue, smoothstep(0.1, 0.9, flow));
+
+  // Fine gold lines (creates a sharp peak when flow is close to 0 or 1)
+  float line1 = pow(1.0 - flow, 28.0);
+  float line2 = pow(flow, 28.0);
+  
+  // Add the bright gold lines
+  color += gold * (line1 + line2 * 0.5) * 1.2;
+
+  // Very slight grain
+  float grain = fract(sin(dot(v_uv+u_time*0.007,vec2(12.9898,78.233)))*43758.5453);
+  color += (grain-0.5)*0.015;
+
+  gl_FragColor=vec4(color,1.0);
 }`;
 
     function compileShader(type: number, src: string): WebGLShader {
@@ -152,7 +137,6 @@ void main() {
     />
   );
 }
-
 
 
 

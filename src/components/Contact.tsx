@@ -76,7 +76,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 md:py-36 relative overflow-hidden">
+    <section id="contact" className="py-28 md:py-36 relative overflow-hidden" style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}>
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left: copy */}
@@ -243,7 +243,6 @@ export default function Contact() {
     </section>
   );
 }
-
 
 
 

@@ -88,7 +88,7 @@ export default function Services() {
     <section
       id="services"
       ref={container}
-     
+      style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}
       className="border-t border-slate-200/70"
     >
       <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
@@ -233,7 +233,6 @@ export default function Services() {
     </section>
   );
 }
-
 
 
 

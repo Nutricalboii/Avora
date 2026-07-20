@@ -78,7 +78,7 @@ export default function BlogPage() {
   }, { scope: container });
 
   return (
-    <main ref={container} className="min-h-screen">
+    <main ref={container} className="min-h-screen" style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}>
       {/* Page header */}
       <div className="border-b border-slate-200 pt-36 pb-16 md:pb-24">
         <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
@@ -165,7 +165,6 @@ export default function BlogPage() {
     </main>
   );
 }
-
 
 
 
