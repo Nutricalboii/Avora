@@ -36,7 +36,7 @@ export default function FAQ() {
           <p className="font-mono font-medium text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
             Common Questions
           </p>
-          <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
+          <h2 className="font-heading text-5xl sm:text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
             FAQ
           </h2>
         </div>

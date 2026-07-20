@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useRef } from 'react';
 import gsap from 'gsap';
@@ -97,10 +97,7 @@ export default function Services() {
         <div className="pipeline-header py-16 md:py-24 border-b border-slate-200">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
-              <p className="font-mono font-medium text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
-                Architecture / 01
-              </p>
-              <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
+              <h2 className="font-heading text-5xl sm:text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
                 The Institutional<br />Pipeline
               </h2>
             </div>
@@ -221,13 +218,7 @@ export default function Services() {
             })}
           </div>
 
-          {/* Footer label */}
-          <div className="mt-8 flex items-center gap-3">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B]" />
-            <span className="font-mono font-medium text-xs tracking-[0.18em] uppercase text-slate-700">
-              Four-stage institutional validation — click any stage to expand
-            </span>
-          </div>
+
         </div>
       </div>
     </section>

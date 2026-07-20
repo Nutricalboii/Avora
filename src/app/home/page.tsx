@@ -1,11 +1,10 @@
-﻿'use client';
+'use client';
 
 import { useEffect } from 'react';
 import Hero from '@/components/Hero';
 import VisionSection from '@/components/VisionSection';
 import Services from '@/components/Services';
 import WorkPreview from '@/components/WorkPreview';
-import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 
 function HashScrollHandler() {
@@ -37,7 +36,6 @@ export default function HomePage() {
       <VisionSection />
       <Services />
       <WorkPreview />
-      <FAQ />
       <Contact />
     </>
   );

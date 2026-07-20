@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useRef } from 'react';
 import gsap from 'gsap';
@@ -55,10 +55,7 @@ export default function VisionSection() {
         <div className="vision-header py-16 md:py-24 border-b border-slate-200">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
-              <p className="font-mono font-medium text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
-                Avora / 01 — Our Vision & Core Model
-              </p>
-              <h2 className="font-heading text-7xl md:text-9xl lg:text-[10rem] leading-none text-slate-900 tracking-wide uppercase">
+              <h2 className="font-heading text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] leading-none text-slate-900 tracking-wide uppercase">
                 The Portfolio
               </h2>
             </div>

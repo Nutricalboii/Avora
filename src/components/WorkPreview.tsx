@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useRef } from 'react';
 import gsap from 'gsap';
@@ -74,10 +74,7 @@ export default function WorkPreview() {
         {/* Header */}
         <div className="work-header py-16 md:py-24 border-b border-slate-200 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
           <div>
-            <p className="font-mono font-medium text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
-              Network / 01
-            </p>
-            <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
+            <h2 className="font-heading text-5xl sm:text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
               Work-Tested<br/>Outcomes
             </h2>
           </div>
@@ -96,7 +93,7 @@ export default function WorkPreview() {
               {/* Left: ID + big stat */}
               <div className="md:col-span-4">
                 <p className="font-mono font-medium text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-6">{o.id} / To: {o.metricLabel.split(' ')[0].toUpperCase()}</p>
-                <div className="font-heading text-8xl md:text-9xl lg:text-[9rem] leading-none text-[#B8860B] tracking-tight">
+                <div className="font-heading text-6xl sm:text-8xl md:text-9xl lg:text-[9rem] leading-none text-[#B8860B] tracking-tight">
                   {o.metric}
                 </div>
                 <p className="font-mono font-medium text-[11px] tracking-[0.15em] text-slate-700 uppercase mt-3">{o.metricLabel}</p>
