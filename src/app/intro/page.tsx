@@ -121,7 +121,7 @@ export default function IntroPage() {
   const enter = () => {
     if (leaving) return;
     setLeaving(true); sessionStorage.setItem('avora_intro_seen', '1');
-    setTimeout(() => router.push('/home'), 800);
+    router.push('/home');
   };
 
   // Also enter on scroll
