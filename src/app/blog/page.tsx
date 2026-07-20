@@ -91,7 +91,7 @@ export default function BlogPage() {
                 Notes From<br/>The Pipeline.
               </h1>
             </div>
-            <p className="text-base md:text-lg text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans">
+            <p className="text-base md:text-lg text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans font-medium">
               Engineering updates, methodology notes, and operational lessons from the team that runs the pipeline.
             </p>
           </div>
@@ -104,7 +104,7 @@ export default function BlogPage() {
         >
           <div className="md:col-span-2">
             <p className="font-mono text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-4">Featured</p>
-            <span className="font-mono text-xs tracking-[0.15em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5 whitespace-nowrap inline-block">
+            <span className="font-mono font-semibold text-xs tracking-[0.15em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5 whitespace-nowrap inline-block">
               {posts[0].category}
             </span>
           </div>
@@ -112,7 +112,7 @@ export default function BlogPage() {
             <h2 className="font-heading text-5xl md:text-7xl uppercase tracking-wide text-slate-900 mb-6 leading-tight">
               {posts[0].title}
             </h2>
-            <p className="font-sans text-lg md:text-xl text-slate-900 leading-relaxed max-w-2xl">
+            <p className="font-sans font-medium text-lg md:text-xl text-slate-900 leading-relaxed max-w-2xl">
               {posts[0].excerpt}
             </p>
           </div>
@@ -122,7 +122,7 @@ export default function BlogPage() {
               <p>{posts[0].readTime} read</p>
               <p>{posts[0].author}</p>
             </div>
-            <div className="inline-flex items-center gap-3 font-mono text-sm tracking-[0.15em] uppercase text-slate-700">
+            <div className="inline-flex items-center gap-3 font-mono font-semibold text-sm tracking-[0.15em] uppercase text-slate-700">
               Coming Soon
             </div>
           </div>
@@ -133,10 +133,10 @@ export default function BlogPage() {
           <div key={i} className="blog-post group block border-b border-slate-200 py-10 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:bg-white/30 transition-colors duration-200"
           >
             <div className="md:col-span-1">
-              <span className="font-mono text-sm tracking-[0.2em] text-slate-700 uppercase">0{i + 2}</span>
+              <span className="font-mono font-semibold text-sm tracking-[0.2em] text-slate-700 uppercase">0{i + 2}</span>
             </div>
             <div className="md:col-span-2">
-              <span className="font-mono text-xs tracking-[0.15em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5 whitespace-nowrap inline-block">
+              <span className="font-mono font-semibold text-xs tracking-[0.15em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5 whitespace-nowrap inline-block">
                 {post.category}
               </span>
             </div>
@@ -144,9 +144,9 @@ export default function BlogPage() {
               <h3 className="font-heading text-3xl md:text-4xl uppercase tracking-wide text-slate-900 leading-tight">
                 {post.title}
               </h3>
-              <p className="font-sans text-base text-slate-900 mt-3 leading-relaxed hidden md:block">{post.excerpt}</p>
+              <p className="font-sans font-medium text-base text-slate-900 mt-3 leading-relaxed hidden md:block">{post.excerpt}</p>
             </div>
-            <div className="md:col-span-2 font-mono text-sm text-slate-700 tracking-[0.12em] uppercase space-y-1">
+            <div className="md:col-span-2 font-mono font-semibold text-sm text-slate-700 tracking-[0.12em] uppercase space-y-1">
               <p className="flex items-center gap-2"><Calendar className="w-3 h-3 text-[#B8860B]" />{post.date}</p>
               <p className="flex items-center gap-2"><User className="w-3 h-3 text-[#B8860B]" />{post.author}</p>
             </div>
@@ -165,6 +165,7 @@ export default function BlogPage() {
     </main>
   );
 }
+
 
 
 

@@ -33,7 +33,7 @@ export default function FAQ() {
 
         {/* Header â€” matches editorial style */}
         <div className="py-16 md:py-24 border-b border-slate-200">
-          <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+          <p className="font-mono font-medium text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
             Common Questions
           </p>
           <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
@@ -75,7 +75,7 @@ export default function FAQ() {
                       transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
                     >
                       <div className="pb-10 max-w-3xl">
-                        <p className="font-sans text-lg md:text-xl text-slate-900 leading-loose tracking-normal font-normal">
+                        <p className="font-sans font-medium text-lg md:text-xl text-slate-900 leading-loose tracking-normal font-normal">
                           {faq.answer}
                         </p>
                       </div>
@@ -90,6 +90,7 @@ export default function FAQ() {
     </section>
   );
 }
+
 
 
 

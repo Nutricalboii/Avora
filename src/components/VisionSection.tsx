@@ -55,14 +55,14 @@ export default function VisionSection() {
         <div className="vision-header py-16 md:py-24 border-b border-slate-200">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
-              <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+              <p className="font-mono font-medium text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
                 Avora / 01 — Our Vision & Core Model
               </p>
               <h2 className="font-heading text-7xl md:text-9xl lg:text-[10rem] leading-none text-slate-900 tracking-wide uppercase">
                 The Portfolio
               </h2>
             </div>
-            <p className="text-base md:text-lg text-slate-900 max-w-md leading-relaxed md:pb-4 font-sans">
+            <p className="text-base md:text-lg text-slate-900 max-w-md leading-relaxed md:pb-4 font-sans font-medium">
               We protect capital by engineering products around absolute, proven demand. Four distinct verticals, each validated before scale.
             </p>
           </div>
@@ -78,7 +78,7 @@ export default function VisionSection() {
             >
               {/* Index */}
               <div className="col-span-1 md:col-span-1">
-                <span className="font-mono text-[11px] tracking-[0.2em] text-slate-700">{item.id}</span>
+                <span className="font-mono font-medium text-[11px] tracking-[0.2em] text-slate-700">{item.id}</span>
               </div>
 
               {/* Title */}
@@ -95,7 +95,7 @@ export default function VisionSection() {
 
               {/* Description */}
               <div className="col-span-12 md:col-span-5 md:pl-4">
-                <p className="text-slate-900 text-base md:text-lg leading-relaxed font-sans">
+                <p className="text-slate-900 text-base md:text-lg leading-relaxed font-sans font-medium">
                   {item.desc}
                 </p>
               </div>
@@ -106,5 +106,6 @@ export default function VisionSection() {
     </section>
   );
 }
+
 
 

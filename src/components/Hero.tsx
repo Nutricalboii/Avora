@@ -48,17 +48,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/50" />
       </div>
 
-      {/* Eyebrow bar pinned to top */}
-      <div className="absolute top-0 left-0 right-0 z-10 border-b border-slate-200/60">
-        <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16 py-4 flex items-center justify-between">
-          <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-slate-700">
-            &gt; AI-first infrastructure
-          </p>
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B]">
-            Navigating Ventures
-          </p>
-        </div>
-      </div>
+      
 
       {/* Main content */}
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16 w-full pt-32">
@@ -78,7 +68,7 @@ export default function Hero() {
         {/* Bottom row: subtext + CTAs */}
         <div className="border-t border-slate-200/60 pt-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
           <div className="hero-sub md:col-span-5" style={{ willChange: 'transform, opacity' }}>
-            <p className="text-slate-900 text-base md:text-lg leading-relaxed font-sans max-w-md">
+            <p className="text-slate-900 text-base md:text-lg leading-relaxed font-sans font-medium max-w-md">
               We specialize in production-grade AI solutions for high-stakes environments, bridging proprietary data quality to deliver systems that perform when outcomes matter.
             </p>
           </div>
@@ -105,5 +95,7 @@ export default function Hero() {
     </section>
   );
 }
+
+
 
 

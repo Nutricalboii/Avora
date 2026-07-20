@@ -74,14 +74,14 @@ export default function WorkPreview() {
         {/* Header */}
         <div className="work-header py-16 md:py-24 border-b border-slate-200 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
           <div>
-            <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+            <p className="font-mono font-medium text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
               Network / 01
             </p>
             <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
               Work-Tested<br/>Outcomes
             </h2>
           </div>
-          <p className="text-base md:text-lg text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans">
+          <p className="text-base md:text-lg text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans font-medium">
             Our delivery logs reflect practical, high-performance deployments across our core operational verticals. Client data is compiled anonymously.
           </p>
         </div>
@@ -95,11 +95,11 @@ export default function WorkPreview() {
             >
               {/* Left: ID + big stat */}
               <div className="md:col-span-3">
-                <p className="font-mono text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-6">{o.id} / To: {o.metricLabel.split(' ')[0].toUpperCase()}</p>
+                <p className="font-mono font-medium text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-6">{o.id} / To: {o.metricLabel.split(' ')[0].toUpperCase()}</p>
                 <div className="font-heading text-8xl md:text-9xl lg:text-[9rem] leading-none text-[#B8860B] tracking-tight">
                   {o.metric}
                 </div>
-                <p className="font-mono text-[11px] tracking-[0.15em] text-slate-700 uppercase mt-3">{o.metricLabel}</p>
+                <p className="font-mono font-medium text-[11px] tracking-[0.15em] text-slate-700 uppercase mt-3">{o.metricLabel}</p>
               </div>
 
               {/* Center divider */}
@@ -115,12 +115,12 @@ export default function WorkPreview() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-[#B8860B] mb-3">Execution</p>
-                    <p className="text-slate-900 leading-relaxed text-base md:text-lg font-sans">{o.execution}</p>
+                    <p className="font-mono font-medium text-[11px] tracking-[0.18em] uppercase text-[#B8860B] mb-3">Execution</p>
+                    <p className="text-slate-900 leading-relaxed text-base md:text-lg font-sans font-medium">{o.execution}</p>
                   </div>
                   <div>
-                    <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-slate-900 mb-3">Outcome</p>
-                    <p className="text-slate-800 font-semibold leading-relaxed text-base md:text-lg font-sans">{o.outcome}</p>
+                    <p className="font-mono font-medium text-[11px] tracking-[0.18em] uppercase text-slate-900 mb-3">Outcome</p>
+                    <p className="text-slate-800 font-semibold leading-relaxed text-base md:text-lg font-sans font-medium">{o.outcome}</p>
                   </div>
                 </div>
               </div>
@@ -131,5 +131,6 @@ export default function WorkPreview() {
     </section>
   );
 }
+
 
 

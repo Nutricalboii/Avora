@@ -97,14 +97,14 @@ export default function Services() {
         <div className="pipeline-header py-16 md:py-24 border-b border-slate-200">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
-              <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+              <p className="font-mono font-medium text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
                 Architecture / 01
               </p>
               <h2 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
                 The Institutional<br />Pipeline
               </h2>
             </div>
-            <p className="text-base md:text-lg text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans">
+            <p className="text-base md:text-lg text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans font-medium">
               We do not build on assumptions. Every AI-native model passes through a strict, four-stage validation framework.
             </p>
           </div>
@@ -112,7 +112,7 @@ export default function Services() {
 
         {/* Collapsible Pipeline Cards */}
         <div className="py-12 md:py-20">
-          <div className="flex flex-col gap-0 border border-slate-200/80 overflow-hidden rounded-sm">
+          <div className="flex flex-col gap-0 border border-slate-200/80 overflow-hidden rounded-sm bg-white shadow-sm">
             {stages.map((stage, i) => {
               const isOpen = openIndex === i;
               return (
@@ -128,22 +128,22 @@ export default function Services() {
                     onClick={() => setOpenIndex(isOpen ? -1 : i)}
                     aria-expanded={isOpen}
                   >
-                    <div className={`grid grid-cols-12 items-center gap-4 px-6 md:px-10 transition-all duration-500 ${isOpen ? 'py-8 md:py-10' : 'py-6 md:py-8'}`}>
+                    <div className={`flex flex-wrap md:grid md:grid-cols-12 items-center gap-4 px-6 md:px-10 transition-all duration-500 ${isOpen ? 'py-8 md:py-10' : 'py-6 md:py-8'}`}>
                       {/* Seq number */}
-                      <div className="col-span-2 md:col-span-1">
-                        <span className={`font-mono text-xs tracking-[0.22em] uppercase transition-colors duration-300 ${isOpen ? 'text-[#B8860B]' : 'text-slate-700'}`}>
+                      <div className="w-full md:w-auto md:col-span-1">
+                        <span className={`font-mono font-semibold text-xs tracking-[0.22em] uppercase transition-colors duration-300 ${isOpen ? 'text-[#B8860B]' : 'text-slate-700'}`}>
                           {stage.seq}
                         </span>
                       </div>
 
                       {/* Label */}
-                      <div className="col-span-7 md:col-span-7">
+                      <div className="flex-1 md:col-span-7">
                         <div className="flex items-center gap-4">
                           <span className={`font-heading text-3xl md:text-4xl lg:text-5xl tracking-[0.08em] uppercase leading-none transition-colors duration-300 ${isOpen ? 'text-[#B8860B]' : 'text-slate-800 group-hover:text-slate-900'}`}>
                             {stage.label}
                           </span>
                           {isOpen && (
-                            <span className="hidden md:inline font-mono text-xs tracking-[0.18em] uppercase text-slate-700 border-l border-slate-200 pl-4">
+                            <span className="hidden md:inline font-mono font-medium text-xs tracking-[0.18em] uppercase text-slate-700 border-l border-slate-200 pl-4">
                               {stage.title}
                             </span>
                           )}
@@ -162,14 +162,14 @@ export default function Services() {
                               className="text-right"
                             >
                               <div className="font-heading text-3xl text-[#B8860B] leading-none">{stage.stat}</div>
-                              <div className="font-mono text-[11px] tracking-[0.15em] uppercase text-slate-700 mt-1">{stage.statLabel}</div>
+                              <div className="font-mono font-semibold text-[11px] tracking-[0.15em] uppercase text-slate-700 mt-1">{stage.statLabel}</div>
                             </motion.div>
                           )}
                         </AnimatePresence>
                       </div>
 
                       {/* Chevron */}
-                      <div className="col-span-3 md:col-span-2 flex justify-end">
+                      <div className="flex-none md:col-span-2 flex justify-end">
                         <div className={`w-9 h-9 flex items-center justify-center border transition-all duration-300 ${isOpen ? 'border-[#B8860B] bg-[#B8860B] text-white' : 'border-slate-200 text-slate-700 group-hover:border-slate-300'}`}>
                           <ChevronDown className={`w-4 h-4 transition-transform duration-400 ${isOpen ? 'rotate-180' : ''}`} />
                         </div>
@@ -193,21 +193,21 @@ export default function Services() {
                             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
                               {/* Left: short desc */}
                               <div className="md:col-span-5">
-                                <p className="font-mono text-xs tracking-[0.2em] uppercase text-[#B8860B] mb-4">Overview</p>
-                                <p className="text-slate-900 text-base md:text-lg leading-relaxed font-sans">
+                                <p className="font-mono font-semibold text-xs tracking-[0.2em] uppercase text-[#B8860B] mb-4">Overview</p>
+                                <p className="text-slate-900 text-base md:text-lg leading-relaxed font-sans font-medium">
                                   {stage.desc}
                                 </p>
                               </div>
                               {/* Right: detail */}
                               <div className="md:col-span-7">
-                                <p className="font-mono text-xs tracking-[0.2em] uppercase text-slate-700 mb-4">Methodology</p>
-                                <p className="text-slate-900 text-base leading-relaxed font-sans">
+                                <p className="font-mono font-semibold text-xs tracking-[0.2em] uppercase text-slate-700 mb-4">Methodology</p>
+                                <p className="text-slate-900 text-base leading-relaxed font-sans font-medium">
                                   {stage.detail}
                                 </p>
                                 {/* Stat row on mobile */}
                                 <div className="mt-6 md:hidden flex items-center gap-3">
                                   <div className="font-heading text-4xl text-[#B8860B]">{stage.stat}</div>
-                                  <div className="font-mono text-[11px] tracking-[0.15em] uppercase text-slate-700">{stage.statLabel}</div>
+                                  <div className="font-mono font-semibold text-[11px] tracking-[0.15em] uppercase text-slate-700">{stage.statLabel}</div>
                                 </div>
                               </div>
                             </div>
@@ -224,7 +224,7 @@ export default function Services() {
           {/* Footer label */}
           <div className="mt-8 flex items-center gap-3">
             <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B]" />
-            <span className="font-mono text-xs tracking-[0.18em] uppercase text-slate-700">
+            <span className="font-mono font-medium text-xs tracking-[0.18em] uppercase text-slate-700">
               Four-stage institutional validation — click any stage to expand
             </span>
           </div>
@@ -233,6 +233,8 @@ export default function Services() {
     </section>
   );
 }
+
+
 
 
 
