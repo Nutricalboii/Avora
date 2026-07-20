@@ -49,7 +49,7 @@ export default function VisionSection() {
     <section
       ref={container}
       className="border-t border-slate-200/70"
-      style={{ backgroundColor: 'rgba(255,255,255,0.88)', backdropFilter: 'blur(4px)' }}
+      style={{ backgroundColor: 'rgba(255,255,255,0.35)', backdropFilter: 'blur(16px)' }}
     >
       <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="vision-header py-16 md:py-24 border-b border-slate-200">
@@ -106,3 +106,5 @@ export default function VisionSection() {
     </section>
   );
 }
+
+

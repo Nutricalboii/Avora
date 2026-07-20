@@ -30,8 +30,12 @@ export default function ShaderBackground() {
 
     // High-contrast, clearly visible cream & gold fluid shader
     const FS = `precision highp float;
-uniform float u_time;uniform vec2 u_resolution;uniform vec2 u_mouse;varying vec2 v_uv;
-void main(){
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_uv;
+
+void main() {
   vec2 p=(gl_FragCoord.xy*2.0-u_resolution.xy)/min(u_resolution.x,u_resolution.y);
   float t=u_time*0.12;
   vec2 mouse=(u_mouse/u_resolution)-0.5;
@@ -39,35 +43,36 @@ void main(){
     p.x+=0.5/n*sin(n*p.y+t+0.6*n)+mouse.x*0.04;
     p.y+=0.4/n*sin(n*p.x+t+0.4*n)-mouse.y*0.04;
   }
-  /* Palette */
-  vec3 cream     = vec3(0.980, 0.972, 0.958);
-  vec3 deepCream = vec3(0.910, 0.895, 0.872);
-  vec3 gold      = vec3(0.769, 0.627, 0.110);
-  vec3 darkGold  = vec3(0.600, 0.460, 0.030);
+  
+  // Blue water-like surface base
+  vec3 deepBlue  = vec3(0.04, 0.08, 0.20);
+  vec3 midBlue   = vec3(0.08, 0.15, 0.35);
+  vec3 gold      = vec3(0.85, 0.65, 0.15);
+  vec3 darkGold  = vec3(0.50, 0.35, 0.05);
 
   float flow = abs(sin(p.x*1.2+p.y*1.2+t*0.5));
 
-  /* Deep cream base with strong shadow for volume */
+  // Base background (blue water-like)
   float shadow = smoothstep(0.10, 0.90, flow);
-  vec3 color = mix(deepCream, cream, shadow);
+  vec3 color = mix(deepBlue, midBlue, shadow);
 
-  /* Bold gold veins — increased from 0.16 to 0.42 for visibility */
+  // Gold veins (highly contrasty)
   float vein = smoothstep(0.32, 0.62, flow);
-  color = mix(color, gold, vein * 0.42);
+  color = mix(color, gold, vein * 0.7);
 
-  /* Dark gold undertone in troughs */
+  // Dark gold in troughs
   float trough = smoothstep(0.0, 0.30, flow);
-  color = mix(color, darkGold, trough * 0.18);
+  color = mix(color, darkGold, trough * 0.4);
 
-  /* Strong specular ridge — was 0.13, now 0.30 */
+  // Specular highlights (shiny liquid gold)
   float ridge = pow(max(0.0,1.0-flow), 14.0);
-  color += gold * ridge * 0.30;
+  color += gold * ridge * 0.8;
 
-  /* Warm shimmer wave */
+  // Warm shimmer wave
   float shimmer = sin(p.x*3.0+p.y*2.0+t*2.0)*0.5+0.5;
-  color += gold * shimmer * 0.06;
+  color += gold * shimmer * 0.12;
 
-  /* Very slight grain */
+  // Very slight grain
   float grain = fract(sin(dot(v_uv+u_time*0.007,vec2(12.9898,78.233)))*43758.5453);
   color += (grain-0.5)*0.018;
 
@@ -142,3 +147,4 @@ void main(){
     />
   );
 }
+

@@ -41,7 +41,7 @@ export default function Hero() {
     <section
       ref={container}
       className="relative min-h-screen flex flex-col justify-end pb-16 md:pb-24 overflow-hidden"
-      style={{ backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(2px)' }}
+      style={{ backgroundColor: 'rgba(255,255,255,0.35)', backdropFilter: 'blur(16px)' }}
     >
       {/* Very subtle texture overlay — lets shader glow through */}
       <div ref={gridRef} className="absolute inset-[-40px] z-0 pointer-events-none">
@@ -105,3 +105,5 @@ export default function Hero() {
     </section>
   );
 }
+
+

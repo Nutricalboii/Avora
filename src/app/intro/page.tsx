@@ -10,97 +10,34 @@ const INTRO_VS = `attribute vec2 a_position;varying vec2 v_uv;void main(){v_uv=a
 const INTRO_FS = `precision highp float;
 uniform float u_time;
 uniform vec2 u_resolution;
-uniform vec2 u_mouse;
 varying vec2 v_uv;
 
-vec3 sim(vec3 p,float s);
-vec2 rot(vec2 p,float r);
-vec2 rotsim(vec2 p,float s);
-vec2 zoom(vec2 p,float f);
+void main() {
+    float zoom = 0.5;
+    float speed = 0.5;
+    float wave_intensity = 1.19;
+    float brightness = 0.017;
+    vec3 color = vec3(54.0/255.0, 38.0/255.0, 13.0/255.0);
 
-vec2 makeSymmetry(vec2 p){
-   vec2 ret=p;
-   ret=rotsim(ret,sin(u_time*0.3)*2.0+3.0);
-   ret.x=abs(ret.x);
-   return ret;
-}
+    // Normalize coordinates and adjust for aspect ratio
+    vec2 uv = ((gl_FragCoord.xy / u_resolution.xy) - 0.5) * 2.0 / zoom;
+    uv.x *= u_resolution.x / u_resolution.y;
 
-float makePoint(float x,float y,float fx,float fy,float sx,float sy,float t){
-   float xx=x+tan(t*fx)*sy;
-   float yy=y-tan(t*fy)*sy;
-   float a=0.5/sqrt(abs(abs(x*xx)+abs(yy*y)));
-   float b=0.5/sqrt(abs(x*xx+yy*y));
-   return a*b;
-}
+    vec3 c = vec3(0.0);
 
-const float PI=3.14159265;
+    for (int i = 0; i < 6; i++) {
+        uv.x -= u_time * speed / float(i + 2);
+        uv.y += sin(uv.x + u_time * speed / float(i + 1) + float(i) * 0.5) * wave_intensity / float(i + 1);
+        c += brightness / abs(uv.y);
+    }
 
-vec3 sim(vec3 p,float s){
-   vec3 ret=p;
-   ret=p+s/2.0;
-   ret=fract(ret/s)*s-s/4.0;
-   return ret;
-}
+    c = mix(vec3(0.0), color, c);
+    
+    // Add film grain to prevent banding
+    float grain = fract(sin(dot(gl_FragCoord.xy+u_time*0.01, vec2(12.9898,78.233))) * 43758.5453);
+    c += (grain - 0.5) * 0.02;
 
-vec2 rot(vec2 p,float r){
-   vec2 ret;
-   ret.x=p.x*sin(r)*cos(r)-p.y*cos(r);
-   ret.y=p.x*cos(r)+p.y*sin(r);
-   return ret;
-}
-
-vec2 rotsim(vec2 p,float s){
-   vec2 ret=p;
-   ret=rot(p,-PI/(s*2.0));
-   ret=rot(p,floor(atan(ret.x,ret.y)/PI*s)*(PI/s));
-   return ret;
-}
-
-vec2 zoom(vec2 p,float f){
-    return vec2(p.x*f,p.y*f);
-}
-
-void main( void ) {
-   vec2 p = gl_FragCoord.xy/u_resolution.y-vec2((u_resolution.x/u_resolution.y)/2.0,0.5);
-   p=rot(p,sin(u_time+length(p))*4.0);
-   p=zoom(p,sin(u_time*2.0)*0.5+0.8);
-   p=p*2.0;
-   float x=p.x;
-   float y=p.y;
-   float speed = 0.3;
-   float level = 0.3;
-   float t = u_time * speed;
-   float a, b, c;
-   a = makePoint(x,y,3.3,2.9,0.3,0.3,t);
-   a=a+makePoint(x,y,1.9,2.0,0.4,0.4,t);
-   a=a+makePoint(x,y,0.8,0.7,0.4,0.5,t);
-   a=a+makePoint(x,y,2.3,0.1,0.6,0.3,t);
-   a=a+makePoint(x,y,0.8,1.7,0.5,0.4,t);
-   a=a+makePoint(x,y,0.3,1.0,0.4,0.4,t);
-   a=a+makePoint(x,y,1.4,1.7,0.4,0.5,t);
-   a=a+makePoint(x,y,1.3,2.1,0.6,0.3,t);
-   a=a+makePoint(x,y,1.8,1.7,0.5,0.4,t);
-   b=makePoint(x,y,1.2,1.9,0.3,0.3,t);
-   b=b+makePoint(x,y,0.7,2.7,0.4,0.4,t);
-   b=b+makePoint(x,y,1.4,0.6,0.4,0.5,t);
-   b=b+makePoint(x,y,2.6,0.4,0.6,0.3,t);
-   b=b+makePoint(x,y,0.7,1.4,0.5,0.4,t);
-   b=b+makePoint(x,y,0.7,1.7,0.4,0.4,t);
-   b=b+makePoint(x,y,0.8,0.5,0.4,0.5,t);
-   b=b+makePoint(x,y,1.4,0.9,0.6,0.3,t);
-   b=b+makePoint(x,y,0.7,1.3,0.5,0.4,t);
-   c=makePoint(x,y,3.7,0.3,0.3,0.3,t);
-   c=c+makePoint(x,y,1.9,1.3,0.4,0.4,t);
-   c=c+makePoint(x,y,0.8,0.9,0.4,0.5,t);
-   c=c+makePoint(x,y,1.2,1.7,0.6,0.3,t);
-   c=c+makePoint(x,y,0.3,0.6,0.5,0.4,t);
-   c=c+makePoint(x,y,0.3,0.3,0.4,0.4,t);
-   c=c+makePoint(x,y,1.4,0.8,0.4,0.5,t);
-   c=c+makePoint(x,y,0.2,0.6,0.6,0.3,t);
-   c=c+makePoint(x,y,1.3,0.5,0.5,0.4,t);
-
-   vec3 d=vec3(a,b,c)*level/10.0;
-   gl_FragColor = vec4(d.x,d.y,d.z,1.0);
+    gl_FragColor = vec4(c, 1.0);
 }`;
 
 function useWebGL(canvasRef: React.RefObject<HTMLCanvasElement | null>) {
@@ -277,3 +214,4 @@ export default function IntroPage() {
     </AnimatePresence>
   );
 }
+

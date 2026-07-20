@@ -41,7 +41,7 @@ export default function Blog() {
     <section
       id="blog"
       className="py-28 md:py-36 relative overflow-hidden"
-      style={{ backgroundColor: 'rgba(255,255,255,0.78)', backdropFilter: 'blur(4px)' }}
+      style={{ backgroundColor: 'rgba(255,255,255,0.35)', backdropFilter: 'blur(16px)' }}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div
@@ -66,9 +66,9 @@ export default function Blog() {
                 transform: visible ? 'translateY(0)' : 'translateY(28px)',
                 transition: `opacity 0.9s cubic-bezier(0.22,1,0.36,1) ${index * 0.12}s, transform 0.9s cubic-bezier(0.22,1,0.36,1) ${index * 0.12}s`,
                 willChange: 'transform, opacity',
-                background: 'rgba(255,255,255,0.82)',
-                backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)',
+                background: 'rgba(255,255,255,0.5)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
               }}
             >
               <div>
@@ -111,3 +111,6 @@ export default function Blog() {
     </section>
   );
 }
+
+
+

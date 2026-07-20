@@ -38,7 +38,7 @@ export function SpotlightNav() {
         <div
           className={cn(
             'relative flex items-center justify-between px-5 md:px-6 py-3 transition-all duration-500 rounded-2xl border',
-            isScrolled ? 'glass-panel shadow-soft' : 'bg-transparent border-transparent'
+            isScrolled ? 'bg-white/35 backdrop-blur-md shadow-soft' : 'bg-transparent border-transparent'
           )}
         >
           <div className="flex items-center">
@@ -136,3 +136,4 @@ export function SpotlightNav() {
     </header>
   );
 }
+

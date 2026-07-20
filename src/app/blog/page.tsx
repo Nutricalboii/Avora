@@ -62,7 +62,7 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen" style={{ backgroundColor: 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)' }}>
+    <main className="min-h-screen" style={{ backgroundColor: 'rgba(255,255,255,0.35)', backdropFilter: 'blur(16px)' }}>
 
       {/* Page header */}
       <div className="border-b border-slate-200 pt-36 pb-16 md:pb-24">
@@ -153,3 +153,5 @@ export default function BlogPage() {
     </main>
   );
 }
+
+
