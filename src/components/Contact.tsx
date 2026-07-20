@@ -26,7 +26,7 @@ export default function Contact() {
 
   const inputCls = (field: string) =>
     cn(
-      'w-full px-4 py-3.5 text-[15px] rounded-xl transition-all duration-200 outline-none bg-white/70 border',
+      'w-full px-4 py-3.5 text-base rounded-xl transition-all duration-200 outline-none bg-white/70 border',
       focusedField === field
         ? 'border-[#B8860B] ring-2 ring-[#B8860B]/20 bg-white text-slate-900'
         : 'border-slate-200 hover:border-[#B8860B]/40 text-slate-900 placeholder:text-slate-700'
@@ -95,10 +95,10 @@ export default function Contact() {
 
             <div className="space-y-4 pt-6 border-t border-slate-200">
               <div>
-                <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.18em] text-slate-700 block mb-1">
+                <span className="text-[13px] font-mono font-semibold uppercase tracking-[0.18em] text-slate-700 block mb-1">
                   Response time
                 </span>
-                <span className="text-[15px] text-slate-700">Within 1 business day</span>
+                <span className="text-base text-slate-700">Within 1 business day</span>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function Contact() {
                   <h3 className="text-xl font-heading font-bold text-slate-900">
                     Submission received
                   </h3>
-                  <p className="text-[15px] text-slate-900 max-w-sm mx-auto">
+                  <p className="text-base text-slate-900 max-w-sm mx-auto">
                     We have received your details. Our team will review the provided context and follow up soon.
                   </p>
                 </div>
@@ -142,7 +142,7 @@ export default function Contact() {
                     <div>
                       <label
                         htmlFor="name"
-                        className="block text-[11px] font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2"
+                        className="block text-[13px] font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2"
                       >
                         Name / Entity <span className="text-[#B8860B]">*</span>
                       </label>
@@ -162,7 +162,7 @@ export default function Contact() {
                     <div>
                       <label
                         htmlFor="email"
-                        className="block text-[11px] font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2"
+                        className="block text-[13px] font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2"
                       >
                         Corporate Email <span className="text-[#B8860B]">*</span>
                       </label>
@@ -184,7 +184,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="focusArea"
-                      className="block text-[11px] font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2"
+                      className="block text-[13px] font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2"
                     >
                       Primary Focus Area
                     </label>
@@ -209,7 +209,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-[11px] font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2"
+                      className="block text-[13px] font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2"
                     >
                       Context / Market Gap to Address <span className="text-[#B8860B]">*</span>
                     </label>

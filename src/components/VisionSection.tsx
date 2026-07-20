@@ -75,7 +75,7 @@ export default function VisionSection() {
             >
               {/* Index */}
               <div className="col-span-1 md:col-span-1">
-                <span className="font-mono font-medium text-[11px] tracking-[0.2em] text-slate-700">{item.id}</span>
+                <span className="font-mono font-medium text-[13px] tracking-[0.2em] text-slate-700">{item.id}</span>
               </div>
 
               {/* Title */}

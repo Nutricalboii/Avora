@@ -92,11 +92,11 @@ export default function WorkPreview() {
             >
               {/* Left: ID + big stat */}
               <div className="md:col-span-4">
-                <p className="font-mono font-medium text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-6">{o.id} / To: {o.metricLabel.split(' ')[0].toUpperCase()}</p>
+                <p className="font-mono font-medium text-[13px] tracking-[0.2em] text-slate-700 uppercase mb-6">{o.id} / To: {o.metricLabel.split(' ')[0].toUpperCase()}</p>
                 <div className="font-heading text-6xl sm:text-8xl md:text-9xl lg:text-[9rem] leading-none text-[#B8860B] tracking-tight">
                   {o.metric}
                 </div>
-                <p className="font-mono font-medium text-[11px] tracking-[0.15em] text-slate-700 uppercase mt-3">{o.metricLabel}</p>
+                <p className="font-mono font-medium text-[13px] tracking-[0.15em] text-slate-700 uppercase mt-3">{o.metricLabel}</p>
               </div>
 
               {/* Right: execution + outcome */}
@@ -107,11 +107,11 @@ export default function WorkPreview() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <p className="font-mono font-medium text-[11px] tracking-[0.18em] uppercase text-[#B8860B] mb-3">Execution</p>
+                    <p className="font-mono font-medium text-[13px] tracking-[0.18em] uppercase text-[#B8860B] mb-3">Execution</p>
                     <p className="text-slate-900 leading-relaxed text-base md:text-lg font-sans font-medium">{o.execution}</p>
                   </div>
                   <div>
-                    <p className="font-mono font-medium text-[11px] tracking-[0.18em] uppercase text-slate-900 mb-3">Outcome</p>
+                    <p className="font-mono font-medium text-[13px] tracking-[0.18em] uppercase text-slate-900 mb-3">Outcome</p>
                     <p className="text-slate-800 font-semibold leading-relaxed text-base md:text-lg font-sans font-medium">{o.outcome}</p>
                   </div>
                 </div>

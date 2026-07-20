@@ -28,7 +28,7 @@ export default function Footer() {
             <Link href="/" className="inline-block mb-5 hover:opacity-80 transition-opacity">
               <Logo size="md" className="h-9 w-auto text-[var(--foreground)]" />
             </Link>
-            <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed max-w-xs">
+            <p className="text-base text-[var(--foreground-muted)] leading-relaxed max-w-xs">
               Data generation, annotation, labeling, quality auditing, and AI implementation —
               one continuous pipeline.
             </p>
@@ -36,7 +36,7 @@ export default function Footer() {
 
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-[11px] font-mono font-semibold uppercase tracking-[0.18em] text-[var(--foreground-muted)] mb-5">
+              <h4 className="text-[13px] font-mono font-semibold uppercase tracking-[0.18em] text-[var(--foreground-muted)] mb-5">
                 {category}
               </h4>
               <ul className="space-y-3">
@@ -44,7 +44,7 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href={href}
-                      className="text-[14px] text-[var(--foreground)] hover:text-[var(--accent)] transition-colors duration-200"
+                      className="text-[15px] text-[var(--foreground)] hover:text-[var(--accent)] transition-colors duration-200"
                     >
                       {label}
                     </Link>
@@ -56,10 +56,10 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-[var(--border)] py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-[13px] text-[var(--foreground-muted)]">
+          <p className="text-[14px] text-[var(--foreground-muted)]">
             © {new Date().getFullYear()} Avora Ventures Inc. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-[11px] font-mono font-medium text-[var(--foreground-muted)] tracking-[0.18em] uppercase bg-white/60 px-3 py-1.5 border border-[var(--border)] rounded-full">
+          <div className="flex items-center gap-2 text-[13px] font-mono font-medium text-[var(--foreground-muted)] tracking-[0.18em] uppercase bg-white/60 px-3 py-1.5 border border-[var(--border)] rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
             All systems operational
           </div>
