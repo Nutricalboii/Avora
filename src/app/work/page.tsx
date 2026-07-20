@@ -69,7 +69,7 @@ export default function WorkPage() {
                 Work From<br/>The Field.
               </h1>
             </div>
-            <p className="text-base md:text-lg text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans font-medium">
+            <p className="text-lg md:text-xl text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans font-medium">
               Anonymized engagement outcomes. No client names — sector, methodology, and verified result only. All engagements are NDA-protected.
             </p>
           </div>
@@ -117,7 +117,7 @@ export default function WorkPage() {
                 ].map((row, i) => (
                   <div key={i} className="pt-8 pr-0 lg:pr-10 pb-4 lg:border-r border-slate-200 last:border-r-0 mr-0 lg:mr-10 last:mr-0">
                     <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B] mb-4">{row.label}</p>
-                    <p className="font-sans font-medium text-base text-slate-900 leading-relaxed">{row.body}</p>
+                    <p className="font-sans font-medium text-lg text-slate-900 leading-relaxed">{row.body}</p>
                   </div>
                 ))}
               </div>

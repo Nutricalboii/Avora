@@ -68,7 +68,7 @@ export default function Hero() {
         {/* Bottom row: subtext + CTAs */}
         <div className="border-t border-slate-200/60 pt-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
           <div className="hero-sub md:col-span-5" style={{ willChange: 'transform, opacity' }}>
-            <p className="text-slate-900 text-base md:text-lg leading-relaxed font-sans font-medium max-w-md">
+            <p className="text-slate-900 text-lg md:text-xl leading-relaxed font-sans font-medium max-w-md">
               We specialize in production-grade AI solutions for high-stakes environments, bridging proprietary data quality to deliver systems that perform when outcomes matter.
             </p>
           </div>

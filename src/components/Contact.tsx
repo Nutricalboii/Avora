@@ -89,7 +89,7 @@ export default function Contact() {
               Build <br className="hidden sm:block" />
               With Us.
             </h2>
-            <p className="text-lg text-slate-900 mb-8 max-w-md leading-relaxed">
+            <p className="text-xl text-slate-900 mb-8 max-w-md leading-relaxed">
               If you are looking to deploy commercial discipline, advanced technical execution, and lean operational structures to a high-potential market gap, let's connect.
             </p>
 
@@ -98,7 +98,7 @@ export default function Contact() {
                 <span className="text-[13px] font-mono font-semibold uppercase tracking-[0.18em] text-slate-700 block mb-1">
                   Response time
                 </span>
-                <span className="text-base text-slate-700">Within 1 business day</span>
+                <span className="text-lg text-slate-700">Within 1 business day</span>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function Contact() {
                   <h3 className="text-xl font-heading font-bold text-slate-900">
                     Submission received
                   </h3>
-                  <p className="text-base text-slate-900 max-w-sm mx-auto">
+                  <p className="text-lg text-slate-900 max-w-sm mx-auto">
                     We have received your details. Our team will review the provided context and follow up soon.
                   </p>
                 </div>

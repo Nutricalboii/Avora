@@ -28,7 +28,7 @@ export default function Footer() {
             <Link href="/" className="inline-block mb-5 hover:opacity-80 transition-opacity">
               <Logo size="md" className="h-9 w-auto text-[var(--foreground)]" />
             </Link>
-            <p className="text-base text-[var(--foreground-muted)] leading-relaxed max-w-xs">
+            <p className="text-lg text-[var(--foreground-muted)] leading-relaxed max-w-xs">
               Data generation, annotation, labeling, quality auditing, and AI implementation —
               one continuous pipeline.
             </p>

@@ -59,7 +59,7 @@ export default function VisionSection() {
                 The Portfolio
               </h2>
             </div>
-            <p className="text-base md:text-lg text-slate-900 max-w-md leading-relaxed md:pb-4 font-sans font-medium">
+            <p className="text-lg md:text-xl text-slate-900 max-w-md leading-relaxed md:pb-4 font-sans font-medium">
               We protect capital by engineering products around absolute, proven demand. Four distinct verticals, each validated before scale.
             </p>
           </div>
@@ -92,7 +92,7 @@ export default function VisionSection() {
 
               {/* Description */}
               <div className="col-span-12 md:col-span-5 md:pl-4">
-                <p className="text-slate-900 text-base md:text-lg leading-relaxed font-sans font-medium">
+                <p className="text-slate-900 text-lg md:text-xl leading-relaxed font-sans font-medium">
                   {item.desc}
                 </p>
               </div>

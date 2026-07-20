@@ -78,7 +78,7 @@ export default function WorkPreview() {
               Work-Tested<br/>Outcomes
             </h2>
           </div>
-          <p className="text-base md:text-lg text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans font-medium">
+          <p className="text-lg md:text-xl text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans font-medium">
             Our delivery logs reflect practical, high-performance deployments across our core operational verticals. Client data is compiled anonymously.
           </p>
         </div>
@@ -108,11 +108,11 @@ export default function WorkPreview() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <p className="font-mono font-medium text-[13px] tracking-[0.18em] uppercase text-[#B8860B] mb-3">Execution</p>
-                    <p className="text-slate-900 leading-relaxed text-base md:text-lg font-sans font-medium">{o.execution}</p>
+                    <p className="text-slate-900 leading-relaxed text-lg md:text-xl font-sans font-medium">{o.execution}</p>
                   </div>
                   <div>
                     <p className="font-mono font-medium text-[13px] tracking-[0.18em] uppercase text-slate-900 mb-3">Outcome</p>
-                    <p className="text-slate-800 font-semibold leading-relaxed text-base md:text-lg font-sans font-medium">{o.outcome}</p>
+                    <p className="text-slate-800 font-semibold leading-relaxed text-lg md:text-xl font-sans font-medium">{o.outcome}</p>
                   </div>
                 </div>
               </div>

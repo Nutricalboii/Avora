@@ -101,7 +101,7 @@ export default function Services() {
                 The Institutional<br />Pipeline
               </h2>
             </div>
-            <p className="text-base md:text-lg text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans font-medium">
+            <p className="text-lg md:text-xl text-slate-900 max-w-sm leading-relaxed md:pb-4 font-sans font-medium">
               We do not build on assumptions. Every AI-native model passes through a strict, four-stage validation framework.
             </p>
           </div>
@@ -191,14 +191,14 @@ export default function Services() {
                               {/* Left: short desc */}
                               <div className="md:col-span-5">
                                 <p className="font-mono font-semibold text-sm tracking-[0.2em] uppercase text-[#B8860B] mb-4">Overview</p>
-                                <p className="text-slate-900 text-base md:text-lg leading-relaxed font-sans font-medium">
+                                <p className="text-slate-900 text-lg md:text-xl leading-relaxed font-sans font-medium">
                                   {stage.desc}
                                 </p>
                               </div>
                               {/* Right: detail */}
                               <div className="md:col-span-7">
                                 <p className="font-mono font-semibold text-sm tracking-[0.2em] uppercase text-slate-700 mb-4">Methodology</p>
-                                <p className="text-slate-900 text-base leading-relaxed font-sans font-medium">
+                                <p className="text-slate-900 text-lg leading-relaxed font-sans font-medium">
                                   {stage.detail}
                                 </p>
                                 {/* Stat row on mobile */}
