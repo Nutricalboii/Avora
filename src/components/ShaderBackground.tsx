@@ -44,37 +44,37 @@ void main() {
     p.y+=0.4/n*sin(n*p.x+t+0.4*n)-mouse.y*0.04;
   }
   
-  // Blue water-like surface base
-  vec3 deepBlue  = vec3(0.04, 0.08, 0.20);
-  vec3 midBlue   = vec3(0.08, 0.15, 0.35);
-  vec3 gold      = vec3(0.85, 0.65, 0.15);
-  vec3 darkGold  = vec3(0.50, 0.35, 0.05);
+  // Light, airy pastel blues
+  vec3 lightCyan = vec3(0.55, 0.85, 0.95);
+  vec3 veryPaleBlue = vec3(0.85, 0.95, 1.0);
+  vec3 gold = vec3(0.85, 0.65, 0.15);
+  vec3 darkGold = vec3(0.50, 0.35, 0.05);
 
   float flow = abs(sin(p.x*1.2+p.y*1.2+t*0.5));
 
-  // Base background (blue water-like)
+  // Base background (bright rippling water)
   float shadow = smoothstep(0.10, 0.90, flow);
-  vec3 color = mix(deepBlue, midBlue, shadow);
+  vec3 color = mix(lightCyan, veryPaleBlue, shadow);
 
   // Gold veins (highly contrasty)
   float vein = smoothstep(0.32, 0.62, flow);
   color = mix(color, gold, vein * 0.7);
 
-  // Dark gold in troughs
+  // Dark gold in troughs for depth
   float trough = smoothstep(0.0, 0.30, flow);
-  color = mix(color, darkGold, trough * 0.4);
+  color = mix(color, darkGold, trough * 0.3);
 
-  // Specular highlights (shiny liquid gold)
+  // Specular highlights (shiny liquid gold and bright water reflections)
   float ridge = pow(max(0.0,1.0-flow), 14.0);
-  color += gold * ridge * 0.8;
+  color += vec3(1.0, 0.9, 0.5) * ridge * 0.8; // More yellowish-white specular
 
   // Warm shimmer wave
   float shimmer = sin(p.x*3.0+p.y*2.0+t*2.0)*0.5+0.5;
-  color += gold * shimmer * 0.12;
+  color += gold * shimmer * 0.08;
 
   // Very slight grain
   float grain = fract(sin(dot(v_uv+u_time*0.007,vec2(12.9898,78.233)))*43758.5453);
-  color += (grain-0.5)*0.018;
+  color += (grain-0.5)*0.015;
 
   gl_FragColor=vec4(color,1.0);
 }`;
@@ -147,4 +147,5 @@ void main() {
     />
   );
 }
+
 

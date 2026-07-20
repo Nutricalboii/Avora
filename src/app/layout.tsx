@@ -4,7 +4,7 @@ import { DM_Sans, Bebas_Neue, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
 import { siteConfig } from '@/config/site';
 import { generateSchema } from '@/app/schema';
-import { SpotlightNav } from '@/components/ui/SpotlightNav';
+import GlobalElements from '@/components/GlobalElements';
 import Footer from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ChatbotWidget } from '@/components/ChatbotWidget';
@@ -95,14 +95,14 @@ export default function RootLayout({
         </a>
         <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" enableSystem={false}>
           <SmoothScrollProvider>
-            <SpotlightNav />
+            <GlobalElements type='header' />
             <main id="main-content" className="flex-grow flex flex-col relative z-0 animate-in fade-in slide-in-from-bottom-2 duration-700">
               <Suspense fallback={<div className="min-h-screen" />}>
                 {children}
               </Suspense>
             </main>
-            <Footer />
-            <ChatbotWidget />
+            <GlobalElements type='footer' />
+            <GlobalElements type='chat' />
           </SmoothScrollProvider>
         </ThemeProvider>
         <Analytics />
@@ -110,3 +110,4 @@ export default function RootLayout({
     </html>
   );
 }
+

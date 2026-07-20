@@ -195,7 +195,7 @@ export default function IntroPage() {
               onClick={enter}
               className="group relative flex items-center gap-3 px-8 py-4 border border-white/50 text-white font-sans font-semibold text-sm tracking-[0.12em] uppercase hover:bg-white/10 transition-all duration-400"
             >
-              <span>Enter Experience</span>
+              <span>Explore Services</span>
               <span className="text-white transition-transform duration-300 group-hover:translate-x-1">→</span>
             </motion.button>
 
@@ -214,4 +214,5 @@ export default function IntroPage() {
     </AnimatePresence>
   );
 }
+
 
