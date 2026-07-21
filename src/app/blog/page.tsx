@@ -84,7 +84,7 @@ export default function BlogPage() {
         <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
           <div className="blog-header flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
-              <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
+              <p className="font-mono text-[13px] tracking-[0.25em] uppercase text-[#B8860B] mb-4">
                 Avora / Blog
               </p>
               <h1 className="font-heading text-7xl md:text-9xl lg:text-[9rem] leading-none text-slate-900 tracking-wide uppercase">
@@ -103,7 +103,7 @@ export default function BlogPage() {
         <div className="blog-post group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 xl:grid-cols-12 gap-10 xl:gap-6 items-end hover:bg-white/30 transition-colors duration-200"
         >
           <div className="xl:col-span-2 mb-4 xl:mb-0">
-            <p className="font-mono text-[11px] tracking-[0.2em] text-slate-700 uppercase mb-4">Featured</p>
+            <p className="font-mono text-[13px] tracking-[0.2em] text-slate-700 uppercase mb-4">Featured</p>
             <span className="font-mono font-semibold text-xs tracking-[0.15em] uppercase text-[#B8860B] border border-[#B8860B]/30 px-3 py-1.5 whitespace-nowrap inline-block">
               {posts[0].category}
             </span>
@@ -152,13 +152,13 @@ export default function BlogPage() {
             </div>
             <div className="xl:col-span-1 xl:text-right mt-4 xl:mt-0">
               <div className="w-10 h-10 border border-slate-200 flex items-center justify-center ml-auto">
-                <span className="font-mono text-[9px] text-slate-700 tracking-wider">SOON</span>
+                <span className="font-mono text-[11px] text-slate-700 tracking-wider">SOON</span>
               </div>
             </div>
           </div>
         ))}
 
-        <p className="py-10 font-mono text-[11px] text-slate-700 tracking-[0.15em] uppercase">
+        <p className="py-10 font-mono text-[13px] text-slate-700 tracking-[0.15em] uppercase">
           All posts reflect the operational views of the Avora Ventures team.
         </p>
       </div>

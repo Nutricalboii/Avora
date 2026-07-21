@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useRef } from 'react';
 import Link from 'next/link';
@@ -80,7 +80,7 @@ export default function Hero() {
               href="#contact"
               className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white font-sans font-semibold text-sm tracking-wide hover:bg-[#B8860B] transition-colors duration-300"
             >
-              Discuss A Venture
+              Start A Project
               <span>→</span>
             </Link>
             <Link

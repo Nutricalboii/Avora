@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -120,7 +120,8 @@ export default function IntroPage() {
 
   const enter = () => {
     if (leaving) return;
-    setLeaving(true); 
+    setLeaving(true);
+    sessionStorage.setItem('avora_intro_seen', '1');
     router.push('/home');
   };
 

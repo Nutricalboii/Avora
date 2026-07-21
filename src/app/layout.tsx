@@ -1,4 +1,4 @@
-﻿import { Suspense } from 'react';
+import { Suspense } from 'react';
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Bebas_Neue, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
@@ -78,6 +78,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`scroll-smooth ${dmSans.variable} ${bebasNeue.variable} ${ibmPlexMono.variable}`}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(generateSchema()) }}

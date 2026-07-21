@@ -71,7 +71,6 @@ export default function VisionSection() {
             <div
               key={i}
               className="vertical-row group block border border-slate-200/80 bg-white/95 hover:bg-white rounded-sm p-8 md:p-12 mb-12 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-12 gap-6 items-center hover:bg-white/30 transition-colors duration-300 cursor-default"
-              style={{ willChange: 'auto' }}
             >
               {/* Index */}
               <div className="col-span-1 md:col-span-1">
