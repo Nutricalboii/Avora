@@ -4,75 +4,74 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { ExternalLink } from 'lucide-react';
-import Link from 'next/link';
 
 if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
 
 const posts = [
   {
-    href: 'https://news.mit.edu/2023/synthetic-data-ai-training-0327',
-    title: 'Synthetic Data Accelerates AI Training',
+    href: 'https://www.ibm.com/topics/synthetic-data',
+    title: 'What Is Synthetic Data?',
     excerpt:
-      'MIT researchers demonstrate how physics-informed synthetic datasets can replace scarce real-world data — solving the cold-start problem that blocks most AI pipelines from getting off the ground.',
-    source: 'MIT News',
-    date: 'March 2023',
+      'How artificially generated datasets solve the AI data scarcity problem — covering privacy-safe simulation, domain transfer, and the fidelity checks that make synthetic data usable for model training.',
+    source: 'IBM',
+    date: '2024',
     category: 'Data Generation',
-    readTime: '6 min',
+    readTime: '7 min',
     featured: true,
   },
   {
-    href: 'https://research.google/blog/scaling-data-annotation-with-human-ai-collaboration/',
-    title: 'Scaling Annotation with Human-AI Collaboration',
+    href: 'https://www.ibm.com/topics/data-annotation',
+    title: 'What Is Data Annotation?',
     excerpt:
-      'Google Research on combining model-assisted pre-labeling with human expert review to deliver annotation quality at enterprise scale — exactly the approach behind our precision labeling workflows.',
-    source: 'Google Research',
-    date: 'Jan 2024',
+      'A full breakdown of how data annotation works — image labeling, NLP tagging, bounding boxes — and why precision ontologies are the backbone of every well-performing AI model.',
+    source: 'IBM',
+    date: '2024',
     category: 'Data Annotation',
+    readTime: '6 min',
+    featured: false,
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Inter-rater_reliability',
+    title: 'Inter-Rater Reliability & Cohen\'s Kappa',
+    excerpt:
+      'The statistical foundation behind measuring labeling agreement. Cohen\'s Kappa is the standard quality gate that determines whether annotated data is actually fit for training.',
+    source: 'Wikipedia',
+    date: 'Reference',
+    category: 'Data Auditing',
     readTime: '8 min',
     featured: false,
   },
   {
-    href: 'https://towardsdatascience.com/inter-annotator-agreement-2f46c6d37bf3',
-    title: 'Inter-Annotator Agreement: Cohen\'s Kappa Explained',
+    href: 'https://www.ibm.com/topics/ai-model-deployment',
+    title: 'What Is AI Model Deployment?',
     excerpt:
-      'A definitive guide to measuring human labeling consistency. Understanding Kappa scoring is the first step toward building dataset quality gates that actually work — the standard we apply on every project.',
-    source: 'Towards Data Science',
-    date: 'Apr 2023',
-    category: 'Data Auditing',
+      'The full engineering story behind production AI — infrastructure choices, monitoring, drift detection, and the operational decisions that determine whether a deployed model actually holds up.',
+    source: 'IBM',
+    date: '2024',
+    category: 'AI Implementation',
     readTime: '7 min',
     featured: false,
   },
   {
-    href: 'https://hbr.org/2023/11/how-to-build-ai-products-that-actually-work',
-    title: 'How to Build AI Products That Actually Work',
+    href: 'https://www.ibm.com/topics/data-quality',
+    title: 'What Is Data Quality?',
     excerpt:
-      'Harvard Business Review on why most AI deployments fail — and the lean, hypothesis-driven approach that separates MVPs that scale from ones that stall. This mirrors how we architect every AI implementation.',
-    source: 'Harvard Business Review',
-    date: 'Nov 2023',
-    category: 'AI Implementation',
-    readTime: '9 min',
-    featured: false,
-  },
-  {
-    href: 'https://www.nature.com/articles/s41597-023-02627-9',
-    title: 'Data Quality in Machine Learning: A Systematic Review',
-    excerpt:
-      'Nature Scientific Data peer-reviewed analysis of how dataset quality directly governs model performance — making the case that investing in data auditing yields higher ROI than architecture tuning.',
-    source: 'Nature Scientific Data',
-    date: 'Oct 2023',
+      'Why data quality governs model performance more than architecture. Covers the six core dimensions — completeness, consistency, accuracy — and the governance frameworks that enforce them.',
+    source: 'IBM',
+    date: '2024',
     category: 'Data Auditing',
-    readTime: '10 min',
+    readTime: '6 min',
     featured: false,
   },
   {
     href: 'https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai',
-    title: 'The State of AI in 2024',
+    title: 'The State of AI — McKinsey Survey',
     excerpt:
-      'McKinsey\'s annual global survey on enterprise AI adoption: where companies are seeing ROI, what\'s blocking deployment, and why data infrastructure — not model architecture — is now the primary bottleneck.',
+      'McKinsey\'s annual global survey on enterprise AI adoption: where companies are seeing ROI, what\'s blocking deployment, and why data infrastructure remains the primary bottleneck to scale.',
     source: 'McKinsey & Company',
-    date: 'May 2024',
+    date: '2024',
     category: 'AI Implementation',
-    readTime: '12 min',
+    readTime: '10 min',
     featured: false,
   },
 ];
@@ -115,12 +114,12 @@ export default function BlogPage() {
               <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[#B8860B] mb-3 block">
                 Insights & Research
               </span>
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl leading-none text-slate-900 tracking-wide uppercase">
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl leading-none text-slate-900 tracking-wide uppercase">
                 From the<br />Pipeline
               </h1>
             </div>
             <p className="text-slate-500 text-base md:text-lg max-w-md leading-relaxed md:pb-2 font-sans">
-              Curated articles from trusted sources — MIT, Google Research, Nature, Harvard Business Review and more — on the data and AI technologies we build with.
+              Curated articles from IBM, McKinsey, Wikipedia and more — on the data and AI technologies that power our services.
             </p>
           </div>
         </div>
@@ -135,16 +134,16 @@ export default function BlogPage() {
           rel="noopener noreferrer"
           className="blog-card group block mb-12 md:mb-16"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-slate-200/80 bg-white/90 hover:shadow-lg transition-all duration-400 overflow-hidden rounded-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-slate-200/80 bg-white/90 hover:shadow-lg transition-all duration-300 overflow-hidden rounded-sm">
             {/* Image side */}
-            <div className="lg:col-span-5 min-h-[240px] lg:min-h-0 relative overflow-hidden bg-slate-100">
+            <div className="lg:col-span-5 min-h-[240px] lg:min-h-0 relative overflow-hidden bg-slate-800">
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url('/Gold_Flow_Light.jpg.jpeg')` }}
+                style={{ backgroundImage: `url('/service_data_generation.png')` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10" />
               <div className="absolute top-5 left-5">
-                <span className={`inline-block text-[10px] font-mono font-semibold uppercase tracking-[0.18em] border px-2.5 py-1 rounded-sm ${categoryColors[featured.category] || ''}`}>
+                <span className={`inline-block text-[10px] font-mono font-semibold uppercase tracking-[0.18em] border px-2.5 py-1 rounded-sm ${categoryColors[featured.category]}`}>
                   {featured.category}
                 </span>
               </div>
@@ -153,18 +152,16 @@ export default function BlogPage() {
             <div className="lg:col-span-7 p-8 md:p-12 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-5">
-                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                    {featured.source}
-                  </span>
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">{featured.source}</span>
                   <span className="w-1 h-1 rounded-full bg-slate-300" />
                   <span className="font-mono text-[10px] text-slate-400 uppercase tracking-[0.15em]">{featured.date}</span>
                   <span className="w-1 h-1 rounded-full bg-slate-300" />
                   <span className="font-mono text-[10px] text-slate-400 uppercase tracking-[0.15em]">{featured.readTime} read</span>
                 </div>
-                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl uppercase tracking-wide text-slate-900 group-hover:text-[#B8860B] transition-colors leading-tight mb-5">
+                <h2 className="font-heading text-3xl md:text-4xl uppercase tracking-wide text-slate-900 group-hover:text-[#B8860B] transition-colors leading-tight mb-5">
                   {featured.title}
                 </h2>
-                <p className="text-slate-600 text-base md:text-lg leading-relaxed font-sans">
+                <p className="text-slate-600 text-base md:text-[17px] leading-[1.75] font-sans">
                   {featured.excerpt}
                 </p>
               </div>
@@ -180,7 +177,7 @@ export default function BlogPage() {
           </div>
         </a>
 
-        {/* Grid of remaining articles */}
+        {/* Grid */}
         <div className="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {rest.map((post, i) => (
             <a
@@ -190,32 +187,25 @@ export default function BlogPage() {
               rel="noopener noreferrer"
               className="blog-card group flex flex-col border border-slate-200/80 bg-white/90 hover:shadow-md hover:border-slate-300 transition-all duration-300 rounded-sm overflow-hidden"
             >
-              {/* Category stripe */}
-              <div className="px-6 pt-6 pb-0">
-                <span className={`inline-block text-[10px] font-mono font-semibold uppercase tracking-[0.18em] border px-2.5 py-1 rounded-sm mb-4 ${categoryColors[post.category] || ''}`}>
+              <div className="px-6 pt-6">
+                <span className={`inline-block text-[10px] font-mono font-semibold uppercase tracking-[0.18em] border px-2.5 py-1 rounded-sm mb-4 ${categoryColors[post.category]}`}>
                   {post.category}
                 </span>
               </div>
-
-              {/* Content */}
               <div className="px-6 pb-6 flex flex-col flex-1">
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-400">
-                    {post.source}
-                  </span>
+                  <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-400">{post.source}</span>
                   <span className="w-0.5 h-0.5 rounded-full bg-slate-300" />
                   <span className="font-mono text-[9px] text-slate-400 uppercase tracking-[0.12em]">{post.date}</span>
                 </div>
                 <h3 className="font-heading text-xl md:text-2xl uppercase tracking-wide text-slate-900 group-hover:text-[#B8860B] transition-colors leading-tight mb-3 flex-1">
                   {post.title}
                 </h3>
-                <p className="text-slate-500 text-sm leading-relaxed font-sans mb-5">
+                <p className="text-slate-500 text-sm md:text-[15px] leading-[1.7] font-sans mb-5">
                   {post.excerpt}
                 </p>
                 <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                  <span className="font-mono text-[10px] text-slate-400 uppercase tracking-[0.15em]">
-                    {post.readTime} read
-                  </span>
+                  <span className="font-mono text-[10px] text-slate-400 uppercase tracking-[0.15em]">{post.readTime} read</span>
                   <div className="w-8 h-8 border border-slate-200 flex items-center justify-center group-hover:border-[#B8860B] group-hover:text-[#B8860B] transition-colors">
                     <ExternalLink className="w-3.5 h-3.5" />
                   </div>
@@ -225,9 +215,8 @@ export default function BlogPage() {
           ))}
         </div>
 
-        {/* Disclaimer */}
         <p className="mt-12 font-mono text-[10px] text-slate-400 tracking-[0.15em] uppercase text-center">
-          Articles sourced from MIT News, Google Research, Nature, Harvard Business Review, Towards Data Science and McKinsey & Company for educational purposes.
+          Articles sourced from IBM, McKinsey & Company, and Wikipedia for educational purposes.
         </p>
       </div>
     </main>

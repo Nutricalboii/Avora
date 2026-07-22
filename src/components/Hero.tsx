@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef } from 'react';
-import Link from 'next/link';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -10,7 +9,6 @@ export default function Hero() {
   const gridRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Subtle mouse parallax on overlay texture
     const handleMouseMove = (e: MouseEvent) => {
       if (!gridRef.current) return;
       const { innerWidth, innerHeight } = window;
@@ -19,18 +17,13 @@ export default function Hero() {
       gsap.to(gridRef.current, { x, y, duration: 1.4, ease: 'power2.out' });
     };
 
-    // Entrance animations
     gsap.fromTo('.hero-headline',
       { opacity: 0, y: 50 },
       { opacity: 1, y: 0, duration: 1.1, ease: 'power4.out', delay: 0.2 }
     );
     gsap.fromTo('.hero-sub',
       { opacity: 0, y: 24 },
-      { opacity: 1, y: 0, duration: 0.9, ease: 'power4.out', delay: 0.5 }
-    );
-    gsap.fromTo('.hero-cta',
-      { opacity: 0, y: 16 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power4.out', delay: 0.7 }
+      { opacity: 1, y: 0, duration: 0.9, ease: 'power4.out', delay: 0.55 }
     );
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -40,21 +33,17 @@ export default function Hero() {
   return (
     <section
       ref={container}
-      className="relative min-h-screen flex flex-col justify-end pb-16 md:pb-24 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-end pb-20 md:pb-28 overflow-hidden"
       style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}
     >
-      {/* Very subtle texture overlay — lets shader glow through */}
       <div ref={gridRef} className="absolute inset-[-40px] z-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/50" />
       </div>
 
-      
-
-      {/* Main content */}
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16 w-full pt-32">
-        {/* Giant display heading */}
+        {/* Display heading */}
         <h1
-          className="hero-headline font-heading text-[11vw] md:text-[8.5vw] lg:text-[7.5vw] leading-[0.92] tracking-wide uppercase text-slate-900 mb-12"
+          className="hero-headline font-heading text-[10vw] md:text-[7.5vw] lg:text-[6.5vw] leading-[0.92] tracking-wide uppercase text-slate-900 mb-14"
           style={{ willChange: 'transform, opacity' }}
         >
           Scale Your{' '}
@@ -65,38 +54,16 @@ export default function Hero() {
           And Fidelity.
         </h1>
 
-        {/* Bottom row: subtext + CTAs */}
-        <div className="border-t border-slate-200/60 pt-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
-          <div className="hero-sub md:col-span-5" style={{ willChange: 'transform, opacity' }}>
-            <p className="text-slate-700 text-base md:text-lg leading-relaxed font-sans max-w-md">
-              We specialize in production-grade AI solutions for high-stakes environments, bridging proprietary data quality to deliver systems that perform when outcomes matter.
+        {/* Centered subtext — no buttons */}
+        <div className="border-t border-slate-200/60 pt-10">
+          <div className="hero-sub" style={{ willChange: 'transform, opacity' }}>
+            <p className="text-slate-600 text-base md:text-lg leading-relaxed font-sans text-center max-w-2xl mx-auto">
+              We specialize in production-grade AI solutions for high-stakes environments — bridging
+              proprietary data quality to deliver systems that perform when outcomes matter.
             </p>
-          </div>
-          <div
-            className="hero-cta md:col-span-7 flex flex-col sm:flex-row gap-4 md:justify-end items-start sm:items-center"
-            style={{ willChange: 'transform, opacity' }}
-          >
-            <Link
-              href="#contact"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white font-sans font-semibold text-sm tracking-wide hover:bg-[#B8860B] transition-colors duration-300"
-            >
-              Discuss A Venture
-              <span>→</span>
-            </Link>
-            <Link
-              href="#services"
-              className="inline-flex items-center gap-3 px-8 py-4 border border-slate-300 text-slate-700 font-sans font-semibold text-sm tracking-wide hover:border-slate-900 hover:text-slate-900 transition-colors duration-300"
-            >
-              Explore Capabilities
-            </Link>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-
-
-
-
