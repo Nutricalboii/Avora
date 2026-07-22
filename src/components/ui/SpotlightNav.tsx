@@ -26,6 +26,13 @@ export function SpotlightNav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Determine if the navbar is over a dark hero section
+  const isDarkHero = pathname === '/' || pathname === '/home';
+  const isWhiteText = isDarkHero && !isScrolled;
+
+  const textClass = isWhiteText ? 'text-white hover:text-slate-300' : 'text-slate-900 hover:text-[#B8860B]';
+  const logoClass = isWhiteText ? 'text-white' : 'text-slate-900';
+
   return (
     <header
       className={cn(
@@ -37,12 +44,12 @@ export function SpotlightNav() {
         <div
           className={cn(
             'relative flex items-center justify-between px-5 md:px-6 py-3 transition-all duration-500 rounded-2xl border',
-            isScrolled ? 'bg-white/35 backdrop-blur-md shadow-soft border-[#B8860B]' : 'bg-transparent border-transparent'
+            isScrolled ? 'bg-white/80 backdrop-blur-md shadow-soft border-[#B8860B]' : 'bg-transparent border-transparent'
           )}
         >
           <div className="flex items-center">
             <Link href="/" aria-label="Avora Ventures" className="block">
-              <Logo className="h-8 md:h-9 w-auto text-[var(--foreground)]" />
+              <Logo className={cn("h-8 md:h-9 w-auto", logoClass)} />
             </Link>
           </div>
 
@@ -57,14 +64,17 @@ export function SpotlightNav() {
                 <Link
                   key={item.name}
                   href={itemHref}
-                  className="relative px-4 py-2 text-sm font-medium text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
+                  className={cn(
+                    "relative px-4 py-2 text-sm font-medium transition-colors",
+                    textClass
+                  )}
                   onMouseEnter={() => setHoveredIndex(index)}
                 >
                   {item.name}
                   {hoveredIndex === index && (
                     <motion.div
                       layoutId="spotlight"
-                      className="absolute inset-0 bg-[var(--accent-tint)] rounded-lg -z-10"
+                      className="absolute inset-0 bg-slate-200/50 rounded-lg -z-10"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -88,7 +98,7 @@ export function SpotlightNav() {
           <div className="flex md:hidden items-center gap-2 z-20">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[var(--foreground)] hover:text-[var(--accent)] focus:outline-none transition-colors"
+              className={cn("p-2 focus:outline-none transition-colors", textClass)}
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
