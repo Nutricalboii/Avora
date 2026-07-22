@@ -31,7 +31,7 @@ export default function Hero() {
             and covers the entire screen seamlessly.
          */}
          <div 
-           className="absolute top-1/2 left-1/2 w-[100vh] h-[100vw] -translate-x-1/2 -translate-y-1/2 rotate-90 bg-cover bg-center opacity-80"
+           className="absolute top-1/2 left-1/2 w-[100vh] h-[100vw] -translate-x-1/2 -translate-y-1/2 -rotate-90 bg-cover bg-center opacity-80"
            style={{ backgroundImage: "url('/abstract.jpg')" }}
          />
          {/* Gradients to ensure text readability against the bright orange pattern */}
