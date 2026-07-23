@@ -14,19 +14,19 @@ const services = [
     title: 'Data Annotation and Labelling',
     desc: 'We carefully label your data so that AI models can easily understand it. Our mix of smart tools and human experts ensures high accuracy at any scale.',
     detail: 'We use AI to speed up the first pass of labeling, and then our expert team double-checks everything to guarantee top-tier quality.',
-    image: '/data annotation.png',
+    image: '/data annotation.webp',
     imageRight: false,
     shortDesc: 'Accurate and fast data labeling powered by smart tools and human experts.',
-    posClasses: 'top-[2%] left-[2%] md:top-[8%] md:left-[5%] lg:left-[10%]',
+    posClasses: 'top-[5%] left-[2%] md:top-[10%] md:left-[5%] lg:left-[10%]',
   },
   {
     title: 'Data Generation',
     desc: 'We create highly realistic artificial data for training AI when real-world data is hard to find, too expensive, or restricted by privacy rules.',
     detail: 'Every generated dataset is rigorously tested to ensure it matches real-world scenarios, including rare edge cases that your AI needs to learn.',
-    image: '/data generation.png',
+    image: '/data generation.webp',
     imageRight: true,
     shortDesc: 'Creating realistic artificial data when real-world data is hard to get.',
-    posClasses: 'top-[28%] right-[2%] md:top-[15%] md:right-[5%] lg:right-[10%]',
+    posClasses: 'top-[5%] right-[2%] md:top-[10%] md:right-[5%] lg:right-[10%]',
   },
   {
     title: 'AI Implementation',
@@ -35,7 +35,7 @@ const services = [
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=85&fit=crop&auto=format',
     imageRight: false,
     shortDesc: 'Rapidly building and launching custom AI solutions tailored to your needs.',
-    posClasses: 'bottom-[28%] left-[2%] md:bottom-[18%] md:left-[5%] lg:left-[10%]',
+    posClasses: 'bottom-[5%] left-[2%] md:bottom-[10%] md:left-[5%] lg:left-[10%]',
   },
   {
     title: 'Quality Testing and Analysis',
@@ -44,7 +44,7 @@ const services = [
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=85&fit=crop&auto=format',
     imageRight: true,
     shortDesc: 'Thorough testing to guarantee your data and models work perfectly.',
-    posClasses: 'bottom-[2%] right-[2%] md:bottom-[8%] md:right-[5%] lg:right-[10%]',
+    posClasses: 'bottom-[5%] right-[2%] md:bottom-[10%] md:right-[5%] lg:right-[10%]',
   },
 ];
 
