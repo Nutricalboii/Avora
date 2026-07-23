@@ -62,7 +62,7 @@ export default function Blog() {
         <div className="home-blog-header max-w-3xl mx-auto text-center mb-16">
           {/* Big Gold Heading */}
           <h2 className="font-heading uppercase tracking-wide text-[#B8860B] leading-tight mb-4"
-              style={{ fontSize: 'clamp(2.8rem, 5vw, 4.5rem)' }}>
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
             Insights & Research
           </h2>
           {/* Small Black Subheading */}
