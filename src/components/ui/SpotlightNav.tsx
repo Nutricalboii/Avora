@@ -20,18 +20,6 @@ export function SpotlightNav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('#')) {
-      const targetId = href.substring(1);
-      const elem = document.getElementById(targetId);
-      if (elem) {
-        e.preventDefault();
-        elem.scrollIntoView({ behavior: 'smooth' });
-        setMobileMenuOpen(false);
-      }
-    }
-  };
-
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -80,7 +68,6 @@ export function SpotlightNav() {
                     "relative px-4 py-2 text-sm font-medium transition-colors",
                     textClass
                   )}
-                  onClick={(e) => handleNavClick(e, itemHref)}
                   onMouseEnter={() => setHoveredIndex(index)}
                 >
                   {item.name}
@@ -102,7 +89,6 @@ export function SpotlightNav() {
           <div className="hidden md:flex items-center gap-4 relative z-10">
             <Link
               href={pathname === '/home' ? '#contact' : '/home#contact'}
-              onClick={(e) => handleNavClick(e, pathname === '/home' ? '#contact' : '/home#contact')}
               className="btn-primary text-sm px-5 py-2"
             >
               Partner with us
@@ -138,10 +124,7 @@ export function SpotlightNav() {
                   <Link
                     key={item.name}
                     href={itemHref}
-                    onClick={(e) => {
-                      setMobileMenuOpen(false);
-                      handleNavClick(e, itemHref);
-                    }}
+                    onClick={() => setMobileMenuOpen(false)}
                     className="text-base font-medium text-[var(--foreground)] hover:text-[var(--accent)] transition-colors py-3 border-b border-[var(--border)]"
                   >
                     {item.name}
@@ -150,10 +133,7 @@ export function SpotlightNav() {
               })}
               <Link
                 href={pathname === '/home' ? '#contact' : '/home#contact'}
-                onClick={(e) => {
-                  setMobileMenuOpen(false);
-                  handleNavClick(e, pathname === '/home' ? '#contact' : '/home#contact');
-                }}
+                onClick={() => setMobileMenuOpen(false)}
                 className="btn-primary w-full mt-3 py-3"
               >
                 Partner with us
