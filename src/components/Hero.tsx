@@ -21,7 +21,7 @@ export default function Hero() {
   return (
     <section
       ref={container}
-      className="relative min-h-[85vh] md:min-h-screen flex flex-col justify-center md:justify-end overflow-hidden bg-black"
+      className="relative min-h-[85vh] lg:min-h-screen flex flex-col justify-center lg:justify-end overflow-hidden bg-black"
     >
       {/* Background image container rotated 90deg to landscape */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
@@ -39,8 +39,8 @@ export default function Hero() {
          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
       </div>
 
-      {/* Content — Centered on mobile, Left aligned on desktop */}
-      <div className="relative z-10 w-full px-6 sm:px-10 lg:px-20 pb-0 md:pb-24 max-w-screen-2xl mx-auto flex flex-col justify-center md:justify-end h-full mt-20 md:mt-0">
+      {/* Content — Centered on mobile/tablet, Left aligned on desktop */}
+      <div className="relative z-10 w-full px-6 sm:px-10 lg:px-20 pb-0 lg:pb-24 max-w-screen-2xl mx-auto flex flex-col justify-center lg:justify-end h-full mt-20 lg:mt-0">
         <h1
           className="hero-headline font-heading uppercase tracking-wide text-white leading-[0.95] mb-8"
           style={{

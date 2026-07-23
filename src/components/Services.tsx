@@ -140,8 +140,8 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="pt-16 md:pt-24 pb-10">
-        <div className="services-heading max-w-screen-xl mx-auto px-8 sm:px-12 lg:px-20 text-center mb-12 md:mb-16">
+      <div className="pt-16 md:pt-24">
+        <div className="services-heading max-w-screen-xl mx-auto px-8 sm:px-12 lg:px-20 text-center mb-8 md:mb-12">
           <p className="font-sans text-slate-600 text-base md:text-lg max-w-3xl mx-auto leading-[1.7]">
             We engineer AI foundations from the ground up — synthetic data, precision annotation, rigorous auditing, and production deployment.
           </p>
@@ -150,7 +150,7 @@ export default function Services() {
         {services.map((service, i) => (
           <div
             key={i}
-            className={`service-slide py-16 md:py-24 ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}
+            className={`service-slide ${i === 0 ? 'pb-16 md:pb-24 pt-4 md:pt-6' : 'py-16 md:py-24'} ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}
           >
             <div className="max-w-screen-xl mx-auto px-8 sm:px-12 lg:px-20">
               <div className={`grid grid-cols-1 lg:grid-cols-2 min-h-[400px] gap-10 lg:gap-16`}>
@@ -179,9 +179,7 @@ export default function Services() {
                   <img
                     src={service.image}
                     alt={service.title}
-                    className={`absolute inset-0 w-full h-full transition-transform duration-700 hover:scale-[1.03] ${
-                      i < 2 ? 'object-contain p-6 md:p-10' : 'object-cover object-center'
-                    }`}
+                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
                   />
                   <div className={`absolute inset-0 pointer-events-none ${
                     service.imageRight
