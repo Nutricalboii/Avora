@@ -23,7 +23,7 @@ const services = [
     title: 'Data Generation',
     desc: 'We engineer robust, physics-informed synthetic datasets under expert domain oversight — ensuring AI models have a high-fidelity foundation even when real-world data is scarce or inaccessible.',
     detail: 'Every synthetic dataset passes through multi-layer fidelity checks before approval. Edge-case richness and statistical diversity are built in by design, not retrofitted.',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=85&fit=crop&auto=format',
+    image: '/data generation.png',
     imageRight: true,
     shortDesc: 'Robust, physics-informed synthetic datasets under expert domain oversight.',
     posClasses: 'top-[20%] right-[5%] sm:top-[20%] sm:right-[15%]',
@@ -56,8 +56,10 @@ export default function Services() {
     // Intro floating animation
     services.forEach((_, i) => {
       gsap.to(`.float-item-${i}`, {
-        y: i % 2 === 0 ? -15 : 15,
-        duration: 2 + i * 0.2,
+        y: i % 2 === 0 ? -20 : 20,
+        x: i % 2 === 0 ? 15 : -15,
+        rotation: i % 2 === 0 ? 3 : -3,
+        duration: 3.5 + i * 0.4,
         ease: 'sine.inOut',
         yoyo: true,
         repeat: -1,
@@ -95,16 +97,13 @@ export default function Services() {
     <section id="services" ref={container} className="bg-white">
       {/* Intro Section */}
       <div className="relative w-full min-h-[70vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-slate-50 border-b border-slate-200 py-16">
-        <div className="text-center z-10 pointer-events-none px-4 max-w-sm">
+        <div className="text-center z-10 pointer-events-none px-4 max-w-sm mb-12">
           <h2 
-            className="font-heading uppercase tracking-wide text-slate-900 leading-tight mb-4" 
-            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
+            className="font-heading uppercase tracking-wide text-[#B8860B] leading-tight mb-4" 
+            style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)' }}
           >
             Our Services
           </h2>
-          <p className="font-sans text-slate-600 text-sm md:text-base leading-[1.7]">
-            Hover or click on the icons to explore our core offerings.
-          </p>
         </div>
 
         {/* Floating Icons */}
@@ -115,14 +114,14 @@ export default function Services() {
               tabIndex={0}
               className={`absolute float-item-${i} group flex flex-col items-center cursor-pointer transition-transform duration-300 hover:!scale-110 focus:!scale-110 z-20 outline-none ${service.posClasses}`}
             >
-              <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden shadow-lg border-2 border-white mb-2 sm:mb-3">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-[2rem] overflow-hidden shadow-xl border-4 border-white mb-3 md:mb-4">
                 <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
               </div>
-              <span className="font-sans font-semibold text-slate-800 bg-white/90 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full shadow-sm text-xs sm:text-sm text-center whitespace-nowrap border border-slate-100">
+              <span className="font-sans font-semibold text-[#1e293b] bg-[#eef6fc] backdrop-blur-sm px-4 py-1.5 rounded-full shadow-sm text-sm sm:text-base text-center whitespace-nowrap border border-[#dbeafe]">
                 {service.title}
               </span>
-              <div className="absolute top-full mt-2 sm:mt-3 w-56 sm:w-64 bg-white p-3 sm:p-4 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus:opacity-100 group-focus:visible transition-all duration-300 z-30 pointer-events-none border border-slate-100">
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">{service.shortDesc}</p>
+              <div className="absolute top-full mt-3 sm:mt-4 w-60 sm:w-72 bg-white p-4 sm:p-5 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus:opacity-100 group-focus:visible transition-all duration-300 z-30 pointer-events-none border border-slate-100">
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-sans">{service.shortDesc}</p>
               </div>
             </div>
           ))}
