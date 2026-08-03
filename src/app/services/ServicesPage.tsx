@@ -586,7 +586,7 @@ function ServicesOverviewGrid({ onDiveDeep }: { onDiveDeep: () => void }) {
                 </h3>
 
                 {/* Intro excerpt */}
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium mb-4 sm:mb-5 line-clamp-3">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium mb-4 sm:mb-5">
                   {stage.intro}
                 </p>
 
