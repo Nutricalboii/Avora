@@ -586,50 +586,41 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* ── BACK NAV ───────────────────────────────────────────────── */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12 h-16 flex items-center justify-between">
+      {/* ── HERO ───────────────────────────────────────────────────── */}
+      <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 border-b border-slate-100 bg-white">
+        <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
           <Link
             href="/home"
-            className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors group"
+            className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-6 font-mono text-xs font-bold tracking-wider group"
           >
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span className="text-sm font-mono tracking-wide font-bold">Back to home</span>
+            <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
+            <span>Back to home</span>
           </Link>
-          <p className="font-mono text-xs tracking-[0.25em] uppercase text-[#B8860B] hidden sm:block font-bold">
-            AI Delivery Playbook
-          </p>
-        </div>
-      </div>
-
-      {/* ── HERO ───────────────────────────────────────────────────── */}
-      <section className="pt-32 pb-16 border-b border-slate-100 bg-white">
-        <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
-          <p className="font-mono text-xs tracking-[0.35em] uppercase text-[#B8860B] mb-4 font-bold">
+          <p className="font-mono text-xs tracking-[0.35em] uppercase text-[#B8860B] mb-3 font-bold">
             Avora Ventures / Services
           </p>
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-7xl uppercase tracking-wide text-slate-900 leading-tight mb-8">
+          <h1 className="font-heading text-3xl sm:text-5xl lg:text-7xl uppercase tracking-wide text-slate-900 leading-tight mb-6">
             Six Disciplines.<br />
             <span className="text-[#B8860B]">One Framework.</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-slate-800 max-w-3xl leading-relaxed mb-6 font-medium">
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-800 max-w-3xl leading-relaxed mb-4 font-medium">
             Raw data doesn't become intelligence by accident. It moves through six disciplines, each handing off a more refined asset to the next — generated, annotated, labeled, verified, engineered, and accelerated.
           </p>
         </div>
       </section>
 
       {/* ── DELIVERY NAVIGATOR ─────────────────────────────────────── */}
-      <section className="py-10 bg-slate-50 border-b border-slate-200 sticky top-16 z-40">
-        <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
+      <section className="py-6 sm:py-10 bg-slate-50 border-b border-slate-200 sticky top-16 z-40">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12">
           <PipelineDiagram activeStage={activeStage} onSelect={handleSelectStage} />
         </div>
       </section>
 
       {/* ── STAGE DETAIL ───────────────────────────────────────────── */}
-      <section ref={panelRef} className="py-16 sm:py-20">
+      <section ref={panelRef} className="py-12 sm:py-20">
         <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
           {/* Stage header */}
-          <div className="mb-12 pb-10 border-b border-slate-100">
+          <div className="mb-10 sm:mb-12 pb-8 sm:pb-10 border-b border-slate-100">
             <div className="flex items-baseline gap-4 mb-2">
               <span className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#B8860B]">
                 Stage {stages[activeStage].id} / {stages.length.toString().padStart(2, '0')}
@@ -637,23 +628,23 @@ export default function ServicesPage() {
             </div>
             <h2
               className="font-heading uppercase tracking-wide text-slate-900 leading-tight mb-3"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
+              style={{ fontSize: 'clamp(1.75rem, 4vw, 3.5rem)' }}
             >
               {stages[activeStage].title}
             </h2>
-            <p className="text-slate-500 font-mono text-sm tracking-wide">{stages[activeStage].subtitle}</p>
+            <p className="text-slate-500 font-mono text-xs sm:text-sm tracking-wide">{stages[activeStage].subtitle}</p>
           </div>
 
           {/* Stage body */}
           <StagePanel key={activeStage} stage={stages[activeStage]} />
 
           {/* Previous / Next navigation */}
-          <div className="mt-16 pt-8 border-t border-slate-100 flex justify-between items-center">
+          <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-slate-100 flex justify-between items-center">
             <div>
               {activeStage > 0 && (
                 <button
                   onClick={() => handleSelectStage(activeStage - 1)}
-                  className="flex items-center gap-2 text-sm font-mono tracking-wide text-slate-500 hover:text-slate-900 transition-colors group"
+                  className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wide text-slate-500 hover:text-slate-900 transition-colors group"
                 >
                   <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
                   <span className="hidden sm:inline">{stages[activeStage - 1].title}</span>
@@ -665,7 +656,7 @@ export default function ServicesPage() {
               {activeStage < stages.length - 1 && (
                 <button
                   onClick={() => handleSelectStage(activeStage + 1)}
-                  className="flex items-center gap-2 text-sm font-mono tracking-wide text-[#B8860B] hover:text-[#8a6309] transition-colors group"
+                  className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wide text-[#B8860B] hover:text-[#8a6309] transition-colors group"
                 >
                   <span className="hidden sm:inline">{stages[activeStage + 1].title}</span>
                   <span className="sm:hidden">Next</span>
@@ -677,20 +668,15 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── CTA FOOTER ─────────────────────────────────────────────── */}
-      <section className="py-12 bg-slate-900 text-white border-t border-slate-800">
-        <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
-          <h2 className="font-heading text-2xl sm:text-4xl uppercase tracking-wide text-white font-bold mb-3">
-            Let's construct your system.
-          </h2>
-          <p className="text-slate-300 max-w-xl mx-auto mb-6 text-sm sm:text-base leading-relaxed font-medium">
-            Every engagement starts with a conversation. Tell us where you are and what you need — we'll map the rest.
-          </p>
+      {/* ── GET IN TOUCH CTA (WHITE BACKGROUND ONLY) ────────────────── */}
+      <section className="py-12 sm:py-16 bg-white border-t border-slate-100 text-center">
+        <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
           <Link
             href="/home#contact"
-            className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#a07508] text-white font-mono text-xs tracking-widest uppercase px-8 py-3.5 rounded-full font-bold shadow-md transition-all duration-200"
+            className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#a07508] text-white font-mono text-xs tracking-widest uppercase px-8 py-4 rounded-full font-bold shadow-sm hover:shadow-md transition-all duration-200"
           >
-            Get in touch
+            <span>Get in touch</span>
+            <span className="text-sm">→</span>
           </Link>
         </div>
       </section>
