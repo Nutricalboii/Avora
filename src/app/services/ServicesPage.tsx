@@ -201,44 +201,6 @@ const stages = [
     },
     myths: [],
   },
-  {
-    id: '06',
-    slug: 'outsourcing',
-    title: 'Specialized Outsourcing',
-    subtitle: 'Leveraging expertise beyond your walls',
-    accent: '#B8860B',
-    intro:
-      'Few companies have world-class expertise in every function they need. Specialized outsourcing contracts specific, knowledge-intensive work to external experts who do it better, faster, or more efficiently than building it in-house — available at any stage of the lifecycle.',
-    why: [
-      { title: 'Elite talent, no ramp-up', body: 'Global specialists without the recruiting, retention, or benefits burden.' },
-      { title: 'Cost efficiency', body: 'Fixed hiring and hardware costs convert to variable operating expense.' },
-      { title: 'Speed to market', body: 'Partners already have the tools and teams — no months-long ramp.' },
-      { title: 'Risk mitigation', body: 'Domain risk shared with a partner who lives in that domain daily.' },
-      { title: 'Focus on core strategy', body: 'Internal leadership stays on what the company does best.' },
-      { title: 'Scalability', body: 'Scale up or down without the complexity of hiring or layoffs.' },
-      { title: 'Innovation access', body: 'Exposure to methods a partner has refined across many clients.' },
-    ],
-    methods: [
-      { name: 'Identify the need', desc: 'A capability gap, a scaling need, or access to technology without heavy upfront investment.' },
-      { name: 'Define the scope', desc: 'Outcomes, quality standards, timelines, and communication protocols spelled out clearly before engagement begins.' },
-      { name: 'Select the partner', desc: 'Track record, security practices, cultural fit, and pricing — often validated with a small pilot before full commitment.' },
-      { name: 'Transition knowledge', desc: 'Context, data, access, and process transferred with enough care to preserve continuity.' },
-      { name: 'Manage & improve', desc: 'Governance, escalation paths, and regular feedback loops — treating the vendor as an extension of the team.' },
-    ],
-    caseStudy: {
-      sector: 'Biotech · Rare Neurological Disorder — Computational Chemistry',
-      headline: 'A six-week engagement found a previously unknown binding mechanism and saved months of preclinical timeline',
-      what: 'A small biotech had a promising compound but no in-house computational chemistry expertise to analyze how it interacted with target proteins. Building that capability internally meant hiring specialists, buying supercomputing time, and building simulation systems from scratch.',
-      how: 'Engaged a partner with published pharmaceutical modeling research and proprietary HPC access. Knowledge transfer: chemical structure, assay data, and interaction hypotheses shared; vendor shared methodology in return. Six weeks of simulation, protein-ligand analysis, metabolic pathway prediction, and off-target flagging.',
-      result: 'Revealed a previously unknown binding mechanism explaining the compound\'s selectivity. Identified a structural variant with a better safety profile. Redirected the biotech\'s next lab experiments toward the most promising variants. Core scientific team stayed focused on wet-lab work and clinical strategy — their real edge.',
-      metrics: [
-        { label: 'Time from engagement to insight', value: 'Six weeks' },
-        { label: 'Preclinical timeline accelerated', value: 'Months saved' },
-        { label: 'Estimated savings vs. building in-house', value: 'Substantial cost avoidance' },
-      ],
-    },
-    myths: [],
-  },
 ];
 
 // ─────────────────────────────────────────────────────────────────────
@@ -246,9 +208,9 @@ const stages = [
 // ─────────────────────────────────────────────────────────────────────
 
 function PipelineDiagram({ activeStage, onSelect }: { activeStage: number; onSelect: (i: number) => void }) {
-  const icons = ['◈', '◉', '◎', '◆', '◇', '⬡'];
-  const labels = ['Generation', 'Annotation', 'Labeling', 'Quality', 'AI', 'Outsourcing'];
-  const totalStages = 6;
+  const icons = ['◈', '◉', '◎', '◆', '◇'];
+  const labels = ['Generation', 'Annotation', 'Labeling', 'Quality', 'AI'];
+  const totalStages = 5;
   const progressPercent = (activeStage / (totalStages - 1)) * 100;
 
   return (
@@ -459,7 +421,6 @@ const lifecycles: Record<string, string[]> = {
   labeling: ['Strategic planning', 'Process & tooling', 'Execution with QA embedded', 'Validation & certification', 'Delivery & feedback'],
   quality: ['Strategy & governance', 'Profiling & assessment', 'Root cause & prevention', 'Remediation & correction', 'Monitor & improve'],
   'ai-solutions': ['Problem framing', 'Data architecture', 'Model development', 'Explainability layer', 'Production deployment', 'Monitoring & iteration'],
-  outsourcing: ['Identify the need', 'Define the scope', 'Select the partner', 'Transition knowledge', 'Manage & improve'],
 };
 
 function StagePanel({ stage }: { stage: typeof stages[0] }) {
@@ -473,7 +434,7 @@ function StagePanel({ stage }: { stage: typeof stages[0] }) {
       {/* Why it matters */}
       <div>
         <h3 className="font-mono text-xs sm:text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-5 sm:mb-8 font-bold">
-          {stage.id === '04' ? 'Eight Quality Dimensions' : stage.id === '06' ? 'Why Companies Choose It' : 'Why It Matters'}
+          {stage.id === '04' ? 'Eight Quality Dimensions' : 'Why It Matters'}
         </h3>
         {stage.id === '04' ? (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 items-start">
@@ -515,7 +476,7 @@ function StagePanel({ stage }: { stage: typeof stages[0] }) {
       {/* Methods */}
       <div>
         <h3 className="font-mono text-xs sm:text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-5 sm:mb-8 font-bold">
-          {stage.id === '06' ? 'Engagement Process' : 'Core Methodologies'}
+          Core Methodologies
         </h3>
         <MethodGrid methods={stage.methods} />
       </div>
@@ -554,7 +515,7 @@ function StagePanel({ stage }: { stage: typeof stages[0] }) {
 // SERVICES OVERVIEW GRID — all 6 on one page
 // ─────────────────────────────────────────────────────────────────────
 
-const stageIcons = ['◈', '◉', '◎', '◆', '◇', '⬡'];
+const stageIcons = ['◈', '◉', '◎', '◆', '◇'];
 
 function ServicesOverviewGrid({ onDiveDeep }: { onDiveDeep: () => void }) {
   return (
@@ -692,11 +653,11 @@ function ServicesContent() {
             <span>Back to home</span>
           </Link>
           <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-7xl uppercase tracking-wide text-slate-900 leading-tight mb-4 sm:mb-6">
-            Six Disciplines.<br />
+            Five Disciplines.<br />
             <span className="text-[#B8860B]">One Framework.</span>
           </h1>
           <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-slate-700 max-w-3xl leading-relaxed font-medium">
-            Raw data doesn't become intelligence by accident. It moves through six disciplines, each handing off a more refined asset to the next.
+            Raw data doesn't become intelligence by accident. It moves through five disciplines, each handing off a more refined asset to the next.
           </p>
         </div>
       </section>
@@ -739,7 +700,7 @@ function ServicesContent() {
               {/* Stage header */}
               <div className="mb-7 sm:mb-10 lg:mb-12 pb-6 sm:pb-8 lg:pb-10 border-b border-slate-100">
                 <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-[#B8860B] font-bold uppercase block mb-1.5 sm:mb-2">
-                  Stage {stages[selectedStage].id} / 06
+                  Stage {stages[selectedStage].id} / 05
                 </span>
                 <h2
                   className="font-heading uppercase tracking-wide text-slate-900 leading-tight"
