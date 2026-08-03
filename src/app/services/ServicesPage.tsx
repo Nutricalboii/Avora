@@ -651,67 +651,114 @@ function StagePanel({ stage }: { stage: typeof stages[0] }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────
+// SERVICES OVERVIEW GRID — all 6 on one page
+// ─────────────────────────────────────────────────────────────────────
+
+const stageIcons = ['◈', '◉', '◎', '◆', '◇', '⬡'];
+
+function ServicesOverviewGrid({ onExplore }: { onExplore: (i: number) => void }) {
+  return (
+    <div className="py-12 sm:py-20">
+      <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {stages.map((stage, i) => (
+            <div
+              key={stage.id}
+              className="group border border-slate-200 rounded-2xl bg-white hover:border-[#B8860B]/40 hover:shadow-lg transition-all duration-300 flex flex-col overflow-hidden"
+            >
+              {/* Card top accent line */}
+              <div className="h-0.5 bg-gradient-to-r from-[#B8860B] to-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div className="p-7 sm:p-8 flex flex-col flex-1">
+                {/* Stage number + icon */}
+                <div className="flex items-center justify-between mb-6">
+                  <span className="font-mono text-xs tracking-[0.25em] text-[#B8860B] font-bold uppercase">
+                    Stage {stage.id}
+                  </span>
+                  <span className="text-2xl text-slate-300 group-hover:text-[#B8860B] transition-colors duration-300">
+                    {stageIcons[i]}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="font-heading text-xl sm:text-2xl uppercase tracking-wide text-slate-900 mb-4 leading-tight">
+                  {stage.title}
+                </h3>
+
+                {/* Intro excerpt */}
+                <p className="text-sm text-slate-600 leading-relaxed font-medium flex-1 mb-8 line-clamp-4">
+                  {stage.intro}
+                </p>
+
+                {/* Explore button */}
+                <button
+                  onClick={() => onExplore(i)}
+                  className="inline-flex items-center gap-2 self-start font-mono text-xs tracking-widest uppercase text-[#B8860B] hover:text-slate-900 font-bold transition-colors group/btn"
+                >
+                  <span>Explore</span>
+                  <span className="transition-transform group-hover/btn:translate-x-1">→</span>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────
 // MAIN PAGE
 // ─────────────────────────────────────────────────────────────────────
 
 function ServicesContent() {
-  const [activeStage, setActiveStage] = useState(0);
-  const panelRef = useRef<HTMLDivElement>(null);
+  // null = overview grid; number = detail view for that stage index
+  const [selectedStage, setSelectedStage] = useState<number | null>(null);
+  const topRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
 
-  const scrollToPanel = () => {
-    if (panelRef.current) {
-      const top = panelRef.current.getBoundingClientRect().top + window.scrollY - 100;
+  const scrollToTop = () => {
+    if (topRef.current) {
+      const top = topRef.current.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top, behavior: 'smooth' });
     }
   };
 
+  // Handle ?stage= query param — jump straight to detail view
   useEffect(() => {
     const stageParam = searchParams.get('stage');
     if (stageParam) {
       const p = stageParam.trim().toLowerCase();
-
-      // 1. Match by exact stage ID ('01', '02', '03', '04', '05', '06')
       const byId = stages.findIndex((s) => s.id === p || s.id === p.padStart(2, '0'));
-      if (byId !== -1) {
-        setActiveStage(byId);
-        setTimeout(scrollToPanel, 100);
-        return;
-      }
-
-      // 2. Match by slug ('generation', 'annotation', 'labeling', 'quality', 'ai-solutions', 'outsourcing')
+      if (byId !== -1) { setSelectedStage(byId); return; }
       const bySlug = stages.findIndex((s) => s.slug === p);
-      if (bySlug !== -1) {
-        setActiveStage(bySlug);
-        setTimeout(scrollToPanel, 100);
-        return;
-      }
-
-      // 3. Match numeric stage number (1..6 -> index 0..5 or 0..5)
+      if (bySlug !== -1) { setSelectedStage(bySlug); return; }
       const num = parseInt(p, 10);
       if (!isNaN(num)) {
-        if (num >= 1 && num <= stages.length) {
-          setActiveStage(num - 1);
-          setTimeout(scrollToPanel, 100);
-          return;
-        }
-        if (num >= 0 && num < stages.length) {
-          setActiveStage(num);
-          setTimeout(scrollToPanel, 100);
-          return;
-        }
+        if (num >= 1 && num <= stages.length) { setSelectedStage(num - 1); return; }
+        if (num >= 0 && num < stages.length) { setSelectedStage(num); return; }
       }
     }
   }, [searchParams]);
 
-  const handleSelectStage = (i: number) => {
-    setActiveStage(i);
-    scrollToPanel();
+  const handleExplore = (i: number) => {
+    setSelectedStage(i);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToAll = () => {
+    setSelectedStage(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSelectNeighbour = (i: number) => {
+    setSelectedStage(i);
+    scrollToTop();
   };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* ── HERO ───────────────────────────────────────────────────── */}
+      {/* ── HERO ─────────────────────────────────────────────────────── */}
       <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 border-b border-slate-100 bg-white">
         <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
           <Link
@@ -725,66 +772,97 @@ function ServicesContent() {
             Six Disciplines.<br />
             <span className="text-[#B8860B]">One Framework.</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-800 max-w-3xl leading-relaxed mb-4 font-medium">
-            Raw data doesn't become intelligence by accident. It moves through six disciplines, each handing off a more refined asset to the next — generated, annotated, labeled, verified, engineered, and accelerated.
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-800 max-w-3xl leading-relaxed font-medium">
+            Raw data doesn't become intelligence by accident. It moves through six disciplines, each handing off a more refined asset to the next.
           </p>
         </div>
       </section>
 
-      {/* ── DELIVERY NAVIGATOR ─────────────────────────────────────── */}
-      <section className="py-6 sm:py-10 bg-slate-50 border-b border-slate-200 sticky top-16 z-40">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12">
-          <PipelineDiagram activeStage={activeStage} onSelect={handleSelectStage} />
-        </div>
-      </section>
+      {/* ── OVERVIEW GRID (all 6 services) ───────────────────────────── */}
+      {selectedStage === null && (
+        <ServicesOverviewGrid onExplore={handleExplore} />
+      )}
 
-      {/* ── STAGE DETAIL ───────────────────────────────────────────── */}
-      <section ref={panelRef} className="py-12 sm:py-20">
-        <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
-          {/* Stage header */}
-          <div className="mb-10 sm:mb-12 pb-8 sm:pb-10 border-b border-slate-100">
-            <h2
-              className="font-heading uppercase tracking-wide text-slate-900 leading-tight mb-2"
-              style={{ fontSize: 'clamp(1.75rem, 4vw, 3.5rem)' }}
-            >
-              {stages[activeStage].title}
-            </h2>
-          </div>
-
-          {/* Stage body */}
-          <StagePanel key={activeStage} stage={stages[activeStage]} />
-
-          {/* Previous / Next navigation */}
-          <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-slate-100 flex justify-between items-center">
-            <div>
-              {activeStage > 0 && (
-                <button
-                  onClick={() => handleSelectStage(activeStage - 1)}
-                  className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wide text-slate-500 hover:text-slate-900 transition-colors group"
-                >
-                  <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                  <span className="hidden sm:inline">{stages[activeStage - 1].title}</span>
-                  <span className="sm:hidden">Previous</span>
-                </button>
-              )}
-            </div>
-            <div>
-              {activeStage < stages.length - 1 && (
-                <button
-                  onClick={() => handleSelectStage(activeStage + 1)}
-                  className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wide text-[#B8860B] hover:text-[#8a6309] transition-colors group"
-                >
-                  <span className="hidden sm:inline">{stages[activeStage + 1].title}</span>
-                  <span className="sm:hidden">Next</span>
-                  <ArrowLeft className="w-4 h-4 rotate-180 transition-transform group-hover:translate-x-1" />
-                </button>
-              )}
+      {/* ── DETAIL VIEW (one service) ─────────────────────────────────── */}
+      {selectedStage !== null && (
+        <div ref={topRef}>
+          {/* Breadcrumb / back */}
+          <div className="bg-slate-50 border-b border-slate-200 py-4">
+            <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center gap-3">
+              <button
+                onClick={handleBackToAll}
+                className="inline-flex items-center gap-2 font-mono text-xs tracking-wider text-slate-500 hover:text-slate-900 transition-colors font-bold group"
+              >
+                <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
+                <span>All Services</span>
+              </button>
+              <span className="text-slate-300 font-mono text-xs">/</span>
+              <span className="font-mono text-xs tracking-wider text-[#B8860B] font-bold uppercase">
+                {stages[selectedStage].title}
+              </span>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ── GET IN TOUCH CTA (WHITE BACKGROUND ONLY) ────────────────── */}
+          {/* Stage detail content */}
+          <section className="py-12 sm:py-20">
+            <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
+              {/* Stage header */}
+              <div className="mb-10 sm:mb-12 pb-8 sm:pb-10 border-b border-slate-100 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                <div>
+                  <span className="font-mono text-xs tracking-[0.25em] text-[#B8860B] font-bold uppercase block mb-2">
+                    Stage {stages[selectedStage].id} / 06
+                  </span>
+                  <h2
+                    className="font-heading uppercase tracking-wide text-slate-900 leading-tight"
+                    style={{ fontSize: 'clamp(1.75rem, 4vw, 3.5rem)' }}
+                  >
+                    {stages[selectedStage].title}
+                  </h2>
+                </div>
+              </div>
+
+              {/* Stage body */}
+              <StagePanel key={selectedStage} stage={stages[selectedStage]} />
+
+              {/* Previous / Next navigation */}
+              <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-slate-100 flex justify-between items-center">
+                <div>
+                  {selectedStage > 0 && (
+                    <button
+                      onClick={() => handleSelectNeighbour(selectedStage - 1)}
+                      className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wide text-slate-500 hover:text-slate-900 transition-colors group"
+                    >
+                      <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                      <span className="hidden sm:inline">{stages[selectedStage - 1].title}</span>
+                      <span className="sm:hidden">Previous</span>
+                    </button>
+                  )}
+                </div>
+                <button
+                  onClick={handleBackToAll}
+                  className="font-mono text-xs tracking-widest uppercase text-slate-400 hover:text-slate-700 transition-colors font-bold"
+                >
+                  All Services
+                </button>
+                <div>
+                  {selectedStage < stages.length - 1 && (
+                    <button
+                      onClick={() => handleSelectNeighbour(selectedStage + 1)}
+                      className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wide text-[#B8860B] hover:text-[#8a6309] transition-colors group"
+                    >
+                      <span className="hidden sm:inline">{stages[selectedStage + 1].title}</span>
+                      <span className="sm:hidden">Next</span>
+                      <ArrowLeft className="w-4 h-4 rotate-180 transition-transform group-hover:translate-x-1" />
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      )}
+
+      {/* ── GET IN TOUCH CTA ─────────────────────────────────────────── */}
       <section className="py-12 sm:py-16 bg-white border-t border-slate-100 text-center">
         <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
           <Link
