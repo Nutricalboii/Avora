@@ -92,14 +92,14 @@ export default function Services() {
       <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
         
         {/* Header */}
-        <div className="services-header-el max-w-2xl mb-16 sm:mb-20">
+        <div className="services-header-el max-w-3xl mx-auto text-center mb-16 sm:mb-20">
           <p className="font-mono text-xs tracking-[0.35em] uppercase text-[#B8860B] mb-4 font-bold">
             Operational Capabilities
           </p>
           <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-wide text-slate-900 leading-tight mb-6">
             Intelligent systems for high-stakes AI.
           </h2>
-          <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-medium">
+          <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-medium max-w-2xl mx-auto">
             We engineer raw information into production-ready intelligence. Hover or click any card to flip it and explore our methodologies.
           </p>
         </div>
@@ -123,17 +123,17 @@ export default function Services() {
           }
         `}} />
 
-        {/* Spin Flashcards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 2x2 Matrix Big Flashcards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
           {services.map((s, i) => (
             <div
               key={s.id}
-              className="flip-card-container relative w-full aspect-[4/3] sm:aspect-square max-w-[340px] md:max-w-full mx-auto cursor-pointer"
+              className="flip-card-container relative w-full aspect-[16/11] min-h-[300px] sm:min-h-[340px] cursor-pointer"
               style={{ perspective: '1000px' }}
               onClick={() => setFlippedIndex(flippedIndex === i ? null : i)}
             >
               <div
-                className="flip-card-inner w-full h-full relative rounded-2xl shadow-sm border border-slate-200 bg-white"
+                className="flip-card-inner w-full h-full relative rounded-2xl shadow-md border border-slate-200 bg-white"
                 style={{
                   transform: flippedIndex === i ? 'rotateY(180deg)' : undefined
                 }}
@@ -141,12 +141,12 @@ export default function Services() {
                 {/* Front */}
                 <div className="flip-card-front absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-white">
                   <img src={s.image} alt={s.title} className="w-full h-full object-cover object-center" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex items-end p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-8">
                     <div>
-                      <span className="block font-mono text-[10px] tracking-widest text-[#D4AF37] font-bold mb-2">
+                      <span className="block font-mono text-xs tracking-widest text-[#D4AF37] font-bold mb-2">
                         STAGE {s.id}
                       </span>
-                      <h3 className="text-white font-heading text-xl sm:text-2xl uppercase tracking-wide drop-shadow-md">
+                      <h3 className="text-white font-heading text-2xl sm:text-3xl uppercase tracking-wide drop-shadow-md">
                         {s.title}
                       </h3>
                     </div>
@@ -154,15 +154,15 @@ export default function Services() {
                 </div>
 
                 {/* Back */}
-                <div className="flip-card-back absolute inset-0 w-full h-full bg-slate-900 rounded-2xl p-6 flex flex-col justify-between text-left">
+                <div className="flip-card-back absolute inset-0 w-full h-full bg-slate-900 rounded-2xl p-8 flex flex-col justify-between text-left">
                   <div>
-                    <span className="block font-mono text-[10px] tracking-widest text-[#D4AF37] font-bold mb-4">
+                    <span className="block font-mono text-xs tracking-widest text-[#D4AF37] font-bold mb-4">
                       STAGE {s.id}
                     </span>
-                    <h3 className="font-heading text-lg sm:text-xl uppercase tracking-wide text-white mb-3">
+                    <h3 className="font-heading text-2xl uppercase tracking-wide text-white mb-4">
                       {s.title}
                     </h3>
-                    <p className="text-sm text-slate-300 leading-relaxed font-medium">
+                    <p className="text-base text-slate-300 leading-relaxed font-medium">
                       {s.desc}
                     </p>
                   </div>
@@ -170,7 +170,7 @@ export default function Services() {
                   <Link
                     href={`/services?stage=${s.stageIndex}`}
                     className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#D4AF37] font-bold hover:translate-x-1 transition-transform"
-                    onClick={(e) => e.stopPropagation()} // Stop bubble up so click goes to link
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <span>Explore Methodology</span>
                     <span className="text-sm">→</span>
@@ -179,6 +179,23 @@ export default function Services() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Build With Us & Explore Our Services CTA Section */}
+        <div className="text-center pt-8 border-t border-slate-200 max-w-xl mx-auto">
+          <p className="font-mono text-xs tracking-[0.35em] uppercase text-[#B8860B] mb-3 font-bold">
+            Build With Us
+          </p>
+          <p className="text-slate-700 text-sm sm:text-base mb-6 font-medium">
+            Explore our end-to-end framework, lifecycles, and verified case studies across all six core disciplines.
+          </p>
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-3 bg-[#B8860B] hover:bg-[#a07508] text-white font-mono text-xs tracking-widest uppercase px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-200 font-bold"
+          >
+            <span>Explore Our Services</span>
+            <span className="text-base">→</span>
+          </Link>
         </div>
 
       </div>

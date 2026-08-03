@@ -612,22 +612,9 @@ export default function ServicesPage() {
             Six Disciplines.<br />
             <span className="text-[#B8860B]">One Framework.</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-slate-800 max-w-3xl leading-relaxed mb-12 font-medium">
+          <p className="text-xl sm:text-2xl text-slate-800 max-w-3xl leading-relaxed mb-6 font-medium">
             Raw data doesn't become intelligence by accident. It moves through six disciplines, each handing off a more refined asset to the next — generated, annotated, labeled, verified, engineered, and accelerated.
           </p>
-
-          {/* Framework overview labels */}
-          <div className="flex flex-wrap gap-3">
-            {stages.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => handleSelectStage(i)}
-                className="font-mono text-[11px] tracking-[0.18em] uppercase px-3 py-1.5 rounded-full border transition-all duration-200 hover:border-[#B8860B]/50 hover:text-[#B8860B] text-slate-600 border-slate-200"
-              >
-                {s.id} / {s.title}
-              </button>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -691,20 +678,17 @@ export default function ServicesPage() {
       </section>
 
       {/* ── CTA FOOTER ─────────────────────────────────────────────── */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-12 bg-slate-900 text-white border-t border-slate-800">
         <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
-          <p className="font-mono text-[11px] tracking-[0.35em] uppercase text-[#D4AF37] mb-4">
-            Ready to start
-          </p>
-          <h2 className="font-heading text-3xl sm:text-5xl uppercase tracking-wide mb-6">
+          <h2 className="font-heading text-2xl sm:text-4xl uppercase tracking-wide text-white font-bold mb-3">
             Let's construct your system.
           </h2>
-          <p className="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-slate-300 max-w-xl mx-auto mb-6 text-sm sm:text-base leading-relaxed font-medium">
             Every engagement starts with a conversation. Tell us where you are and what you need — we'll map the rest.
           </p>
           <Link
             href="/home#contact"
-            className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#a07508] text-white font-mono text-sm tracking-widest uppercase px-8 py-4 rounded-full transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#a07508] text-white font-mono text-xs tracking-widest uppercase px-8 py-3.5 rounded-full font-bold shadow-md transition-all duration-200"
           >
             Get in touch
           </Link>
