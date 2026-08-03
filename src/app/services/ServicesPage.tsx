@@ -517,7 +517,7 @@ function StagePanel({ stage }: { stage: typeof stages[0] }) {
 
 const stageIcons = ['◈', '◉', '◎', '◆', '◇'];
 
-function ServicesOverviewGrid({ onDiveDeep }: { onDiveDeep: () => void }) {
+function ServicesOverviewGrid({ onDiveDeep, onSelectStage }: { onDiveDeep: () => void; onSelectStage: (i: number) => void }) {
   return (
     <div className="py-8 sm:py-14 lg:py-20">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12">
@@ -525,7 +525,8 @@ function ServicesOverviewGrid({ onDiveDeep }: { onDiveDeep: () => void }) {
           {stages.map((stage, i) => (
             <div
               key={stage.id}
-              className="group border border-slate-200 rounded-2xl bg-white hover:border-[#B8860B]/40 hover:shadow-lg transition-all duration-300 flex flex-col overflow-hidden"
+              onClick={() => onSelectStage(i)}
+              className="group border border-slate-200 rounded-2xl bg-white hover:border-[#B8860B]/40 hover:shadow-lg transition-all duration-300 flex flex-col overflow-hidden cursor-pointer"
             >
               {/* Card top accent line */}
               <div className="h-0.5 bg-gradient-to-r from-[#B8860B] to-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -572,12 +573,20 @@ function ServicesOverviewGrid({ onDiveDeep }: { onDiveDeep: () => void }) {
                     <span className="text-[10px] sm:text-xs text-slate-400 font-mono pl-3">+{stage.methods.length - 2} more</span>
                   )}
                 </div>
+
+                {/* Explore link */}
+                <div className="mt-5 pt-3 flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wider text-[#B8860B] font-bold group-hover:translate-x-1 transition-transform">
+                    <span>Explore Stage {stage.id}</span>
+                    <span>→</span>
+                  </span>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Single Dive Deep CTA below all 6 cards */}
+        {/* Single Dive Deep CTA below all cards */}
         <div className="mt-10 sm:mt-14 text-center">
           <button
             onClick={onDiveDeep}
@@ -664,7 +673,7 @@ function ServicesContent() {
 
       {/* ── OVERVIEW GRID ────────────────────────────────────────────── */}
       {selectedStage === null && (
-        <ServicesOverviewGrid onDiveDeep={() => handleExplore(0)} />
+        <ServicesOverviewGrid onDiveDeep={() => handleExplore(0)} onSelectStage={handleExplore} />
       )}
 
       {/* ── DETAIL VIEW ──────────────────────────────────────────────── */}
