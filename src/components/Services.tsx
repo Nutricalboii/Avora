@@ -16,28 +16,28 @@ const services = [
     stageIndex: 0,
     title: 'Data Generation',
     desc: 'Engineering synthetic data to solve scarcity, protect privacy, and simulate edge cases for model training.',
-    image: '/service_data_generation.png',
+    image: '/service_data_generation.webp',
   },
   {
     id: '02',
     stageIndex: 1,
     title: 'Data Annotation',
     desc: 'Creating clear ontologies and guidelines to label complex data accurately through expert-guided workflows.',
-    image: '/service_data_annotation.png',
+    image: '/service_data_annotation.webp',
   },
   {
     id: '03',
     stageIndex: 2,
     title: 'Data Labeling',
     desc: 'Converting unstructured data streams into clean training sets with multi-pass consensus verification.',
-    image: '/service_data_auditing.png',
+    image: '/service_dqa.png',
   },
   {
     id: '04',
     stageIndex: 3,
     title: 'Quality Testing & Analysis',
     desc: 'Auditing datasets across eight dimensions including accuracy, completeness, and consistency before training.',
-    image: '/service_ai_implementation.png',
+    image: '/service_ai.webp',
   },
 ];
 
