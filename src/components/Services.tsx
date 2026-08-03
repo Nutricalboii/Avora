@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
+import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -11,207 +12,115 @@ if (typeof window !== 'undefined') {
 
 const services = [
   {
-    title: 'Data Annotation and Labelling',
-    desc: 'We carefully label your data so that AI models can easily understand it. Our mix of smart tools and human experts ensures high accuracy at any scale.',
-    detail: 'We use AI to speed up the first pass of labeling, and then our expert team double-checks everything to guarantee top-tier quality.',
-    image: '/data annot.webp',
-    imageRight: false,
-    shortDesc: 'Accurate and fast data labeling powered by smart tools and human experts.',
-    posClasses: 'top-[12%] left-[2%] md:top-[15%] md:left-[5%] lg:top-[12%] lg:left-[10%]',
-  },
-  {
+    id: '01',
+    stageIndex: 0,
     title: 'Data Generation',
-    desc: 'We create highly realistic artificial data for training AI when real-world data is hard to find, too expensive, or restricted by privacy rules.',
-    detail: 'Every generated dataset is rigorously tested to ensure it matches real-world scenarios, including rare edge cases that your AI needs to learn.',
-    image: '/data generation.webp',
-    imageRight: true,
-    shortDesc: 'Creating realistic artificial data when real-world data is hard to get.',
-    posClasses: 'top-[12%] right-[2%] md:top-[15%] md:right-[5%] lg:top-[12%] lg:right-[10%]',
+    desc: 'Engineering synthetic data to solve scarcity, protect privacy, and simulate edge cases for model training.',
+    tag: 'Fidelity & Privacy',
   },
   {
-    title: 'AI Implementation',
-    desc: 'We quickly build and launch custom AI solutions tailored to your business, helping you test your ideas in the real world before scaling up.',
-    detail: 'Once proven, we turn your prototype into a secure, scalable, and easy-to-understand system that continuously monitors its own performance.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=85&fit=crop&auto=format',
-    imageRight: false,
-    shortDesc: 'Rapidly building and launching custom AI solutions tailored to your needs.',
-    posClasses: 'bottom-[12%] left-[2%] md:bottom-[15%] md:left-[5%] lg:bottom-[12%] lg:left-[10%]',
+    id: '02',
+    stageIndex: 1,
+    title: 'Data Annotation',
+    desc: 'Creating clear ontologies and guidelines to label complex data accurately through expert-guided workflows.',
+    tag: 'Ontology & Meaning',
   },
   {
-    title: 'Quality Testing and Analysis',
-    desc: 'We thoroughly test your datasets and AI models to make sure everything works perfectly. We treat data quality with the same strict standards as software code.',
-    detail: 'Through automated checks and expert reviews, we push your systems to their limits. If something falls short, we fix it before it ever reaches you.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=85&fit=crop&auto=format',
-    imageRight: true,
-    shortDesc: 'Thorough testing to guarantee your data and models work perfectly.',
-    posClasses: 'bottom-[12%] right-[2%] md:bottom-[15%] md:right-[5%] lg:bottom-[12%] lg:right-[10%]',
+    id: '03',
+    stageIndex: 2,
+    title: 'Data Labeling',
+    desc: 'Converting unstructured data streams into clean training sets with multi-pass consensus verification.',
+    tag: 'Structured Assets',
+  },
+  {
+    id: '04',
+    stageIndex: 3,
+    title: 'Quality Testing & Analysis',
+    desc: 'Auditing datasets across eight dimensions including accuracy, completeness, and consistency before training.',
+    tag: 'DQA Verification',
   },
 ];
 
 export default function Services() {
   const container = useRef<HTMLDivElement>(null);
-  const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
-  const touchActive = useRef(false);
-
-  React.useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
-      const target = e.target as HTMLElement;
-      if (!target.closest('.flip-card-container')) {
-        setHoveredIndex(null);
-      }
-    };
-    document.addEventListener('mousedown', handleOutsideClick);
-    document.addEventListener('touchstart', handleOutsideClick, { passive: true });
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-      document.removeEventListener('touchstart', handleOutsideClick);
-    };
-  }, []);
 
   useGSAP(() => {
-    gsap.fromTo('.services-heading',
-      { opacity: 0, y: 20 },
+    gsap.fromTo(
+      '.services-header-el',
+      { opacity: 0, y: 30 },
       {
-        opacity: 1, y: 0, duration: 1.0, ease: 'power3.out',
-        scrollTrigger: { trigger: '.services-heading', start: 'top 85%' },
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '.services-header-el', start: 'top 85%' },
       }
     );
 
-    const slides = gsap.utils.toArray('.service-slide') as HTMLElement[];
-    slides.forEach((slide) => {
-      const textEl = slide.querySelector('.slide-text');
-      const imageEl = slide.querySelector('.slide-image');
-      if (textEl) {
-        gsap.fromTo(textEl, { opacity: 0, x: -30 }, {
-          opacity: 1, x: 0, duration: 1.0, ease: 'power4.out',
-          scrollTrigger: { trigger: slide, start: 'top 78%' },
-        });
+    gsap.fromTo(
+      '.service-grid-card',
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '.service-grid-card', start: 'top 80%' },
       }
-      if (imageEl) {
-        gsap.fromTo(imageEl, { opacity: 0, scale: 0.97 }, {
-          opacity: 1, scale: 1, duration: 1.1, ease: 'power4.out',
-          scrollTrigger: { trigger: slide, start: 'top 78%' },
-        });
-      }
-    });
+    );
   }, { scope: container });
 
   return (
-    <section id="services" ref={container} className="bg-white pt-20 md:pt-28">
-      <div className="text-center px-4 max-w-screen-xl mx-auto mb-10">
-        <h2 
-          className="font-heading uppercase tracking-wide text-[#B8860B] leading-tight" 
-          style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
-        >
-          Our Services
-        </h2>
-      </div>
-
-      <style dangerouslySetInnerHTML={{__html: `
-        .flip-card-inner {
-          transition: transform 0.6s;
-          transform-style: preserve-3d;
-        }
-        @media (hover: hover) {
-          .flip-card-container:hover .flip-card-inner {
-            transform: rotateY(180deg);
-          }
-        }
-        .flip-card-front, .flip-card-back {
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-        }
-        .flip-card-back {
-          transform: rotateY(180deg);
-        }
-      `}} />
-
-      {/* Flashcards Section */}
-      <div className="w-full bg-white pb-12 sm:pb-16 pt-6 sm:pt-8 px-4 sm:px-6 md:px-8">
-        <div className="max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
-          {services.map((service, i) => (
-            <div 
-              key={i}
-              className="flip-card-container relative w-full aspect-[4/3] sm:aspect-square max-w-[360px] sm:max-w-[400px] mx-auto cursor-pointer"
-              style={{ perspective: '1000px' }}
-              onClick={() => setHoveredIndex(hoveredIndex === i ? null : i)}
-            >
-              <div 
-                className="flip-card-inner w-full h-full relative rounded-2xl shadow-xl"
-                style={{
-                  transform: hoveredIndex === i ? 'rotateY(180deg)' : undefined
-                }}
-              >
-                {/* Front */}
-                <div className="flip-card-front absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-white">
-                  <img src={service.image} alt={service.title} className="w-full h-full object-cover object-center" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex items-end p-5 sm:p-6 md:p-8">
-                    <h3 className="text-white font-heading text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-widest drop-shadow-lg">{service.title}</h3>
-                  </div>
-                </div>
-                {/* Back */}
-                <div className="flip-card-back absolute inset-0 w-full h-full bg-slate-50 rounded-2xl border border-slate-200 p-5 sm:p-6 md:p-8 flex flex-col items-center justify-center text-center">
-                  <h3 className="font-heading font-bold uppercase tracking-widest text-lg sm:text-xl md:text-2xl text-[#B8860B] mb-3 sm:mb-4">{service.title}</h3>
-                  <p className="font-sans text-slate-700 text-xs sm:text-sm md:text-base leading-relaxed">{service.desc}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="pt-12 sm:pt-16 md:pt-24">
-        <div className="services-heading max-w-screen-xl mx-auto px-5 sm:px-8 md:px-12 lg:px-20 text-center mb-10 sm:mb-14 md:mb-20">
-          <p className="font-sans text-slate-600 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed sm:leading-[1.7]">
-            We engineer AI foundations from the ground up — synthetic data, precision annotation, rigorous auditing, and production deployment.
+    <section id="services" ref={container} className="bg-slate-50 py-24 sm:py-32 border-t border-slate-100">
+      <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
+        
+        {/* Header */}
+        <div className="services-header-el max-w-2xl mb-16 sm:mb-20">
+          <p className="font-mono text-xs tracking-[0.35em] uppercase text-[#B8860B] mb-4 font-bold">
+            Operational Capabilities
+          </p>
+          <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-wide text-slate-900 leading-tight mb-6">
+            Intelligent pipelines for high-stakes AI.
+          </h2>
+          <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-medium">
+            We engineer raw information into production-ready intelligence. Click any discipline to explore our methodologies, lifecycles, and verified case studies.
           </p>
         </div>
 
-        {services.map((service, i) => (
-          <div
-            key={i}
-            className={`service-slide ${i === 0 ? 'pb-12 sm:pb-16 md:pb-24 pt-4 sm:pt-6 md:pt-10' : 'py-12 sm:py-16 md:py-24'} ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}
-          >
-            <div className="max-w-screen-xl mx-auto px-5 sm:px-8 md:px-12 lg:px-20">
-              <div className={`grid grid-cols-1 lg:grid-cols-2 min-h-[300px] sm:min-h-[360px] lg:min-h-[400px] gap-8 sm:gap-10 lg:gap-16`}>
-
-                <div className={`slide-text flex flex-col justify-center ${
-                  !service.imageRight ? 'lg:order-2' : ''
-                }`}>
-                  <h3
-                    className="font-heading uppercase tracking-wide text-[#B8860B] leading-[1.05] mb-4 sm:mb-5"
-                    style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)' }}
-                  >
-                    {service.title}
-                  </h3>
-
-                  <p className="font-sans text-slate-700 text-base md:text-lg leading-relaxed sm:leading-[1.85] mb-3 sm:mb-5">
-                    {service.desc}
-                  </p>
-                  <p className="font-sans text-slate-500 text-sm md:text-base leading-relaxed sm:leading-[1.85]">
-                    {service.detail}
-                  </p>
+        {/* Bento/Modern Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((s) => (
+            <Link
+              key={s.id}
+              href={`/services?stage=${s.stageIndex}`}
+              className="service-grid-card group relative block bg-white border border-slate-200 hover:border-[#B8860B]/40 rounded-2xl p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[280px]"
+            >
+              <div>
+                <div className="flex justify-between items-baseline mb-6">
+                  <span className="font-mono text-xs tracking-widest text-[#B8860B] font-bold">
+                    STAGE {s.id}
+                  </span>
+                  <span className="font-mono text-[9px] tracking-widest text-slate-400 uppercase">
+                    {s.tag}
+                  </span>
                 </div>
-
-                <div className={`slide-image relative overflow-hidden rounded-xl min-h-[260px] sm:min-h-[320px] h-full w-full bg-white shadow-sm ${
-                  !service.imageRight ? 'lg:order-1' : ''
-                }`}>
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
-                  />
-                  <div className={`absolute inset-0 pointer-events-none ${
-                    service.imageRight
-                      ? 'bg-gradient-to-r from-slate-50/20 via-transparent to-transparent'
-                      : 'bg-gradient-to-l from-white/20 via-transparent to-transparent'
-                  }`} />
-                </div>
-
+                <h3 className="font-heading text-xl sm:text-2xl uppercase tracking-wide text-slate-900 mb-3 group-hover:text-[#B8860B] transition-colors">
+                  {s.title}
+                </h3>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                  {s.desc}
+                </p>
               </div>
-            </div>
-          </div>
-        ))}
+              
+              <div className="mt-8 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#B8860B] font-bold group-hover:translate-x-1 transition-transform">
+                <span>View Methodology</span>
+                <span className="text-sm">→</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+
       </div>
     </section>
   );

@@ -406,7 +406,7 @@ function CaseStudyCard({ cs }: { cs: typeof stages[0]['caseStudy'] }) {
   return (
     <div className="bg-slate-900 rounded-2xl p-10 sm:p-12 text-white">
       <p className="font-mono text-xs tracking-[0.25em] uppercase text-[#D4AF37] mb-5">{cs.sector}</p>
-      <h3 className="font-heading text-2xl sm:text-3xl leading-snug text-white mb-8 font-bold">{cs.headline}</h3>
+      <h3 className="font-sans text-xl sm:text-2xl lg:text-3xl leading-relaxed text-white mb-8 font-semibold tracking-wide">{cs.headline}</h3>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
         {[
@@ -425,7 +425,7 @@ function CaseStudyCard({ cs }: { cs: typeof stages[0]['caseStudy'] }) {
         {cs.metrics.map((m, i) => (
           <div key={i} className="text-center sm:text-left">
             <p className="font-mono text-xs tracking-widest uppercase text-slate-400 mb-2">{m.label}</p>
-            <p className="text-[#D4AF37] font-heading text-lg sm:text-xl font-bold">{m.value}</p>
+            <p className="text-[#D4AF37] font-sans text-base sm:text-lg font-bold">{m.value}</p>
           </div>
         ))}
       </div>
@@ -548,6 +548,21 @@ export default function ServicesPage() {
       window.scrollTo({ top, behavior: 'smooth' });
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const stage = params.get('stage');
+      if (stage) {
+        const idx = parseInt(stage, 10);
+        if (!isNaN(idx) && idx >= 0 && idx < stages.length) {
+          setActiveStage(idx);
+          // Wait slightly for DOM to settle, then scroll to panel
+          setTimeout(scrollToPanel, 150);
+        }
+      }
+    }
+  }, []);
 
   const handleSelectStage = (i: number) => {
     setActiveStage(i);
