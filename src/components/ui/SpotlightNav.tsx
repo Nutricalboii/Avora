@@ -36,11 +36,11 @@ export function SpotlightNav() {
   return (
     <header
       className={cn(
-        'fixed top-0 inset-x-0 z-50 transition-all duration-500',
+        'fixed top-0 inset-x-0 z-50 transition-all duration-500 pointer-events-none',
         isScrolled ? 'py-3' : 'py-5'
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pointer-events-auto">
         <div
           className={cn(
             'relative flex items-center justify-between px-5 md:px-6 py-3 transition-all duration-500 rounded-2xl border',
@@ -119,14 +119,14 @@ export function SpotlightNav() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 md:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 md:hidden pointer-events-auto"
             />
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute top-full left-4 right-4 mt-2 px-4 pt-2 pb-6 glass-panel-strong rounded-2xl z-40 md:hidden shadow-2xl"
+              className="absolute top-full left-4 right-4 mt-2 px-4 pt-2 pb-6 glass-panel-strong rounded-2xl z-40 md:hidden shadow-2xl pointer-events-auto"
             >
               <div className="flex flex-col gap-2 p-4">
                 {navItems.map((item) => {
