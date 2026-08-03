@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -16,33 +16,49 @@ const services = [
     stageIndex: 0,
     title: 'Data Generation',
     desc: 'Engineering synthetic data to solve scarcity, protect privacy, and simulate edge cases for model training.',
-    tag: 'Fidelity & Privacy',
+    image: '/service_data_generation.png',
   },
   {
     id: '02',
     stageIndex: 1,
     title: 'Data Annotation',
     desc: 'Creating clear ontologies and guidelines to label complex data accurately through expert-guided workflows.',
-    tag: 'Ontology & Meaning',
+    image: '/service_data_annotation.png',
   },
   {
     id: '03',
     stageIndex: 2,
     title: 'Data Labeling',
     desc: 'Converting unstructured data streams into clean training sets with multi-pass consensus verification.',
-    tag: 'Structured Assets',
+    image: '/service_data_auditing.png',
   },
   {
     id: '04',
     stageIndex: 3,
     title: 'Quality Testing & Analysis',
     desc: 'Auditing datasets across eight dimensions including accuracy, completeness, and consistency before training.',
-    tag: 'DQA Verification',
+    image: '/service_ai_implementation.png',
   },
 ];
 
 export default function Services() {
   const container = useRef<HTMLDivElement>(null);
+  const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.flip-card-container')) {
+        setFlippedIndex(null);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick, { passive: true });
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+    };
+  }, []);
 
   useGSAP(() => {
     gsap.fromTo(
@@ -58,7 +74,7 @@ export default function Services() {
     );
 
     gsap.fromTo(
-      '.service-grid-card',
+      '.flip-card-container',
       { opacity: 0, y: 40 },
       {
         opacity: 1,
@@ -66,7 +82,7 @@ export default function Services() {
         duration: 1.0,
         stagger: 0.15,
         ease: 'power3.out',
-        scrollTrigger: { trigger: '.service-grid-card', start: 'top 80%' },
+        scrollTrigger: { trigger: '.flip-card-container', start: 'top 80%' },
       }
     );
   }, { scope: container });
@@ -81,43 +97,87 @@ export default function Services() {
             Operational Capabilities
           </p>
           <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-wide text-slate-900 leading-tight mb-6">
-            Intelligent pipelines for high-stakes AI.
+            Intelligent systems for high-stakes AI.
           </h2>
           <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-medium">
-            We engineer raw information into production-ready intelligence. Click any discipline to explore our methodologies, lifecycles, and verified case studies.
+            We engineer raw information into production-ready intelligence. Hover or click any card to flip it and explore our methodologies.
           </p>
         </div>
 
-        {/* Bento/Modern Grid */}
+        <style dangerouslySetInnerHTML={{__html: `
+          .flip-card-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+          }
+          @media (hover: hover) {
+            .flip-card-container:hover .flip-card-inner {
+              transform: rotateY(180deg);
+            }
+          }
+          .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+          }
+          .flip-card-back {
+            transform: rotateY(180deg);
+          }
+        `}} />
+
+        {/* Spin Flashcards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((s) => (
-            <Link
+          {services.map((s, i) => (
+            <div
               key={s.id}
-              href={`/services?stage=${s.stageIndex}`}
-              className="service-grid-card group relative block bg-white border border-slate-200 hover:border-[#B8860B]/40 rounded-2xl p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[280px]"
+              className="flip-card-container relative w-full aspect-[4/3] sm:aspect-square max-w-[340px] md:max-w-full mx-auto cursor-pointer"
+              style={{ perspective: '1000px' }}
+              onClick={() => setFlippedIndex(flippedIndex === i ? null : i)}
             >
-              <div>
-                <div className="flex justify-between items-baseline mb-6">
-                  <span className="font-mono text-xs tracking-widest text-[#B8860B] font-bold">
-                    STAGE {s.id}
-                  </span>
-                  <span className="font-mono text-[9px] tracking-widest text-slate-400 uppercase">
-                    {s.tag}
-                  </span>
+              <div
+                className="flip-card-inner w-full h-full relative rounded-2xl shadow-sm border border-slate-200 bg-white"
+                style={{
+                  transform: flippedIndex === i ? 'rotateY(180deg)' : undefined
+                }}
+              >
+                {/* Front */}
+                <div className="flip-card-front absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-white">
+                  <img src={s.image} alt={s.title} className="w-full h-full object-cover object-center" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex items-end p-6">
+                    <div>
+                      <span className="block font-mono text-[10px] tracking-widest text-[#D4AF37] font-bold mb-2">
+                        STAGE {s.id}
+                      </span>
+                      <h3 className="text-white font-heading text-xl sm:text-2xl uppercase tracking-wide drop-shadow-md">
+                        {s.title}
+                      </h3>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-heading text-xl sm:text-2xl uppercase tracking-wide text-slate-900 mb-3 group-hover:text-[#B8860B] transition-colors">
-                  {s.title}
-                </h3>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
-                  {s.desc}
-                </p>
+
+                {/* Back */}
+                <div className="flip-card-back absolute inset-0 w-full h-full bg-slate-900 rounded-2xl p-6 flex flex-col justify-between text-left">
+                  <div>
+                    <span className="block font-mono text-[10px] tracking-widest text-[#D4AF37] font-bold mb-4">
+                      STAGE {s.id}
+                    </span>
+                    <h3 className="font-heading text-lg sm:text-xl uppercase tracking-wide text-white mb-3">
+                      {s.title}
+                    </h3>
+                    <p className="text-sm text-slate-300 leading-relaxed font-medium">
+                      {s.desc}
+                    </p>
+                  </div>
+
+                  <Link
+                    href={`/services?stage=${s.stageIndex}`}
+                    className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#D4AF37] font-bold hover:translate-x-1 transition-transform"
+                    onClick={(e) => e.stopPropagation()} // Stop bubble up so click goes to link
+                  >
+                    <span>Explore Methodology</span>
+                    <span className="text-sm">→</span>
+                  </Link>
+                </div>
               </div>
-              
-              <div className="mt-8 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#B8860B] font-bold group-hover:translate-x-1 transition-transform">
-                <span>View Methodology</span>
-                <span className="text-sm">→</span>
-              </div>
-            </Link>
+            </div>
           ))}
         </div>
 

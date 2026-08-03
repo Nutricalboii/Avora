@@ -180,17 +180,17 @@ const stages = [
       { title: 'Explainability builds trust', body: 'SHAP-based driver explanations are often essential for user adoption — planners won\'t trust a black box.' },
     ],
     methods: [
-      { name: 'Problem Framing & Discovery', desc: 'Three-week discovery phase mapping existing data pipelines, identifying failure patterns, and defining success metrics.' },
-      { name: 'Data Architecture', desc: 'Pipeline design, feature engineering, and remediation before any model work begins.' },
+      { name: 'Problem Framing & Discovery', desc: 'Three-week discovery phase mapping existing data flows, identifying failure patterns, and defining success metrics.' },
+      { name: 'Data Architecture', desc: 'System architecture, feature engineering, and remediation before any model work begins.' },
       { name: 'Model Development', desc: 'Ensemble approaches using complementary techniques per module — gradient boosting, neural nets, forecasting models — selected by task, not trend.' },
       { name: 'Explainability Layer', desc: 'SHAP-based explanations that satisfy audit requirements and build user confidence in AI-generated outputs.' },
-      { name: 'Production Deployment & Monitoring', desc: 'CI/CD pipelines, drift detection, alerting, and human-in-the-loop override capture that feeds back into the model.' },
+      { name: 'Production Deployment & Monitoring', desc: 'CI/CD processes, drift detection, alerting, and human-in-the-loop override capture that feeds back into the model.' },
     ],
     caseStudy: {
       sector: 'Retail · Multi-SKU Demand Forecasting',
       headline: 'A custom predictive ensemble integrated into on-premise infrastructure delivered a return that justified the entire program within the first quarter',
       what: 'Designed and integrated a custom predictive ensemble model into a client\'s on-premise cloud infrastructure for multi-horizon demand forecasting across thousands of SKUs.',
-      how: 'Three-week discovery phase mapped existing data pipelines and identified distribution shift patterns. Ensemble model with complementary techniques per forecasting horizon. SHAP explainability layer added to satisfy internal procurement audit. System presented outputs as suggested actions requiring explicit planner confirmation — never full autopilot. Every override captured and fed back via imitation learning.',
+      how: 'Three-week discovery phase mapped existing data flows and identified distribution shift patterns. Ensemble model with complementary techniques per forecasting horizon. SHAP explainability layer added to satisfy internal procurement audit. System presented outputs as suggested actions requiring explicit planner confirmation — never full autopilot. Every override captured and fed back via imitation learning.',
       result: 'Significant reduction in manual planning overhead in the first quarter. ROI demonstrated strongly at the 36-month projection horizon. Planner satisfaction improved substantially. System now handles routine forecasting while planners focus on exception management.',
       metrics: [
         { label: 'Manual planning overhead', value: 'Reduced in first quarter' },
@@ -207,7 +207,7 @@ const stages = [
     subtitle: 'Leveraging expertise beyond your walls',
     accent: '#B8860B',
     intro:
-      'Few companies have world-class expertise in every function they need. Specialized outsourcing contracts specific, knowledge-intensive work to external experts who do it better, faster, or more efficiently than building it in-house — available at any stage of the pipeline.',
+      'Few companies have world-class expertise in every function they need. Specialized outsourcing contracts specific, knowledge-intensive work to external experts who do it better, faster, or more efficiently than building it in-house — available at any stage of the lifecycle.',
     why: [
       { title: 'Elite talent, no ramp-up', body: 'Global specialists without the recruiting, retention, or benefits burden.' },
       { title: 'Cost efficiency', body: 'Fixed hiring and hardware costs convert to variable operating expense.' },
@@ -227,7 +227,7 @@ const stages = [
     caseStudy: {
       sector: 'Biotech · Rare Neurological Disorder — Computational Chemistry',
       headline: 'A six-week engagement found a previously unknown binding mechanism and saved months of preclinical timeline',
-      what: 'A small biotech had a promising compound but no in-house computational chemistry expertise to analyze how it interacted with target proteins. Building that capability internally meant hiring specialists, buying supercomputing time, and building simulation pipelines from scratch.',
+      what: 'A small biotech had a promising compound but no in-house computational chemistry expertise to analyze how it interacted with target proteins. Building that capability internally meant hiring specialists, buying supercomputing time, and building simulation systems from scratch.',
       how: 'Engaged a partner with published pharmaceutical modeling research and proprietary HPC access. Knowledge transfer: chemical structure, assay data, and interaction hypotheses shared; vendor shared methodology in return. Six weeks of simulation, protein-ligand analysis, metabolic pathway prediction, and off-target flagging.',
       result: 'Revealed a previously unknown binding mechanism explaining the compound\'s selectivity. Identified a structural variant with a better safety profile. Redirected the biotech\'s next lab experiments toward the most promising variants. Core scientific team stayed focused on wet-lab work and clinical strategy — their real edge.',
       metrics: [
@@ -241,41 +241,51 @@ const stages = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────
-// PIPELINE FLOW DIAGRAM — SVG
+// DELIVER LIFE CYCLE NAVIGATOR — SVG
 // ─────────────────────────────────────────────────────────────────────
 
 function PipelineDiagram({ activeStage, onSelect }: { activeStage: number; onSelect: (i: number) => void }) {
-  const labels = ['Generation', 'Annotation', 'Labeling', 'Quality', 'AI Solutions', 'Outsourcing'];
   const icons = ['◈', '◉', '◎', '◆', '◇', '⬡'];
+  const totalStages = 6;
+  const progressPercent = (activeStage / (totalStages - 1)) * 100;
 
   return (
-    <div className="w-full overflow-x-auto">
-      <div className="min-w-[640px] px-4 py-6">
+    <div className="w-full">
+      <div className="max-w-2xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between gap-0 relative">
-          {/* Connecting line */}
-          <div className="absolute top-1/2 left-[4%] right-[4%] h-px bg-gradient-to-r from-transparent via-[#B8860B]/30 to-transparent -translate-y-3" />
+          {/* Background progress bar line */}
+          <div className="absolute top-1/2 left-0 right-0 h-1 bg-slate-200 -translate-y-1/2 rounded-full" />
+          
+          {/* Active progress bar line overlay */}
+          <div 
+            className="absolute top-1/2 left-0 h-1 bg-[#B8860B] -translate-y-1/2 rounded-full transition-all duration-500 ease-out" 
+            style={{ width: `${progressPercent}%` }}
+          />
 
-          {labels.map((label, i) => (
-            <div key={i} className="flex flex-col items-center flex-1 relative z-10">
-              <button
-                onClick={() => onSelect(i)}
-                className={`w-14 h-14 rounded-full border-2 flex items-center justify-center text-xl font-bold transition-all duration-300 ${
-                  activeStage === i
-                    ? 'bg-[#B8860B] border-[#B8860B] text-white shadow-[0_0_20px_rgba(184,134,11,0.4)] scale-110'
-                    : 'bg-white border-slate-200 text-slate-400 hover:border-[#B8860B]/50 hover:text-[#B8860B]'
-                }`}
-              >
-                {icons[i]}
-              </button>
-              <span
-                className={`mt-2 text-[10px] sm:text-xs font-mono tracking-widest uppercase text-center transition-colors duration-300 ${
-                  activeStage === i ? 'text-[#B8860B]' : 'text-slate-400'
-                }`}
-              >
-                {String(i + 1).padStart(2, '0')}<br />{label}
-              </span>
-            </div>
-          ))}
+          {Array.from({ length: totalStages }).map((_, i) => {
+            const isVisitedOrActive = i <= activeStage;
+            return (
+              <div key={i} className="relative z-10">
+                <button
+                  onClick={() => onSelect(i)}
+                  className={`w-12 h-12 rounded-full border-2 flex items-center justify-center text-lg font-bold transition-all duration-300 ${
+                    activeStage === i
+                      ? 'bg-[#B8860B] border-[#B8860B] text-white shadow-[0_0_15px_rgba(184,134,11,0.4)] scale-110'
+                      : isVisitedOrActive
+                      ? 'bg-slate-800 border-slate-800 text-white hover:bg-slate-700'
+                      : 'bg-white border-slate-200 text-slate-400 hover:border-[#B8860B]/50 hover:text-[#B8860B]'
+                  }`}
+                >
+                  {icons[i]}
+                </button>
+                <span className={`absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono font-bold tracking-wider ${
+                  activeStage === i ? 'text-[#B8860B]' : isVisitedOrActive ? 'text-slate-700' : 'text-slate-400'
+                }`}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -291,22 +301,25 @@ function QualityWheel() {
     'Accuracy', 'Completeness', 'Consistency', 'Timeliness',
     'Validity', 'Uniqueness', 'Relevance', 'Accessibility',
   ];
-  const r = 90;
-  const cx = 120;
-  const cy = 120;
+  const r = 85;
+  const cx = 150;
+  const cy = 150;
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      <svg viewBox="0 0 240 240" className="w-48 h-48 sm:w-56 sm:h-56">
+    <div className="flex flex-col items-center gap-6 w-full">
+      <svg viewBox="0 0 300 300" className="w-64 h-64 sm:w-72 sm:h-72">
         {dims.map((dim, i) => {
           const angle = (i / 8) * Math.PI * 2 - Math.PI / 2;
           const nextAngle = ((i + 1) / 8) * Math.PI * 2 - Math.PI / 2;
+          const midAngle = angle + Math.PI / 8;
           const x1 = cx + r * Math.cos(angle);
           const y1 = cy + r * Math.sin(angle);
           const x2 = cx + r * Math.cos(nextAngle);
           const y2 = cy + r * Math.sin(nextAngle);
-          const lx = cx + (r + 0) * Math.cos(angle + Math.PI / 8);
-          const ly = cy + (r + 0) * Math.sin(angle + Math.PI / 8);
+          
+          // Outer label coordinates
+          const lx = cx + (r + 24) * Math.cos(midAngle);
+          const ly = cy + (r + 24) * Math.sin(midAngle);
 
           return (
             <g key={dim}>
@@ -316,23 +329,25 @@ function QualityWheel() {
                 stroke="rgba(184,134,11,0.3)"
                 strokeWidth="1"
               />
+              <line x1={cx} y1={cy} x2={x1} y2={y1} stroke="rgba(184,134,11,0.3)" strokeWidth="1" />
               <text
-                x={cx + (r * 0.65) * Math.cos(angle + Math.PI / 8)}
-                y={cy + (r * 0.65) * Math.sin(angle + Math.PI / 8)}
+                x={lx}
+                y={ly}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fontSize="8"
+                fontSize="9"
                 fill="#B8860B"
-                fontFamily="monospace"
-                fontWeight="600"
+                fontFamily="var(--font-ibm-plex-mono), monospace"
+                fontWeight="700"
+                className="tracking-wider uppercase"
               >
                 {dim}
               </text>
             </g>
           );
         })}
-        <circle cx={cx} cy={cy} r="22" fill="#B8860B" opacity="0.9" />
-        <text x={cx} y={cy} textAnchor="middle" dominantBaseline="middle" fontSize="7.5" fill="white" fontFamily="monospace" fontWeight="700">
+        <circle cx={cx} cy={cy} r="25" fill="#B8860B" opacity="0.95" />
+        <text x={cx} y={cy} textAnchor="middle" dominantBaseline="middle" fontSize="9" fill="white" fontFamily="var(--font-ibm-plex-mono), monospace" fontWeight="700">
           DQA
         </text>
       </svg>
@@ -595,13 +610,13 @@ export default function ServicesPage() {
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-7xl uppercase tracking-wide text-slate-900 leading-tight mb-8">
             Six Disciplines.<br />
-            <span className="text-[#B8860B]">One Pipeline.</span>
+            <span className="text-[#B8860B]">One Framework.</span>
           </h1>
           <p className="text-xl sm:text-2xl text-slate-800 max-w-3xl leading-relaxed mb-12 font-medium">
             Raw data doesn't become intelligence by accident. It moves through six disciplines, each handing off a more refined asset to the next — generated, annotated, labeled, verified, engineered, and accelerated.
           </p>
 
-          {/* Pipeline overview labels */}
+          {/* Framework overview labels */}
           <div className="flex flex-wrap gap-3">
             {stages.map((s, i) => (
               <button
@@ -616,7 +631,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── PIPELINE NAVIGATOR ─────────────────────────────────────── */}
+      {/* ── DELIVERY NAVIGATOR ─────────────────────────────────────── */}
       <section className="py-10 bg-slate-50 border-b border-slate-200 sticky top-16 z-40">
         <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
           <PipelineDiagram activeStage={activeStage} onSelect={handleSelectStage} />
@@ -682,7 +697,7 @@ export default function ServicesPage() {
             Ready to start
           </p>
           <h2 className="font-heading text-3xl sm:text-5xl uppercase tracking-wide mb-6">
-            Let's build your pipeline.
+            Let's construct your system.
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">
             Every engagement starts with a conversation. Tell us where you are and what you need — we'll map the rest.
