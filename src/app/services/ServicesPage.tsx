@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────────────
@@ -553,9 +554,10 @@ function StagePanel({ stage }: { stage: typeof stages[0] }) {
 // MAIN PAGE
 // ─────────────────────────────────────────────────────────────────────
 
-export default function ServicesPage() {
+function ServicesContent() {
   const [activeStage, setActiveStage] = useState(0);
   const panelRef = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
 
   const scrollToPanel = () => {
     if (panelRef.current) {
@@ -565,19 +567,42 @@ export default function ServicesPage() {
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      const stage = params.get('stage');
-      if (stage) {
-        const idx = parseInt(stage, 10);
-        if (!isNaN(idx) && idx >= 0 && idx < stages.length) {
-          setActiveStage(idx);
-          // Wait slightly for DOM to settle, then scroll to panel
-          setTimeout(scrollToPanel, 150);
+    const stageParam = searchParams.get('stage');
+    if (stageParam) {
+      const p = stageParam.trim().toLowerCase();
+
+      // 1. Match by exact stage ID ('01', '02', '03', '04', '05', '06')
+      const byId = stages.findIndex((s) => s.id === p || s.id === p.padStart(2, '0'));
+      if (byId !== -1) {
+        setActiveStage(byId);
+        setTimeout(scrollToPanel, 100);
+        return;
+      }
+
+      // 2. Match by slug ('generation', 'annotation', 'labeling', 'quality', 'ai-solutions', 'outsourcing')
+      const bySlug = stages.findIndex((s) => s.slug === p);
+      if (bySlug !== -1) {
+        setActiveStage(bySlug);
+        setTimeout(scrollToPanel, 100);
+        return;
+      }
+
+      // 3. Match numeric stage number (1..6 -> index 0..5 or 0..5)
+      const num = parseInt(p, 10);
+      if (!isNaN(num)) {
+        if (num >= 1 && num <= stages.length) {
+          setActiveStage(num - 1);
+          setTimeout(scrollToPanel, 100);
+          return;
+        }
+        if (num >= 0 && num < stages.length) {
+          setActiveStage(num);
+          setTimeout(scrollToPanel, 100);
+          return;
         }
       }
     }
-  }, []);
+  }, [searchParams]);
 
   const handleSelectStage = (i: number) => {
     setActiveStage(i);
@@ -672,5 +697,13 @@ export default function ServicesPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function ServicesPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <ServicesContent />
+    </Suspense>
   );
 }

@@ -165,12 +165,11 @@ export default function Services() {
                   </div>
 
                   <Link
-                    href={`/services?stage=${s.stageIndex}`}
-                    className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#D4AF37] font-bold hover:translate-x-1 transition-transform"
+                    href={`/services?stage=${s.id}`}
+                    className="mt-6 pt-4 border-t border-white/10 flex items-center justify-end text-[#D4AF37] font-bold hover:translate-x-1 transition-transform"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <span>Explore Methodology</span>
-                    <span className="text-sm">→</span>
+                    <span className="text-xl">→</span>
                   </Link>
                 </div>
               </div>
