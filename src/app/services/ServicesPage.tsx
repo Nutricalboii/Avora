@@ -596,9 +596,6 @@ export default function ServicesPage() {
             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
             <span>Back to home</span>
           </Link>
-          <p className="font-mono text-xs tracking-[0.35em] uppercase text-[#B8860B] mb-3 font-bold">
-            Avora Ventures / Services
-          </p>
           <h1 className="font-heading text-3xl sm:text-5xl lg:text-7xl uppercase tracking-wide text-slate-900 leading-tight mb-6">
             Six Disciplines.<br />
             <span className="text-[#B8860B]">One Framework.</span>
@@ -621,18 +618,12 @@ export default function ServicesPage() {
         <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
           {/* Stage header */}
           <div className="mb-10 sm:mb-12 pb-8 sm:pb-10 border-b border-slate-100">
-            <div className="flex items-baseline gap-4 mb-2">
-              <span className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#B8860B]">
-                Stage {stages[activeStage].id} / {stages.length.toString().padStart(2, '0')}
-              </span>
-            </div>
             <h2
-              className="font-heading uppercase tracking-wide text-slate-900 leading-tight mb-3"
+              className="font-heading uppercase tracking-wide text-slate-900 leading-tight mb-2"
               style={{ fontSize: 'clamp(1.75rem, 4vw, 3.5rem)' }}
             >
               {stages[activeStage].title}
             </h2>
-            <p className="text-slate-500 font-mono text-xs sm:text-sm tracking-wide">{stages[activeStage].subtitle}</p>
           </div>
 
           {/* Stage body */}

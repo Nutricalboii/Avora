@@ -93,9 +93,6 @@ export default function Services() {
         
         {/* Header */}
         <div className="services-header-el max-w-3xl mx-auto text-center mb-16 sm:mb-20">
-          <p className="font-mono text-xs tracking-[0.35em] uppercase text-[#B8860B] mb-4 font-bold">
-            Operational Capabilities
-          </p>
           <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-wide text-slate-900 leading-tight mb-6">
             Intelligent systems for high-stakes AI.
           </h2>
@@ -181,11 +178,8 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Build With Us & Explore Our Services CTA Section */}
+        {/* Explore Our Services CTA Section */}
         <div className="text-center pt-8 border-t border-slate-200 max-w-xl mx-auto">
-          <p className="font-mono text-xs tracking-[0.35em] uppercase text-[#B8860B] mb-3 font-bold">
-            Build With Us
-          </p>
           <p className="text-slate-700 text-sm sm:text-base mb-6 font-medium">
             Explore our end-to-end framework, lifecycles, and verified case studies across all six core disciplines.
           </p>
