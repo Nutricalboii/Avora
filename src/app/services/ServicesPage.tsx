@@ -247,31 +247,31 @@ const stages = [
 
 function PipelineDiagram({ activeStage, onSelect }: { activeStage: number; onSelect: (i: number) => void }) {
   const icons = ['◈', '◉', '◎', '◆', '◇', '⬡'];
+  const labels = ['Generation', 'Annotation', 'Labeling', 'Quality', 'AI', 'Outsourcing'];
   const totalStages = 6;
   const progressPercent = (activeStage / (totalStages - 1)) * 100;
 
   return (
     <div className="w-full">
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className="max-w-2xl mx-auto px-2 sm:px-4 py-6 sm:py-8">
         <div className="flex items-center justify-between gap-0 relative">
           {/* Background progress bar line */}
-          <div className="absolute top-1/2 left-0 right-0 h-1 bg-slate-200 -translate-y-1/2 rounded-full" />
-          
+          <div className="absolute top-1/2 left-0 right-0 h-[3px] bg-slate-200 -translate-y-1/2 rounded-full" />
           {/* Active progress bar line overlay */}
-          <div 
-            className="absolute top-1/2 left-0 h-1 bg-[#B8860B] -translate-y-1/2 rounded-full transition-all duration-500 ease-out" 
+          <div
+            className="absolute top-1/2 left-0 h-[3px] bg-[#B8860B] -translate-y-1/2 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progressPercent}%` }}
           />
-
           {Array.from({ length: totalStages }).map((_, i) => {
             const isVisitedOrActive = i <= activeStage;
             return (
-              <div key={i} className="relative z-10">
+              <div key={i} className="relative z-10 flex flex-col items-center">
                 <button
                   onClick={() => onSelect(i)}
-                  className={`w-12 h-12 rounded-full border-2 flex items-center justify-center text-lg font-bold transition-all duration-300 ${
+                  aria-label={labels[i]}
+                  className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full border-2 flex items-center justify-center text-sm sm:text-base md:text-lg font-bold transition-all duration-300 ${
                     activeStage === i
-                      ? 'bg-[#B8860B] border-[#B8860B] text-white shadow-[0_0_15px_rgba(184,134,11,0.4)] scale-110'
+                      ? 'bg-[#B8860B] border-[#B8860B] text-white shadow-[0_0_12px_rgba(184,134,11,0.4)] scale-110'
                       : isVisitedOrActive
                       ? 'bg-slate-800 border-slate-800 text-white hover:bg-slate-700'
                       : 'bg-white border-slate-200 text-slate-400 hover:border-[#B8860B]/50 hover:text-[#B8860B]'
@@ -279,7 +279,7 @@ function PipelineDiagram({ activeStage, onSelect }: { activeStage: number; onSel
                 >
                   {icons[i]}
                 </button>
-                <span className={`absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono font-bold tracking-wider ${
+                <span className={`mt-1.5 text-[8px] sm:text-[10px] font-mono font-bold tracking-wider hidden sm:block ${
                   activeStage === i ? 'text-[#B8860B]' : isVisitedOrActive ? 'text-slate-700' : 'text-slate-400'
                 }`}>
                   {String(i + 1).padStart(2, '0')}
@@ -363,19 +363,19 @@ function QualityWheel() {
 
 function LifecycleFlow({ steps }: { steps: string[] }) {
   return (
-    <div className="w-full overflow-x-auto py-6">
-      <div className="flex items-start gap-0 min-w-max mx-auto px-6">
+    <div className="w-full overflow-x-auto py-4 sm:py-6 -mx-px">
+      <div className="flex items-start gap-0 min-w-max mx-auto px-4 sm:px-6">
         {steps.map((step, i) => (
           <React.Fragment key={i}>
-            <div className="flex flex-col items-center w-32 sm:w-36">
-              <div className="w-12 h-12 rounded-full bg-[#B8860B]/10 border-2 border-[#B8860B]/30 flex items-center justify-center text-[#B8860B] font-mono font-bold text-base">
+            <div className="flex flex-col items-center w-24 sm:w-32 md:w-36">
+              <div className="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-[#B8860B]/10 border-2 border-[#B8860B]/30 flex items-center justify-center text-[#B8860B] font-mono font-bold text-xs sm:text-sm md:text-base">
                 {String(i + 1).padStart(2, '0')}
               </div>
-              <p className="text-center text-xs sm:text-sm font-mono tracking-wide text-slate-800 mt-3 leading-snug px-1 font-medium">{step}</p>
+              <p className="text-center text-[10px] sm:text-xs md:text-sm font-mono tracking-wide text-slate-800 mt-2 leading-snug px-1 font-medium">{step}</p>
             </div>
             {i < steps.length - 1 && (
-              <div className="flex items-start pt-5 px-2">
-                <svg width="32" height="12" viewBox="0 0 32 12">
+              <div className="flex items-start pt-4 sm:pt-5 px-1 sm:px-2">
+                <svg width="20" height="10" viewBox="0 0 32 12" className="sm:w-8 sm:h-3">
                   <path d="M2 6 L26 6 M20 2 L26 6 L20 10" stroke="#B8860B" strokeWidth="2" strokeOpacity="0.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
@@ -393,19 +393,19 @@ function LifecycleFlow({ steps }: { steps: string[] }) {
 
 function MethodGrid({ methods }: { methods: { name: string; desc: string }[] }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       {methods.map((m, i) => (
         <div
           key={i}
-          className="border border-slate-200 rounded-xl p-6 bg-white hover:border-[#B8860B]/30 hover:shadow-md transition-all duration-300 group"
+          className="border border-slate-200 rounded-xl p-4 sm:p-6 bg-white hover:border-[#B8860B]/30 hover:shadow-md transition-all duration-300 group"
         >
-          <div className="flex items-start gap-4">
-            <span className="text-[#B8860B] font-mono text-sm mt-0.5 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity font-bold">
+          <div className="flex items-start gap-3 sm:gap-4">
+            <span className="text-[#B8860B] font-mono text-xs sm:text-sm mt-0.5 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity font-bold">
               {String(i + 1).padStart(2, '0')}
             </span>
             <div>
-              <p className="font-mono text-sm tracking-wider uppercase text-slate-900 font-bold mb-2">{m.name}</p>
-              <p className="text-base text-slate-700 leading-relaxed font-medium">{m.desc}</p>
+              <p className="font-mono text-xs sm:text-sm tracking-wider uppercase text-slate-900 font-bold mb-1.5 sm:mb-2">{m.name}</p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">{m.desc}</p>
             </div>
           </div>
         </div>
@@ -420,27 +420,27 @@ function MethodGrid({ methods }: { methods: { name: string; desc: string }[] }) 
 
 function CaseStudyCard({ cs }: { cs: typeof stages[0]['caseStudy'] }) {
   return (
-    <div className="bg-slate-900 rounded-2xl p-10 sm:p-12 text-white">
-      <p className="font-mono text-xs tracking-[0.25em] uppercase text-[#D4AF37] mb-5">{cs.sector}</p>
-      <h3 className="font-sans text-xl sm:text-2xl lg:text-3xl leading-relaxed text-white mb-8 font-semibold tracking-wide">{cs.headline}</h3>
+    <div className="bg-slate-900 rounded-2xl p-6 sm:p-10 lg:p-12 text-white">
+      <p className="font-mono text-xs tracking-[0.25em] uppercase text-[#D4AF37] mb-3 sm:mb-5">{cs.sector}</p>
+      <h3 className="font-sans text-lg sm:text-xl lg:text-3xl leading-relaxed text-white mb-6 sm:mb-8 font-semibold tracking-wide">{cs.headline}</h3>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 mb-7 sm:mb-10">
         {[
           { label: 'Challenge', body: cs.what },
           { label: 'Approach', body: cs.how },
           { label: 'Outcome', body: cs.result },
         ].map((col, i) => (
-          <div key={i} className={`${i < 2 ? 'lg:border-r lg:border-white/10 lg:pr-8' : ''}`}>
-            <p className="font-mono text-xs tracking-[0.2em] uppercase text-[#D4AF37] mb-4 font-bold">{col.label}</p>
-            <p className="text-base text-slate-200 leading-relaxed font-medium">{col.body}</p>
+          <div key={i} className={`${i < 2 ? 'md:border-r md:border-white/10 md:pr-8 pb-4 md:pb-0 border-b md:border-b-0 border-white/10' : ''}`}>
+            <p className="font-mono text-xs tracking-[0.2em] uppercase text-[#D4AF37] mb-2 sm:mb-4 font-bold">{col.label}</p>
+            <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-medium">{col.body}</p>
           </div>
         ))}
       </div>
 
-      <div className="border-t border-white/10 pt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div className="border-t border-white/10 pt-5 sm:pt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
         {cs.metrics.map((m, i) => (
           <div key={i} className="text-center sm:text-left">
-            <p className="font-mono text-xs tracking-widest uppercase text-slate-400 mb-2">{m.label}</p>
+            <p className="font-mono text-xs tracking-widest uppercase text-slate-400 mb-1.5 sm:mb-2">{m.label}</p>
             <p className="text-[#D4AF37] font-sans text-base sm:text-lg font-bold">{m.value}</p>
           </div>
         ))}
@@ -464,40 +464,40 @@ const lifecycles: Record<string, string[]> = {
 
 function StagePanel({ stage }: { stage: typeof stages[0] }) {
   return (
-    <div className="space-y-16">
+    <div className="space-y-10 sm:space-y-16">
       {/* Intro */}
       <div>
-        <p className="text-xl sm:text-2xl text-slate-800 leading-relaxed max-w-4xl border-l-4 border-[#B8860B] pl-6 font-medium">{stage.intro}</p>
+        <p className="text-base sm:text-xl lg:text-2xl text-slate-800 leading-relaxed max-w-4xl border-l-4 border-[#B8860B] pl-4 sm:pl-6 font-medium">{stage.intro}</p>
       </div>
 
       {/* Why it matters */}
       <div>
-        <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">
+        <h3 className="font-mono text-xs sm:text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-5 sm:mb-8 font-bold">
           {stage.id === '04' ? 'Eight Quality Dimensions' : stage.id === '06' ? 'Why Companies Choose It' : 'Why It Matters'}
         </h3>
         {stage.id === '04' ? (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 items-start">
             <div className="lg:col-span-1 flex justify-center">
               <QualityWheel />
             </div>
-            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {stage.why.map((w, i) => (
-                <div key={i} className="p-6 border border-slate-200 rounded-xl bg-white/70 shadow-sm">
-                  <p className="font-mono text-sm font-bold uppercase tracking-wider text-slate-900 mb-2">{w.title}</p>
-                  <p className="text-base text-slate-700 leading-relaxed font-medium">{w.body}</p>
+                <div key={i} className="p-4 sm:p-6 border border-slate-200 rounded-xl bg-white/70 shadow-sm">
+                  <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-900 mb-1.5 sm:mb-2">{w.title}</p>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">{w.body}</p>
                 </div>
               ))}
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {stage.why.map((w, i) => (
-              <div key={i} className="p-6 border border-slate-100 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 rounded-lg bg-[#B8860B]/10 flex items-center justify-center mb-4">
-                  <span className="text-[#B8860B] text-sm font-mono font-bold">{String(i + 1).padStart(2, '0')}</span>
+              <div key={i} className="p-4 sm:p-6 border border-slate-100 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#B8860B]/10 flex items-center justify-center mb-3 sm:mb-4">
+                  <span className="text-[#B8860B] text-xs sm:text-sm font-mono font-bold">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-                <p className="font-bold text-slate-950 text-base mb-2">{w.title}</p>
-                <p className="text-base text-slate-700 leading-relaxed font-medium">{w.body}</p>
+                <p className="font-bold text-slate-950 text-sm sm:text-base mb-1.5 sm:mb-2">{w.title}</p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">{w.body}</p>
               </div>
             ))}
           </div>
@@ -506,15 +506,15 @@ function StagePanel({ stage }: { stage: typeof stages[0] }) {
 
       {/* Lifecycle */}
       <div>
-        <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-6 font-bold">Lifecycle</h3>
-        <div className="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+        <h3 className="font-mono text-xs sm:text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-4 sm:mb-6 font-bold">Lifecycle</h3>
+        <div className="bg-slate-50 rounded-xl sm:rounded-2xl border border-slate-200 overflow-hidden">
           <LifecycleFlow steps={lifecycles[stage.slug] || []} />
         </div>
       </div>
 
       {/* Methods */}
       <div>
-        <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">
+        <h3 className="font-mono text-xs sm:text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-5 sm:mb-8 font-bold">
           {stage.id === '06' ? 'Engagement Process' : 'Core Methodologies'}
         </h3>
         <MethodGrid methods={stage.methods} />
@@ -522,24 +522,24 @@ function StagePanel({ stage }: { stage: typeof stages[0] }) {
 
       {/* Case Study */}
       <div>
-        <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">Case Study</h3>
+        <h3 className="font-mono text-xs sm:text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-5 sm:mb-8 font-bold">Case Study</h3>
         <CaseStudyCard cs={stage.caseStudy} />
       </div>
 
       {/* Myths / Pitfalls */}
       {stage.myths.length > 0 && (
         <div>
-          <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">Common Misconceptions</h3>
-          <div className="space-y-4">
+          <h3 className="font-mono text-xs sm:text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-5 sm:mb-8 font-bold">Common Misconceptions</h3>
+          <div className="space-y-3 sm:space-y-4">
             {stage.myths.map((m, i) => (
-              <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-                <div className="p-6 bg-red-50/50">
-                  <p className="font-mono text-xs tracking-widest uppercase text-red-500 mb-2 font-bold">Myth</p>
-                  <p className="text-base font-bold text-slate-800 italic">"{m.myth}"</p>
+              <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-slate-200 rounded-xl sm:rounded-2xl overflow-hidden shadow-sm">
+                <div className="p-4 sm:p-6 bg-red-50/50">
+                  <p className="font-mono text-xs tracking-widest uppercase text-red-500 mb-1.5 sm:mb-2 font-bold">Myth</p>
+                  <p className="text-sm sm:text-base font-bold text-slate-800 italic">"{m.myth}"</p>
                 </div>
-                <div className="p-6 bg-emerald-50/50 border-t sm:border-t-0 sm:border-l border-slate-200">
-                  <p className="font-mono text-xs tracking-widest uppercase text-emerald-700 mb-2 font-bold">Reality</p>
-                  <p className="text-base text-slate-800 font-medium">{m.reality}</p>
+                <div className="p-4 sm:p-6 bg-emerald-50/50 border-t sm:border-t-0 sm:border-l border-slate-200">
+                  <p className="font-mono text-xs tracking-widest uppercase text-emerald-700 mb-1.5 sm:mb-2 font-bold">Reality</p>
+                  <p className="text-sm sm:text-base text-slate-800 font-medium">{m.reality}</p>
                 </div>
               </div>
             ))}
@@ -558,9 +558,9 @@ const stageIcons = ['◈', '◉', '◎', '◆', '◇', '⬡'];
 
 function ServicesOverviewGrid({ onDiveDeep }: { onDiveDeep: () => void }) {
   return (
-    <div className="py-12 sm:py-20">
-      <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    <div className="py-8 sm:py-14 lg:py-20">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {stages.map((stage, i) => (
             <div
               key={stage.id}
@@ -569,46 +569,46 @@ function ServicesOverviewGrid({ onDiveDeep }: { onDiveDeep: () => void }) {
               {/* Card top accent line */}
               <div className="h-0.5 bg-gradient-to-r from-[#B8860B] to-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              <div className="p-7 sm:p-8 flex flex-col flex-1">
+              <div className="p-5 sm:p-7 lg:p-8 flex flex-col flex-1">
                 {/* Stage number + icon */}
-                <div className="flex items-center justify-between mb-5">
-                  <span className="font-mono text-xs tracking-[0.25em] text-[#B8860B] font-bold uppercase">
+                <div className="flex items-center justify-between mb-4 sm:mb-5">
+                  <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-[#B8860B] font-bold uppercase">
                     Stage {stage.id}
                   </span>
-                  <span className="text-2xl text-slate-300 group-hover:text-[#B8860B] transition-colors duration-300">
+                  <span className="text-xl sm:text-2xl text-slate-300 group-hover:text-[#B8860B] transition-colors duration-300">
                     {stageIcons[i]}
                   </span>
                 </div>
 
                 {/* Title */}
-                <h3 className="font-heading text-xl sm:text-2xl uppercase tracking-wide text-slate-900 mb-3 leading-tight">
+                <h3 className="font-heading text-lg sm:text-xl lg:text-2xl uppercase tracking-wide text-slate-900 mb-2 sm:mb-3 leading-tight">
                   {stage.title}
                 </h3>
 
                 {/* Intro excerpt */}
-                <p className="text-sm text-slate-600 leading-relaxed font-medium mb-5 line-clamp-3">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium mb-4 sm:mb-5 line-clamp-3">
                   {stage.intro}
                 </p>
 
                 {/* Key capability tags */}
-                <div className="flex flex-wrap gap-2 mb-5">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-5">
                   {stage.why.slice(0, 2).map((w, j) => (
-                    <span key={j} className="text-xs font-mono font-bold px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 rounded-full tracking-wide">
+                    <span key={j} className="text-[10px] sm:text-xs font-mono font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 bg-slate-50 border border-slate-200 text-slate-600 rounded-full tracking-wide">
                       {w.title}
                     </span>
                   ))}
                 </div>
 
                 {/* Method chips */}
-                <div className="pt-4 border-t border-slate-100 flex flex-col gap-1.5">
+                <div className="pt-3 sm:pt-4 border-t border-slate-100 flex flex-col gap-1 sm:gap-1.5">
                   {stage.methods.slice(0, 2).map((m, j) => (
                     <div key={j} className="flex items-center gap-2">
                       <span className="w-1 h-1 rounded-full bg-[#B8860B] shrink-0" />
-                      <span className="text-xs text-slate-500 font-mono font-bold tracking-wide truncate">{m.name}</span>
+                      <span className="text-[10px] sm:text-xs text-slate-500 font-mono font-bold tracking-wide truncate">{m.name}</span>
                     </div>
                   ))}
                   {stage.methods.length > 2 && (
-                    <span className="text-xs text-slate-400 font-mono pl-3">+{stage.methods.length - 2} more</span>
+                    <span className="text-[10px] sm:text-xs text-slate-400 font-mono pl-3">+{stage.methods.length - 2} more</span>
                   )}
                 </div>
               </div>
@@ -617,15 +617,15 @@ function ServicesOverviewGrid({ onDiveDeep }: { onDiveDeep: () => void }) {
         </div>
 
         {/* Single Dive Deep CTA below all 6 cards */}
-        <div className="mt-14 text-center">
+        <div className="mt-10 sm:mt-14 text-center">
           <button
             onClick={onDiveDeep}
-            className="inline-flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white font-mono text-xs tracking-widest uppercase px-10 py-4 rounded-full font-bold shadow-md transition-all duration-200 hover:scale-[1.02]"
+            className="inline-flex items-center gap-2 sm:gap-3 bg-slate-900 hover:bg-slate-800 text-white font-mono text-[10px] sm:text-xs tracking-widest uppercase px-7 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold shadow-md transition-all duration-200 hover:scale-[1.02] active:scale-95"
           >
             <span>Dive Deep</span>
             <span className="text-sm">→</span>
           </button>
-          <p className="mt-3 text-xs text-slate-400 font-mono tracking-wide">Explore methodologies, lifecycles & case studies</p>
+          <p className="mt-2.5 sm:mt-3 text-[10px] sm:text-xs text-slate-400 font-mono tracking-wide">Explore methodologies, lifecycles & case studies</p>
         </div>
       </div>
     </div>
@@ -637,19 +637,17 @@ function ServicesOverviewGrid({ onDiveDeep }: { onDiveDeep: () => void }) {
 // ─────────────────────────────────────────────────────────────────────
 
 function ServicesContent() {
-  // null = overview grid; number = detail view for that stage index
   const [selectedStage, setSelectedStage] = useState<number | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
 
   const scrollToTop = () => {
     if (topRef.current) {
-      const top = topRef.current.getBoundingClientRect().top + window.scrollY - 80;
+      const top = topRef.current.getBoundingClientRect().top + window.scrollY - 64;
       window.scrollTo({ top, behavior: 'smooth' });
     }
   };
 
-  // Handle ?stage= query param — jump straight to detail view
   useEffect(() => {
     const stageParam = searchParams.get('stage');
     if (stageParam) {
@@ -684,107 +682,103 @@ function ServicesContent() {
   return (
     <div className="min-h-screen bg-white">
       {/* ── HERO ─────────────────────────────────────────────────────── */}
-      <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 border-b border-slate-100 bg-white">
-        <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
+      <section className="pt-24 sm:pt-32 lg:pt-36 pb-8 sm:pb-12 lg:pb-16 border-b border-slate-100 bg-white">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12">
           <Link
             href="/home"
-            className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-6 font-mono text-xs font-bold tracking-wider group"
+            className="inline-flex items-center gap-1.5 sm:gap-2 text-slate-500 hover:text-slate-900 transition-colors mb-5 sm:mb-6 font-mono text-[10px] sm:text-xs font-bold tracking-wider group"
           >
-            <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
+            <ArrowLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform group-hover:-translate-x-1" />
             <span>Back to home</span>
           </Link>
-          <h1 className="font-heading text-3xl sm:text-5xl lg:text-7xl uppercase tracking-wide text-slate-900 leading-tight mb-6">
+          <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-7xl uppercase tracking-wide text-slate-900 leading-tight mb-4 sm:mb-6">
             Six Disciplines.<br />
             <span className="text-[#B8860B]">One Framework.</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-800 max-w-3xl leading-relaxed font-medium">
+          <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-slate-700 max-w-3xl leading-relaxed font-medium">
             Raw data doesn't become intelligence by accident. It moves through six disciplines, each handing off a more refined asset to the next.
           </p>
         </div>
       </section>
 
-      {/* ── OVERVIEW GRID (all 6 services) ───────────────────────────── */}
+      {/* ── OVERVIEW GRID ────────────────────────────────────────────── */}
       {selectedStage === null && (
         <ServicesOverviewGrid onDiveDeep={() => handleExplore(0)} />
       )}
 
-      {/* ── DETAIL VIEW (one service) ─────────────────────────────────── */}
+      {/* ── DETAIL VIEW ──────────────────────────────────────────────── */}
       {selectedStage !== null && (
         <div ref={topRef}>
           {/* Breadcrumb / back */}
-          <div className="bg-slate-50 border-b border-slate-200 py-4">
-            <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center gap-3">
+          <div className="bg-slate-50 border-b border-slate-200 py-3 sm:py-4">
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12 flex items-center gap-2 sm:gap-3 min-w-0">
               <button
                 onClick={handleBackToAll}
-                className="inline-flex items-center gap-2 font-mono text-xs tracking-wider text-slate-500 hover:text-slate-900 transition-colors font-bold group"
+                className="inline-flex items-center gap-1.5 sm:gap-2 font-mono text-[10px] sm:text-xs tracking-wider text-slate-500 hover:text-slate-900 transition-colors font-bold group shrink-0"
               >
-                <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
+                <ArrowLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform group-hover:-translate-x-1" />
                 <span>All Services</span>
               </button>
-              <span className="text-slate-300 font-mono text-xs">/</span>
-              <span className="font-mono text-xs tracking-wider text-[#B8860B] font-bold uppercase">
+              <span className="text-slate-300 font-mono text-xs shrink-0">/</span>
+              <span className="font-mono text-[10px] sm:text-xs tracking-wider text-[#B8860B] font-bold uppercase truncate">
                 {stages[selectedStage].title}
               </span>
             </div>
           </div>
 
           {/* Pipeline navigator — sticky */}
-          <div className="py-5 bg-slate-50 border-b border-slate-200 sticky top-16 z-40">
-            <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="py-3 sm:py-5 bg-slate-50 border-b border-slate-200 sticky top-16 z-40">
+            <div className="max-w-screen-xl mx-auto px-2 sm:px-8 lg:px-12">
               <PipelineDiagram activeStage={selectedStage} onSelect={handleSelectNeighbour} />
             </div>
           </div>
 
           {/* Stage detail content */}
-          <section className="py-12 sm:py-20">
-            <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
+          <section className="py-8 sm:py-14 lg:py-20">
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12">
               {/* Stage header */}
-              <div className="mb-10 sm:mb-12 pb-8 sm:pb-10 border-b border-slate-100 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-                <div>
-                  <span className="font-mono text-xs tracking-[0.25em] text-[#B8860B] font-bold uppercase block mb-2">
-                    Stage {stages[selectedStage].id} / 06
-                  </span>
-                  <h2
-                    className="font-heading uppercase tracking-wide text-slate-900 leading-tight"
-                    style={{ fontSize: 'clamp(1.75rem, 4vw, 3.5rem)' }}
-                  >
-                    {stages[selectedStage].title}
-                  </h2>
-                </div>
+              <div className="mb-7 sm:mb-10 lg:mb-12 pb-6 sm:pb-8 lg:pb-10 border-b border-slate-100">
+                <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-[#B8860B] font-bold uppercase block mb-1.5 sm:mb-2">
+                  Stage {stages[selectedStage].id} / 06
+                </span>
+                <h2
+                  className="font-heading uppercase tracking-wide text-slate-900 leading-tight"
+                  style={{ fontSize: 'clamp(1.5rem, 5vw, 3.5rem)' }}
+                >
+                  {stages[selectedStage].title}
+                </h2>
               </div>
 
               {/* Stage body */}
               <StagePanel key={selectedStage} stage={stages[selectedStage]} />
 
-              {/* Previous / Next navigation */}
-              <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-slate-100 flex justify-between items-center">
-                <div>
+              {/* Prev / Next / All nav */}
+              <div className="mt-10 sm:mt-14 lg:mt-16 pt-5 sm:pt-8 border-t border-slate-100 flex justify-between items-center gap-2">
+                <div className="flex-1">
                   {selectedStage > 0 && (
                     <button
                       onClick={() => handleSelectNeighbour(selectedStage - 1)}
-                      className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wide text-slate-500 hover:text-slate-900 transition-colors group"
+                      className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-sm font-mono tracking-wide text-slate-500 hover:text-slate-900 transition-colors group"
                     >
-                      <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                      <span className="hidden sm:inline">{stages[selectedStage - 1].title}</span>
-                      <span className="sm:hidden">Previous</span>
+                      <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:-translate-x-1 shrink-0" />
+                      <span className="truncate max-w-[80px] sm:max-w-none">{stages[selectedStage - 1].title}</span>
                     </button>
                   )}
                 </div>
                 <button
                   onClick={handleBackToAll}
-                  className="font-mono text-xs tracking-widest uppercase text-slate-400 hover:text-slate-700 transition-colors font-bold"
+                  className="font-mono text-[10px] sm:text-xs tracking-widest uppercase text-slate-400 hover:text-slate-700 transition-colors font-bold shrink-0 px-2"
                 >
                   All Services
                 </button>
-                <div>
+                <div className="flex-1 flex justify-end">
                   {selectedStage < stages.length - 1 && (
                     <button
                       onClick={() => handleSelectNeighbour(selectedStage + 1)}
-                      className="flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wide text-[#B8860B] hover:text-[#8a6309] transition-colors group"
+                      className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-sm font-mono tracking-wide text-[#B8860B] hover:text-[#8a6309] transition-colors group"
                     >
-                      <span className="hidden sm:inline">{stages[selectedStage + 1].title}</span>
-                      <span className="sm:hidden">Next</span>
-                      <ArrowLeft className="w-4 h-4 rotate-180 transition-transform group-hover:translate-x-1" />
+                      <span className="truncate max-w-[80px] sm:max-w-none">{stages[selectedStage + 1].title}</span>
+                      <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 rotate-180 transition-transform group-hover:translate-x-1 shrink-0" />
                     </button>
                   )}
                 </div>
@@ -795,11 +789,11 @@ function ServicesContent() {
       )}
 
       {/* ── GET IN TOUCH CTA ─────────────────────────────────────────── */}
-      <section className="py-12 sm:py-16 bg-white border-t border-slate-100 text-center">
-        <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
+      <section className="py-10 sm:py-14 lg:py-16 bg-white border-t border-slate-100 text-center">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12">
           <Link
             href="/home#contact"
-            className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#a07508] text-white font-mono text-xs tracking-widest uppercase px-8 py-4 rounded-full font-bold shadow-sm hover:shadow-md transition-all duration-200"
+            className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#a07508] text-white font-mono text-[10px] sm:text-xs tracking-widest uppercase px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold shadow-sm hover:shadow-md transition-all duration-200 active:scale-95"
           >
             <span>Get in touch</span>
             <span className="text-sm">→</span>
