@@ -532,12 +532,9 @@ function ServicesOverviewGrid({ onDiveDeep, onSelectStage }: { onDiveDeep: () =>
               <div className="h-0.5 bg-gradient-to-r from-[#B8860B] to-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="p-5 sm:p-7 lg:p-8 flex flex-col flex-1">
-                {/* Stage number + icon */}
-                <div className="flex items-center justify-between mb-4 sm:mb-5">
-                  <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-[#B8860B] font-bold uppercase">
-                    Stage {stage.id}
-                  </span>
-                  <span className="text-xl sm:text-2xl text-slate-300 group-hover:text-[#B8860B] transition-colors duration-300">
+                {/* Icon */}
+                <div className="flex items-center justify-end mb-4 sm:mb-5">
+                  <span className="text-xl sm:text-2xl text-[#B8860B]">
                     {stageIcons[i]}
                   </span>
                 </div>
@@ -577,7 +574,7 @@ function ServicesOverviewGrid({ onDiveDeep, onSelectStage }: { onDiveDeep: () =>
                 {/* Explore link */}
                 <div className="mt-5 pt-3 flex items-center justify-between">
                   <span className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wider text-[#B8860B] font-bold group-hover:translate-x-1 transition-transform">
-                    <span>Explore Stage {stage.id}</span>
+                    <span>Explore Service</span>
                     <span>→</span>
                   </span>
                 </div>
@@ -708,9 +705,6 @@ function ServicesContent() {
             <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12">
               {/* Stage header */}
               <div className="mb-7 sm:mb-10 lg:mb-12 pb-6 sm:pb-8 lg:pb-10 border-b border-slate-100">
-                <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-[#B8860B] font-bold uppercase block mb-1.5 sm:mb-2">
-                  Stage {stages[selectedStage].id} / 05
-                </span>
                 <h2
                   className="font-heading uppercase tracking-wide text-slate-900 leading-tight"
                   style={{ fontSize: 'clamp(1.5rem, 5vw, 3.5rem)' }}

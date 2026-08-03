@@ -140,9 +140,6 @@ export default function Services() {
                   <img src={s.image} alt={s.title} className="w-full h-full object-cover object-center" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-8">
                     <div>
-                      <span className="block font-mono text-xs tracking-widest text-[#D4AF37] font-bold mb-2">
-                        STAGE {s.id}
-                      </span>
                       <h3 className="text-white font-heading text-2xl sm:text-3xl uppercase tracking-wide drop-shadow-md">
                         {s.title}
                       </h3>
@@ -153,9 +150,6 @@ export default function Services() {
                 {/* Back */}
                 <div className="flip-card-back absolute inset-0 w-full h-full bg-slate-900 rounded-2xl p-8 flex flex-col justify-between text-left">
                   <div>
-                    <span className="block font-mono text-xs tracking-widest text-[#D4AF37] font-bold mb-4">
-                      STAGE {s.id}
-                    </span>
                     <h3 className="font-heading text-2xl uppercase tracking-wide text-white mb-4">
                       {s.title}
                     </h3>
