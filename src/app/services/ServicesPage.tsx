@@ -463,189 +463,89 @@ const lifecycles: Record<string, string[]> = {
 };
 
 function StagePanel({ stage }: { stage: typeof stages[0] }) {
-  const [isDeepDive, setIsDeepDive] = useState(false);
+  return (
+    <div className="space-y-16">
+      {/* Intro */}
+      <div>
+        <p className="text-xl sm:text-2xl text-slate-800 leading-relaxed max-w-4xl border-l-4 border-[#B8860B] pl-6 font-medium">{stage.intro}</p>
+      </div>
 
-  // Reset to minimalist overview when stage changes
-  useEffect(() => {
-    setIsDeepDive(false);
-  }, [stage.id]);
-
-  if (isDeepDive) {
-    return (
-      <div className="space-y-16 animate-fadeIn">
-        {/* Deep Dive Header Banner */}
-        <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md">
-          <div>
-            <span className="font-mono text-xs tracking-widest text-[#D4AF37] font-bold block mb-1">
-              TECHNICAL DEEP DIVE & PLAYBOOK
-            </span>
-            <h3 className="font-heading text-2xl sm:text-3xl uppercase tracking-wide">
-              {stage.title} Architecture
-            </h3>
-          </div>
-          <button
-            onClick={() => setIsDeepDive(false)}
-            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-mono text-xs tracking-wider uppercase px-5 py-3 rounded-xl font-bold transition-colors"
-          >
-            <span>← Back to Overview</span>
-          </button>
-        </div>
-
-        {/* Intro */}
-        <div>
-          <p className="text-xl sm:text-2xl text-slate-800 leading-relaxed max-w-4xl border-l-4 border-[#B8860B] pl-6 font-medium">{stage.intro}</p>
-        </div>
-
-        {/* Why it matters / Quality Dimensions */}
-        <div>
-          <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">
-            {stage.id === '04' ? 'Eight Quality Dimensions' : stage.id === '06' ? 'Why Companies Choose It' : 'Why It Matters'}
-          </h3>
-          {stage.id === '04' ? (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-              <div className="lg:col-span-1 flex justify-center">
-                <QualityWheel />
-              </div>
-              <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {stage.why.map((w, i) => (
-                  <div key={i} className="p-6 border border-slate-200 rounded-xl bg-white/70 shadow-sm">
-                    <p className="font-mono text-sm font-bold uppercase tracking-wider text-slate-900 mb-2">{w.title}</p>
-                    <p className="text-base text-slate-700 leading-relaxed font-medium">{w.body}</p>
-                  </div>
-                ))}
-              </div>
+      {/* Why it matters */}
+      <div>
+        <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">
+          {stage.id === '04' ? 'Eight Quality Dimensions' : stage.id === '06' ? 'Why Companies Choose It' : 'Why It Matters'}
+        </h3>
+        {stage.id === '04' ? (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+            <div className="lg:col-span-1 flex justify-center">
+              <QualityWheel />
             </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {stage.why.map((w, i) => (
-                <div key={i} className="p-6 border border-slate-100 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-10 h-10 rounded-lg bg-[#B8860B]/10 flex items-center justify-center mb-4">
-                    <span className="text-[#B8860B] text-sm font-mono font-bold">{String(i + 1).padStart(2, '0')}</span>
-                  </div>
-                  <p className="font-bold text-slate-950 text-base mb-2">{w.title}</p>
+                <div key={i} className="p-6 border border-slate-200 rounded-xl bg-white/70 shadow-sm">
+                  <p className="font-mono text-sm font-bold uppercase tracking-wider text-slate-900 mb-2">{w.title}</p>
                   <p className="text-base text-slate-700 leading-relaxed font-medium">{w.body}</p>
                 </div>
               ))}
             </div>
-          )}
-        </div>
-
-        {/* Lifecycle */}
-        <div>
-          <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-6 font-bold">Lifecycle Flow</h3>
-          <div className="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
-            <LifecycleFlow steps={lifecycles[stage.slug] || []} />
           </div>
-        </div>
-
-        {/* Methods */}
-        <div>
-          <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">
-            {stage.id === '06' ? 'Engagement Process' : 'Core Methodologies'}
-          </h3>
-          <MethodGrid methods={stage.methods} />
-        </div>
-
-        {/* Case Study */}
-        <div>
-          <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">Case Study</h3>
-          <CaseStudyCard cs={stage.caseStudy} />
-        </div>
-
-        {/* Myths / Pitfalls */}
-        {stage.myths.length > 0 && (
-          <div>
-            <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">Common Misconceptions</h3>
-            <div className="space-y-4">
-              {stage.myths.map((m, i) => (
-                <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-                  <div className="p-6 bg-red-50/50">
-                    <p className="font-mono text-xs tracking-widest uppercase text-red-500 mb-2 font-bold">Myth</p>
-                    <p className="text-base font-bold text-slate-800 italic">"{m.myth}"</p>
-                  </div>
-                  <div className="p-6 bg-emerald-50/50 border-t sm:border-t-0 sm:border-l border-slate-200">
-                    <p className="font-mono text-xs tracking-widest uppercase text-emerald-700 mb-2 font-bold">Reality</p>
-                    <p className="text-base text-slate-800 font-medium">{m.reality}</p>
-                  </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {stage.why.map((w, i) => (
+              <div key={i} className="p-6 border border-slate-100 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-10 h-10 rounded-lg bg-[#B8860B]/10 flex items-center justify-center mb-4">
+                  <span className="text-[#B8860B] text-sm font-mono font-bold">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-              ))}
-            </div>
+                <p className="font-bold text-slate-950 text-base mb-2">{w.title}</p>
+                <p className="text-base text-slate-700 leading-relaxed font-medium">{w.body}</p>
+              </div>
+            ))}
           </div>
         )}
-
-        {/* Bottom return toggle */}
-        <div className="text-center pt-8 border-t border-slate-200">
-          <button
-            onClick={() => setIsDeepDive(false)}
-            className="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-mono text-xs tracking-wider uppercase px-6 py-3 rounded-full font-bold transition-colors"
-          >
-            <span>← Return to Minimalist Overview</span>
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  // DEFAULT: MINIMALIST OVERVIEW
-  return (
-    <div className="space-y-12 animate-fadeIn">
-      {/* Intro Statement */}
-      <div>
-        <p className="text-xl sm:text-2xl text-slate-800 leading-relaxed max-w-4xl border-l-4 border-[#B8860B] pl-6 font-medium">
-          {stage.intro}
-        </p>
       </div>
 
-      {/* 3 Key Value Highlights */}
+      {/* Lifecycle */}
       <div>
-        <h3 className="font-mono text-xs tracking-[0.25em] uppercase text-[#B8860B] mb-6 font-bold">
-          Key Capabilities
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {stage.why.slice(0, 3).map((w, i) => (
-            <div key={i} className="p-6 border border-slate-100 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-8 h-8 rounded-lg bg-[#B8860B]/10 flex items-center justify-center mb-3">
-                <span className="text-[#B8860B] text-xs font-mono font-bold">{String(i + 1).padStart(2, '0')}</span>
-              </div>
-              <p className="font-bold text-slate-900 text-base mb-2">{w.title}</p>
-              <p className="text-sm text-slate-600 leading-relaxed font-medium">{w.body}</p>
-            </div>
-          ))}
+        <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-6 font-bold">Lifecycle</h3>
+        <div className="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+          <LifecycleFlow steps={lifecycles[stage.slug] || []} />
         </div>
       </div>
 
-      {/* Core Methodologies */}
+      {/* Methods */}
       <div>
-        <h3 className="font-mono text-xs tracking-[0.25em] uppercase text-[#B8860B] mb-6 font-bold">
-          Methodologies
+        <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">
+          {stage.id === '06' ? 'Engagement Process' : 'Core Methodologies'}
         </h3>
         <MethodGrid methods={stage.methods} />
       </div>
 
-      {/* Case Study Metrics */}
+      {/* Case Study */}
       <div>
-        <h3 className="font-mono text-xs tracking-[0.25em] uppercase text-[#B8860B] mb-6 font-bold">
-          Verified Outcome
-        </h3>
+        <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">Case Study</h3>
         <CaseStudyCard cs={stage.caseStudy} />
       </div>
 
-      {/* Deep Dive CTA Subpage Launcher */}
-      <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 sm:p-10 text-center max-w-3xl mx-auto shadow-sm">
-        <h4 className="font-heading text-2xl uppercase tracking-wide text-slate-900 mb-3">
-          Explore Deep Dive & Playbook
-        </h4>
-        <p className="text-slate-600 text-sm sm:text-base mb-6 font-medium max-w-xl mx-auto">
-          Access complete lifecycles, QualityWheel frameworks, tooling details, and misconception breakdowns for {stage.title}.
-        </p>
-        <button
-          onClick={() => setIsDeepDive(true)}
-          className="inline-flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white font-mono text-xs tracking-widest uppercase px-8 py-4 rounded-full font-bold shadow-md transition-all duration-200 hover:scale-[1.02]"
-        >
-          <span>Open Technical Deep Dive</span>
-          <span className="text-sm">→</span>
-        </button>
-      </div>
+      {/* Myths / Pitfalls */}
+      {stage.myths.length > 0 && (
+        <div>
+          <h3 className="font-mono text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-8 font-bold">Common Misconceptions</h3>
+          <div className="space-y-4">
+            {stage.myths.map((m, i) => (
+              <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                <div className="p-6 bg-red-50/50">
+                  <p className="font-mono text-xs tracking-widest uppercase text-red-500 mb-2 font-bold">Myth</p>
+                  <p className="text-base font-bold text-slate-800 italic">"{m.myth}"</p>
+                </div>
+                <div className="p-6 bg-emerald-50/50 border-t sm:border-t-0 sm:border-l border-slate-200">
+                  <p className="font-mono text-xs tracking-widest uppercase text-emerald-700 mb-2 font-bold">Reality</p>
+                  <p className="text-base text-slate-800 font-medium">{m.reality}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -656,7 +556,7 @@ function StagePanel({ stage }: { stage: typeof stages[0] }) {
 
 const stageIcons = ['◈', '◉', '◎', '◆', '◇', '⬡'];
 
-function ServicesOverviewGrid({ onExplore }: { onExplore: (i: number) => void }) {
+function ServicesOverviewGrid({ onDiveDeep }: { onDiveDeep: () => void }) {
   return (
     <div className="py-12 sm:py-20">
       <div className="max-w-screen-xl mx-auto px-5 sm:px-8 lg:px-12">
@@ -671,7 +571,7 @@ function ServicesOverviewGrid({ onExplore }: { onExplore: (i: number) => void })
 
               <div className="p-7 sm:p-8 flex flex-col flex-1">
                 {/* Stage number + icon */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-5">
                   <span className="font-mono text-xs tracking-[0.25em] text-[#B8860B] font-bold uppercase">
                     Stage {stage.id}
                   </span>
@@ -681,26 +581,51 @@ function ServicesOverviewGrid({ onExplore }: { onExplore: (i: number) => void })
                 </div>
 
                 {/* Title */}
-                <h3 className="font-heading text-xl sm:text-2xl uppercase tracking-wide text-slate-900 mb-4 leading-tight">
+                <h3 className="font-heading text-xl sm:text-2xl uppercase tracking-wide text-slate-900 mb-3 leading-tight">
                   {stage.title}
                 </h3>
 
                 {/* Intro excerpt */}
-                <p className="text-sm text-slate-600 leading-relaxed font-medium flex-1 mb-8 line-clamp-4">
+                <p className="text-sm text-slate-600 leading-relaxed font-medium mb-5 line-clamp-3">
                   {stage.intro}
                 </p>
 
-                {/* Explore button */}
-                <button
-                  onClick={() => onExplore(i)}
-                  className="inline-flex items-center gap-2 self-start font-mono text-xs tracking-widest uppercase text-[#B8860B] hover:text-slate-900 font-bold transition-colors group/btn"
-                >
-                  <span>Explore</span>
-                  <span className="transition-transform group-hover/btn:translate-x-1">→</span>
-                </button>
+                {/* Key capability tags */}
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {stage.why.slice(0, 2).map((w, j) => (
+                    <span key={j} className="text-xs font-mono font-bold px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-600 rounded-full tracking-wide">
+                      {w.title}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Method chips */}
+                <div className="pt-4 border-t border-slate-100 flex flex-col gap-1.5">
+                  {stage.methods.slice(0, 2).map((m, j) => (
+                    <div key={j} className="flex items-center gap-2">
+                      <span className="w-1 h-1 rounded-full bg-[#B8860B] shrink-0" />
+                      <span className="text-xs text-slate-500 font-mono font-bold tracking-wide truncate">{m.name}</span>
+                    </div>
+                  ))}
+                  {stage.methods.length > 2 && (
+                    <span className="text-xs text-slate-400 font-mono pl-3">+{stage.methods.length - 2} more</span>
+                  )}
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Single Dive Deep CTA below all 6 cards */}
+        <div className="mt-14 text-center">
+          <button
+            onClick={onDiveDeep}
+            className="inline-flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white font-mono text-xs tracking-widest uppercase px-10 py-4 rounded-full font-bold shadow-md transition-all duration-200 hover:scale-[1.02]"
+          >
+            <span>Dive Deep</span>
+            <span className="text-sm">→</span>
+          </button>
+          <p className="mt-3 text-xs text-slate-400 font-mono tracking-wide">Explore methodologies, lifecycles & case studies</p>
         </div>
       </div>
     </div>
@@ -780,7 +705,7 @@ function ServicesContent() {
 
       {/* ── OVERVIEW GRID (all 6 services) ───────────────────────────── */}
       {selectedStage === null && (
-        <ServicesOverviewGrid onExplore={handleExplore} />
+        <ServicesOverviewGrid onDiveDeep={() => handleExplore(0)} />
       )}
 
       {/* ── DETAIL VIEW (one service) ─────────────────────────────────── */}
@@ -800,6 +725,13 @@ function ServicesContent() {
               <span className="font-mono text-xs tracking-wider text-[#B8860B] font-bold uppercase">
                 {stages[selectedStage].title}
               </span>
+            </div>
+          </div>
+
+          {/* Pipeline navigator — sticky */}
+          <div className="py-5 bg-slate-50 border-b border-slate-200 sticky top-16 z-40">
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12">
+              <PipelineDiagram activeStage={selectedStage} onSelect={handleSelectNeighbour} />
             </div>
           </div>
 
