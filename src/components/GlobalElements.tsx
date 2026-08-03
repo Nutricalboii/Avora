@@ -7,6 +7,7 @@ import { ChatbotWidget } from '@/components/ChatbotWidget';
 export default function GlobalElements({ type }: { type: 'header' | 'footer' | 'chat' }) {
   const pathname = usePathname();
   if (pathname === '/intro') return null;
+  if (pathname === '/services') return null;
   
   if (type === 'header') return <SpotlightNav />;
   if (type === 'footer') return <Footer />;
