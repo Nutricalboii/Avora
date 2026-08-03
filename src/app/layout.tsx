@@ -74,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`scroll-smooth ${dmSans.variable} ${bebasNeue.variable} ${ibmPlexMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${dmSans.variable} ${bebasNeue.variable} ${ibmPlexMono.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -84,7 +84,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans text-[var(--foreground)]">
-        {/* WebGL shader background — renders on all pages */}
+        {/* WebGL shader background — only on home page */}
         <ShaderBackground />
         {/* Skip to content — for keyboard/screen reader users */}
         <a
