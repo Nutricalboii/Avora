@@ -1,15 +1,17 @@
-# Avora System Architecture & Project Onboarding Manual
+# Avora System Architecture & Development Manual
 
-This document provides a comprehensive breakdown of the Avora platform codebase. It maps the directory structures, data relations, components, dependencies, custom design rules, and improvements made during optimization cycles. It is designed to allow a new engineer to inherit and maintain the codebase with zero friction.
+Welcome to the **Avora** platform codebase — an institutional-grade Next.js web application built for AI Infrastructure and Data Operations.
+
+This manual documents the system architecture, directory structure, database schema, design system, 5-discipline service framework, and documentation index.
 
 ---
 
-## System Architecture Map
+## 1. System Architecture Map
 
 ```mermaid
 graph TD
     Client[Browser Client]
-    NextJS[Next.js 16.2 Web App]
+    NextJS[Next.js 16.2 Web App / Turbopack]
     Middleware[Next-Auth matchers /src/proxy.ts]
     Database[(MongoDB)]
     NextAuth[Next-Auth JWT Engine]
@@ -28,48 +30,71 @@ graph TD
     NextJS -->|API Requests| ContactAPI
     NextJS -->|Server Execution| DashAPI
 
-    ContactAPI -->|Post Request| GoogleScript[Google script intake URL]
-    
     DashAPI --> PrismaClient
     PrismaClient --> Database
 ```
 
 ---
 
-## Codebase Directory Index
+## 2. Five Disciplines Service Framework
+
+Avora structures its core capabilities into **Five Disciplines**:
+
+```mermaid
+graph LR
+    D1[01. Data Generation] --> D2[02. Data Annotation]
+    D2 --> D3[03. Data Labeling]
+    D3 --> D4[04. Data Quality Assurance]
+    D4 --> D5[05. AI Solutions]
+```
+
+1. **Data Generation** — Synthetic data generation, edge-case simulation, VAEs/GANs, and privacy-preserving augmentation.
+2. **Data Annotation** — CVAT, bounding boxes, 3D point clouds, semantic segmentation, and domain ontology mapping.
+3. **Data Labeling** — Text classification, NER, audio transcription, video event tagging, and OCR layout extractions (LayoutLMv3).
+4. **Data Quality Assurance (DQA)** — Inter-annotator agreement tracking (Fleiss' $\kappa \ge 0.90$), multi-pass consensus validation, and 8-dimension quality profiling.
+5. **AI Solutions** — Custom model development, fine-tuning, RAG pipelines, predictive analytics ensembles, and SHAP explainability.
+
+---
+
+## 3. Codebase Directory Structure
 
 ```
 Avora/
-├── prisma/                     # Database Engine configuration
-│   └── schema.prisma           # Prisma MongoDB relational/document schema mapping
-├── public/                     # Statically served graphic/image resources
-│   ├── favicon.svg             # Custom Avora tab brand icon
-│   └── *.jpg.jpeg              # Hero & Section premium structural mockups
-├── src/
-│   ├── actions/                # Next.js Server Actions (CRUD logic for client/venture entities)
-│   ├── app/                    # Next.js App Router Page Layouts & API routes
-│   │   ├── api/                # REST endpoints (chat, contact, reindex)
-│   │   ├── dashboard/          # PM/Admin Venture Dashboard & Model Registry portals
-│   │   │   ├── loading.tsx     # Animated Skeleton load templates
-│   │   │   └── page.tsx        # Dashboard aggregation and KPI layout
-│   │   ├── founder/            # Founder/Leadership biography portfolio layout
-│   │   ├── layout.tsx          # Global Theme provider and top navigation configuration
-│   │   └── globals.css         # Styling system base, utility, and glass-panel definitions
-│   ├── components/             # Reusable UI component modules
-│   │   ├── ui/                 # Small atomic elements (SpotlightNav, Logo)
-│   │   ├── ChatbotWidget.tsx   # Floating AI conversation drawer component
-│   │   ├── Services.tsx        # Service tabs selector sheet
-│   │   └── Testimonials.tsx    # Operational verification carousel
-│   ├── config/                 # Static metadata, site configurations
-│   ├── hooks/                  # Custom React hooks (Intersection Observer)
-│   └── lib/                    # Authentication configs, client hooks, environment validators
+├── docs/                               # System Documentation & Strategy Deliverables
+│   ├── blueprints/                     # Architectural specifications & technical blueprints
+│   ├── marketing/                      # 7 Marketing Strategy & Client Acquisition Deliverables
+│   │   ├── 01_competitor_analysis.md   # Scale AI, Labelbox, Appen competitive matrix
+│   │   ├── 02_seo_strategy.md          # 5-Discipline Keyword Clusters & Roadmap
+│   │   ├── 03_content_engine_playbook.md
+│   │   ├── 04_7day_client_acquisition_playbook.md
+│   │   ├── 05_outbound_email_and_linkedin_pitch_templates.md
+│   │   ├── 06_avora_vs_competitors_landing_page.md
+│   │   └── 07_enterprise_email_pitch_package.md
+│   └── reports/                        # Audit reports, presentations, and technical decks
+├── prisma/                             # Database engine schema (MongoDB)
+│   └── schema.prisma
+├── public/                             # Static public web assets
+│   ├── images/                         # Categorized visual assets & preview mocks
+│   └── logos/                          # Enterprise partner SVG logos
+├── src/                                # Application Source Code
+│   ├── actions/                        # Next.js Server Actions (CRUD logic)
+│   ├── app/                            # App Router Pages (Home, Services, Work, Dashboard, API)
+│   ├── components/                     # UI Components (SpotlightNav, ShaderBackground, Hero)
+│   ├── config/                         # Static metadata & site configuration
+│   ├── hooks/                          # Custom React hooks
+│   └── lib/                            # Prisma client, auth, and environment utilities
+├── .gitignore                          # Excludes .env, .next, .vercel, local agent data
+├── next.config.ts                      # Next.js build configuration
+├── package.json                        # Dependencies and script definitions
+├── tailwind.config.ts                  # Tailwind styling configuration
+└── tsconfig.json                       # TypeScript compiler settings
 ```
 
 ---
 
-## Database Schema Details (Prisma + MongoDB)
+## 4. Database Schema Details (Prisma + MongoDB)
 
-The database layers are configured over **MongoDB** via the **Prisma ORM**.
+The database layer operates over **MongoDB** via **Prisma ORM**.
 
 ```mermaid
 erDiagram
@@ -84,50 +109,49 @@ erDiagram
 ```
 
 ### Core Entities:
-* **User:** Handles admin, PM, developer, and client accounts. NextAuth checks against these records during authorization.
-* **Client:** Companies partnering with Avora. Tracks tier, revenue, and active projects.
-* **Project:** Core technical pipeline. Uses custom composite types for milestone timelines and integrated AI models.
-* **AiModelRegistry:** Tracks deployed models, their framework type, inference latency, accuracy metrics, and unit costs.
-* **Venture:** Studio entities. Contains Cap Table JSON files and private co-development market logs.
+* **User:** Admin, PM, developer, and client accounts with NextAuth authorization.
+* **Client:** Partner enterprise accounts tracking tier, revenue, and active projects.
+* **Project:** Core technical pipeline with composite milestone timelines.
+* **AiModelRegistry:** Deployed AI models, latency benchmarks, accuracy metrics, and unit costs.
+* **Venture:** Studio entities with Cap Table tracking and co-development logs.
 
 ---
 
-## Global Design Tokens & Theme Parameters
+## 5. Design System & Global Tokens
 
-Avora uses **Tailwind v4** configuration integrated via PostCSS. The app has two primary color profiles, blending a luxury gold aesthetic with dark mode and warm alabaster light mode.
+Avora utilizes **Tailwind CSS v4** with a luxury gold aesthetic blending a dark mode profile and alabaster light mode.
 
-### Base Tokens (`/src/app/globals.css`):
-
-| Variable | Light Mode (Root) | Dark Mode (`.dark`) | Purpose |
+| Variable | Light Mode | Dark Mode (`.dark`) | Purpose |
 |---|---|---|---|
-| `--background` | `#F8F5EE` (Cream Alabaster) | `#0a0a0f` (Graphite Black) | Main viewport backdrop |
-| `--foreground` | `#3D2616` (Warm Chestnut) | `#f8fafc` (Slate Off-White) | Body text color |
-| `--surface` | `rgba(255,255,255,0.75)` | `#121218` | Cards / Panel backgrounds |
-| `--accent` | `#C5A059` (Rich Gold) | `#D4AF37` (Vibrant Gold) | Eyebrows, highlight states |
-
-### Key Component Styles:
-1. **Frosted Glass Panel (`.glass-panel`):**
-   * *Light mode:* Gold-tinted translucent border (`rgba(212, 175, 55, 0.18)`), 92% solid cream backer.
-   * *Dark mode:* Subtle graphite backer (`rgba(10, 10, 18, 0.88)`) with semi-transparent white borders.
-2. **Primary Button (`.btn-primary`):**
-   * Saturated gold base color `#D4AF37` with transition hover `#B8962D` and focus rings.
+| `--background` | `#F8F5EE` (Cream Alabaster) | `#0a0a0f` (Graphite Black) | Viewport background |
+| `--foreground` | `#3D2616` (Warm Chestnut) | `#f8fafc` (Slate Off-White) | Typography color |
+| `--surface` | `rgba(255,255,255,0.75)` | `#121218` | Cards & glass panels |
+| `--accent` | `#C5A059` (Rich Gold) | `#D4AF37` (Vibrant Gold) | Highlights & accents |
 
 ---
 
-## Ponytail Cleanup
-* **Deleted `Navbar.tsx`:** Standardized navigation directly on `SpotlightNav` wired in `layout.tsx` to remove a redundant file wrapper.
-* **Deleted `PageTransition.tsx`:** Substituted the Framer Motion layout wrapper for a single high-performance hardware-accelerated CSS transition class (`animate-in fade-in slide-in-from-bottom-2`) directly on the `<main>` root layout tag.
-* **Deleted `ui/TechnicalGrid.tsx`:** Inlined the dotted background layout directly into the single layout referencing it (`Contact.tsx`), saving file reads and loading times.
+## 6. Getting Started & Development Commands
 
-### Light/Dark Theme Switcher
-* Implemented client-safe theme toggle buttons using `next-themes` and Lucide icons in both the desktop header and the mobile navigation drawer.
-* Fixed contrast issues: Replaced all invalid utility color names (`text-slate-205`, `text-slate-750`) with valid tailwind colors to ensure 100% readability across both modes.
+### **Prerequisites**
+- Node.js 18+
+- npm or yarn
+- MongoDB database connection string (`DATABASE_URL`)
 
-### Chatbot Cognitive Pipeline
-* Removed unnecessary debug version texts (`v1.2.0-secure_node`) to declutter user interfaces.
-* Removed bold formatting markdown asterisks (`**`) from responses to prevent rendering artifacts.
-* Expanded route keyword match layers (costs, projects, founders, pricing tags) so users get exact information blocks instead of generic fallbacks.
+### **Commands**
 
-### Skeleton Load Templates
-* Created a layout loader (`src/app/dashboard/loading.tsx`) that renders 4 pulsing placeholder KPI cards and a mock data table while Next.js fetches server-side dynamic statistics from the database.
-* Wrapped main children in a `<Suspense>` boundary inside `layout.tsx` to prevent Next.js static build export errors.
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Generate Prisma Client
+npx prisma generate
+
+# 3. Run development server (Turbopack)
+npm run dev
+
+# 4. Create production build
+npm run build
+
+# 5. Start production server
+npm start
+```
