@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Main High-Contrast Face Shield (Pure Flat Matte Gold) -->
+  <rect x="14" y="22" width="72" height="56" rx="20" fill="#dfb257" />
+
+  <!-- Classic Robot Ear/Side Accents for Immediate Identification -->
+  <rect x="6" y="38" width="8" height="24" rx="4" fill="#dfb257" />
+  <rect x="86" y="38" width="8" height="24" rx="4" fill="#dfb257" />
+
+  <!-- Minimalist Top Antenna Node -->
+  <rect x="47" y="10" width="6" height="12" rx="2" fill="#dfb257" />
+  <circle cx="50" cy="8" r="4" fill="#dfb257" />
+
+  <!-- Inner Dark Display Visor for Premium Tech Contrast -->
+  <rect x="22" y="30" width="56" height="40" rx="14" fill="#0f172a" />
+
+  <!-- Simple, Crisp Circular AI Eyes -->
+  <circle cx="38" cy="46" r="5" fill="#dfb257" />
+  <circle cx="62" cy="46" r="5" fill="#dfb257" />
+
+  <!-- Clean, Curved Friendly Indicator Arc -->
+  <path d="M 44,58 Q 50,63 56,58" 
+        fill="none" 
+        stroke="#dfb257" 
+        stroke-width="3" 
+        stroke-linecap="round" />
+</svg>

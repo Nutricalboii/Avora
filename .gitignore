@@ -30,8 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files
 .env*
+.env
 
 # vercel
 .vercel
@@ -42,14 +43,10 @@ next-env.d.ts
 
 /src/generated/prisma
 
-# agent scaffolding — do not commit to production repo
+# agent scaffolding & local scratch — do not commit to production repo
 graphify-out/
 .agent/
+.gemini/
+.claude-marketing/
 ai-processor/__pycache__/
 ai-processor/.venv/
-AVORA_PHASE2_BRAND_BLUEPRINT.md
-Avora_Phase2_Strategy_Report.docx
-Avora_Post_Implementation_Audit_Report.docx
-avora_deep_audit_report.md
-gemini-svg.svg
-.env
