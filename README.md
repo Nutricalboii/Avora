@@ -2,7 +2,7 @@
 
 Welcome to the **Avora** platform codebase — an institutional-grade Next.js web application built for AI Infrastructure and Data Operations.
 
-This manual documents the system architecture, directory structure, database schema, design system, 5-discipline service framework, and documentation index.
+This manual documents the system architecture, directory structure, database schema, design system, 6-discipline service framework, and documentation index.
 
 ---
 
@@ -36,18 +36,20 @@ graph TD
 
 ---
 
-## 2. Five Disciplines Service Framework
+## 2. Six Disciplines Service Framework
 
-Avora structures its core capabilities into **Five Disciplines**:
+Avora structures its core capabilities into **Six Disciplines**:
 
 ```mermaid
 graph LR
-    D1[01. Data Generation] --> D2[02. Data Annotation]
+    D0[00. AI Talent Solutions] --> D1[01. Data Generation]
+    D1 --> D2[02. Data Annotation]
     D2 --> D3[03. Data Labeling]
     D3 --> D4[04. Data Quality Assurance]
     D4 --> D5[05. AI Solutions]
 ```
 
+0. **AI Talent Solutions** — On-demand data scientists, ML engineers, and annotation leads embedded directly into client teams on a project or retainer basis.
 1. **Data Generation** — Synthetic data generation, edge-case simulation, VAEs/GANs, and privacy-preserving augmentation.
 2. **Data Annotation** — CVAT, bounding boxes, 3D point clouds, semantic segmentation, and domain ontology mapping.
 3. **Data Labeling** — Text classification, NER, audio transcription, video event tagging, and OCR layout extractions (LayoutLMv3).

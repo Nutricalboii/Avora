@@ -5,13 +5,47 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
 
-// ─────────────────────────────────────────────────────────────────────
-// DATA — pulled directly from the AI Delivery Playbook PDF
-// ─────────────────────────────────────────────────────────────────────
-
+// ────────────────────────────────────────────────────────────────────
 const stages = [
   {
     id: '01',
+    slug: 'ai-solutions',
+    title: 'AI Solutions',
+    subtitle: 'Where quality data becomes engineered systems',
+    accent: '#B8860B',
+    intro:
+      'AI Solutions is the payoff stage — the discipline of turning quality data and a trained model into a system that survives contact with production. From problem framing through to live monitoring, this is where strategy becomes infrastructure.',
+    why: [
+      { title: 'Start with the problem', body: 'Fall in love with the problem, not your favourite algorithm. Specific, financially quantified objectives — not a desire to "use AI."' },
+      { title: 'Invest in data quality', body: '"Garbage in, gospel out" is as dangerous as garbage in, garbage out. Nearly 30% of successful AI projects go to data remediation — and it pays off.' },
+      { title: 'Choose the right tool', body: 'Resist deep learning by default — the simplest appropriate model often wins and is far easier to govern.' },
+      { title: 'Design for collaboration', body: 'Build workflows where AI handles routine work and humans focus on exceptions. AI as advisor, not autopilot.' },
+      { title: 'Plan the full lifecycle', body: 'Think deployment, monitoring, and retirement from day one. The first deployment is a hypothesis, not a final answer.' },
+      { title: 'Explainability builds trust', body: 'SHAP-based driver explanations are often essential for user adoption — planners won\'t trust a black box.' },
+    ],
+    methods: [
+      { name: 'Problem Framing & Discovery', desc: 'Structured discovery tailored to project complexity mapping existing data flows, identifying failure patterns, and defining success metrics.' },
+      { name: 'Data Architecture', desc: 'System architecture, feature engineering, and remediation before any model work begins.' },
+      { name: 'Model Development', desc: 'Ensemble approaches using complementary techniques per module — gradient boosting, neural nets, forecasting models — selected by task, not trend.' },
+      { name: 'Explainability Layer', desc: 'SHAP-based explanations that satisfy audit requirements and build user confidence in AI-generated outputs.' },
+      { name: 'Production Deployment & Monitoring', desc: 'CI/CD processes, drift detection, alerting, and human-in-the-loop override capture that feeds back into the model.' },
+    ],
+    caseStudy: {
+      sector: 'Retail · Multi-SKU Demand Forecasting',
+      headline: 'A custom predictive ensemble integrated into on-premise infrastructure delivered a return that justified the entire program within the first quarter',
+      what: 'Designed and integrated a custom predictive ensemble model into a client\'s on-premise cloud infrastructure for multi-horizon demand forecasting across thousands of SKUs.',
+      how: 'Structured discovery tailored to project complexity mapped existing data flows and identified distribution shift patterns. Ensemble model with complementary techniques per forecasting horizon. SHAP explainability layer added to satisfy internal procurement audit. System presented outputs as suggested actions requiring explicit planner confirmation — never full autopilot. Every override captured and fed back via imitation learning.',
+      result: 'Significant reduction in manual planning overhead in the first quarter. ROI demonstrated strongly at the 36-month projection horizon. Planner satisfaction improved substantially. System now handles routine forecasting while planners focus on exception management.',
+      metrics: [
+        { label: 'Manual planning overhead', value: 'Reduced in first quarter' },
+        { label: 'ROI at 36-month horizon', value: 'Investment-grade return' },
+        { label: 'Planner satisfaction', value: 'Significantly improved' },
+      ],
+    },
+    myths: [],
+  },
+  {
+    id: '02',
     slug: 'generation',
     title: 'Data Generation',
     subtitle: 'Engineering synthetic data for innovation, privacy, and scale',
@@ -52,10 +86,10 @@ const stages = [
     ],
   },
   {
-    id: '02',
+    id: '03',
     slug: 'annotation',
     title: 'Data Annotation',
-    subtitle: 'The critical foundation of modern AI systems',
+    subtitle: 'Identify and mark information inside data.',
     accent: '#B8860B',
     intro:
       'Without accurately annotated data, even the most sophisticated neural network is a student without a textbook. Annotation is the process that gives raw data ground truth — pointing at a dog and saying "dog" must happen at scale, across every breed, angle, and lighting condition.',
@@ -90,15 +124,15 @@ const stages = [
     ],
   },
   {
-    id: '03',
+    id: '04',
     slug: 'labeling',
     title: 'Data Labeling',
-    subtitle: 'Transforming raw information into AI fuel',
+    subtitle: 'Classify and organize information into structured categories.',
     accent: '#B8860B',
     intro:
       'Labeling is the sophisticated alchemy that converts unstructured images, text, audio, and sensor streams into the structured datasets that power machine learning — the bridge between human intelligence and machine understanding.',
     why: [
-      { title: 'Quality beats quantity', body: 'A reduction in label noise can lift F1-score by 15–25% on complex tasks — more than most architecture tweaks.' },
+      { title: 'Quality beats quantity', body: 'A reduction in label noise can F1-score by 15–25% on complex tasks — more than most architecture tweaks.' },
       { title: 'Bias amplification risk', body: 'Systematic labeling inconsistencies don\'t just add noise — they can embed and amplify unfair or unsafe model behavior.' },
       { title: 'Diminishing returns on volume', body: 'Beyond a point, more poorly labeled data adds less value than improving the labeling of what you already have.' },
       { title: 'Transfer-learning dependency', body: 'Low-quality fine-tuning labels compromise a pretrained model\'s ability to generalize from its broad training.' },
@@ -126,7 +160,7 @@ const stages = [
     myths: [],
   },
   {
-    id: '04',
+    id: '05',
     slug: 'quality',
     title: 'Data Quality Assurance',
     subtitle: 'The foundation of trustworthy decisions',
@@ -165,43 +199,48 @@ const stages = [
     myths: [],
   },
   {
-    id: '05',
-    slug: 'ai-solutions',
-    title: 'AI Solutions',
-    subtitle: 'Where quality data becomes engineered systems',
+    id: '06',
+    slug: 'ai-talent-solutions',
+    title: 'AI Talent Solutions',
+    subtitle: 'On-demand AI specialists embedded in your team — without the overhead of full-time hiring',
     accent: '#B8860B',
     intro:
-      'AI Solutions is the payoff stage — the discipline of turning quality data and a trained model into a system that survives contact with production. From problem framing through to live monitoring, this is where strategy becomes infrastructure.',
+      'The fastest path to AI capability isn\'t always building a team from scratch. AI Talent Solutions gives you immediate access to vetted, specialised professionals \u2014 data scientists, ML engineers, annotation leads, and AI project managers \u2014 who integrate directly into your workflows on a project or retainer basis.',
     why: [
-      { title: 'Start with the problem', body: 'Fall in love with the problem, not your favourite algorithm. Specific, financially quantified objectives — not a desire to "use AI."' },
-      { title: 'Invest in data quality', body: '"Garbage in, gospel out" is as dangerous as garbage in, garbage out. Nearly 30% of successful AI projects go to data remediation — and it pays off.' },
-      { title: 'Choose the right tool', body: 'Resist deep learning by default — the simplest appropriate model often wins and is far easier to govern.' },
-      { title: 'Design for collaboration', body: 'Build workflows where AI handles routine work and humans focus on exceptions. AI as advisor, not autopilot.' },
-      { title: 'Plan the full lifecycle', body: 'Think deployment, monitoring, and retirement from day one. The first deployment is a hypothesis, not a final answer.' },
-      { title: 'Explainability builds trust', body: 'SHAP-based driver explanations are often essential for user adoption — planners won\'t trust a black box.' },
+      { title: 'Speed to deployment', body: 'Avoid months of recruitment. Our bench of pre-vetted specialists can be onboarded and productive within days.' },
+      { title: 'Specialist depth', body: 'Access niche expertise — synthetic data architects, RLHF specialists, computer vision engineers — that is hard to find and expensive to retain full-time.' },
+      { title: 'Cost efficiency', body: 'Scale up or down with project demand. Pay for the expertise you need, when you need it — no bench overhead during quieter periods.' },
+      { title: 'Knowledge transfer', body: 'Our specialists work alongside your team, building internal capability and institutional knowledge as they deliver.' },
+      { title: 'Governance continuity', body: 'All talent operates under Avora\'s quality and security standards — consistent practices regardless of which specialist you engage.' },
+      { title: 'Flexible engagement models', body: 'Project-basis, time-and-materials, or embedded retainer — structured to match how your organisation actually works.' },
     ],
     methods: [
-      { name: 'Problem Framing & Discovery', desc: 'Three-week discovery phase mapping existing data flows, identifying failure patterns, and defining success metrics.' },
-      { name: 'Data Architecture', desc: 'System architecture, feature engineering, and remediation before any model work begins.' },
-      { name: 'Model Development', desc: 'Ensemble approaches using complementary techniques per module — gradient boosting, neural nets, forecasting models — selected by task, not trend.' },
-      { name: 'Explainability Layer', desc: 'SHAP-based explanations that satisfy audit requirements and build user confidence in AI-generated outputs.' },
-      { name: 'Production Deployment & Monitoring', desc: 'CI/CD processes, drift detection, alerting, and human-in-the-loop override capture that feeds back into the model.' },
+      { name: 'Project Basis', desc: 'Defined scope, fixed deliverables, clear handover criteria. Best for discrete initiatives with a clear start and end — a labeling sprint, a model audit, a QA certification.' },
+      { name: 'Embedded Retainer', desc: 'One or more specialists integrated into your team on an ongoing basis with guaranteed capacity. Best for continuous workflows — ongoing annotation pipelines, iterative model development.' },
+      { name: 'Team Augmentation', desc: 'Supplement an existing internal AI team with specific skills gaps — a computer vision engineer for a vision project, a data quality lead for a governance initiative.' },
+      { name: 'AI Project Management', desc: 'End-to-end coordination of multi-vendor AI programmes — managing timelines, quality gates, and stakeholder communication across complex engagements.' },
+      { name: 'Time-Tracked Transparency', desc: 'All project-basis engagements include granular time tracking and activity reporting. You see exactly where hours are spent — no black boxes.' },
     ],
     caseStudy: {
-      sector: 'Retail · Multi-SKU Demand Forecasting',
-      headline: 'A custom predictive ensemble integrated into on-premise infrastructure delivered a return that justified the entire program within the first quarter',
-      what: 'Designed and integrated a custom predictive ensemble model into a client\'s on-premise cloud infrastructure for multi-horizon demand forecasting across thousands of SKUs.',
-      how: 'Three-week discovery phase mapped existing data flows and identified distribution shift patterns. Ensemble model with complementary techniques per forecasting horizon. SHAP explainability layer added to satisfy internal procurement audit. System presented outputs as suggested actions requiring explicit planner confirmation — never full autopilot. Every override captured and fed back via imitation learning.',
-      result: 'Significant reduction in manual planning overhead in the first quarter. ROI demonstrated strongly at the 36-month projection horizon. Planner satisfaction improved substantially. System now handles routine forecasting while planners focus on exception management.',
+      sector: 'FinTech · AI Programme Delivery',
+      headline: 'An embedded ML engineer and annotation lead accelerated a fraud-detection model from prototype to production in eleven weeks',
+      what: 'A mid-sized payments company had an internal data science team with strong model-building capability but no bandwidth or specialist expertise for the annotation and quality assurance work needed to production-ready a new fraud-detection model.',
+      how: 'Avora placed an experienced annotation lead and a senior ML engineer directly into the client\'s existing squad under a project-basis engagement. Both operated on the client\'s Jira board, attended standups, and reported to the client\'s AI product lead. Avora handled contracting, quality standards, and time-tracking — the client got the output without the hiring overhead.',
+      result: 'The fraud-detection model moved from prototype to production deployment in eleven weeks — within the original timeline and budget. The client\'s internal team gained hands-on exposure to production annotation workflows they could replicate independently.',
       metrics: [
-        { label: 'Manual planning overhead', value: 'Reduced in first quarter' },
-        { label: 'ROI at 36-month horizon', value: 'Investment-grade return' },
-        { label: 'Planner satisfaction', value: 'Significantly improved' },
+        { label: 'Time to production deployment', value: '11 weeks' },
+        { label: 'Hiring overhead avoided', value: 'Zero permanent headcount' },
+        { label: 'Internal capability built', value: 'Transferable workflows' },
       ],
     },
-    myths: [],
+    myths: [
+      { myth: 'Outsourced talent means lower quality.', reality: 'Avora specialists are vetted to the same standard as permanent hires — and operate under documented quality frameworks that most in-house teams lack.' },
+      { myth: 'You lose control when you bring in outside talent.', reality: 'Embedded specialists report to your leads, work on your tools, and follow your processes. You set the direction; we supply the capability.' },
+      { myth: 'It\'s cheaper to hire than to use specialist talent partners.', reality: 'When you account for recruitment time, benefits, training, and bench cost during slower periods, project-basis specialist talent is consistently more cost-efficient for finite AI initiatives.' },
+    ],
   },
 ];
+
 
 // ─────────────────────────────────────────────────────────────────────
 // DELIVER LIFE CYCLE NAVIGATOR — SVG
@@ -611,7 +650,11 @@ function ServicesContent() {
   const scrollToTop = () => {
     if (topRef.current) {
       const top = topRef.current.getBoundingClientRect().top + window.scrollY - 64;
-      window.scrollTo({ top, behavior: 'smooth' });
+      if ((window as any).lenis) {
+        (window as any).lenis.scrollTo(top, { immediate: false });
+      } else {
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
     }
   };
 
@@ -633,12 +676,20 @@ function ServicesContent() {
 
   const handleExplore = (i: number) => {
     setSelectedStage(i);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo({ top: 0 });
+    }
   };
 
   const handleBackToAll = () => {
     setSelectedStage(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo({ top: 0 });
+    }
   };
 
   const handleSelectNeighbour = (i: number) => {

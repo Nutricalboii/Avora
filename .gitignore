@@ -50,3 +50,7 @@ graphify-out/
 .claude-marketing/
 ai-processor/__pycache__/
 ai-processor/.venv/
+Claude output/
+*.docx
+.~lock.*
+

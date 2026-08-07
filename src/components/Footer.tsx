@@ -45,8 +45,8 @@ export default function Footer() {
               <Logo size="md" className="h-9 w-auto text-[var(--foreground)]" />
             </Link>
             <p className="text-base text-[var(--foreground-muted)] leading-relaxed max-w-xs">
-              Data generation, annotation, quality auditing, and AI implementation —
-              one continuous pipeline.
+              AI Talent Solutions, data generation, annotation, quality assurance, and AI implementation —
+              six disciplines, one continuous pipeline.
             </p>
           </div>
 
@@ -56,14 +56,21 @@ export default function Footer() {
               Services
             </h4>
             <ul className="space-y-4">
-              {['Data Generation', 'Data Annotation', 'Data Auditing', 'AI Implementation'].map((label) => (
+              {[
+                { label: 'AI Talent Solutions', stage: 0 },
+                { label: 'Data Generation', stage: 1 },
+                { label: 'Data Annotation', stage: 2 },
+                { label: 'Data Labeling', stage: 3 },
+                { label: 'Data Quality Assurance', stage: 4 },
+                { label: 'AI Solutions', stage: 5 },
+              ].map(({ label, stage }) => (
                 <li key={label}>
-                  <button
-                    onClick={() => scrollTo('services')}
-                    className="text-[15px] text-[var(--foreground)] hover:text-[#B8860B] transition-colors duration-200 text-left"
+                  <Link
+                    href={`/services?stage=${stage}`}
+                    className="text-[15px] text-[var(--foreground)] hover:text-[#B8860B] transition-colors duration-200"
                   >
                     {label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

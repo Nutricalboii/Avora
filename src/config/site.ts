@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Avora Ventures",
-  description: "Data generation, annotation, labeling, quality auditing, and AI implementation pipelines.",
+  description: "AI Talent Solutions, data generation, annotation, labeling, quality assurance, and AI implementation — six disciplines, one continuous pipeline.",
   url: "https://avora-3kyx.vercel.app",
   ogImage: "/og-image.png",
   links: {

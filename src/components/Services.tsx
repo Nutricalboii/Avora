@@ -13,30 +13,50 @@ if (typeof window !== 'undefined') {
 const services = [
   {
     id: '01',
+    slug: 'ai-solutions',
     stageIndex: 0,
+    title: 'AI Solutions',
+    desc: 'Turning quality data and trained models into production-ready AI systems \u2014 from problem framing to live monitoring.',
+    image: '/service_data_generation.webp',
+  },
+  {
+    id: '02',
+    slug: 'generation',
+    stageIndex: 1,
     title: 'Data Generation',
     desc: 'Engineering synthetic data to solve scarcity, protect privacy, and simulate edge cases for model training.',
     image: '/service_data_generation.webp',
   },
   {
-    id: '02',
-    stageIndex: 1,
+    id: '03',
+    slug: 'annotation',
+    stageIndex: 2,
     title: 'Data Annotation',
     desc: 'Creating clear ontologies and guidelines to label complex data accurately through expert-guided workflows.',
     image: '/service_data_annotation.webp',
   },
   {
-    id: '03',
-    stageIndex: 2,
+    id: '04',
+    slug: 'labeling',
+    stageIndex: 3,
     title: 'Data Labeling',
     desc: 'Converting unstructured data streams into clean training sets with multi-pass consensus verification.',
     image: '/service_dqa.png',
   },
   {
-    id: '04',
-    stageIndex: 3,
-    title: 'Quality Testing & Analysis',
+    id: '05',
+    slug: 'quality',
+    stageIndex: 4,
+    title: 'Data Quality Assurance',
     desc: 'Auditing datasets across eight dimensions including accuracy, completeness, and consistency before training.',
+    image: '/service_data_annotation.webp',
+  },
+  {
+    id: '06',
+    slug: 'ai-talent-solutions',
+    stageIndex: 5,
+    title: 'AI Talent Solutions',
+    desc: 'On-demand AI specialists \u2014 data scientists, ML engineers, annotation leads \u2014 embedded directly in your team on a project or retainer basis.',
     image: '/service_ai.webp',
   },
 ];
@@ -94,10 +114,12 @@ export default function Services() {
         {/* Header */}
         <div className="services-header-el max-w-3xl mx-auto text-center mb-16 sm:mb-20">
           <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-wide text-slate-900 leading-tight mb-6">
-            Intelligent systems for high-stakes AI.
+            Six disciplines.
+            <br />
+            <span className="text-[#B8860B]">One delivery framework.</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-medium max-w-2xl mx-auto">
-            We engineer raw information into production-ready intelligence. Hover or click any card to flip it and explore our methodologies.
+            From AI talent deployment to production-ready AI systems — six interconnected capabilities that turn raw data into reliable intelligence. Hover or click any card to explore.
           </p>
         </div>
 
@@ -120,8 +142,8 @@ export default function Services() {
           }
         `}} />
 
-        {/* 2x2 Matrix Big Flashcards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
+        {/* 3x2 Grid for 6 disciplines */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
           {services.map((s, i) => (
             <div
               key={s.id}
@@ -159,7 +181,7 @@ export default function Services() {
                   </div>
 
                   <Link
-                    href={`/services?stage=${s.id}`}
+                    href={`/services?stage=${s.stageIndex}`}
                     className="mt-6 pt-4 border-t border-white/10 flex items-center justify-end text-[#D4AF37] font-bold hover:translate-x-1 transition-transform"
                     onClick={(e) => e.stopPropagation()}
                   >
