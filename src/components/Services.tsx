@@ -10,8 +10,7 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Sequential pipeline — 5 steps
-const pipeline = [
+const stages = [
   {
     id: '01',
     stageIndex: 0,
@@ -42,14 +41,13 @@ const pipeline = [
     title: 'Data Quality Assurance',
     desc: 'Validate datasets across eight dimensions before model training.',
   },
+  {
+    id: '06',
+    stageIndex: 5,
+    title: 'AI Talent Solutions',
+    desc: 'Embed vetted AI specialists directly into your team at any stage.',
+  },
 ];
-
-// Sidebar — AI Talent Solutions
-const talent = {
-  stageIndex: 5,
-  title: 'AI Talent Solutions',
-  desc: 'Embed vetted AI specialists directly into your team at any stage.',
-};
 
 export default function Services() {
   const container = useRef<HTMLDivElement>(null);
@@ -73,23 +71,10 @@ export default function Services() {
       {
         opacity: 1,
         x: 0,
-        duration: 0.7,
-        stagger: 0.12,
+        duration: 0.6,
+        stagger: 0.1,
         ease: 'power3.out',
         scrollTrigger: { trigger: '.pipeline-step', start: 'top 80%' },
-      }
-    );
-
-    gsap.fromTo(
-      '.talent-sidebar',
-      { opacity: 0, x: 24 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        delay: 0.4,
-        scrollTrigger: { trigger: '.talent-sidebar', start: 'top 80%' },
       }
     );
   }, { scope: container });
@@ -111,96 +96,63 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Framework layout: pipeline left + talent sidebar right */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+        {/* Pipeline — single column, all 6 */}
+        <div className="max-w-2xl mx-auto">
+          {stages.map((stage, i) => (
+            <div key={stage.id} className="pipeline-step">
+              <Link
+                href={`/services?stage=${stage.stageIndex}`}
+                className={`flex items-start gap-4 rounded-2xl p-5 sm:p-6 border transition-all duration-300 group ${
+                  i === 5
+                    ? 'bg-slate-900 border-slate-700 hover:bg-slate-800'
+                    : 'bg-white border-slate-200 hover:border-[#B8860B]/50 hover:shadow-md'
+                }`}
+              >
+                {/* Number badge */}
+                <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                  i === 5
+                    ? 'bg-[#B8860B]/20 border-[#B8860B]/40 group-hover:bg-[#B8860B] group-hover:border-[#B8860B]'
+                    : 'bg-[#B8860B]/10 border-[#B8860B]/30 group-hover:bg-[#B8860B] group-hover:border-[#B8860B]'
+                }`}>
+                  <span className={`font-mono font-bold text-xs transition-colors duration-300 ${
+                    i === 5 ? 'text-[#D4AF37] group-hover:text-white' : 'text-[#B8860B] group-hover:text-white'
+                  }`}>
+                    {stage.id}
+                  </span>
+                </div>
 
-          {/* ── LEFT: Sequential pipeline ─────────────────────────────── */}
-          <div className="flex-1 min-w-0">
-            {/* "Need AI" entry node */}
-            <div className="flex items-center gap-4 mb-3 pl-1">
-              <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center shrink-0">
-                <span className="text-white text-xs font-mono font-bold">AI</span>
-              </div>
-              <span className="font-mono text-xs tracking-widest uppercase text-slate-500 font-bold">Enterprise AI Journey</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className={`font-heading text-base sm:text-lg uppercase tracking-wide leading-tight ${
+                      i === 5 ? 'text-white' : 'text-slate-900'
+                    }`}>
+                      {stage.title}
+                    </h3>
+                    <span className={`font-bold text-sm group-hover:translate-x-1 transition-transform shrink-0 ${
+                      i === 5 ? 'text-[#D4AF37]' : 'text-[#B8860B]'
+                    }`}>→</span>
+                  </div>
+                  <p className={`text-sm leading-relaxed font-medium mt-1 ${
+                    i === 5 ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
+                    {stage.desc}
+                  </p>
+                </div>
+              </Link>
+
+              {/* Arrow connector between steps */}
+              {i < stages.length - 1 && (
+                <div className="flex items-center ml-5 my-2">
+                  <div className="flex flex-col items-center gap-0.5">
+                    <div className="w-px h-4 bg-[#B8860B]/40" />
+                    <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
+                      <path d="M4 6L0 0h8L4 6z" fill="#B8860B" fillOpacity="0.5" />
+                    </svg>
+                  </div>
+                </div>
+              )}
             </div>
-            {/* Down arrow into pipeline */}
-            <div className="flex items-center ml-5 mb-3">
-              <div className="w-px h-6 bg-slate-300" />
-            </div>
-
-            {pipeline.map((step, i) => (
-              <div key={step.id} className="pipeline-step">
-                <Link
-                  href={`/services?stage=${step.stageIndex}`}
-                  className="flex items-start gap-4 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 hover:border-[#B8860B]/50 hover:shadow-md transition-all duration-300 group"
-                >
-                  {/* Number badge */}
-                  <div className="w-10 h-10 rounded-full bg-[#B8860B]/10 border-2 border-[#B8860B]/30 flex items-center justify-center shrink-0 group-hover:bg-[#B8860B] group-hover:border-[#B8860B] transition-colors duration-300">
-                    <span className="text-[#B8860B] group-hover:text-white font-mono font-bold text-xs transition-colors duration-300">
-                      {step.id}
-                    </span>
-                  </div>
-
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2 mb-1">
-                      <h3 className="font-heading text-base sm:text-lg uppercase tracking-wide text-slate-900 leading-tight">
-                        {step.title}
-                      </h3>
-                      <span className="text-[#B8860B] font-bold text-sm group-hover:translate-x-1 transition-transform shrink-0">→</span>
-                    </div>
-                    <p className="text-sm text-slate-600 leading-relaxed font-medium">{step.desc}</p>
-                  </div>
-                </Link>
-
-                {/* Arrow connector between steps */}
-                {i < pipeline.length - 1 && (
-                  <div className="flex items-center ml-5 my-2">
-                    <div className="flex flex-col items-center gap-0.5">
-                      <div className="w-px h-4 bg-[#B8860B]/40" />
-                      <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
-                        <path d="M4 6L0 0h8L4 6z" fill="#B8860B" fillOpacity="0.5" />
-                      </svg>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* ── RIGHT: AI Talent Solutions sidebar ───────────────────── */}
-          <div className="talent-sidebar w-full lg:w-72 xl:w-80 shrink-0 lg:mt-[88px]">
-            <Link
-              href={`/services?stage=${talent.stageIndex}`}
-              className="block bg-slate-900 rounded-2xl p-6 sm:p-8 text-white hover:bg-slate-800 transition-colors duration-300 group relative overflow-hidden"
-            >
-              {/* Decorative top accent */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#B8860B] to-[#D4AF37]" />
-
-              <h3 className="font-heading text-xl sm:text-2xl uppercase tracking-wide text-white mb-3 leading-tight mt-1">
-                {talent.title}
-              </h3>
-              <p className="text-sm text-slate-300 leading-relaxed font-medium mb-6">
-                {talent.desc}
-              </p>
-
-              {/* Stage dots */}
-              <div className="space-y-2 mb-6">
-                {pipeline.map((step) => (
-                  <div key={step.id} className="flex items-center gap-2.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B] shrink-0" />
-                    <span className="text-[11px] font-mono text-slate-400 tracking-wide">{step.title}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex items-center justify-between border-t border-white/10 pt-4">
-                <span className="text-[11px] font-mono tracking-widest uppercase text-[#D4AF37] font-bold">
-                  Explore capability
-                </span>
-                <span className="text-[#D4AF37] font-bold group-hover:translate-x-1 transition-transform">→</span>
-              </div>
-            </Link>
-          </div>
+          ))}
         </div>
 
         {/* Bottom CTA */}
