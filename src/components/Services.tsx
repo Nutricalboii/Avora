@@ -80,17 +80,17 @@ export default function Services() {
   }, { scope: container });
 
   return (
-    <section id="services" ref={container} className="bg-slate-50 py-20 sm:py-28 border-t border-slate-100">
-      <div className="max-w-screen-xl mx-auto px-6 sm:px-10 lg:px-16">
+    <section id="services" ref={container} className="bg-slate-50 py-12 sm:py-20 lg:py-28 border-t border-slate-100">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-16">
 
         {/* Header */}
-        <div className="services-header-el max-w-3xl mx-auto text-center mb-14 sm:mb-20">
-          <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-wide text-slate-900 leading-tight mb-5">
+        <div className="services-header-el max-w-3xl mx-auto text-center mb-10 sm:mb-16 lg:mb-20">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-slate-900 leading-tight mb-3 sm:mb-5">
             Six disciplines.
             <br />
             <span className="text-[#B8860B]">One delivery framework.</span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-medium max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-700 leading-relaxed font-medium max-w-2xl mx-auto">
             Every enterprise AI project moves through the same pipeline — from raw data to deployed intelligence.
             Avora owns every step.
           </p>
@@ -102,14 +102,14 @@ export default function Services() {
             <div key={stage.id} className="pipeline-step">
               <Link
                 href={`/services?stage=${stage.stageIndex}`}
-                className={`flex items-start gap-4 rounded-2xl p-5 sm:p-6 border transition-all duration-300 group ${
+                className={`flex items-start gap-3 sm:gap-4 rounded-xl sm:rounded-2xl p-4 sm:p-6 border transition-all duration-300 group ${
                   i === 5
                     ? 'bg-slate-900 border-slate-700 hover:bg-slate-800'
                     : 'bg-white border-slate-200 hover:border-[#B8860B]/50 hover:shadow-md'
                 }`}
               >
                 {/* Number badge */}
-                <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors duration-300 mt-0.5 ${
                   i === 5
                     ? 'bg-[#B8860B]/20 border-[#B8860B]/40 group-hover:bg-[#B8860B] group-hover:border-[#B8860B]'
                     : 'bg-[#B8860B]/10 border-[#B8860B]/30 group-hover:bg-[#B8860B] group-hover:border-[#B8860B]'
@@ -123,7 +123,7 @@ export default function Services() {
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2">
-                    <h3 className={`font-heading text-base sm:text-lg uppercase tracking-wide leading-tight ${
+                    <h3 className={`font-heading text-sm sm:text-base lg:text-lg uppercase tracking-wide leading-tight ${
                       i === 5 ? 'text-white' : 'text-slate-900'
                     }`}>
                       {stage.title}
@@ -132,7 +132,7 @@ export default function Services() {
                       i === 5 ? 'text-[#D4AF37]' : 'text-[#B8860B]'
                     }`}>→</span>
                   </div>
-                  <p className={`text-sm leading-relaxed font-medium mt-1 ${
+                  <p className={`text-xs sm:text-sm leading-relaxed font-medium mt-1 ${
                     i === 5 ? 'text-slate-300' : 'text-slate-600'
                   }`}>
                     {stage.desc}
@@ -142,9 +142,9 @@ export default function Services() {
 
               {/* Arrow connector between steps */}
               {i < stages.length - 1 && (
-                <div className="flex items-center ml-5 my-2">
+                <div className="flex items-center ml-4 sm:ml-5 my-1.5 sm:my-2">
                   <div className="flex flex-col items-center gap-0.5">
-                    <div className="w-px h-4 bg-[#B8860B]/40" />
+                    <div className="w-px h-3 sm:h-4 bg-[#B8860B]/40" />
                     <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
                       <path d="M4 6L0 0h8L4 6z" fill="#B8860B" fillOpacity="0.5" />
                     </svg>
@@ -156,16 +156,16 @@ export default function Services() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-14 pt-8 border-t border-slate-200 max-w-xl mx-auto">
-          <p className="text-slate-700 text-sm sm:text-base mb-6 font-medium">
+        <div className="text-center mt-10 sm:mt-14 pt-6 sm:pt-8 border-t border-slate-200 max-w-xl mx-auto">
+          <p className="text-slate-700 text-xs sm:text-base mb-4 sm:mb-6 font-medium">
             Explore methodologies, case studies, and lifecycle detail across all six disciplines.
           </p>
           <Link
             href="/services"
-            className="inline-flex items-center gap-3 bg-[#B8860B] hover:bg-[#a07508] text-white font-mono text-xs tracking-widest uppercase px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-200 font-bold"
+            className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#B8860B] hover:bg-[#a07508] text-white font-mono text-[11px] sm:text-xs tracking-widest uppercase px-6 sm:px-8 py-3.5 sm:py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-200 font-bold w-full sm:w-auto"
           >
             <span>Explore Our Services</span>
-            <span className="text-base">→</span>
+            <span className="text-sm sm:text-base">→</span>
           </Link>
         </div>
 
