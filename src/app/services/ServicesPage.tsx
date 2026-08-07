@@ -247,9 +247,9 @@ const stages = [
 // ─────────────────────────────────────────────────────────────────────
 
 function PipelineDiagram({ activeStage, onSelect }: { activeStage: number; onSelect: (i: number) => void }) {
-  const icons = ['◈', '◉', '◎', '◆', '◇'];
-  const labels = ['Generation', 'Annotation', 'Labeling', 'Quality', 'AI'];
-  const totalStages = 5;
+  const icons = ['◈', '◉', '◎', '◆', '◇', '❖'];
+  const labels = ['AI Solutions', 'Generation', 'Annotation', 'Labeling', 'Quality', 'Talent'];
+  const totalStages = 6;
   const progressPercent = (activeStage / (totalStages - 1)) * 100;
 
   return (
