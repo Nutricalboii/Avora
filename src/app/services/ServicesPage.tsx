@@ -14,27 +14,27 @@ const stages = [
     subtitle: 'Where quality data becomes engineered systems',
     accent: '#B8860B',
     intro:
-      'AI Solutions is the payoff stage — the discipline of turning quality data and a trained model into a system that survives contact with production. From problem framing through to live monitoring, this is where strategy becomes infrastructure.',
+      'Your team has data. Your competitors have AI. The gap is an engineering problem, not a strategy one. AI Solutions takes quality data and a trained model and turns it into a production system — one that survives real-world conditions, satisfies governance requirements, and improves over time.',
     why: [
       { title: 'Start with the problem', body: 'Fall in love with the problem, not your favourite algorithm. Specific, financially quantified objectives — not a desire to "use AI."' },
       { title: 'Invest in data quality', body: '"Garbage in, gospel out" is as dangerous as garbage in, garbage out. Nearly 30% of successful AI projects go to data remediation — and it pays off.' },
       { title: 'Choose the right tool', body: 'Resist deep learning by default — the simplest appropriate model often wins and is far easier to govern.' },
       { title: 'Design for collaboration', body: 'Build workflows where AI handles routine work and humans focus on exceptions. AI as advisor, not autopilot.' },
       { title: 'Plan the full lifecycle', body: 'Think deployment, monitoring, and retirement from day one. The first deployment is a hypothesis, not a final answer.' },
-      { title: 'Explainability builds trust', body: 'SHAP-based driver explanations are often essential for user adoption — planners won\'t trust a black box.' },
+      { title: 'Explainability builds trust', body: 'Enterprise-grade model explainability is often essential for user adoption — transparent AI for regulated environments where teams won\'t trust a black box.' },
     ],
     methods: [
-      { name: 'Problem Framing & Discovery', desc: 'Structured discovery tailored to project complexity mapping existing data flows, identifying failure patterns, and defining success metrics.' },
+      { name: 'Problem Framing & Discovery', desc: 'Structured discovery tailored to project complexity — mapping existing data flows, identifying failure patterns, and defining success metrics.' },
       { name: 'Data Architecture', desc: 'System architecture, feature engineering, and remediation before any model work begins.' },
       { name: 'Model Development', desc: 'Ensemble approaches using complementary techniques per module — gradient boosting, neural nets, forecasting models — selected by task, not trend.' },
-      { name: 'Explainability Layer', desc: 'SHAP-based explanations that satisfy audit requirements and build user confidence in AI-generated outputs.' },
+      { name: 'Explainability Layer', desc: 'Enterprise-grade explainability that satisfies audit requirements and builds user confidence in AI-generated outputs — transparent AI for regulated environments.' },
       { name: 'Production Deployment & Monitoring', desc: 'CI/CD processes, drift detection, alerting, and human-in-the-loop override capture that feeds back into the model.' },
     ],
     caseStudy: {
       sector: 'Retail · Multi-SKU Demand Forecasting',
       headline: 'A custom predictive ensemble integrated into on-premise infrastructure delivered a return that justified the entire program within the first quarter',
       what: 'Designed and integrated a custom predictive ensemble model into a client\'s on-premise cloud infrastructure for multi-horizon demand forecasting across thousands of SKUs.',
-      how: 'Structured discovery tailored to project complexity mapped existing data flows and identified distribution shift patterns. Ensemble model with complementary techniques per forecasting horizon. SHAP explainability layer added to satisfy internal procurement audit. System presented outputs as suggested actions requiring explicit planner confirmation — never full autopilot. Every override captured and fed back via imitation learning.',
+      how: 'Structured discovery tailored to project complexity mapped existing data flows and identified distribution shift patterns. Ensemble model with complementary techniques per forecasting horizon. Enterprise-grade explainability layer added to satisfy internal procurement audit requirements. System presented outputs as suggested actions requiring explicit planner confirmation — never full autopilot. Every override captured and fed back via imitation learning.',
       result: 'Significant reduction in manual planning overhead in the first quarter. ROI demonstrated strongly at the 36-month projection horizon. Planner satisfaction improved substantially. System now handles routine forecasting while planners focus on exception management.',
       metrics: [
         { label: 'Manual planning overhead', value: 'Reduced in first quarter' },
@@ -51,27 +51,26 @@ const stages = [
     subtitle: 'Engineering synthetic data for innovation, privacy, and scale',
     accent: '#B8860B',
     intro:
-      'Organizations are often data-rich yet insight-poor — blocked by privacy rules, rare events, or the cost of real-world collection. Synthetic data generation turns that limitation into a strategic capability.',
+      'You can\'t train reliable AI on rare events you\'ve never seen — and you can\'t share sensitive data without legal risk. Data generation solves both problems: creating realistic, privacy-safe datasets across any data type, at any scale, without waiting for real-world collection.',
     why: [
-      { title: 'Overcome data scarcity', body: 'Generate realistic examples of rare events — fraud, equipment failure, rare disease — that occur too infrequently to train reliable detectors.' },
-      { title: 'Preserve privacy', body: 'Create analytically useful datasets with zero real personal information — safe to share, collaborate on, and process in the cloud.' },
-      { title: 'Accelerate development', body: 'Instantly available, scalable test data for software development, system integration, and performance testing.' },
-      { title: 'Enable what-if analysis', body: 'Simulate scenarios too dangerous, unethical, or rare to observe directly — market crashes, pandemics, cyberattacks.' },
-      { title: 'Mitigate bias', body: 'Intentionally construct balanced datasets that correct for historical sampling bias in real-world data.' },
-      { title: 'Test edge cases', body: 'Stress system boundaries with extreme but plausible conditions that rarely appear in production data.' },
+      { title: 'Computer Vision', body: 'Synthetic images, video frames, and 3D scenes for object detection, segmentation, and autonomous systems — without expensive real-world capture or annotation at scale.' },
+      { title: 'Documents & Text', body: 'Realistic synthetic invoices, contracts, medical records, and structured forms — enabling document AI training while eliminating privacy exposure.' },
+      { title: 'Sensor & Time-Series', body: 'Synthetic telemetry, IoT streams, and equipment readings that include rare failure modes and edge conditions almost never present in production logs.' },
+      { title: 'Conversational AI', body: 'Diverse synthetic dialogue, intent variations, and edge-case utterances that create robust training data for chatbots and voice assistants across languages and accents.' },
+      { title: 'Tabular & Synthetic Records', body: 'Privacy-safe synthetic customer, transaction, and clinical records — analytically valid, GDPR-compliant, and ready for cross-team collaboration.' },
+      { title: 'Bias mitigation', body: 'Intentionally construct balanced datasets that correct for historical sampling bias — ensuring models reflect the real distribution, not just the data you happened to collect.' },
     ],
     methods: [
       { name: 'Rule-Based & Heuristic', desc: 'Explicit rules and distributions — domain knowledge encoded directly. Transparent, efficient, easy to validate. Best for structured data with well-understood patterns.' },
-      { name: 'Statistical Modeling', desc: 'Fit distributions, then sample — univariate and multivariate distributions, copulas, ARIMA/GARCH for time series. Mathematically grounded, interpretable.' },
-      { name: 'Machine-Learning Based', desc: 'GANs, VAEs, autoregressive models, normalizing flows, and diffusion models trained to reproduce complex, high-dimensional patterns. Best for images, language, sensor data.' },
-      { name: 'Agent-Based Simulation', desc: 'Traffic with rule-following vehicles, markets with buyers and sellers, disease spread across contact networks. Captures emergent behavior from simple rules.' },
-      { name: 'Hybrid & Specialized', desc: 'Differential privacy, PATE-GAN, causal Bayesian networks for valid what-if analysis, TimeGAN for temporal dependencies. Purpose-built guarantees.' },
+      { name: 'Statistical Modeling', desc: 'Fit distributions, then sample — univariate and multivariate distributions, copulas, and time-series models. Mathematically grounded, interpretable.' },
+      { name: 'Generative AI Models', desc: 'GANs, VAEs, autoregressive models, and diffusion models trained to reproduce complex, high-dimensional patterns. Best for images, language, and sensor data.' },
+      { name: 'Privacy-Preserving Techniques', desc: 'Differential privacy guarantees, synthetic record generation with statistical validity, and compliance-ready outputs safe for cross-team sharing.' },
     ],
     caseStudy: {
       sector: 'Healthcare · Rare Disease Diagnostics',
-      headline: 'Synthetic MRI volumes took a diagnostic AI from 87 confirmed cases to a production-ready training library',
+      headline: 'Synthetic imaging data took a diagnostic AI from 87 confirmed cases to a production-ready training library',
       what: 'A research consortium building early-detection AI for a pediatric retinal disorder had collected only 87 confirmed cases in five years — nowhere near enough to train a reliable model, and real data collection would take decades.',
-      how: 'Applied a physics-informed VAE with an interpretable latent space explicitly separated into age, disease stage, biomarker level, and imaging artifacts. Hard biological constraints plus a discriminator rejected implausible samples. Differential privacy budget enforced throughout.',
+      how: 'Applied a generative model with domain-constrained outputs — separating disease stage, biomarker level, and imaging artifacts in the latent space. Hard biological constraints rejected implausible samples. Differential privacy budget enforced throughout to ensure the resulting library was safe for multi-institutional sharing.',
       result: 'Training corpus scaled to synthetic volumes across 12 genetic subtypes, enabling the first statistically valid model training run. Retinal specialists in a blinded review could barely distinguish synthetic from real — landing just above chance accuracy.',
       metrics: [
         { label: 'Diagnostic AUC improvement', value: 'Significant uplift' },
@@ -92,7 +91,7 @@ const stages = [
     subtitle: 'Identify and mark information inside data.',
     accent: '#B8860B',
     intro:
-      'Without accurately annotated data, even the most sophisticated neural network is a student without a textbook. Annotation is the process that gives raw data ground truth — pointing at a dog and saying "dog" must happen at scale, across every breed, angle, and lighting condition.',
+      'An AI system can only learn what humans explicitly teach it. If your training data isn\'t correctly annotated — with the right labels, at the right precision — your model learns the wrong lesson at scale. Annotation is the discipline that gives raw data its ground truth, so your AI starts training on what actually matters.',
     why: [
       { title: 'Contextual understanding', body: 'Judging sarcasm in a social post needs cultural and situational awareness no lexical model captures alone.' },
       { title: 'Ambiguity resolution', body: 'Borderline cases need reasoned judgment against guidelines and intent, not rigid rules.' },
@@ -130,7 +129,7 @@ const stages = [
     subtitle: 'Classify and organize information into structured categories.',
     accent: '#B8860B',
     intro:
-      'Labeling is the sophisticated alchemy that converts unstructured images, text, audio, and sensor streams into the structured datasets that power machine learning — the bridge between human intelligence and machine understanding.',
+      'Unstructured data — images, text, audio, and sensor streams — is unusable for machine learning until it\'s converted into structured, classified datasets. Labeling is that conversion: turning raw inputs into the organized training sets that let models generalize across real-world variation.',
     why: [
       { title: 'Quality beats quantity', body: 'A reduction in label noise can F1-score by 15–25% on complex tasks — more than most architecture tweaks.' },
       { title: 'Bias amplification risk', body: 'Systematic labeling inconsistencies don\'t just add noise — they can embed and amplify unfair or unsafe model behavior.' },
@@ -166,7 +165,7 @@ const stages = [
     subtitle: 'The foundation of trustworthy decisions',
     accent: '#B8860B',
     intro:
-      '"Garbage in, garbage out" has never been more dangerous. DQA combines people, process, and technology to make data not just available, but genuinely fit for purpose across eight interconnected dimensions.',
+      'Bad data doesn\'t just reduce AI performance — it creates overconfident systems that make dangerous decisions at scale. Data Quality Assurance combines people, process, and technology to make your data genuinely fit for purpose across eight interconnected dimensions — before a single model is trained.',
     why: [
       { title: 'Accuracy', body: 'Data matches the real world. Errors cause failed deliveries, incorrect diagnoses, and faulty process control.' },
       { title: 'Completeness', body: 'No missing critical values. All required fields populated — missing patient history can lead to incorrect diagnosis.' },
@@ -205,7 +204,7 @@ const stages = [
     subtitle: 'On-demand AI specialists embedded in your team — without the overhead of full-time hiring',
     accent: '#B8860B',
     intro:
-      'The fastest path to AI capability isn\'t always building a team from scratch. AI Talent Solutions gives you immediate access to vetted, specialised professionals \u2014 data scientists, ML engineers, annotation leads, and AI project managers \u2014 who integrate directly into your workflows on a project or retainer basis.',
+      'Building an AI team from scratch takes months of recruiting, onboarding, and ramp-up — time most projects can\'t afford. AI Talent Solutions embeds vetted specialists — data scientists, ML engineers, annotation leads, and AI project managers — directly into your delivery team, productive within days rather than months.',
     why: [
       { title: 'Speed to deployment', body: 'Avoid months of recruitment. Our bench of pre-vetted specialists can be onboarded and productive within days.' },
       { title: 'Specialist depth', body: 'Access niche expertise — synthetic data architects, RLHF specialists, computer vision engineers — that is hard to find and expensive to retain full-time.' },
