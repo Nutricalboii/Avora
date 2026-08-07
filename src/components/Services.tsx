@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -17,35 +17,30 @@ const pipeline = [
     stageIndex: 0,
     title: 'AI Solutions',
     desc: 'Turn quality data into production-ready AI systems.',
-    output: 'Deployed AI system',
   },
   {
     id: '02',
     stageIndex: 1,
     title: 'Data Generation',
     desc: 'Solve data scarcity with realistic, privacy-safe synthetic data.',
-    output: 'Synthetic datasets',
   },
   {
     id: '03',
     stageIndex: 2,
     title: 'Data Annotation',
     desc: 'Give raw data its ground truth through expert annotation.',
-    output: 'Annotated data',
   },
   {
     id: '04',
     stageIndex: 3,
     title: 'Data Labeling',
     desc: 'Convert unstructured inputs into structured training sets.',
-    output: 'Labeled datasets',
   },
   {
     id: '05',
     stageIndex: 4,
     title: 'Data Quality Assurance',
     desc: 'Validate datasets across eight dimensions before model training.',
-    output: 'Validated, production-ready data',
   },
 ];
 
@@ -153,10 +148,7 @@ export default function Services() {
                       </h3>
                       <span className="text-[#B8860B] font-bold text-sm group-hover:translate-x-1 transition-transform shrink-0">→</span>
                     </div>
-                    <p className="text-sm text-slate-600 leading-relaxed font-medium mb-2">{step.desc}</p>
-                    <p className="text-[11px] font-mono text-slate-400 tracking-wider">
-                      Output: <span className="text-slate-600 font-bold">{step.output}</span>
-                    </p>
+                    <p className="text-sm text-slate-600 leading-relaxed font-medium">{step.desc}</p>
                   </div>
                 </Link>
 
@@ -169,7 +161,6 @@ export default function Services() {
                         <path d="M4 6L0 0h8L4 6z" fill="#B8860B" fillOpacity="0.5" />
                       </svg>
                     </div>
-                    <span className="ml-3 text-[10px] font-mono text-slate-400 tracking-wider">hands off →</span>
                   </div>
                 )}
               </div>
@@ -177,14 +168,7 @@ export default function Services() {
           </div>
 
           {/* ── RIGHT: AI Talent Solutions sidebar ───────────────────── */}
-          <div className="talent-sidebar w-full lg:w-72 xl:w-80 shrink-0">
-            {/* Connector label — visible on desktop only */}
-            <div className="hidden lg:flex items-center gap-2 mb-4 mt-[88px]">
-              <div className="h-px flex-1 bg-slate-200" />
-              <span className="text-[10px] font-mono text-slate-400 tracking-wider whitespace-nowrap">plugs in at every stage</span>
-              <div className="h-px flex-1 bg-slate-200" />
-            </div>
-
+          <div className="talent-sidebar w-full lg:w-72 xl:w-80 shrink-0 lg:mt-[88px]">
             <Link
               href={`/services?stage=${talent.stageIndex}`}
               className="block bg-slate-900 rounded-2xl p-6 sm:p-8 text-white hover:bg-slate-800 transition-colors duration-300 group relative overflow-hidden"
@@ -192,20 +176,14 @@ export default function Services() {
               {/* Decorative top accent */}
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#B8860B] to-[#D4AF37]" />
 
-              <div className="mb-4">
-                <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#D4AF37] font-bold">
-                  06 · Parallel Capability
-                </span>
-              </div>
-
-              <h3 className="font-heading text-xl sm:text-2xl uppercase tracking-wide text-white mb-3 leading-tight">
+              <h3 className="font-heading text-xl sm:text-2xl uppercase tracking-wide text-white mb-3 leading-tight mt-1">
                 {talent.title}
               </h3>
               <p className="text-sm text-slate-300 leading-relaxed font-medium mb-6">
                 {talent.desc}
               </p>
 
-              {/* Connector dots showing it plugs into each stage */}
+              {/* Stage dots */}
               <div className="space-y-2 mb-6">
                 {pipeline.map((step) => (
                   <div key={step.id} className="flex items-center gap-2.5">
@@ -222,11 +200,6 @@ export default function Services() {
                 <span className="text-[#D4AF37] font-bold group-hover:translate-x-1 transition-transform">→</span>
               </div>
             </Link>
-
-            {/* Mobile: small note about the sidebar */}
-            <p className="lg:hidden mt-3 text-[11px] font-mono text-slate-400 text-center tracking-wide">
-              Embeds at any stage of the pipeline
-            </p>
           </div>
         </div>
 
