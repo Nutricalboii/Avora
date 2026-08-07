@@ -455,11 +455,12 @@ function CaseStudyCard({ cs }: { cs: typeof stages[0]['caseStudy'] }) {
 // ─────────────────────────────────────────────────────────────────────
 
 const lifecycles: Record<string, string[]> = {
+  'ai-solutions': ['Problem framing', 'Data architecture', 'Model development', 'Explainability layer', 'Production deployment', 'Monitoring & iteration'],
   generation: ['Identify use case & scope', 'Profile source data', 'Select methodology', 'Generate & validate', 'Privacy audit', 'Govern & version'],
   annotation: ['Requirement & ontology', 'Guidelines & training', 'Execution with tooling', 'QA & refinement', 'Delivery & integration'],
   labeling: ['Strategic planning', 'Process & tooling', 'Execution with QA embedded', 'Validation & certification', 'Delivery & feedback'],
   quality: ['Strategy & governance', 'Profiling & assessment', 'Root cause & prevention', 'Remediation & correction', 'Monitor & improve'],
-  'ai-solutions': ['Problem framing', 'Data architecture', 'Model development', 'Explainability layer', 'Production deployment', 'Monitoring & iteration'],
+  'ai-talent-solutions': ['Scope & requirements', 'Specialist matching', 'Onboarding & integration', 'Delivery & time-tracking', 'Review & handover'],
 };
 
 function StagePanel({ stage }: { stage: typeof stages[0] }) {
@@ -473,9 +474,9 @@ function StagePanel({ stage }: { stage: typeof stages[0] }) {
       {/* Why it matters */}
       <div>
         <h3 className="font-mono text-xs sm:text-sm tracking-[0.25em] uppercase text-[#B8860B] mb-5 sm:mb-8 font-bold">
-          {stage.id === '04' ? 'Eight Quality Dimensions' : 'Why It Matters'}
+          {stage.id === '05' ? 'Eight Quality Dimensions' : 'Why It Matters'}
         </h3>
-        {stage.id === '04' ? (
+        {stage.id === '05' ? (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 items-start">
             <div className="lg:col-span-1 flex justify-center">
               <QualityWheel />
@@ -554,7 +555,7 @@ function StagePanel({ stage }: { stage: typeof stages[0] }) {
 // SERVICES OVERVIEW GRID — all 6 on one page
 // ─────────────────────────────────────────────────────────────────────
 
-const stageIcons = ['◈', '◉', '◎', '◆', '◇'];
+const stageIcons = ['◈', '◉', '◎', '◆', '◇', '❖'];
 
 function ServicesOverviewGrid({ onDiveDeep, onSelectStage }: { onDiveDeep: () => void; onSelectStage: (i: number) => void }) {
   return (
@@ -710,11 +711,11 @@ function ServicesContent() {
             <span>Back to home</span>
           </Link>
           <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-7xl uppercase tracking-wide text-slate-900 leading-tight mb-4 sm:mb-6">
-            Five Disciplines.<br />
+            Six Disciplines.<br />
             <span className="text-[#B8860B]">One Framework.</span>
           </h1>
           <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-slate-700 max-w-3xl leading-relaxed font-medium">
-            Raw data doesn't become intelligence by accident. It moves through five disciplines, each handing off a more refined asset to the next.
+            Raw data doesn't become intelligence by accident. It moves through six disciplines, each handing off a more refined asset to the next.
           </p>
         </div>
       </section>

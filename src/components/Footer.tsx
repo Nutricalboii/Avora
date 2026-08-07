@@ -57,12 +57,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4">
               {[
-                { label: 'AI Talent Solutions', stage: 0 },
+                { label: 'AI Solutions', stage: 0 },
                 { label: 'Data Generation', stage: 1 },
                 { label: 'Data Annotation', stage: 2 },
                 { label: 'Data Labeling', stage: 3 },
                 { label: 'Data Quality Assurance', stage: 4 },
-                { label: 'AI Solutions', stage: 5 },
+                { label: 'AI Talent Solutions', stage: 5 },
               ].map(({ label, stage }) => (
                 <li key={label}>
                   <Link
