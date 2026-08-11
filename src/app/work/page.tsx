@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -49,7 +49,7 @@ const cases = [
     metric: '680%',
     metricLabel: 'ROI at 36-month horizon',
     what: "Designed and integrated a custom predictive ensemble model into the client's on-premise cloud infrastructure for multi-horizon demand forecasting.",
-    how: 'Three-week discovery phase mapped existing data pipelines, identified distribution shift patterns, and defined forecast horizons. SHAP explainability layer added to satisfy internal procurement audit requirements.',
+    how: 'Structured discovery mapped existing data pipelines, identified distribution shift patterns, and defined forecast horizons. Enterprise-grade model explainability layer added to satisfy internal procurement audit requirements.',
     result: '40% reduction in manual planning overhead in the first quarter. 680% ROI demonstrated at the 36-month projection horizon.',
   },
 ];

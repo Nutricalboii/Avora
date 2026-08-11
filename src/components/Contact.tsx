@@ -89,14 +89,14 @@ export default function Contact() {
             className="font-heading uppercase tracking-wide text-[#B8860B] leading-tight mb-3 sm:mb-4"
             style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
           >
-            Build With Us
+            Let's Build
           </h2>
-          {/* Small Black Subheading */}
+          {/* Small Subheading */}
           <span className="font-mono text-xs sm:text-sm md:text-base font-bold uppercase tracking-[0.2em] text-slate-900 mb-4 sm:mb-6 block">
-            Partner Inquiries
+            Start a Project Conversation
           </span>
           <p className="font-sans text-slate-600 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-            If you are looking to deploy commercial discipline, advanced technical execution, and lean operational structures to a high-potential market gap, let's connect.
+            Tell us what you're building, where you are in the AI lifecycle, and what's blocking you. We'll identify where Avora can help.
           </p>
         </div>
 
@@ -141,7 +141,7 @@ export default function Contact() {
                       htmlFor="name"
                       className="block text-xs md:text-sm font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2.5"
                     >
-                      Name / Entity <span className="text-[#B8860B]">*</span>
+                      Name <span className="text-[#B8860B]">*</span>
                     </label>
                     <input
                       type="text"
@@ -152,7 +152,7 @@ export default function Contact() {
                       onFocus={() => setFocusedField('name')}
                       onBlur={() => setFocusedField(null)}
                       required
-                      placeholder="Your name or entity"
+                      placeholder="Your full name"
                       className={inputCls('name')}
                     />
                   </div>
@@ -161,7 +161,7 @@ export default function Contact() {
                       htmlFor="email"
                       className="block text-xs md:text-sm font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2.5"
                     >
-                      Corporate Email <span className="text-[#B8860B]">*</span>
+                      Work Email <span className="text-[#B8860B]">*</span>
                     </label>
                     <input
                       type="email"
@@ -183,7 +183,7 @@ export default function Contact() {
                     htmlFor="focusArea"
                     className="block text-xs md:text-sm font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2.5"
                   >
-                    Primary Focus Area
+                    What do you need help with?
                   </label>
                   <select
                     id="focusArea"
@@ -195,11 +195,14 @@ export default function Contact() {
                     className={cn(inputCls('focusArea'), 'appearance-none bg-no-repeat')}
                     style={selectStyle}
                   >
-                    <option value="">Select a focus area</option>
-                    <option value="data-annotation">Data Annotation & Labelling</option>
+                    <option value="">Select an option</option>
+                    <option value="ai-solutions">AI Solutions</option>
                     <option value="data-generation">Data Generation</option>
-                    <option value="ai-implementation">AI Implementation</option>
-                    <option value="quality-testing">Quality Testing & Analysis</option>
+                    <option value="data-annotation">Data Annotation</option>
+                    <option value="data-labeling">Data Labeling</option>
+                    <option value="data-qa">Data Quality Assurance</option>
+                    <option value="ai-talent">AI Talent</option>
+                    <option value="not-sure">Not sure yet</option>
                   </select>
                 </div>
 
@@ -208,7 +211,7 @@ export default function Contact() {
                     htmlFor="message"
                     className="block text-xs md:text-sm font-mono font-semibold uppercase tracking-[0.16em] text-slate-900 mb-2.5"
                   >
-                    Context / Market Gap to Address <span className="text-[#B8860B]">*</span>
+                    Tell us about your project <span className="text-[#B8860B]">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -218,8 +221,8 @@ export default function Contact() {
                     onFocus={() => setFocusedField('message')}
                     onBlur={() => setFocusedField(null)}
                     required
-                    rows={5}
-                    placeholder="What is the market gap and how do you plan to address it?"
+                    rows={4}
+                    placeholder="Describe what you are building, your timeline, and where you need support..."
                     className={cn(inputCls('message'), 'resize-none')}
                   />
                 </div>
@@ -227,9 +230,9 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary w-full py-3.5 md:py-4 text-base font-medium disabled:opacity-60 bg-[#1e293b] text-white rounded-xl hover:bg-[#B8860B] transition-colors"
+                  className="btn-primary w-full py-3.5 md:py-4 text-base font-medium disabled:opacity-60 bg-[#1e293b] text-white rounded-xl hover:bg-[#B8860B] transition-colors font-mono tracking-wider"
                 >
-                  {isSubmitting ? 'Sending...' : 'Submit Structural Overview'}
+                  {isSubmitting ? 'Sending...' : 'Start a Conversation'}
                 </button>
               </form>
             )}

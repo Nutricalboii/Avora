@@ -52,9 +52,9 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-xs font-mono font-semibold uppercase tracking-[0.18em] text-[var(--foreground-muted)] mb-5">
+            <h3 className="text-xs font-mono font-semibold uppercase tracking-[0.18em] text-[var(--foreground-muted)] mb-5">
               Services
-            </h4>
+            </h3>
             <ul className="space-y-4">
               {[
                 { label: 'AI Solutions', stage: 0 },
@@ -78,9 +78,9 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-xs font-mono font-semibold uppercase tracking-[0.18em] text-[var(--foreground-muted)] mb-5">
+            <h3 className="text-xs font-mono font-semibold uppercase tracking-[0.18em] text-[var(--foreground-muted)] mb-5">
               Company
-            </h4>
+            </h3>
             <ul className="space-y-4">
               <li>
                 <Link
@@ -103,9 +103,9 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-xs font-mono font-semibold uppercase tracking-[0.18em] text-[var(--foreground-muted)] mb-5">
+            <h3 className="text-xs font-mono font-semibold uppercase tracking-[0.18em] text-[var(--foreground-muted)] mb-5">
               Legal
-            </h4>
+            </h3>
             <ul className="space-y-4">
               {[
                 { label: 'Privacy Policy', href: '/privacy' },

@@ -53,12 +53,12 @@ const stages = [
     intro:
       'You can\'t train reliable AI on rare events you\'ve never seen — and you can\'t share sensitive data without legal risk. Data generation solves both problems: creating realistic, privacy-safe datasets across any data type, at any scale, without waiting for real-world collection.',
     why: [
-      { title: 'Computer Vision', body: 'Synthetic images, video frames, and 3D scenes for object detection, segmentation, and autonomous systems — without expensive real-world capture or annotation at scale.' },
-      { title: 'Documents & Text', body: 'Realistic synthetic invoices, contracts, medical records, and structured forms — enabling document AI training while eliminating privacy exposure.' },
-      { title: 'Sensor & Time-Series', body: 'Synthetic telemetry, IoT streams, and equipment readings that include rare failure modes and edge conditions almost never present in production logs.' },
-      { title: 'Conversational AI', body: 'Diverse synthetic dialogue, intent variations, and edge-case utterances that create robust training data for chatbots and voice assistants across languages and accents.' },
-      { title: 'Tabular & Synthetic Records', body: 'Privacy-safe synthetic customer, transaction, and clinical records — analytically valid, GDPR-compliant, and ready for cross-team collaboration.' },
-      { title: 'Bias mitigation', body: 'Intentionally construct balanced datasets that correct for historical sampling bias — ensuring models reflect the real distribution, not just the data you happened to collect.' },
+      { title: 'Computer vision and image data', body: 'Synthetic images, video frames, and 3D scenes for object detection, segmentation, and autonomous systems — without expensive real-world capture or annotation at scale.' },
+      { title: 'Documents and text', body: 'Realistic synthetic invoices, contracts, medical records, and structured forms — enabling document AI training while eliminating privacy exposure.' },
+      { title: 'Sensor and IoT data', body: 'Synthetic telemetry and IoT streams that include rare failure modes and edge conditions almost never present in production logs.' },
+      { title: 'Time-series data', body: 'High-fidelity temporal patterns for demand forecasting, financial modeling, and predictive maintenance.' },
+      { title: 'Conversational data', body: 'Diverse synthetic dialogue, intent variations, and edge-case utterances that create robust training data for chatbots and voice assistants across languages.' },
+      { title: 'Structured/tabular data', body: 'Privacy-safe synthetic customer, transaction, and clinical records — analytically valid, GDPR-compliant, and ready for cross-team collaboration.' },
     ],
     methods: [
       { name: 'Rule-Based & Heuristic', desc: 'Explicit rules and distributions — domain knowledge encoded directly. Transparent, efficient, easy to validate. Best for structured data with well-understood patterns.' },
@@ -253,7 +253,12 @@ function PipelineDiagram({ activeStage, onSelect }: { activeStage: number; onSel
 
   return (
     <div className="w-full">
-      <div className="max-w-2xl mx-auto px-2 sm:px-4 py-6 sm:py-8">
+      <div className="max-w-2xl mx-auto px-2 sm:px-4 py-4 sm:py-6">
+        <div className="text-center mb-3">
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold text-[#B8860B]">
+            Where this fits in the AI Lifecycle
+          </span>
+        </div>
         <div className="flex items-center justify-between gap-0 relative">
           {/* Background progress bar line */}
           <div className="absolute top-1/2 left-0 right-0 h-[3px] bg-slate-200 -translate-y-1/2 rounded-full" />
@@ -769,37 +774,65 @@ function ServicesContent() {
               <StagePanel key={selectedStage} stage={stages[selectedStage]} />
 
               {/* Prev / Next / All nav */}
-              <div className="mt-10 sm:mt-14 lg:mt-16 pt-5 sm:pt-8 border-t border-slate-100 flex justify-between items-center gap-2">
-                <div className="flex-1">
-                  {selectedStage > 0 && (
-                    <button
-                      type="button"
-                      onClick={() => handleSelectNeighbour(selectedStage - 1)}
-                      className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-mono tracking-wide text-slate-700 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 px-3 py-2 rounded-lg transition-colors group cursor-pointer touch-manipulation min-h-[38px]"
-                    >
-                      <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:-translate-x-1 shrink-0" />
-                      <span className="truncate max-w-[80px] sm:max-w-none">{stages[selectedStage - 1].title}</span>
-                    </button>
-                  )}
-                </div>
-                <button
-                  type="button"
-                  onClick={handleBackToAll}
-                  className="font-mono text-xs tracking-widest uppercase text-slate-700 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 transition-colors font-bold shrink-0 px-4 py-2 rounded-full cursor-pointer touch-manipulation min-h-[38px]"
-                >
-                  All Services
-                </button>
-                <div className="flex-1 flex justify-end">
-                  {selectedStage < stages.length - 1 && (
-                    <button
-                      type="button"
-                      onClick={() => handleSelectNeighbour(selectedStage + 1)}
-                      className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-mono tracking-wide text-[#B8860B] bg-amber-50 hover:bg-amber-100 active:bg-amber-200 px-3 py-2 rounded-lg transition-colors group cursor-pointer touch-manipulation min-h-[38px]"
-                    >
-                      <span className="truncate max-w-[80px] sm:max-w-none">{stages[selectedStage + 1].title}</span>
-                      <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 rotate-180 transition-transform group-hover:translate-x-1 shrink-0" />
-                    </button>
-                  )}
+              <div className="mt-10 sm:mt-14 lg:mt-16 pt-6 sm:pt-8 border-t border-slate-200">
+                {selectedStage === 1 && (
+                  <p className="text-xs sm:text-sm font-sans text-slate-600 mb-4 text-center font-medium">
+                    Next step in data preparation: <span className="text-[#B8860B] font-semibold">Turn generated or collected data into usable training inputs.</span>
+                  </p>
+                )}
+                {selectedStage === 2 && (
+                  <p className="text-xs sm:text-sm font-sans text-slate-600 mb-4 text-center font-medium">
+                    Next step in data preparation: <span className="text-[#B8860B] font-semibold">Convert annotated information into structured training datasets.</span>
+                  </p>
+                )}
+                {selectedStage === 3 && (
+                  <p className="text-xs sm:text-sm font-sans text-slate-600 mb-4 text-center font-medium">
+                    Next step in data preparation: <span className="text-[#B8860B] font-semibold">Validate your dataset before model training.</span>
+                  </p>
+                )}
+                {selectedStage === 4 && (
+                  <p className="text-xs sm:text-sm font-sans text-slate-600 mb-4 text-center font-medium">
+                    Next step in delivery: <span className="text-[#B8860B] font-semibold">Turn validated data into production AI.</span>
+                  </p>
+                )}
+                {selectedStage === 0 && (
+                  <p className="text-xs sm:text-sm font-sans text-slate-600 mb-4 text-center font-medium">
+                    Looking for underlying capabilities or specialized execution? Explore data services or AI Talent Solutions.
+                  </p>
+                )}
+
+                <div className="flex justify-between items-center gap-2">
+                  <div className="flex-1">
+                    {selectedStage > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => handleSelectNeighbour(selectedStage - 1)}
+                        className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-mono tracking-wide text-slate-700 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 px-3.5 py-2 rounded-lg transition-colors group cursor-pointer touch-manipulation min-h-[38px]"
+                      >
+                        <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:-translate-x-1 shrink-0" />
+                        <span className="truncate max-w-[100px] sm:max-w-none">{stages[selectedStage - 1].title}</span>
+                      </button>
+                    )}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleBackToAll}
+                    className="font-mono text-xs tracking-widest uppercase text-slate-700 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 transition-colors font-bold shrink-0 px-4 py-2 rounded-full cursor-pointer touch-manipulation min-h-[38px]"
+                  >
+                    All Services
+                  </button>
+                  <div className="flex-1 flex justify-end">
+                    {selectedStage < stages.length - 1 && (
+                      <button
+                        type="button"
+                        onClick={() => handleSelectNeighbour(selectedStage + 1)}
+                        className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-mono tracking-wide text-[#B8860B] bg-amber-50 hover:bg-amber-100 active:bg-amber-200 px-3.5 py-2 rounded-lg transition-colors group cursor-pointer touch-manipulation min-h-[38px] font-bold"
+                      >
+                        <span className="truncate max-w-[100px] sm:max-w-none">{stages[selectedStage + 1].title}</span>
+                        <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 rotate-180 transition-transform group-hover:translate-x-1 shrink-0" />
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

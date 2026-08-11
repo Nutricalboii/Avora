@@ -91,8 +91,7 @@ export default function Services() {
             <span className="text-[#B8860B]">One delivery framework.</span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-slate-700 leading-relaxed font-medium max-w-2xl mx-auto">
-            Every enterprise AI project moves through the same pipeline — from raw data to deployed intelligence.
-            Avora owns every step.
+            Start with the outcome you need. Avora supports the full AI lifecycle, from data generation and preparation through production AI, with specialized talent available at every stage. One partner, with capabilities across the AI lifecycle.
           </p>
         </div>
 
@@ -162,7 +161,7 @@ export default function Services() {
           </p>
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#B8860B] hover:bg-[#a07508] text-white font-mono text-[11px] sm:text-xs tracking-widest uppercase px-6 sm:px-8 py-3.5 sm:py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-200 font-bold w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#B8860B] hover:bg-[#a07508] text-slate-950 font-mono text-[11px] sm:text-xs tracking-widest uppercase px-6 sm:px-8 py-3.5 sm:py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-200 font-bold w-full sm:w-auto"
           >
             <span>Explore Our Services</span>
             <span className="text-sm sm:text-base">→</span>
