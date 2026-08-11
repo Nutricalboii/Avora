@@ -41,12 +41,6 @@ const stages = [
     title: 'Data Quality Assurance',
     desc: 'Validate datasets across eight dimensions before model training.',
   },
-  {
-    id: '06',
-    stageIndex: 5,
-    title: 'AI Talent Solutions',
-    desc: 'Embed vetted AI specialists directly into your team at any stage.',
-  },
 ];
 
 export default function Services() {
@@ -86,54 +80,38 @@ export default function Services() {
         {/* Header */}
         <div className="services-header-el max-w-3xl mx-auto text-center mb-10 sm:mb-16 lg:mb-20">
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-slate-900 leading-tight mb-3 sm:mb-5">
-            Six disciplines.
+            Five disciplines.
             <br />
             <span className="text-[#B8860B]">One delivery framework.</span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-slate-700 leading-relaxed font-medium max-w-2xl mx-auto">
-            Start with the outcome you need. Avora supports the full AI lifecycle, from data generation and preparation through production AI, with specialized talent available at every stage. One partner, with capabilities across the AI lifecycle.
+            Start with the outcome you need. Avora supports the full AI lifecycle, from data generation and preparation through production-ready AI systems. One integrated delivery framework.
           </p>
         </div>
 
-        {/* Pipeline — single column, all 6 */}
+        {/* Pipeline — single column, all 5 */}
         <div className="max-w-2xl mx-auto">
           {stages.map((stage, i) => (
-            <div key={stage.id} className="pipeline-step">
+            <div key={stage.title} className="pipeline-step">
               <Link
                 href={`/services?stage=${stage.stageIndex}`}
-                className={`flex items-start gap-3 sm:gap-4 rounded-xl sm:rounded-2xl p-4 sm:p-6 border transition-all duration-300 group ${
-                  i === 5
-                    ? 'bg-slate-900 border-slate-700 hover:bg-slate-800'
-                    : 'bg-white border-slate-200 hover:border-[#B8860B]/50 hover:shadow-md'
-                }`}
+                className="flex items-start gap-3 sm:gap-4 rounded-xl sm:rounded-2xl p-4 sm:p-6 border transition-all duration-300 group bg-white border-slate-200 hover:border-[#B8860B]/50 hover:shadow-md"
               >
-                {/* Number badge */}
-                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors duration-300 mt-0.5 ${
-                  i === 5
-                    ? 'bg-[#B8860B]/20 border-[#B8860B]/40 group-hover:bg-[#B8860B] group-hover:border-[#B8860B]'
-                    : 'bg-[#B8860B]/10 border-[#B8860B]/30 group-hover:bg-[#B8860B] group-hover:border-[#B8860B]'
-                }`}>
-                  <span className={`font-mono font-bold text-xs transition-colors duration-300 ${
-                    i === 5 ? 'text-[#D4AF37] group-hover:text-white' : 'text-[#B8860B] group-hover:text-white'
-                  }`}>
-                    {stage.id}
+                {/* Icon badge */}
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors duration-300 mt-0.5 bg-[#B8860B]/10 border-[#B8860B]/30 group-hover:bg-[#B8860B] group-hover:border-[#B8860B]">
+                  <span className="text-[#B8860B] group-hover:text-white font-bold text-xs">
+                    ❖
                   </span>
                 </div>
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2">
-                    <h3 className={`font-heading text-sm sm:text-base lg:text-lg uppercase tracking-wide leading-tight ${
-                      i === 5 ? 'text-white' : 'text-slate-900'
-                    }`}>
+                    <h3 className="font-heading text-sm sm:text-base lg:text-lg uppercase tracking-wide leading-tight text-slate-900">
                       {stage.title}
                     </h3>
-                    <span className={`font-bold text-sm group-hover:translate-x-1 transition-transform shrink-0 ${
-                      i === 5 ? 'text-[#D4AF37]' : 'text-[#B8860B]'
-                    }`}>→</span>
+                    <span className="font-bold text-sm text-[#B8860B] group-hover:translate-x-1 transition-transform shrink-0">→</span>
                   </div>
-                  <p className={`text-xs sm:text-sm leading-relaxed font-medium mt-1 ${
-                    i === 5 ? 'text-slate-300' : 'text-slate-600'
-                  }`}>
+                  <p className="text-xs sm:text-sm leading-relaxed font-medium mt-1 text-slate-600">
                     {stage.desc}
                   </p>
                 </div>
@@ -157,7 +135,7 @@ export default function Services() {
         {/* Bottom CTA */}
         <div className="text-center mt-10 sm:mt-14 pt-6 sm:pt-8 border-t border-slate-200 max-w-xl mx-auto">
           <p className="text-slate-700 text-xs sm:text-base mb-4 sm:mb-6 font-medium">
-            Explore methodologies, case studies, and lifecycle detail across all six disciplines.
+            Explore methodologies, case studies, and lifecycle detail across all five disciplines.
           </p>
           <Link
             href="/services"

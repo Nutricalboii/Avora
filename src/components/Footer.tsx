@@ -45,8 +45,8 @@ export default function Footer() {
               <Logo size="md" className="h-9 w-auto text-[var(--foreground)]" />
             </Link>
             <p className="text-base text-[var(--foreground-muted)] leading-relaxed max-w-xs">
-              AI Talent Solutions, data generation, annotation, quality assurance, and AI implementation —
-              six disciplines, one continuous pipeline.
+              Data generation, annotation, labeling, quality assurance, and AI implementation —
+              five disciplines, one continuous pipeline.
             </p>
           </div>
 
@@ -62,7 +62,6 @@ export default function Footer() {
                 { label: 'Data Annotation', stage: 2 },
                 { label: 'Data Labeling', stage: 3 },
                 { label: 'Data Quality Assurance', stage: 4 },
-                { label: 'AI Talent Solutions', stage: 5 },
               ].map(({ label, stage }) => (
                 <li key={label}>
                   <Link

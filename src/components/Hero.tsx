@@ -59,7 +59,7 @@ export default function Hero() {
         {/* Sleek caption on the bottom */}
         <div className="hero-sub max-w-3xl lg:max-w-4xl" style={{ willChange: 'transform, opacity' }}>
           <p className="font-sans text-slate-300 text-base sm:text-lg md:text-xl leading-relaxed border-l-2 border-[#f59e0b]/60 pl-4 sm:pl-5">
-            Avora helps enterprises prepare high-quality AI data, build production-ready AI solutions, and access specialized AI talent. One integrated delivery framework from raw data to deployed intelligence.
+            Avora helps enterprises prepare high-quality AI data and build production-ready AI solutions. One integrated delivery framework from raw data to deployed intelligence.
           </p>
         </div>
       </div>

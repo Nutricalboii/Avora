@@ -201,7 +201,6 @@ export default function Contact() {
                     <option value="data-annotation">Data Annotation</option>
                     <option value="data-labeling">Data Labeling</option>
                     <option value="data-qa">Data Quality Assurance</option>
-                    <option value="ai-talent">AI Talent</option>
                     <option value="not-sure">Not sure yet</option>
                   </select>
                 </div>

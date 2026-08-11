@@ -197,47 +197,6 @@ const stages = [
     },
     myths: [],
   },
-  {
-    id: '06',
-    slug: 'ai-talent-solutions',
-    title: 'AI Talent Solutions',
-    subtitle: 'On-demand AI specialists embedded in your team — without the overhead of full-time hiring',
-    accent: '#B8860B',
-    intro:
-      'Building an AI team from scratch takes months of recruiting, onboarding, and ramp-up — time most projects can\'t afford. AI Talent Solutions embeds vetted specialists — data scientists, ML engineers, annotation leads, and AI project managers — directly into your delivery team, productive within days rather than months.',
-    why: [
-      { title: 'Speed to deployment', body: 'Avoid months of recruitment. Our bench of pre-vetted specialists can be onboarded and productive within days.' },
-      { title: 'Specialist depth', body: 'Access niche expertise — synthetic data architects, RLHF specialists, computer vision engineers — that is hard to find and expensive to retain full-time.' },
-      { title: 'Cost efficiency', body: 'Scale up or down with project demand. Pay for the expertise you need, when you need it — no bench overhead during quieter periods.' },
-      { title: 'Knowledge transfer', body: 'Our specialists work alongside your team, building internal capability and institutional knowledge as they deliver.' },
-      { title: 'Governance continuity', body: 'All talent operates under Avora\'s quality and security standards — consistent practices regardless of which specialist you engage.' },
-      { title: 'Flexible engagement models', body: 'Project-basis, time-and-materials, or embedded retainer — structured to match how your organisation actually works.' },
-    ],
-    methods: [
-      { name: 'Project Basis', desc: 'Defined scope, fixed deliverables, clear handover criteria. Best for discrete initiatives with a clear start and end — a labeling sprint, a model audit, a QA certification.' },
-      { name: 'Embedded Retainer', desc: 'One or more specialists integrated into your team on an ongoing basis with guaranteed capacity. Best for continuous workflows — ongoing annotation pipelines, iterative model development.' },
-      { name: 'Team Augmentation', desc: 'Supplement an existing internal AI team with specific skills gaps — a computer vision engineer for a vision project, a data quality lead for a governance initiative.' },
-      { name: 'AI Project Management', desc: 'End-to-end coordination of multi-vendor AI programmes — managing timelines, quality gates, and stakeholder communication across complex engagements.' },
-      { name: 'Time-Tracked Transparency', desc: 'All project-basis engagements include granular time tracking and activity reporting. You see exactly where hours are spent — no black boxes.' },
-    ],
-    caseStudy: {
-      sector: 'FinTech · AI Programme Delivery',
-      headline: 'An embedded ML engineer and annotation lead accelerated a fraud-detection model from prototype to production in eleven weeks',
-      what: 'A mid-sized payments company had an internal data science team with strong model-building capability but no bandwidth or specialist expertise for the annotation and quality assurance work needed to production-ready a new fraud-detection model.',
-      how: 'Avora placed an experienced annotation lead and a senior ML engineer directly into the client\'s existing squad under a project-basis engagement. Both operated on the client\'s Jira board, attended standups, and reported to the client\'s AI product lead. Avora handled contracting, quality standards, and time-tracking — the client got the output without the hiring overhead.',
-      result: 'The fraud-detection model moved from prototype to production deployment in eleven weeks — within the original timeline and budget. The client\'s internal team gained hands-on exposure to production annotation workflows they could replicate independently.',
-      metrics: [
-        { label: 'Time to production deployment', value: '11 weeks' },
-        { label: 'Hiring overhead avoided', value: 'Zero permanent headcount' },
-        { label: 'Internal capability built', value: 'Transferable workflows' },
-      ],
-    },
-    myths: [
-      { myth: 'Outsourced talent means lower quality.', reality: 'Avora specialists are vetted to the same standard as permanent hires — and operate under documented quality frameworks that most in-house teams lack.' },
-      { myth: 'You lose control when you bring in outside talent.', reality: 'Embedded specialists report to your leads, work on your tools, and follow your processes. You set the direction; we supply the capability.' },
-      { myth: 'It\'s cheaper to hire than to use specialist talent partners.', reality: 'When you account for recruitment time, benefits, training, and bench cost during slower periods, project-basis specialist talent is consistently more cost-efficient for finite AI initiatives.' },
-    ],
-  },
 ];
 
 
@@ -246,9 +205,9 @@ const stages = [
 // ─────────────────────────────────────────────────────────────────────
 
 function PipelineDiagram({ activeStage, onSelect }: { activeStage: number; onSelect: (i: number) => void }) {
-  const icons = ['◈', '◉', '◎', '◆', '◇', '❖'];
-  const labels = ['AI Solutions', 'Generation', 'Annotation', 'Labeling', 'Quality', 'Talent'];
-  const totalStages = 6;
+  const icons = ['◈', '◉', '◎', '◆', '◇'];
+  const labels = ['AI Solutions', 'Generation', 'Annotation', 'Labeling', 'Quality'];
+  const totalStages = 5;
   const progressPercent = (activeStage / (totalStages - 1)) * 100;
 
   return (
@@ -464,7 +423,6 @@ const lifecycles: Record<string, string[]> = {
   annotation: ['Requirement & ontology', 'Guidelines & training', 'Execution with tooling', 'QA & refinement', 'Delivery & integration'],
   labeling: ['Strategic planning', 'Process & tooling', 'Execution with QA embedded', 'Validation & certification', 'Delivery & feedback'],
   quality: ['Strategy & governance', 'Profiling & assessment', 'Root cause & prevention', 'Remediation & correction', 'Monitor & improve'],
-  'ai-talent-solutions': ['Scope & requirements', 'Specialist matching', 'Onboarding & integration', 'Delivery & time-tracking', 'Review & handover'],
 };
 
 function StagePanel({ stage }: { stage: typeof stages[0] }) {
@@ -797,7 +755,7 @@ function ServicesContent() {
                 )}
                 {selectedStage === 0 && (
                   <p className="text-xs sm:text-sm font-sans text-slate-600 mb-4 text-center font-medium">
-                    Looking for underlying capabilities or specialized execution? Explore data services or AI Talent Solutions.
+                    Looking for underlying capabilities or specialized execution? Explore our data generation, annotation, and QA services.
                   </p>
                 )}
 
