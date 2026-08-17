@@ -89,9 +89,9 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Pipeline — single column, all 5 */}
-        <div className="max-w-2xl mx-auto">
-          {stages.map((stage, i) => (
+        {/* Services List — standalone cards */}
+        <div className="max-w-2xl mx-auto space-y-3 sm:space-y-4">
+          {stages.map((stage) => (
             <div key={stage.title} className="pipeline-step">
               <Link
                 href={`/services?stage=${stage.stageIndex}`}
@@ -116,18 +116,6 @@ export default function Services() {
                   </p>
                 </div>
               </Link>
-
-              {/* Arrow connector between steps */}
-              {i < stages.length - 1 && (
-                <div className="flex items-center ml-4 sm:ml-5 my-1.5 sm:my-2">
-                  <div className="flex flex-col items-center gap-0.5">
-                    <div className="w-px h-3 sm:h-4 bg-[#B8860B]/40" />
-                    <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
-                      <path d="M4 6L0 0h8L4 6z" fill="#B8860B" fillOpacity="0.5" />
-                    </svg>
-                  </div>
-                </div>
-              )}
             </div>
           ))}
         </div>
