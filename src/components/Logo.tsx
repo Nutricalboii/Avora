@@ -23,7 +23,7 @@ export function Logo({ className, size = 'md' }: LogoProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 240 60"
       className={cn('overflow-visible', className)}
-      aria-label="Avora Ventures"
+      aria-label="Avora Venture"
       role="img"
     >
       {/* Engineered by Vaibhav Sharma */}
@@ -73,18 +73,18 @@ export function Logo({ className, size = 'md' }: LogoProps) {
         AVORA
       </text>
 
-      {/* VENTURES subtext */}
+      {/* VENTURE subtext */}
       <text
         x="6"
         y="52"
         fontFamily="'Space Grotesk', 'Inter', system-ui, sans-serif"
         fontWeight="400"
         fontSize="13"
-        letterSpacing="7"
+        letterSpacing="8"
         className="fill-[#6B5642]"
         style={{ fill: 'currentColor', opacity: 0.7 }}
       >
-        VENTURES
+        VENTURE
       </text>
     </svg>
   );
