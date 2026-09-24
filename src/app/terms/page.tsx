@@ -2,8 +2,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Avora Ventures',
-  description: 'Terms and conditions for using Avora Ventures services and website.',
+  title: 'Terms of Service | Avora Venture',
+  description: 'Terms and conditions for using Avora Venture services and website.',
 };
 
 export default function TermsPage() {
@@ -48,7 +48,7 @@ export default function TermsPage() {
               1. Services
             </h2>
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
-              Avora Ventures provides data generation, annotation, labeling, quality auditing,
+              Avora Venture provides data generation, annotation, labeling, quality auditing,
               and AI implementation services. Specific terms, deliverables, and pricing are
               defined in individual service agreements with each client.
             </p>
@@ -61,7 +61,7 @@ export default function TermsPage() {
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
               This website is for informational purposes only. By using this site, you agree not
               to reproduce, distribute, or create derivative works from its content without
-              written permission from Avora Ventures.
+              written permission from Avora Venture.
             </p>
           </section>
 
@@ -71,7 +71,7 @@ export default function TermsPage() {
             </h2>
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
               Submitting the contact form does not constitute a binding agreement. All
-              engagements are subject to a separate signed agreement between Avora Ventures and
+              engagements are subject to a separate signed agreement between Avora Venture and
               the client.
             </p>
           </section>
@@ -82,7 +82,7 @@ export default function TermsPage() {
             </h2>
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
               All website content, design, and branding are the intellectual property of Avora
-              Ventures. Work product delivered to clients under service agreements is governed
+              Venture. Work product delivered to clients under service agreements is governed
               by those agreements.
             </p>
           </section>
@@ -92,7 +92,7 @@ export default function TermsPage() {
               5. Limitation of liability
             </h2>
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
-              Avora Ventures is not liable for indirect, incidental, or consequential damages
+              Avora Venture is not liable for indirect, incidental, or consequential damages
               arising from use of this website or its services beyond what is specified in a
               signed client agreement.
             </p>
