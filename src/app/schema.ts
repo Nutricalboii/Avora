@@ -8,6 +8,8 @@ export function generateSchema() {
     url: siteConfig.url,
     logo: `${siteConfig.url}/logo.png`,
     description: siteConfig.description,
+    areaServed: 'Worldwide',
+    knowsAbout: siteConfig.keywords,
     sameAs: [
       siteConfig.links.linkedin,
       siteConfig.links.twitter,
@@ -15,8 +17,9 @@ export function generateSchema() {
     ].filter(Boolean),
     contactPoint: {
       '@type': 'ContactPoint',
-      contactType: 'Sales',
-      email: 'contact@avoraventure.com',
+      contactType: 'customer support',
+      email: siteConfig.contactEmail,
+      availableLanguage: 'English',
     },
   };
 }
