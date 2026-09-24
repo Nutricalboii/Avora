@@ -34,12 +34,7 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
         <p className="text-sm text-[var(--foreground-muted)] mb-12">
-          Last updated:{' '}
-          {new Date().toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
+          Last updated: September 24, 2026
         </p>
 
         <div className="space-y-8 text-[var(--foreground)]">
