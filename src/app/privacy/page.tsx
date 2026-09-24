@@ -2,8 +2,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Avora Ventures',
-  description: 'How Avora Ventures collects, uses, and protects your personal information.',
+  title: 'Privacy Policy | Avora Venture',
+  description: 'How Avora Venture collects, uses, and protects your personal information.',
 };
 
 export default function PrivacyPage() {
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
               3. Data storage
             </h2>
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
-              Form submissions are stored securely, accessible only to the Avora Ventures team.
+              Form submissions are stored securely, accessible only to the Avora Venture team.
               We retain this data for up to 24 months or until you request deletion.
             </p>
           </section>
