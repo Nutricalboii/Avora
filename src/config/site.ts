@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Avora Ventures",
+  name: "Avora Venture",
   description: "Data generation, annotation, labeling, quality assurance, and AI implementation — five disciplines, one continuous pipeline.",
   url: "https://avora-3kyx.vercel.app",
   ogImage: "/og-image.png",
