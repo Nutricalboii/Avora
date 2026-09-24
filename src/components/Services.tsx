@@ -74,12 +74,12 @@ export default function Services() {
   }, { scope: container });
 
   return (
-    <section id="services" ref={container} className="bg-slate-50 py-12 sm:py-20 lg:py-28 border-t border-slate-100">
+    <section id="services" ref={container} aria-labelledby="services-heading" className="bg-slate-50 py-12 sm:py-20 lg:py-28 border-t border-slate-100">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-16">
 
         {/* Header */}
         <div className="services-header-el max-w-3xl mx-auto text-center mb-10 sm:mb-16 lg:mb-20">
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-slate-900 leading-tight mb-3 sm:mb-5">
+          <h2 id="services-heading" className="font-heading text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-slate-900 leading-tight mb-3 sm:mb-5">
             Five disciplines.
             <br />
             <span className="text-[#B8860B]">One delivery framework.</span>
