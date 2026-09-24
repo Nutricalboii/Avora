@@ -1,4 +1,4 @@
-# Avora Ventures — Content Integration Blueprint
+# Avora Venture — Content Integration Blueprint
 **PDF → Live Site, exact placement.** Built against the real repo (`avoraventure.com` / `github.com/Nutricalboii/Avora`) as of now — not a generic template. Every class name below (`glass-panel`, `section-eyebrow`, `#D4AF37`, `py-24`, `max-w-6xl`) already exists in your `globals.css` and `Services.tsx`. This reuses your system; it doesn't invent a new one.
 
 **One honest flag before anything else:** the six case studies in the PDF (biotech binding-mechanism discovery, $184M insurer savings, $8.3M pharma savings, etc.) read as illustrative industry examples demonstrating methodology, not dated, named Avora client engagements. That's a legitimate content pattern for a services firm — but present them as "how this plays out in practice" / "representative engagement," not "our client," unless Avora actually delivered these exact numbers. I've kept the framing from your PDF as-is below; just confirm with whoever owns the claim before a cold client sees it.

@@ -1,4 +1,4 @@
-# Outbound Email & LinkedIn Pitch Scripts — Avora Ventures
+# Outbound Email & LinkedIn Pitch Scripts — Avora Venture
 
 **Target Audience:** CTOs, VPs of AI/ML, Heads of Data Engineering  
 **Primary Hook:** Data Quality & Pipeline Audit Inquiry  
@@ -15,7 +15,7 @@
 > **Message:**  
 > Thanks for connecting, [First Name]. Quick question — is label noise or data scarcity currently a bottleneck for [Company Name]'s ML targets?  
 >  
-> At Avora Ventures, we build 5-discipline AI data pipelines (synthetic generation, annotation, labeling, quality assurance, and custom AI solutions).  
+> At Avora Venture, we build 5-discipline AI data pipelines (synthetic generation, annotation, labeling, quality assurance, and custom AI solutions).  
 >  
 > If you're open to evaluating how your team handles multi-pass validation and edge-case simulation, happy to share our framework. Would Thursday or Friday work for a brief intro call?
 
@@ -31,7 +31,7 @@
 >
 > When enterprise ML models underperform in production, the issue is frequently unverified ground truth or label noise rather than model architecture.
 >
-> At **Avora Ventures**, we help high-stakes AI teams engineer clean, production-grade data pipelines across 5 integrated disciplines:
+> At **Avora Venture**, we help high-stakes AI teams engineer clean, production-grade data pipelines across 5 integrated disciplines:
 > 1. Data Generation (Synthetic data & edge-case simulation)
 > 2. Data Annotation (Bounding boxes, 3D point clouds, semantic segmentation)
 > 3. Data Labeling (Text, audio, NER, and multi-modal tagging)
@@ -42,7 +42,7 @@
 >
 > Best regards,  
 > **[Your Name]**  
-> Avora Ventures | Institutional AI Infrastructure & Data Operations
+> Avora Venture | Institutional AI Infrastructure & Data Operations
 
 ---
 

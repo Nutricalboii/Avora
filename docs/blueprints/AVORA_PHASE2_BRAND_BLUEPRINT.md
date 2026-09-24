@@ -1,4 +1,4 @@
-# Avora Ventures — Phase 2: Brand & Visual Elevation Blueprint
+# Avora Venture — Phase 2: Brand & Visual Elevation Blueprint
 
 **Status check first:** Phase 1 (security, SEO, accessibility, performance) is genuinely done — verified against your live repo, not just the audit doc's claims. CSP headers, HSTS, `/api/contact` route, `robots.ts`, `sitemap.ts`, `schema.ts`, real hero stats, skip-to-content link, dark mode via `ThemeProvider` — all present and correct in `next.config.ts`, `layout.tsx`, and `Hero.tsx`. Good work. This document is Phase 2 only: turning a technically-solid site into one with a real, memorable visual identity.
 

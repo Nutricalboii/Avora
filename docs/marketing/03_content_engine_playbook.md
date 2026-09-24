@@ -1,6 +1,6 @@
-# Content Engine & Marketing Playbook — Avora Ventures
+# Content Engine & Marketing Playbook — Avora Venture
 
-**Brand:** Avora Ventures (`avora-ventures`)  
+**Brand:** Avora Venture (`avora-ventures`)  
 **Target Voice:** Formality 8/10 | Energy 7/10 | Humor 1/10 | Authority 9/10  
 **Tone:** Production-Grade, Institutional, High-Stakes, Intelligence, Engineered  
 **Date:** August 2026  
@@ -16,7 +16,7 @@
 > 
 > But model accuracy is bounded by data quality. Systematic label noise degrades performance across every deployment environment.
 > 
-> At **Avora Ventures**, we structure data operations around Five Disciplines:
+> At **Avora Venture**, we structure data operations around Five Disciplines:
 > 1. Data Generation (Synthetic generation & edge-case simulation)
 > 2. Data Annotation (Bounding boxes, 3D point clouds, semantic segmentation)
 > 3. Data Labeling (Text, audio, NER, and multi-modal tagging)
@@ -34,7 +34,7 @@
 > 
 > In high-stakes environments — whether processing complex sensor data, clinical records, or high-density imagery — standard crowd-sourced labeling leads to downstream model instability.
 > 
-> **Avora Ventures** integrates data quality assurance into every stage of the lifecycle, combining synthetic augmentation with consensus verification before models hit production.
+> **Avora Venture** integrates data quality assurance into every stage of the lifecycle, combining synthetic augmentation with consensus verification before models hit production.
 > 
 > Explore how our Five Disciplines framework operates at scale: [Link]
 > 
@@ -57,7 +57,7 @@
 ## 3. High-Intent B2B Ad Copy Variants
 
 ### **Variant A: Technical / CTO Focus (Google RSA & LinkedIn Ads)**
-* **Headline 1:** Institutional AI Infrastructure | Avora Ventures
+* **Headline 1:** Institutional AI Infrastructure | Avora Venture
 * **Headline 2:** Data Quality Assurance for AI
 * **Headline 3:** Five Disciplines. One Framework.
 * **Description 1:** Deploy production-grade AI solutions for high-stakes environments. Bridge data quality to real outcomes.

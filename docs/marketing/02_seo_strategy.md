@@ -1,6 +1,6 @@
-# Technical & On-Page SEO Strategy — Avora Ventures
+# Technical & On-Page SEO Strategy — Avora Venture
 
-**Brand:** Avora Ventures (`avora-ventures`)  
+**Brand:** Avora Venture (`avora-ventures`)  
 **Industry:** Institutional AI Infrastructure & Data Engineering  
 **Primary Target Audience:** Chief Technology Officers, VPs of AI/ML, Enterprise Data Architects, Heads of Product  
 **Date:** August 2026  
@@ -10,7 +10,7 @@
 ## 1. Pillar Scorecard & Strategy Overview
 
 ```
-Pillar Scorecard for Avora Ventures (2026-08-03)
+Pillar Scorecard for Avora Venture (2026-08-03)
 ===================================================
 Technical    : 8.5 / 10  ✓ Clean Next.js static architecture, SSR, low CWV latency
 Content      : 5.0 / 10  ⚠ Major opportunity — need deep technical pillar content

@@ -1,6 +1,6 @@
-# Enterprise Email Outreach Pitch Package — Avora Ventures
+# Enterprise Email Outreach Pitch Package — Avora Venture
 
-**Brand:** Avora Ventures (`avora-ventures`)  
+**Brand:** Avora Venture (`avora-ventures`)  
 **Positioning:** Institutional AI Infrastructure & Data Operations  
 **Core Framework:** The Five Disciplines Framework  
 **Target Personas:** Chief Technology Officers (CTOs), VPs of AI/ML, Heads of Data Engineering, VPs of Data Science  
@@ -32,7 +32,7 @@ When an enterprise ML model plateaus in production, the standard playbook is to 
 
 However, empirical data shows that a 10% reduction in label noise yields a 15–25% boost in F1-score — far outperforming architecture tweaks.
 
-At Avora Ventures, we engineer institutional-grade data infrastructure across Five Disciplines:
+At Avora Venture, we engineer institutional-grade data infrastructure across Five Disciplines:
 1. Data Generation — Synthetic VAE/GAN augmentation for rare events & privacy-preserving datasets
 2. Data Annotation — CVAT, bounding box, 3D point cloud, and semantic segmentation with Fleiss' Kappa ≥ 0.91 targets
 3. Data Labeling — OCR layout extraction (LayoutLMv3) & multi-pass consensus protocols
@@ -46,7 +46,7 @@ Are you available for a brief 10-minute introductory call this Thursday at 2:00 
 Best regards,
 
 [Your Name]
-Avora Ventures | Institutional AI Infrastructure
+Avora Venture | Institutional AI Infrastructure
 [Website Link]
 ```
 
@@ -63,7 +63,7 @@ Hi [First Name],
 
 Many specialized AI teams face a fundamental bottleneck: real-world data collection for rare events (equipment failure, rare anomalies, crop stress, clinical edge cases) takes years to aggregate.
 
-Rather than waiting years for natural collection, Avora Ventures engineers physics-informed synthetic data pipelines (using VAEs, GANs, and agent-based simulations) paired with differential privacy budgets.
+Rather than waiting years for natural collection, Avora Venture engineers physics-informed synthetic data pipelines (using VAEs, GANs, and agent-based simulations) paired with differential privacy budgets.
 
 Our Five-Discipline Framework covers the full lifecycle:
 • Synthetic Data Generation (simulating rare edge cases with zero real PII)
@@ -75,7 +75,7 @@ Would you be open to a 10-minute technical exchange next week to see how synthet
 Best regards,
 
 [Your Name]
-Avora Ventures | Institutional AI Infrastructure
+Avora Venture | Institutional AI Infrastructure
 [Website Link]
 ```
 
@@ -92,7 +92,7 @@ Hi [First Name],
 
 Manual review of complex documents — consent forms, physician notes, adverse event reports, and financial contracts — remains slow, expensive, and prone to compliance risk.
 
-At Avora Ventures, we deploy operationalized OCR layout analysis (LayoutLMv3) combined with expert multi-pass consensus verification protocols to extract structured intelligence from millions of unstructured pages with zero post-delivery re-extractions required.
+At Avora Venture, we deploy operationalized OCR layout analysis (LayoutLMv3) combined with expert multi-pass consensus verification protocols to extract structured intelligence from millions of unstructured pages with zero post-delivery re-extractions required.
 
 We handle the full pipeline under our Five Disciplines Framework:
 • Data Labeling & Document Extractions (47+ data point categories)
@@ -104,7 +104,7 @@ Are you open to a brief 10-minute call to discuss [Company Name]'s current docum
 Best regards,
 
 [Your Name]
-Avora Ventures | Institutional AI Infrastructure
+Avora Venture | Institutional AI Infrastructure
 [Website Link]
 ```
 
@@ -161,5 +161,5 @@ I'll pause outreach for now, but if label noise or data scarcity becomes a bottl
 Best regards,
 
 [Your Name]
-Avora Ventures
+Avora Venture
 ```
