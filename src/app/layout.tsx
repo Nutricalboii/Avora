@@ -102,7 +102,6 @@ export default function RootLayout({
               </Suspense>
             </main>
             <GlobalElements type='footer' />
-            <GlobalElements type='chat' />
           </SmoothScrollProvider>
         </ThemeProvider>
         <Analytics />
