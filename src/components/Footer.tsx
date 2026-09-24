@@ -3,6 +3,10 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Logo } from './Logo';
+import { siteConfig } from '@/config/site';
+
+// Computed once at module load — no need to call new Date() on every render
+const CURRENT_YEAR = new Date().getFullYear();
 
 function useScrollTo() {
   const pathname = usePathname();
@@ -31,7 +35,6 @@ export default function Footer() {
   const scrollTo = useScrollTo();
 
   return (
-    // Removed border-t
     <footer
       className="relative z-20"
       style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}
@@ -123,11 +126,17 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar - Removed border-t */}
+        {/* Bottom bar */}
         <div className="py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-[14px] text-[var(--foreground-muted)]">
-            © {new Date().getFullYear()} Avora Venture Inc. All rights reserved.
+            © {CURRENT_YEAR} Avora Venture Inc. All rights reserved.
           </p>
+          <a
+            href={`mailto:${siteConfig.contactEmail}`}
+            className="text-[14px] text-[var(--foreground-muted)] hover:text-[#B8860B] transition-colors duration-200"
+          >
+            {siteConfig.contactEmail}
+          </a>
         </div>
       </div>
     </footer>
