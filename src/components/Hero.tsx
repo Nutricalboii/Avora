@@ -25,13 +25,15 @@ export default function Hero() {
   return (
     <section
       ref={container}
+      aria-label="Avora Venture — Production AI starts with better data"
       className="relative min-h-[100dvh] flex flex-col justify-center lg:justify-end overflow-hidden bg-black py-16 sm:py-20 md:py-24 lg:py-0"
     >
       {/* Optimized background image using next/image */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
         <Image
           src="/abstract.jpg"
-          alt="Avora AI Infrastructure Background"
+          alt=""
+          aria-hidden="true"
           fill
           priority
           sizes="100vw"
