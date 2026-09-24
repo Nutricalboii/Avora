@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/dashboard', '/dashboard/', '/api/'],
+        disallow: ['/api/'],
       },
     ],
     sitemap: 'https://avora-3kyx.vercel.app/sitemap.xml',
