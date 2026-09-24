@@ -63,11 +63,6 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   compress: true,
-  // Opt-in to the stable App Router security model
-  experimental: {
-    // Enforce React's Strict Mode in the App Router
-    strictMode: true,
-  },
   images: {
     // Prefer AVIF first (better compression), fall back to WebP
     formats: ["image/avif", "image/webp"],
