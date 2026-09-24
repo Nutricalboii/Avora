@@ -76,8 +76,17 @@ export default function Contact() {
   };
 
   return (
-    // Removed border and changed layout to match Insights
-    <section id="contact" className="py-16 sm:py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}>
+    <section
+      id="contact"
+      aria-labelledby="contact-heading"
+      className="py-16 sm:py-24 md:py-32 relative overflow-hidden"
+      style={{ backgroundColor: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(16px)' }}
+    >
+      {/* Screen reader live region — announces form success/error without page reload */}
+      <div aria-live="polite" aria-atomic="true" className="sr-only">
+        {success && 'Your message was sent successfully. We will follow up within 1 business day.'}
+        {error && `Form error: ${error}`}
+      </div>
       <div className="max-w-4xl mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         
         <div
@@ -85,11 +94,12 @@ export default function Contact() {
           className={`transition-all duration-1000 text-center mb-10 sm:mb-14 md:mb-16 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Big Gold Heading */}
-          <h2 
+          <h2
+            id="contact-heading"
             className="font-heading uppercase tracking-wide text-[#B8860B] leading-tight mb-3 sm:mb-4"
             style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
           >
-            Let's Build
+            Let&apos;s Build
           </h2>
           {/* Small Subheading */}
           <span className="font-mono text-xs sm:text-sm md:text-base font-bold uppercase tracking-[0.2em] text-slate-900 mb-4 sm:mb-6 block">
@@ -130,7 +140,11 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 {error && (
-                  <div className="p-3 rounded-xl border border-red-300/40 bg-red-50 text-red-700 text-sm">
+                  <div
+                    role="alert"
+                    aria-atomic="true"
+                    className="p-3 rounded-xl border border-red-300/40 bg-red-50 text-red-700 text-sm"
+                  >
                     {error}
                   </div>
                 )}
