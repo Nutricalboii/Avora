@@ -126,7 +126,7 @@ export default function Footer() {
         {/* Bottom bar - Removed border-t */}
         <div className="py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-[14px] text-[var(--foreground-muted)]">
-            © {new Date().getFullYear()} Avora Ventures Inc. All rights reserved.
+            © {new Date().getFullYear()} Avora Venture Inc. All rights reserved.
           </p>
         </div>
       </div>
