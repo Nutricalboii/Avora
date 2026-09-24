@@ -110,10 +110,10 @@ export default function TermsPage() {
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
               For questions about these terms, contact{' '}
               <a
-                href="mailto:contact@avoraventure.com"
+                href="mailto:avoraglobalus@gmail.com"
                 className="text-[var(--accent)] hover:underline"
               >
-                contact@avoraventure.com
+                avoraglobalus@gmail.com
               </a>
               .
             </p>

@@ -88,10 +88,10 @@ export default function PrivacyPage() {
               You have the right to request access to, correction of, or deletion of your
               personal data. To exercise these rights, contact us at{' '}
               <a
-                href="mailto:contact@avoraventure.com"
+                href="mailto:avoraglobalus@gmail.com"
                 className="text-[var(--accent)] hover:underline"
               >
-                contact@avoraventure.com
+                avoraglobalus@gmail.com
               </a>
               .
             </p>
@@ -114,10 +114,10 @@ export default function PrivacyPage() {
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
               For privacy inquiries, email{' '}
               <a
-                href="mailto:contact@avoraventure.com"
+                href="mailto:avoraglobalus@gmail.com"
                 className="text-[var(--accent)] hover:underline"
               >
-                contact@avoraventure.com
+                avoraglobalus@gmail.com
               </a>
               .
             </p>
