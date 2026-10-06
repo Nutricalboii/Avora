@@ -76,10 +76,12 @@ export default function PrivacyPage() {
               4. Cookies
             </h2>
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
-              We use essential browser storage for site preferences. If you choose “Allow analytics,”
-              Google Analytics may use analytics cookies and similar technologies to measure
-              aggregate visits, page views, and interactions. You can decline analytics or clear
-              your browser storage at any time.
+              We use one first-party preference cookie, <code className="text-xs">avora_analytics_consent</code>,
+              and matching browser storage to remember whether you allowed or declined analytics.
+              If you choose “Allow analytics,” Google Analytics may use analytics cookies and
+              similar technologies to measure aggregate visits, page views, and interactions.
+              You can change your choice at any time using “Cookie settings” in the footer or by
+              clearing your browser storage.
             </p>
           </section>
 

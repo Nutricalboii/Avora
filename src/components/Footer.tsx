@@ -122,6 +122,15 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new Event('avora:open-consent'))}
+                  className="text-[15px] text-[var(--foreground)] hover:text-[#B8860B] transition-colors duration-200 text-left"
+                >
+                  Cookie settings
+                </button>
+              </li>
             </ul>
           </div>
         </div>

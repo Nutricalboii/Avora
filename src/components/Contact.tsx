@@ -143,7 +143,11 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form
+                onSubmit={handleSubmit}
+                data-analytics-form="project_conversation"
+                className="space-y-5"
+              >
                 {error && (
                   <div
                     role="alert"
@@ -248,6 +252,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
+                  data-analytics-name="Start a Conversation"
                   className="btn-primary w-full py-3.5 md:py-4 text-base font-medium disabled:opacity-60 bg-[#1e293b] text-white rounded-xl hover:bg-[#B8860B] transition-colors font-mono tracking-wider"
                 >
                   {isSubmitting ? 'Sending...' : 'Start a Conversation'}

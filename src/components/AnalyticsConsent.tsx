@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const CONSENT_KEY = 'avora-analytics-consent';
+const CONSENT_COOKIE = 'avora_analytics_consent';
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 type Consent = 'granted' | 'denied' | null;
@@ -12,11 +13,22 @@ export default function AnalyticsConsent() {
   const [consent, setConsent] = useState<Consent>(null);
 
   useEffect(() => {
-    setConsent(window.localStorage.getItem(CONSENT_KEY) as Consent);
+    const cookieConsent = document.cookie
+      .split('; ')
+      .find((entry) => entry.startsWith(`${CONSENT_COOKIE}=`))
+      ?.split('=')[1] as Consent;
+    const storedConsent = window.localStorage.getItem(CONSENT_KEY) as Consent;
+    setConsent(cookieConsent || storedConsent);
+
+    const reopen = () => setConsent(null);
+    window.addEventListener('avora:open-consent', reopen);
+    return () => window.removeEventListener('avora:open-consent', reopen);
   }, []);
 
   const saveConsent = (value: Exclude<Consent, null>) => {
     window.localStorage.setItem(CONSENT_KEY, value);
+    const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = `${CONSENT_COOKIE}=${value}; Max-Age=31536000; Path=/; SameSite=Lax${secure}`;
     setConsent(value);
     window.dispatchEvent(new CustomEvent('avora:analytics-consent', { detail: value }));
   };
@@ -27,6 +39,7 @@ export default function AnalyticsConsent() {
     <aside
       role="dialog"
       aria-label="Analytics preferences"
+      data-analytics-ignore="true"
       className="fixed inset-x-4 bottom-4 z-[100] mx-auto max-w-3xl rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl sm:flex sm:items-center sm:gap-6"
     >
       <p className="flex-1 text-sm leading-relaxed text-slate-700">
