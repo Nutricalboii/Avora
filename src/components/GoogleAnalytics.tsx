@@ -97,8 +97,14 @@ export default function GoogleAnalytics() {
   useEffect(() => {
     if (!GA_ID) return;
 
+    let pageViewSent = false;
     const sendPageView = () => {
-      if (readAnalyticsConsent() !== 'granted' || typeof window.gtag !== 'function') return;
+      if (
+        pageViewSent ||
+        readAnalyticsConsent() !== 'granted' ||
+        typeof window.gtag !== 'function'
+      ) return;
+      pageViewSent = true;
       window.gtag('config', GA_ID, {
         page_path: pathname,
         page_title: document.title,
@@ -172,8 +178,10 @@ export default function GoogleAnalytics() {
     document.addEventListener('submit', handleSubmit, true);
 
     if (readAnalyticsConsent() === 'granted') sendPageView();
+    const pageViewRetry = window.setTimeout(sendPageView, 1000);
 
     return () => {
+      window.clearTimeout(pageViewRetry);
       window.removeEventListener('avora:analytics-consent', handleConsent);
       document.removeEventListener('click', handleClick);
       document.removeEventListener('focusin', handleFocusIn);
