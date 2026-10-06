@@ -23,7 +23,7 @@ export function Logo({ className, size = 'md' }: LogoProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 240 60"
       className={cn('overflow-visible', className)}
-      aria-label="Avora Venture"
+      aria-label="Avora Ventures"
       role="img"
     >
       {/* Engineered by Vaibhav Sharma */}

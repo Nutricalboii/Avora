@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { cn } from '@/lib/cn';
 import { useReveal } from '@/hooks/useInView';
+import { trackAnalyticsEvent } from '@/components/GoogleAnalytics';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -58,6 +59,10 @@ export default function Contact() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Submission failed.');
+      trackAnalyticsEvent('generate_lead', {
+        form_name: 'project_conversation',
+        focus_area: formData.focusArea || 'unspecified',
+      });
       setSuccess(true);
       setFormData({ name: '', email: '', focusArea: '', message: '' });
     } catch (err: unknown) {

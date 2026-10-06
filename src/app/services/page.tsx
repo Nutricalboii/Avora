@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Services — AI Delivery Playbook | Avora Venture',
+  title: 'AI Data Operations & Implementation Services',
   description:
-    'Five disciplines, one continuous pipeline: AI Solutions, Data Generation, Annotation, Labeling, and Quality Assurance. The complete Avora methodology.',
+    'Explore Avora Ventures services across synthetic data generation, data annotation, data labeling, AI quality assurance, and production AI implementation.',
+  alternates: { canonical: '/services' },
 };
 
 export { default } from './ServicesPage';

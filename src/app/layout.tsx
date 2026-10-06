@@ -4,6 +4,8 @@ import { DM_Sans, Bebas_Neue, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
 import { siteConfig } from '@/config/site';
 import { generateSchema } from '@/app/schema';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
+import AnalyticsConsent from '@/components/AnalyticsConsent';
 import GlobalElements from '@/components/GlobalElements';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
@@ -31,9 +33,16 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | Institutional AI Infrastructure & Data Operations`,
+  title: {
+    default: `${siteConfig.name} | Production AI Data Operations`,
+    template: `%s | ${siteConfig.name}`,
+  },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   category: 'technology',
   robots: {
     index: true,
@@ -50,7 +59,7 @@ export const metadata: Metadata = {
     canonical: siteConfig.url,
   },
   openGraph: {
-    title: siteConfig.name,
+    title: `${siteConfig.name} | Production AI Data Operations`,
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -67,11 +76,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: siteConfig.name,
+    title: `${siteConfig.name} | Production AI Data Operations`,
     description: siteConfig.description,
     images: [`${siteConfig.url}${siteConfig.ogImage}`],
   },
   metadataBase: new URL(siteConfig.url),
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -122,9 +134,10 @@ export default function RootLayout({
             <GlobalElements type='footer' />
           </SmoothScrollProvider>
         </ThemeProvider>
+        <GoogleAnalytics />
+        <AnalyticsConsent />
         <Analytics />
       </body>
     </html>
   );
 }
-

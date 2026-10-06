@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { siteConfig } from '@/config/site';
 
 // Engineered by Vaibhav Sharma · github.com/Nutricalboii
 
@@ -24,6 +25,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Amazonbot',       disallow: ['/'] },
       { userAgent: 'cohere-ai',       disallow: ['/'] },
     ],
-    sitemap: 'https://avora-3kyx.vercel.app/sitemap.xml',
+    sitemap: `${siteConfig.url}/sitemap.xml`,
   };
 }

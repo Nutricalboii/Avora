@@ -1,12 +1,13 @@
 import { MetadataRoute } from 'next';
+import { siteConfig } from '@/config/site';
 
 // Engineered by Vaibhav Sharma · github.com/Nutricalboii
 
-const BASE_URL = 'https://avora-3kyx.vercel.app';
+const BASE_URL = siteConfig.url;
 
 // Static date — update this when content changes, not on every deploy.
 // Using new Date() here would make the sitemap uncacheable and mislead crawlers.
-const LAST_MODIFIED = new Date('2026-09-24');
+const LAST_MODIFIED = new Date('2026-10-06');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

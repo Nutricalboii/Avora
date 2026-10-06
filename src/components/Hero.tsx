@@ -25,7 +25,7 @@ export default function Hero() {
   return (
     <section
       ref={container}
-      aria-label="Avora Venture — Production AI starts with better data"
+      aria-label="Avora Ventures — Production AI starts with better data"
       className="relative min-h-[100dvh] flex flex-col justify-center lg:justify-end overflow-hidden bg-black py-16 sm:py-20 md:py-24 lg:py-0"
     >
       {/* Optimized background image using next/image */}

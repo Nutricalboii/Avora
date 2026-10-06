@@ -1,6 +1,6 @@
 export const siteConfig = {
-  name: "Avora Venture",
-  description: "Data generation, annotation, labeling, quality assurance, and AI implementation — five disciplines, one continuous pipeline.",
+  name: "Avora Ventures",
+  description: "Avora Ventures helps enterprises build production-ready AI with synthetic data generation, data annotation, labeling, data quality assurance, and AI implementation.",
   url: "https://avora-3kyx.vercel.app",
   ogImage: "/og-image.png",
   contactEmail: "avoraglobalus@gmail.com",
@@ -11,12 +11,13 @@ export const siteConfig = {
   },
   shortName: "Avora",
   keywords: [
-    "AI data pipeline",
-    "synthetic data generation",
+    "synthetic data generation services",
     "data annotation services",
-    "data labeling",
-    "AI quality assurance",
+    "data labeling services",
+    "AI data quality assurance",
+    "production AI implementation",
     "machine learning data operations",
+    "AI data pipeline",
   ],
   nav: [
     { label: "Home", href: "/#hero" },

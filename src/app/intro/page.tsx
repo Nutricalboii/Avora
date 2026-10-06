@@ -167,7 +167,7 @@ export default function IntroPage() {
               className="mb-6"
             >
               <span className="font-mono text-[11px] tracking-[0.35em] uppercase text-white/80">
-                Avora Venture
+                Avora Ventures
               </span>
             </motion.div>
 

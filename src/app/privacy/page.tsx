@@ -2,8 +2,9 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Avora Venture',
-  description: 'How Avora Venture collects, uses, and protects your personal information.',
+  title: 'Privacy Policy',
+  description: 'How Avora Ventures collects, uses, and protects your personal information.',
+  alternates: { canonical: '/privacy' },
 };
 
 export default function PrivacyPage() {
@@ -65,7 +66,7 @@ export default function PrivacyPage() {
               3. Data storage
             </h2>
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
-              Form submissions are stored securely, accessible only to the Avora Venture team.
+              Form submissions are stored securely, accessible only to the Avora Ventures team.
               We retain this data for up to 24 months or until you request deletion.
             </p>
           </section>
@@ -75,8 +76,10 @@ export default function PrivacyPage() {
               4. Cookies
             </h2>
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
-              We use essential cookies only — specifically those required for theme preferences
-              and session management. We do not use tracking or advertising cookies.
+              We use essential browser storage for site preferences. If you choose “Allow analytics,”
+              Google Analytics may use analytics cookies and similar technologies to measure
+              aggregate visits, page views, and interactions. You can decline analytics or clear
+              your browser storage at any time.
             </p>
           </section>
 
@@ -102,8 +105,10 @@ export default function PrivacyPage() {
               6. Analytics
             </h2>
             <p className="text-[15px] text-[var(--foreground-muted)] leading-relaxed">
-              We use Vercel Analytics to collect anonymous, aggregate usage statistics. No
-              personally identifiable information is collected through analytics.
+              We use Vercel Analytics for anonymous, aggregate usage statistics. With your
+              permission, we also use Google Analytics to understand traffic sources, page views,
+              and broad interaction patterns. We do not send contact form names, email addresses,
+              or message content to Google Analytics.
             </p>
           </section>
 
